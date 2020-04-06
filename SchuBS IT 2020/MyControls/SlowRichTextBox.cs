@@ -30,7 +30,6 @@ namespace SchuBS_IT_2020.MyControls
             set
             {
                 text = value.GetEnumerator();
-                base.Text = String.Empty;
                 timer.Enabled = text.MoveNext();
             }
         }
