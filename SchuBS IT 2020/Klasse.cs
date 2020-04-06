@@ -14,7 +14,7 @@ namespace SchuBS_IT_2020
     {
         public Klasse(int staerke, int verteidigung, int geschicklichkeit, int magie, int mana, int lebenspunkte = 100)
         {
-            Lebenspunkte = lebenspunkte;
+            Lebenspunkte = (lebenspunkte + staerke + verteidigung) / 2 ;
             Staerke = staerke;
             Verteidigung = verteidigung;
             Geschicklichkeit = geschicklichkeit;
