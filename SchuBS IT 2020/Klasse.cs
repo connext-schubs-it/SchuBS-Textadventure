@@ -1,19 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SchuBS_IT_2020
 {
+    public enum KlassenTyp
+    {
+        Krieger = 1,
+        Waldläufer,
+        Magier,
+        Assassine,
+    }
+
     public class Klasse
     {
-        int _staerke;
-        int _verteidigung;
-        int _geschicklichkeit;
-        int _magie;
-        int _mana;
-
         public Klasse(int staerke, int verteidigung, int geschicklichkeit, int magie, int mana)
         {
             Staerke = staerke;
@@ -23,10 +21,29 @@ namespace SchuBS_IT_2020
             Mana = mana;
         }
 
-        public int Staerke { get => _staerke; set => _staerke = value; }
-        public int Verteidigung { get => _verteidigung; set => _verteidigung = value; }
-        public int Geschicklichkeit { get => _geschicklichkeit; set => _geschicklichkeit = value; }
-        public int Magie { get => _magie; set => _magie = value; }
-        public int Mana { get => _mana; set => _mana = value; }
-    }    
+        public int Staerke { get; set; }
+        public int Verteidigung { get; set; }
+        public int Geschicklichkeit { get; set; }
+        public int Magie { get; set; }
+        public int Mana { get; set; }
+
+        public KlassenTyp KlassenTyp { get; set; }
+
+        public static Klasse GetByKlassenTyp(KlassenTyp typ)
+        {
+            switch (typ)
+            {
+                case KlassenTyp.Krieger:
+                    return new Klasse(20, 20, 5, 2, 3);
+                case KlassenTyp.Waldläufer:
+                    return new Klasse(10, 8, 20, 6, 6);
+                case KlassenTyp.Magier:
+                    return new Klasse(3, 5, 7, 20, 15);
+                case KlassenTyp.Assassine:
+                    return new Klasse(17, 5, 25, 1, 2);
+                default:
+                    throw new ArgumentException();
+            }
+        }
+    }
 }
