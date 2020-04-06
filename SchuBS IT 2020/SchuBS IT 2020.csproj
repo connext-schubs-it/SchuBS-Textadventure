@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MyControls\SlowRichTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Gegner.cs" />
     <Compile Include="Klasse.cs" />
     <Compile Include="Textadventure.cs">
@@ -81,5 +84,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
