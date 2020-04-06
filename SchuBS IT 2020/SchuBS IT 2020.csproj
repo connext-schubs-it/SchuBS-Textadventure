@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Gegner.cs" />
     <Compile Include="Klasse.cs" />
     <Compile Include="Textadventure.cs">
       <SubType>Form</SubType>
