@@ -121,14 +121,23 @@
   <data name="assassine" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\assassine.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="female_4234356_1920" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\female-4234356_1920.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="kaffeebohnenplantage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\kaffeebohnenplantage.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="krieger" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\krieger.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="kuerberlin_mit_kuerbispalast" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\kuerberlin_mit_kuerbispalast.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="landschaft_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\landschaft_1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="magierin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\magierin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tiefseegrotte" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tiefseegrotte.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="unbekannter_wanderer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\unbekannter_wanderer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

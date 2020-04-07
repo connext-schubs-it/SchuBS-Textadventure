@@ -111,9 +111,6 @@
     <Resource Include="Resources\assassine.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\female-4234356_1920.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\krieger.png" />
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +121,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\waldlaeufer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kaffeebohnenplantage.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kuerberlin_mit_kuerbispalast.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\magierin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tiefseegrotte.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

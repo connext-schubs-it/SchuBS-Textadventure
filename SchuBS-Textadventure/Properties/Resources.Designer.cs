@@ -73,9 +73,9 @@ namespace SchuBS_Textadventure.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap female_4234356_1920 {
+        public static System.Drawing.Bitmap kaffeebohnenplantage {
             get {
-                object obj = ResourceManager.GetObject("female_4234356_1920", resourceCulture);
+                object obj = ResourceManager.GetObject("kaffeebohnenplantage", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,39 @@ namespace SchuBS_Textadventure.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap kuerberlin_mit_kuerbispalast {
+            get {
+                object obj = ResourceManager.GetObject("kuerberlin_mit_kuerbispalast", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap landschaft_1 {
             get {
                 object obj = ResourceManager.GetObject("landschaft_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap magierin {
+            get {
+                object obj = ResourceManager.GetObject("magierin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap tiefseegrotte {
+            get {
+                object obj = ResourceManager.GetObject("tiefseegrotte", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
