@@ -1,37 +1,49 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace SchuBS_IT_2020.MyControls
 {
-    class SlowRichTextBox : RichTextBox
+    public class SlowRichTextBox : RichTextBox
     {
-        System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+        private const int CharInterval = 45;
+        private readonly Timer Timer = new Timer();
 
-        IEnumerator<char> text = null;
+        private IEnumerator<char> text = null;
+        private static float textSpeed = 1f;
+
+        public bool IsWriting => Timer.Enabled;
+
+        public float TextSpeed
+        {
+            get => textSpeed;
+            set
+            {
+                textSpeed = value;
+                Timer.Interval = (int)(CharInterval / textSpeed);
+            }
+        }
 
         public SlowRichTextBox()
         {
-            timer.Interval = 45;
-            timer.Enabled = false; 
-            timer.Tick += (s, e) => {
-                base.Text += text.Current;
-                timer.Interval = 45;
-                timer.Enabled = text.MoveNext();
+            Timer.Interval = CharInterval;
+            Timer.Enabled = false;
+            Timer.Tick += (s, e) =>
+            {
+                if (text?.MoveNext() ?? false)
+                {
+                    base.Text += text.Current;
+                }
+                else
+                {
+                    Timer.Enabled = false;
+                }
             };
         }
 
-        public override string Text
+        public new void AppendText(string text)
         {
-            set
-            {
-                text = value.GetEnumerator();
-                timer.Enabled = text.MoveNext();
-            }
+            this.text = text.GetEnumerator();
+            Timer.Enabled = true;
         }
     }
 }

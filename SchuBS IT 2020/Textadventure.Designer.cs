@@ -68,15 +68,6 @@ namespace SchuBS_IT_2020
             this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 528);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
-            // richTextBoxHauptText
-            // 
-            this.richTextBoxHauptText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBoxHauptText.Location = new System.Drawing.Point(3, 3);
-            this.richTextBoxHauptText.Name = "richTextBoxHauptText";
-            this.richTextBoxHauptText.Size = new System.Drawing.Size(794, 439);
-            this.richTextBoxHauptText.TabIndex = 1;
-            this.richTextBoxHauptText.Text = "";
-            // 
             // labelGesundheit
             // 
             this.labelGesundheit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -211,6 +202,17 @@ namespace SchuBS_IT_2020
             this.labelLokalisation.Size = new System.Drawing.Size(63, 13);
             this.labelLokalisation.TabIndex = 6;
             this.labelLokalisation.Text = "Lokalisation";
+            // 
+            // richTextBoxHauptText
+            // 
+            this.richTextBoxHauptText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBoxHauptText.Location = new System.Drawing.Point(3, 3);
+            this.richTextBoxHauptText.Name = "richTextBoxHauptText";
+            this.richTextBoxHauptText.ReadOnly = true;
+            this.richTextBoxHauptText.Size = new System.Drawing.Size(794, 439);
+            this.richTextBoxHauptText.TabIndex = 1;
+            this.richTextBoxHauptText.Text = "";
+            this.richTextBoxHauptText.TextSpeed = 1F;
             // 
             // Textadventure
             // 

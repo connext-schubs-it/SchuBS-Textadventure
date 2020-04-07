@@ -1,18 +1,20 @@
 ﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace SchuBS_IT_2020
 {
     public partial class Textadventure : Form
     {
-        #region Variablen
+        #region Globale Variablen
 
         public static Random Zufallsgenerator = new Random();
 
-        public static float TextSpeed = 1f;
         public const int backButtonIndex = -1;
+
+        public const string TextVariableDelimiter = "##";
+
+        public const string Weltname = "";
 
         public static string[] DefaultButtonText = new string[]
         {
@@ -23,12 +25,18 @@ namespace SchuBS_IT_2020
 
         #endregion
 
+        #region Spiel Variablen
+
+        public static Spieler AktuellerHeld = new Spieler();
+
+        #endregion
+
         public Textadventure()
         {
             InitializeComponent();
             WriteText("Seid gegrüßt, Held!",
-                        "Willkommen in der Welt von * Weltname * !",
-                        "*Beispieltext *: In dieser Welt durchlauft Ihr ein einzigartiges Abenteuer voller Mythen und Geheimnisse, Menschen und Monstern, Zauber und Flüche.",
+                        "Willkommen in der Welt von ##Weltname## !",
+                        "In dieser Welt durchlauft Ihr ein einzigartiges Abenteuer voller Mythen und Geheimnisse, Menschen und Monstern, Zauber und Flüche.",
                         "Die Länder dieser Welt verbergen viele Schätze, doch gebt Acht! Auf euren Wegen erwarten euch viele Gefahren und Herausforderungen...");
         }
 
@@ -61,7 +69,20 @@ namespace SchuBS_IT_2020
 
         public void WriteText(params string[] lines)
         {
-            richTextBoxHauptText.Text += string.Join(Environment.NewLine, lines);
+            string text = string.Join("\n", lines);
+            richTextBoxHauptText.AppendText(EscapeText(text));
+        }
+
+        private static string EscapeText(string text)
+        {
+            Escape("SpielerName", AktuellerHeld.Name);
+            Escape("SpielerKlasse", AktuellerHeld.Klasse.ToString());
+            Escape("Weltname", Weltname);
+
+            return text;
+
+            string Escape(string textVaraible, string wert) =>
+                text = Regex.Replace(text, TextVariableDelimiter + textVaraible + TextVariableDelimiter, wert ?? string.Empty);
         }
 
         #endregion
