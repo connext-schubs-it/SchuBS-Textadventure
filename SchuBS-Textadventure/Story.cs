@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using SchuBS_IT_2020;
+using SchuBS_Textadventure.Helpers;
+using System.Collections.Generic;
+using System.Windows;
 
 namespace SchuBS_Textadventure
 {
@@ -12,6 +15,7 @@ namespace SchuBS_Textadventure
 
         private void Button1_Click(object sender, RoutedEventArgs e)
         {
+            /*
             switch (previous)
             {
                 case 0:
@@ -20,6 +24,7 @@ namespace SchuBS_Textadventure
                 default:
                     break;
             }
+            */
         }
 
         private void Button2_Click(object sender, RoutedEventArgs e)
@@ -45,14 +50,14 @@ namespace SchuBS_Textadventure
 
         public void Start()
         {
-            SetzeHintergrundBild("landschaft_1.jpg");
+            SetzeHintergrundBild("landschaft_1.jpg");/*
             WriteText("Seid gegrüßt, Held!",
                 "Willkommen in der Welt von * Weltname * !",
                 "*Beispieltext *: In dieser Welt durchlauft Ihr ein einzigartiges Abenteuer voller Mythen und Geheimnisse, Menschen und Monstern, Zauber und Flüche.",
                 "Die Länder dieser Welt verbergen viele Schätze, doch gebt Acht! Auf euren Wegen erwarten euch viele Gefahren und Herausforderungen...",
                 "Ihr erwacht.",
                 "Ihr spürt, dass Ihr auf dem Boden liegt.",
-                "Ihr fühlt keinen Schmerz, alles scheint wie immer und doch könnt Ihr Euch an nichts mehr erinnern...", "");
+                "Ihr fühlt keinen Schmerz, alles scheint wie immer und doch könnt Ihr Euch an nichts mehr erinnern...", "");*/
 
             SetButtonsText("Augen öffnen", "Augen geschlossen lassen");
             previous = 0;
@@ -71,6 +76,37 @@ namespace SchuBS_Textadventure
         {
             WriteText("Euer ungestillter Durst nach Abenteuern führt zum unweigerlichen Ende.", "");
             previous = 2;
+        }
+
+        public void StarteKampf(Textadventure adventure)
+        {
+            TextBoxHauptText.Text = "";
+            TextBoxEingabe.Text = "";
+
+            Spieler spieler = new Spieler()
+            {
+                Lebenspunkte = 100,
+                Klasse = new Klasse(10, 10, 10, 10, 10)
+            };
+
+            Gegner gegner = new Gegner()
+            {
+                Lebenspunkte = 100,
+                Staerke = 10,
+                Verteidigung = 5,
+                Name = "Feuerdrache",
+                reaktionen = new List<Reaktion>()
+                {
+                    new Reaktion() {lp = 95, text = "Ha! Tat nicht mal weh!"},
+                    new Reaktion() {lp = 50, text = "Langsam reicht es mir mit dir"},
+                    new Reaktion() {lp = 15, text = "Aua!"}
+                }
+            };
+
+            Kampf kampf = new Kampf(spieler, gegner, null, adventure);
+            WriteText($"{gegner.Name} fordert dich zum Kampf! ");
+            WriteText("Was wirst du tun?!\r\n");
+            kampf.Aktion();
         }
     }
 }

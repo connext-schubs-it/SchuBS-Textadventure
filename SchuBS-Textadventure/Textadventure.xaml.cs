@@ -1,6 +1,6 @@
 ﻿using SchuBS_IT_2020;
 using SchuBS_Textadventure.Dialogs;
-
+using SchuBS_Textadventure.MyControls;
 using System;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -30,6 +30,7 @@ namespace SchuBS_Textadventure
         };
 
         public Button[] ButtonsAktionen;
+        public SlowTextBox AusgabeBox;
 
         #endregion
 
@@ -50,6 +51,7 @@ namespace SchuBS_Textadventure
                 Button2,
                 Button3,
             };
+            AusgabeBox = TextBoxHauptText;
             Start();
         }
 
@@ -108,6 +110,14 @@ namespace SchuBS_Textadventure
         public void SetzePersonenBild(string bildName) => ImagePerson.Source = GetBild(bildName);
 
         public BitmapImage GetBild(string name) => new BitmapImage(new Uri("pack://application:,,,/Resources/" + name));
+
+        private void TextBoxEingabe_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (TextBoxEingabe.Text == "0815")
+            {
+                StarteKampf(this);
+            }
+        }
 
         #endregion
     }

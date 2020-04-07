@@ -7,7 +7,7 @@ namespace SchuBS_Textadventure.MyControls
 {
     public class SlowTextBox : TextBox
     {
-        private const int CharInterval = 45;
+        private const int CharInterval = 15;
         private readonly DispatcherTimer Timer = new DispatcherTimer();
 
         private IEnumerator<char> text = null;

@@ -59,8 +59,13 @@
     <Compile Include="Dialogs\VerlaufFenster.xaml.cs">
       <DependentUpon>VerlaufFenster.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\AusgabeHelper.cs" />
+    <Compile Include="Helpers\Kampf.cs" />
+    <Compile Include="Helpers\Reaktion.cs" />
     <Compile Include="MyControls\MarginSetter.cs" />
     <Compile Include="MyControls\SlowTextBox.cs" />
+    <Compile Include="Objects\BaseObject.cs" />
+    <Compile Include="Objects\Umgebung.cs" />
     <Compile Include="Story.cs" />
     <Compile Include="Textadventure.xaml.cs">
       <DependentUpon>Textadventure.xaml</DependentUpon>

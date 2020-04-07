@@ -47,7 +47,7 @@
 
         <StackPanel Grid.Row="1"
                     Orientation="Horizontal">
-            <TextBlock>Gesundheit: </TextBlock>
+            <TextBlock>Gesundheit:</TextBlock>
             <TextBlock x:Name="TextBlockGesundheit"/>
         </StackPanel>
 
@@ -95,14 +95,16 @@
             <Grid Grid.Row="1"
                         Margin="0,5,5,0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
+                    <ColumnDefinition Width="32*" />
+                    <ColumnDefinition Width="18*"/>
+                    <ColumnDefinition Width="117*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
                 <TextBox x:Name="TextBoxEingabe"
-                         Margin="0,0,5,0"/>
+                         Margin="0,0,5,0" TextChanged="TextBoxEingabe_TextChanged" Grid.ColumnSpan="3"/>
                 <Button Click="ButtonVerlauf_Click"
-                        Grid.Column="1"
+                        Grid.Column="3"
                         Padding="5,0">Verlauf</Button>
             </Grid>
 
