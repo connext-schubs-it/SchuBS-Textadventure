@@ -1,19 +1,10 @@
 ﻿using SchuBS_IT_2020;
 using SchuBS_Textadventure.Dialogs;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace SchuBS_Textadventure
 {
@@ -107,15 +98,9 @@ namespace SchuBS_Textadventure
             new VerlaufFenster(VerlaufText).ShowDialog();
         }
 
-        public void SetzeHintergrundBild(BitmapImage bild)
-        {
-            ImageHintergrund.Source = bild;
-        }
+        public void SetzeHintergrundBild(string bildName) => ImageHintergrund.Source = GetBild(bildName);
 
-        public void SetzePersonenBild(BitmapImage bild)
-        {
-            ImagePerson.Source = bild;
-        }
+        public void SetzePersonenBild(string bildName) => ImagePerson.Source = GetBild(bildName);
 
         public BitmapImage GetBild(string name) => new BitmapImage(new Uri("pack://application:,,,/Resources/" + name));
 

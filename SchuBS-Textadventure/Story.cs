@@ -45,7 +45,7 @@ namespace SchuBS_Textadventure
 
         public void Start()
         {
-            SetzeHintergrundBild(GetBild("landschaft_1.jpg"));
+            SetzeHintergrundBild("landschaft_1.jpg");
             WriteText("Seid gegrüßt, Held!",
                 "Willkommen in der Welt von * Weltname * !",
                 "*Beispieltext *: In dieser Welt durchlauft Ihr ein einzigartiges Abenteuer voller Mythen und Geheimnisse, Menschen und Monstern, Zauber und Flüche.",
