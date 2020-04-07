@@ -83,6 +83,16 @@ namespace SchuBS_Textadventure.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap kobold_punks {
+            get {
+                object obj = ResourceManager.GetObject("kobold_punks", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap krieger {
             get {
                 object obj = ResourceManager.GetObject("krieger", resourceCulture);
@@ -123,6 +133,16 @@ namespace SchuBS_Textadventure.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap tiefsee_ungeheuer {
+            get {
+                object obj = ResourceManager.GetObject("tiefsee_ungeheuer", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap tiefseegrotte {
             get {
                 object obj = ResourceManager.GetObject("tiefseegrotte", resourceCulture);
@@ -146,6 +166,16 @@ namespace SchuBS_Textadventure.Properties {
         public static System.Drawing.Bitmap waldlaeufer {
             get {
                 object obj = ResourceManager.GetObject("waldlaeufer", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap you_died_lol {
+            get {
+                object obj = ResourceManager.GetObject("you_died_lol", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

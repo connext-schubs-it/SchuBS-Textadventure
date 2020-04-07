@@ -134,5 +134,14 @@
   <ItemGroup>
     <None Include="Resources\tiefseegrotte.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tiefsee_ungeheuer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kobold_punks.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\you_died_lol.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
