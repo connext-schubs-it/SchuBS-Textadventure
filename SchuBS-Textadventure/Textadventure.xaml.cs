@@ -1,5 +1,6 @@
 ﻿using SchuBS_IT_2020;
 using SchuBS_Textadventure.Dialogs;
+
 using System;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -28,6 +29,8 @@ namespace SchuBS_Textadventure
             "Button 3",
         };
 
+        public Button[] ButtonsAktionen;
+
         #endregion
 
         #region Spiel Variablen
@@ -41,6 +44,12 @@ namespace SchuBS_Textadventure
         public Textadventure()
         {
             InitializeComponent();
+            ButtonsAktionen = new Button[]
+            {
+                Button1,
+                Button2,
+                Button3,
+            };
             Start();
         }
 
@@ -48,26 +57,22 @@ namespace SchuBS_Textadventure
 
         public void SetButtonsText(params string[] text)
         {
-            for (int i = 0; i < text.Length; i++)
+            for (int i = 0; i < 3; i++)
             {
-                SetButtonText(i + 1, text[i]);
+                if (i < text.Length)
+                {
+                    SetButtonText(i, text[i]);
+                }
+                else
+                {
+                    ButtonsAktionen[i].IsEnabled = false;
+                }
             }
         }
 
-        public void SetButtonText(int buttonNumber, string text)
+        public void SetButtonText(int buttonIndex, string text)
         {
-            GetButtonFromNumber(buttonNumber).Content = text ?? DefaultButtonText[buttonNumber];
-        }
-
-        public Button GetButtonFromNumber(int number)
-        {
-            switch (number)
-            {
-                case 1: return Button1;
-                case 2: return Button2;
-                case 3: return Button3;
-                default: throw new IndexOutOfRangeException();
-            }
+            ButtonsAktionen[buttonIndex].Content = text ?? DefaultButtonText[buttonIndex];
         }
 
         /// <summary>
