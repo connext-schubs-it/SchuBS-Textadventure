@@ -70,9 +70,8 @@ namespace SchuBS_Textadventure
                 {
                     ButtonsAktionen[i].IsEnabled = false;
                 }
-
-                TextBoxEingabe.IsEnabled = false;
             }
+            TextBoxEingabe.IsEnabled = false;
         }
 
         public void SetButtonText(int buttonIndex, string text)

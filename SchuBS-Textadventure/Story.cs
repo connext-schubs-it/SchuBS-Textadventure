@@ -9,7 +9,7 @@ namespace SchuBS_Textadventure
     {
         #region Variablen
 
-        private int pre = -1;
+        private Previous previous;
 
         #endregion
 
@@ -17,17 +17,17 @@ namespace SchuBS_Textadventure
 
         private void Button1_Click(object sender, RoutedEventArgs e)
         {
-            switch (pre)
+            switch (previous)
             {
-                case (int)Previous.Start:
+                case Previous.Start:
                     AugenOeffnen();
                     break;
 
-                case (int)Previous.AugenGeschlossen:
+                case Previous.AugenGeschlossen:
                     Start();
                     break;
 
-                case (int)Previous.BerufungErfragt:
+                case Previous.BerufungErfragt:
                     Beruf();
                     break;
 
@@ -38,13 +38,13 @@ namespace SchuBS_Textadventure
 
         private void Button2_Click(object sender, RoutedEventArgs e)
         {
-            switch (pre)
+            switch (previous)
             {
-                case (int)Previous.Start:
+                case Previous.Start:
                     AugenGeschlossen();
                     break;
 
-                case (int)Previous.BerufungErfragt:
+                case Previous.BerufungErfragt:
                     AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Keine);
                     Muenze();
                     break;
@@ -56,7 +56,7 @@ namespace SchuBS_Textadventure
 
         private void Button3_Click(object sender, RoutedEventArgs e)
         {
-            switch (pre)
+            switch (previous)
             {
                 default:
                     break;
@@ -67,14 +67,14 @@ namespace SchuBS_Textadventure
         {
             if (e.Key == Key.Enter)
             {
-                switch (pre)
+                switch (previous)
                 {
-                    case (int)Previous.NameErfragt:
+                    case Previous.NameErfragt:
                         AktuellerHeld.Name = TextBoxEingabe.Text;
                         Namen();
                         break;
 
-                    case (int)Previous.BerufErfragt:
+                    case Previous.BerufErfragt:
                         switch (TextBoxEingabe.Text)
                         {
                             case "Krieger":
@@ -119,7 +119,7 @@ namespace SchuBS_Textadventure
                 "Ihr fühlt keinen Schmerz, alles scheint wie immer und doch könnt Ihr Euch an nichts mehr erinnern...");
 
             SetButtonsText("Augen öffnen", "Augen geschlossen lassen");
-            pre = (int)Previous.Start;
+            previous = Previous.Start;
         }
 
         private void AugenOeffnen()
@@ -129,14 +129,14 @@ namespace SchuBS_Textadventure
                 "Fremder Mann: 'Ein Mittagsschlaf hier unter der prallen Sonne? Recht ungewöhnlich für diese Gegend...",
                 "Verratet ihr mir euren Namen?'");
             EingabefeldNutzen();
-            pre = (int)Previous.NameErfragt;
+            previous = Previous.NameErfragt;
         }
 
         private void AugenGeschlossen()
         {
             WriteText("Euer ungestillter Durst nach Abenteuern führt zum unweigerlichen Ende.");
             SetButtonsText("Neustarten");
-            pre = (int)Previous.AugenGeschlossen;
+            previous = Previous.AugenGeschlossen;
         }
 
         private void Namen()
@@ -145,14 +145,14 @@ namespace SchuBS_Textadventure
                 "Von dir habe ich schon gehört, alle hier erzählen von dir!",
                 "Was führt dich hier her?");
             SetButtonsText("Mein Beruf", "Pure Abenteuerlust");
-            pre = (int)Previous.BerufungErfragt;
+            previous = Previous.BerufungErfragt;
         }
 
         private void Beruf()
         {
             WriteText("Was ist denn dein Beruf?", "");
             EingabefeldNutzen();
-            pre = (int)Previous.BerufErfragt;
+            previous = Previous.BerufErfragt;
         }
 
         private void Muenze()
@@ -162,8 +162,7 @@ namespace SchuBS_Textadventure
                 "Viel Erfolg auf deinem Weg, ##SpielerName##!",
                 "Achso, eine Frage noch: Was leitet dich auf deinem Weg?");
             SetButtonsText("Macht", "Reichtum");
-            pre = (int)Previous.ZielErfragt;
-
+            previous = Previous.ZielErfragt;
         }
 
         #endregion
