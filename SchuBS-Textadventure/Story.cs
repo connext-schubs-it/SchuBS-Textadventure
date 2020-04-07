@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Windows;
 
-namespace SchuBS_IT_2020
+namespace SchuBS_Textadventure
 {
     public partial class Textadventure
     {
@@ -13,7 +9,8 @@ namespace SchuBS_IT_2020
         private int previous = -1;
 
         #endregion
-        private void button1_Click(object sender, EventArgs e)
+
+        private void Button1_Click(object sender, RoutedEventArgs e)
         {
             switch (previous)
             {
@@ -25,7 +22,7 @@ namespace SchuBS_IT_2020
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, RoutedEventArgs e)
         {
             switch (previous)
             {
@@ -37,7 +34,7 @@ namespace SchuBS_IT_2020
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Button3_Click(object sender, RoutedEventArgs e)
         {
             switch (previous)
             {
@@ -48,6 +45,7 @@ namespace SchuBS_IT_2020
 
         public void Start()
         {
+            SetzeHintergrundBild(GetBild("landschaft_1.jpg"));
             WriteText("Seid gegrüßt, Held!",
                 "Willkommen in der Welt von * Weltname * !",
                 "*Beispieltext *: In dieser Welt durchlauft Ihr ein einzigartiges Abenteuer voller Mythen und Geheimnisse, Menschen und Monstern, Zauber und Flüche.",
@@ -56,7 +54,7 @@ namespace SchuBS_IT_2020
                 "Ihr spürt, dass Ihr auf dem Boden liegt.",
                 "Ihr fühlt keinen Schmerz, alles scheint wie immer und doch könnt Ihr Euch an nichts mehr erinnern...", "");
 
-            SetButtonsText(new string[]{"Augen öffnen", "Augen geschlossen lassen"});
+            SetButtonsText("Augen öffnen", "Augen geschlossen lassen");
             previous = 0;
         }
 
