@@ -63,9 +63,29 @@ namespace SchuBS_IT_2020.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap assassine {
+            get {
+                object obj = ResourceManager.GetObject("assassine", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap female_4234356_1920 {
             get {
                 object obj = ResourceManager.GetObject("female_4234356_1920", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap kaffeebohnenplantage {
+            get {
+                object obj = ResourceManager.GetObject("kaffeebohnenplantage", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -96,6 +116,16 @@ namespace SchuBS_IT_2020.Properties {
         internal static System.Drawing.Bitmap unbekannter_wanderer {
             get {
                 object obj = ResourceManager.GetObject("unbekannter_wanderer", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap waldlaeufer {
+            get {
+                object obj = ResourceManager.GetObject("waldlaeufer", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
