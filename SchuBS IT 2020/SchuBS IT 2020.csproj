@@ -49,8 +49,8 @@
     <Compile Include="MyControls\SlowRichTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Gegner.cs" />
-    <Compile Include="Klasse.cs" />
+    <Compile Include="Objects\Gegner.cs" />
+    <Compile Include="Objects\Klasse.cs" />
     <Compile Include="Textadventure.cs">
       <SubType>Form</SubType>
     </Compile>
