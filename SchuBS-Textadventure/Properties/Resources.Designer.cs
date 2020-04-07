@@ -73,6 +73,16 @@ namespace SchuBS_Textadventure.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap ei {
+            get {
+                object obj = ResourceManager.GetObject("ei", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap kaffeebohnenplantage {
             get {
                 object obj = ResourceManager.GetObject("kaffeebohnenplantage", resourceCulture);
@@ -106,6 +116,16 @@ namespace SchuBS_Textadventure.Properties {
         public static System.Drawing.Bitmap kuerberlin_mit_kuerbispalast {
             get {
                 object obj = ResourceManager.GetObject("kuerberlin_mit_kuerbispalast", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap kuerbistan {
+            get {
+                object obj = ResourceManager.GetObject("kuerbistan", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

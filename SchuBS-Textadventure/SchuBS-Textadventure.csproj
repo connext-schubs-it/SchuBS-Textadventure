@@ -124,28 +124,34 @@
     <Resource Include="Resources\waldlaeufer.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\kaffeebohnenplantage.jpg" />
+    <Resource Include="Resources\kaffeebohnenplantage.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\kuerberlin_mit_kuerbispalast.png" />
+    <Resource Include="Resources\kuerberlin_mit_kuerbispalast.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\magierin.png" />
+    <Resource Include="Resources\magierin.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\tiefseegrotte.png" />
+    <Resource Include="Resources\tiefseegrotte.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\tiefsee_ungeheuer.png" />
+    <Resource Include="Resources\tiefsee_ungeheuer.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\kobold_punks.png" />
+    <Resource Include="Resources\kobold_punks.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\you_died_lol.png" />
+    <Resource Include="Resources\you_died_lol.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\packung_eier.png" />
+    <Resource Include="Resources\packung_eier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\kuerbistan.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ei.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
