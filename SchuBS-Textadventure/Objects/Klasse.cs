@@ -16,7 +16,7 @@ namespace SchuBS_Textadventure.Objects
     {
         private static readonly Dictionary<KlassenTyp, string> KlassenNamen = new Dictionary<KlassenTyp, string>
         {
-            { KlassenTyp.Keine,                 "Keine" },
+            { KlassenTyp.Keine,                 "wagemutiger Abenteurer" },
             { KlassenTyp.Krieger,               "Krieger" },
             { KlassenTyp.Waldlaeufer,           "Waldläufer" },
             { KlassenTyp.Magier,                "Magier" },

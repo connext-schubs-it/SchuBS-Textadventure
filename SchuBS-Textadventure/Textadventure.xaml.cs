@@ -2,6 +2,7 @@
 using SchuBS_Textadventure.Objects;
 
 using System;
+using System.Net.Mime;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -21,7 +22,7 @@ namespace SchuBS_Textadventure
 
         public const string TextVariableDelimiter = "##";
 
-        public const string Weltname = "";
+        public const string Weltname = "Cucurbita";
 
         public string[] DefaultButtonText = new string[]
         {
@@ -63,11 +64,14 @@ namespace SchuBS_Textadventure
                 if (i < text.Length)
                 {
                     SetButtonText(i, text[i]);
+                    ButtonsAktionen[i].IsEnabled = true;
                 }
                 else
                 {
                     ButtonsAktionen[i].IsEnabled = false;
                 }
+
+                TextBoxEingabe.IsEnabled = false;
             }
         }
 
@@ -109,6 +113,15 @@ namespace SchuBS_Textadventure
         public void SetzePersonenBild(string bildName) => ImagePerson.Source = GetBild(bildName);
 
         public BitmapImage GetBild(string name) => new BitmapImage(new Uri("pack://application:,,,/Resources/" + name));
+
+        private void EingabefeldNutzen()
+        {
+            foreach (var button in ButtonsAktionen)
+            {
+                button.IsEnabled = false;
+            }
+            TextBoxEingabe.IsEnabled = true;
+        }
 
         #endregion
     }
