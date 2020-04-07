@@ -34,10 +34,8 @@ namespace SchuBS_IT_2020
         public Textadventure()
         {
             InitializeComponent();
-            WriteText("Seid gegrüßt, Held!",
-                        "Willkommen in der Welt von ##Weltname## !",
-                        "In dieser Welt durchlauft Ihr ein einzigartiges Abenteuer voller Mythen und Geheimnisse, Menschen und Monstern, Zauber und Flüche.",
-                        "Die Länder dieser Welt verbergen viele Schätze, doch gebt Acht! Auf euren Wegen erwarten euch viele Gefahren und Herausforderungen...");
+
+            Start();
         }
 
         #region Funktionen
