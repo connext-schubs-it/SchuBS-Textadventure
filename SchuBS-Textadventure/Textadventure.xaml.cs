@@ -2,6 +2,7 @@
 using SchuBS_Textadventure.Dialogs;
 
 using System;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -37,7 +38,7 @@ namespace SchuBS_Textadventure
 
         public Spieler AktuellerHeld = new Spieler();
 
-        public string VerlaufText;
+        public StringBuilder VerlaufText = new StringBuilder();
 
         #endregion
 
@@ -90,8 +91,8 @@ namespace SchuBS_Textadventure
             Escape("SpielerKlasse", AktuellerHeld.Klasse.ToString());
             Escape("Weltname", Weltname);
 
-            VerlaufText += text;
-            TextBoxHauptText.AppendText(text);
+            VerlaufText.AppendLine(text);
+            TextBoxHauptText.SetText(text);
 
             string Escape(string textVaraible, string wert) =>
                 text = Regex.Replace(text, TextVariableDelimiter + textVaraible + TextVariableDelimiter, wert ?? string.Empty);
@@ -100,7 +101,7 @@ namespace SchuBS_Textadventure
 
         private void ButtonVerlauf_Click(object sender, RoutedEventArgs e)
         {
-            new VerlaufFenster(VerlaufText).ShowDialog();
+            new VerlaufFenster(VerlaufText.ToString()).ShowDialog();
         }
 
         public void SetzeHintergrundBild(string bildName) => ImageHintergrund.Source = GetBild(bildName);
