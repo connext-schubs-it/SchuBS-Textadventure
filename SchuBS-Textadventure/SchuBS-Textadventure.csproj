@@ -61,6 +61,7 @@
     </Compile>
     <Compile Include="MyControls\MarginSetter.cs" />
     <Compile Include="MyControls\SlowTextBox.cs" />
+    <Compile Include="Objects\Item.cs" />
     <Compile Include="Previous.cs" />
     <Compile Include="Story.cs" />
     <Compile Include="Textadventure.xaml.cs">

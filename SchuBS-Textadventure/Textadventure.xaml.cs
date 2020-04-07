@@ -2,7 +2,6 @@
 using SchuBS_Textadventure.Objects;
 
 using System;
-using System.Net.Mime;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -37,7 +36,7 @@ namespace SchuBS_Textadventure
 
         #region Spiel Variablen
 
-        public Spieler AktuellerHeld = new Spieler();
+        public Spieler AktuellerHeld { get; } = new Spieler();
 
         public StringBuilder VerlaufText = new StringBuilder();
 
@@ -68,6 +67,7 @@ namespace SchuBS_Textadventure
                 }
                 else
                 {
+                    SetButtonText(i, null);
                     ButtonsAktionen[i].IsEnabled = false;
                 }
             }
@@ -111,6 +111,13 @@ namespace SchuBS_Textadventure
 
         public void SetzePersonenBild(string bildName) => ImagePerson.Source = GetBild(bildName);
 
+        /// <summary>
+        /// Holt ein Bild aus dem Resources-Ordner.<br/>
+        /// Wenn hier nach Programmstart eine Fehlermeldung auftauch, ist entweder das Bild nicht vorhanden
+        /// oder der der Name ist falsch geschrieben.
+        /// </summary>
+        /// <param name="name">Der Name des Bildes mit Dateiendung.</param>
+        /// <returns></returns>
         public BitmapImage GetBild(string name) => new BitmapImage(new Uri("pack://application:,,,/Resources/" + name));
 
         private void EingabefeldNutzen()

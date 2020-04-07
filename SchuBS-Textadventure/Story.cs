@@ -110,6 +110,8 @@ namespace SchuBS_Textadventure
         public void Start()
         {
             SetzeHintergrundBild("landschaft_1.jpg");
+            AktuellerHeld.Inventar.Add(new Item("Test", GetBild("ei.png")));
+            AktuellerHeld.Inventar.Add(new Item("Test2", null));
             WriteText("Seid gegrüßt, Held!",
                 "Willkommen in der Welt von ##Weltname##!",
                 "In dieser Welt durchlauft Ihr ein einzigartiges Abenteuer voller Mythen und Geheimnisse, Menschen und Monstern, Zauber und Flüche.",
