@@ -1,4 +1,4 @@
-﻿namespace SchuBS_IT_2020
+﻿namespace SchuBS_Textadventure.Objects
 {
     public class Gegner
     {

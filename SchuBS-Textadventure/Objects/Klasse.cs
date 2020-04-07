@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SchuBS_IT_2020
+namespace SchuBS_Textadventure.Objects
 {
     public enum KlassenTyp
     {
