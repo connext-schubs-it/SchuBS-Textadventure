@@ -10,8 +10,6 @@ namespace SchuBS_Textadventure
         public void MachtStart()
         {
             SetzeHintergrundBild("landschaft_1.jpg");
-            AktuellerHeld.Inventar.Add(new Item("Test", GetBild("ei.png")));
-            AktuellerHeld.Inventar.Add(new Item("Test2", null));
             WriteText("“Schön zu hören.",
                 "An der Grenze dieses Landes existiert ein Königreich, welches ausschließlich von Kürbisbauern bevölkert wird.",
                 "Es ist ein sehr armes Land, aber die Ernte ist reich und die Menschen gütig. Und die Halloweenpartys sind der Hammer.",
@@ -26,8 +24,6 @@ namespace SchuBS_Textadventure
         public void TiefseegrotteFragen()
         {
             SetzeHintergrundBild("landschaft_1.jpg");
-            AktuellerHeld.Inventar.Add(new Item("Test", GetBild("ei.png")));
-            AktuellerHeld.Inventar.Add(new Item("Test2", null));
             WriteText("“Bist du dir da sicher? Ich habe gehört in der Tiefseegrotte soll es seltsame Wesen geben.”");
 
             SetButtonsText("Ich habe doch keine Angst vor seltsamen Wesen einer Tiefseegrotte! Ab zum See!", "Dann gehe ich doch lieber über die Kaffeebohnenplantage!");
@@ -37,8 +33,6 @@ namespace SchuBS_Textadventure
         public void TiefseegrotteSchwimmen()
         {
             SetzeHintergrundBild("tiefseegrotte.png");
-            AktuellerHeld.Inventar.Add(new Item("Test", GetBild("ei.png")));
-            AktuellerHeld.Inventar.Add(new Item("Test2", null));
             WriteText("Du schwimmst angespannt und höchst aufmerksam durch die Tiefseegrotte. Hinter einer Ecke taucht eine Abzweigung auf.",
                       "Der Linke Weg ist tief dunkel und du kannst nicht erkennen, wie es dort weiter gehen könnte.Aber geradeaus wird es heller.",
                       "Dein Kopf sagt dir: Schwimm geradeaus weiter.Aber wie entscheidet dein Bauch?");
@@ -50,8 +44,6 @@ namespace SchuBS_Textadventure
         public void TiefseegrotteLinksSchwimmen()
         {
             SetzeHintergrundBild("tiefseegrotte.png");
-            AktuellerHeld.Inventar.Add(new Item("Test", GetBild("ei.png")));
-            AktuellerHeld.Inventar.Add(new Item("Test2", null));
 
             WriteText("Todesmutig und entgegen deines Kopfes biegst du links ab. Du musst immer weiter in die Tiefe tauchen um vorwärts zu kommen und es wird immer dunkler.",
                       "Doch plötzlich spürst du einen Strudel. Du denkst jetzt ist alles vorbei.",
@@ -64,8 +56,6 @@ namespace SchuBS_Textadventure
         public void TiefseegrotteBegegnungUngeheuer()
         {
             SetzeHintergrundBild("tiefsee_ungeheuer.png");
-            AktuellerHeld.Inventar.Add(new Item("Test", GetBild("ei.png")));
-            AktuellerHeld.Inventar.Add(new Item("Test2", null));
 
             WriteText("Du schwimmst ein ganzes Stück immer geradeaus.",
                       "Es wird immer heller und als du denkst, du hat die Grotte schon fast verlassen, steht dir plötzlich ein Ungeheuer im Weg.",
@@ -79,13 +69,17 @@ namespace SchuBS_Textadventure
         public void TiefseegrotteUngeheuerKaempfen()
         {
             /*Kämpfen*/
-            Gegner Ungeheuer = new Gegner();
-            Ungeheuer.Lebenspunkte = 100;
-            Ungeheuer.Name = "Ungeheuer";
-            Ungeheuer.Staerke = 1;
-            Ungeheuer.Verteidigung = 0;
+            Gegner ungeheuer = new Gegner
+            {
+                Lebenspunkte = 100,
+                Name = "Ungeheuer",
+                Staerke = 1,
+                Verteidigung = 0
+            };
             //Ungeheuer.Reaktionen = 0;
             //Ungeheuer.Spezial = 0;
+
+            StarteKampf(this, ungeheuer);
 
             previous = Previous.TiefseegrotteUngeheuerKaempfen;
         }
@@ -98,8 +92,6 @@ namespace SchuBS_Textadventure
         public void TiefseegrotteVorbeimogeln()
         {
             SetzeHintergrundBild("tiefsee_ungeheuer.png");
-            AktuellerHeld.Inventar.Add(new Item("Test", GetBild("ei.png")));
-            AktuellerHeld.Inventar.Add(new Item("Test2", null));
 
             WriteText("Du versteckst dich hinter einem Felsvorsprung und imitierst das Gackern eines Huhnes.",
                       "“Versuch locker zu bleiben”,sagst du dir immer wieder.",

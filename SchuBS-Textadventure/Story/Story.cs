@@ -50,15 +50,17 @@ namespace SchuBS_Textadventure
                     break;
 
                 case Previous.MachtGestartet:
-                     KaffeBohnenplantage();
-                     break;
-               case Previous.KaffeBohnenplantage:
-                     istMachtWichtig();
-                     break;
+                    KaffeBohnenplantage();
+                    break;
+
+                case Previous.KaffeBohnenplantage:
+                    istMachtWichtig();
+                    break;
 
                 case Previous.EisKaufen:
                     Taube(true);
                     break;
+
                 case Previous.TiefseegrotteUngeheuerBegegnet:
                     TiefseegrotteUngeheuerKaempfen();
                     break;
@@ -71,7 +73,7 @@ namespace SchuBS_Textadventure
                     BrueckenZoll();
                     break;
 
-            default:
+                default:
                     KaempfeWennMoeglich(buttonIndex: 0);
                     break;
             }
@@ -109,16 +111,17 @@ namespace SchuBS_Textadventure
                 case Previous.TiefseegrotteGeschwommen:
                     TiefseegrotteBegegnungUngeheuer();
                     break;
+
                 case Previous.KaffeBohnenplantage:
-                     ZielErfragen();
-                     break;
+                    ZielErfragen();
+                    break;
 
                 case Previous.TiefseegrotteUngeheuerBegegnet:
                     TiefseegrotteVorbeimogeln();
                     break;
 
 
-            default:
+                default:
                     KaempfeWennMoeglich(buttonIndex: 1);
                     break;
             }
@@ -260,11 +263,11 @@ namespace SchuBS_Textadventure
         }
 
         private void BerufErfragen()
-        { 
+        {
 
             SetzeHintergrundBild("klassenvorschau.png");
             WriteText("'Beruflich also? Was ist denn dein Beruf?'",
-                "(Mögliche Eingaben: Krieger, Waldläufer, Magier, Assassine. Entscheide weise!) ");;
+                "(Mögliche Eingaben: Krieger, Waldläufer, Magier, Assassine. Entscheide weise!) "); ;
             EingabefeldNutzen();
             previous = Previous.BerufErfragt;
         }
