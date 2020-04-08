@@ -36,5 +36,7 @@ namespace SchuBS_IT_2020
         TiefseegrotteKonversation,
         TiefseegrotteRichtigeAntwort,
         TiefseegrotteFalscheAntwort
-    }
+        TiefseegrotteKonversation,
+      GnafeFlehen
+   }
 }

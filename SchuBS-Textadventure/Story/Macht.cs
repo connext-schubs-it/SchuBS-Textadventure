@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 using SchuBS_IT_2020;
 using SchuBS_Textadventure.Objects;
@@ -196,11 +197,17 @@ namespace SchuBS_Textadventure
             previous = Previous.MachtWichtig;
         }
 
+        public void MitEiernWerfen()
+        {
+            bool eier = AktuellerHeld.Inventar.FirstOrDefault(x => x.Name == "Ei") != null;
+
+         }
         public void GnadeFlehen()
         {
             SetzeHintergrundBild("tiefsee_ungeheuer.png");
             KaempfenKaffe();
-        }
+            previous = Previous.GnafeFlehen;
+      }
 
         public void KaempfenKaffe()
         {
@@ -216,6 +223,7 @@ namespace SchuBS_Textadventure
             WriteText("Du bittest um Verzeihung und versuchst, die finsteren Gestalten durch Selbstmitleid von ihren Machenschaften abzubringen.",
                 "“Kannste knicken”, schnauft der Anführer der Kobold-Punks.",
                 "Der Kampf beginnt ");
+            
         }
     }
 }
