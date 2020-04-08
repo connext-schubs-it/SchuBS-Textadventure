@@ -1,16 +1,17 @@
 ﻿<Window x:Class="SchuBS_Textadventure.Textadventure"
+        x:Name="This"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SchuBS_Textadventure"
         xmlns:MyControls="clr-namespace:SchuBS_Textadventure.MyControls"
+        xmlns:Objects="clr-namespace:SchuBS_Textadventure.Objects"
         mc:Ignorable="d"
         Title="Textadventure" Height="450" Width="600">
     <Grid Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
@@ -45,31 +46,33 @@
             </MyControls:SlowTextBox>
         </Grid>
 
-        <StackPanel Grid.Row="1"
-                    Orientation="Horizontal">
-            <TextBlock>Gesundheit:</TextBlock>
-            <TextBlock x:Name="TextBlockGesundheit"/>
-        </StackPanel>
-
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.66*"/>
                 <ColumnDefinition Width="0.33*"/>
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <Grid MyControls:MarginSetter.Margin="0,5,5,0">
+            <WrapPanel Orientation="Horizontal">
+                <TextBlock>Gesundheit:</TextBlock>
+                <TextBlock x:Name="TextBlockGesundheit"
+                       Text="{Binding ElementName=This, Path=AktuellerHeld.Lebenspunkte}"/>
+            </WrapPanel>
+
+            <Grid Grid.Row="1"
+                  MyControls:MarginSetter.Margin="0,5,5,0">
                 <Grid.Resources>
                     <Style TargetType="Button">
                         <Setter Property="ContentTemplate">
                             <Setter.Value>
                                 <DataTemplate DataType="x:String">
                                     <TextBlock TextWrapping="Wrap"
-                                       Text="{Binding}" />
+                                               Text="{Binding}" />
                                 </DataTemplate>
                             </Setter.Value>
                         </Setter>
@@ -92,8 +95,8 @@
                         Click="Button3_Click">Button 3</Button>
             </Grid>
 
-            <Grid Grid.Row="1"
-                        Margin="0,5,5,0">
+            <Grid Grid.Row="2"
+                  Margin="0,5,5,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="32*" />
                     <ColumnDefinition Width="18*"/>
@@ -109,16 +112,27 @@
             </Grid>
 
             <HeaderedContentControl Grid.Column="1"
-                                    Grid.RowSpan="2"
+                                    Grid.RowSpan="3"
                                     Header="Inventar">
                 <ListBox x:Name="ListBoxInventar"
                          MinHeight="30"
-                         VerticalAlignment="Stretch">
+                         VerticalAlignment="Stretch"
+                         ItemsSource="{Binding ElementName=This, Path=AktuellerHeld.Inventar}">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <UniformGrid Columns="3" />
+                            <WrapPanel ItemWidth="64" />
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
+
+                    <ListBox.ItemTemplate>
+                        <DataTemplate DataType="{x:Type Objects:Item}">
+                            <StackPanel>
+                                <Image Source="{Binding Bild}" />
+                                <TextBlock HorizontalAlignment="Center"
+                                           Text="{Binding Name}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
                 </ListBox>
             </HeaderedContentControl>
         </Grid>

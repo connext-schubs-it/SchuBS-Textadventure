@@ -121,8 +121,17 @@
   <data name="assassine" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\assassine.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="berg_mit_eiswagen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\berg_mit_eiswagen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ei" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ei.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="kaffeebohnenplantage" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\kaffeebohnenplantage.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="kobold_punks" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\kobold_punks.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="krieger" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\krieger.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -130,19 +139,40 @@
   <data name="kuerberlin_mit_kuerbispalast" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\kuerberlin_mit_kuerbispalast.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="kuerbispalast" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\kuerbispalast.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="kuerbistan" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\kuerbistan.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="landschaft_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\landschaft_1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="magierin" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\magierin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="messerblock" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\messerblock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="muenze" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\muenze.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="packung_eier" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\packung_eier.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="tiefseegrotte" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\tiefseegrotte.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tiefsee_ungeheuer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tiefsee_ungeheuer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="unbekannter_wanderer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\unbekannter_wanderer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="waldlaeufer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\waldlaeufer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="waldlaeuferin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\waldlaeuferin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="you_died_lol" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\you_died_lol.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

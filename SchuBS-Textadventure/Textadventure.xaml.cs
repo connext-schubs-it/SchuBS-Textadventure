@@ -1,7 +1,9 @@
-﻿using SchuBS_IT_2020;
-using SchuBS_Textadventure.Dialogs;
+﻿using SchuBS_Textadventure.Dialogs;
+using SchuBS_Textadventure.Objects;
+
 using SchuBS_Textadventure.MyControls;
 using System;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,7 +22,7 @@ namespace SchuBS_Textadventure
 
         public const string TextVariableDelimiter = "##";
 
-        public const string Weltname = "";
+        public const string Weltname = "Cucurbita";
 
         public string[] DefaultButtonText = new string[]
         {
@@ -36,9 +38,9 @@ namespace SchuBS_Textadventure
 
         #region Spiel Variablen
 
-        public Spieler AktuellerHeld = new Spieler();
+        public Spieler AktuellerHeld { get; } = new Spieler();
 
-        public string VerlaufText;
+        public StringBuilder VerlaufText = new StringBuilder();
 
         #endregion
 
@@ -64,12 +66,15 @@ namespace SchuBS_Textadventure
                 if (i < text.Length)
                 {
                     SetButtonText(i, text[i]);
+                    ButtonsAktionen[i].IsEnabled = true;
                 }
                 else
                 {
+                    SetButtonText(i, null);
                     ButtonsAktionen[i].IsEnabled = false;
                 }
             }
+            TextBoxEingabe.IsEnabled = false;
         }
 
         public void SetButtonText(int buttonIndex, string text)
@@ -92,8 +97,8 @@ namespace SchuBS_Textadventure
             Escape("SpielerKlasse", AktuellerHeld.Klasse.ToString());
             Escape("Weltname", Weltname);
 
-            VerlaufText += text;
-            TextBoxHauptText.AppendText(text);
+            VerlaufText.AppendLine(text);
+            TextBoxHauptText.SetText(text);
 
             string Escape(string textVaraible, string wert) =>
                 text = Regex.Replace(text, TextVariableDelimiter + textVaraible + TextVariableDelimiter, wert ?? string.Empty);
@@ -102,13 +107,20 @@ namespace SchuBS_Textadventure
 
         private void ButtonVerlauf_Click(object sender, RoutedEventArgs e)
         {
-            new VerlaufFenster(VerlaufText).ShowDialog();
+            new VerlaufFenster(VerlaufText.ToString()).ShowDialog();
         }
 
         public void SetzeHintergrundBild(string bildName) => ImageHintergrund.Source = GetBild(bildName);
 
         public void SetzePersonenBild(string bildName) => ImagePerson.Source = GetBild(bildName);
 
+        /// <summary>
+        /// Holt ein Bild aus dem Resources-Ordner.<br/>
+        /// Wenn hier nach Programmstart eine Fehlermeldung auftauch, ist entweder das Bild nicht vorhanden
+        /// oder der der Name ist falsch geschrieben.
+        /// </summary>
+        /// <param name="name">Der Name des Bildes mit Dateiendung.</param>
+        /// <returns></returns>
         public BitmapImage GetBild(string name) => new BitmapImage(new Uri("pack://application:,,,/Resources/" + name));
 
         private void TextBoxEingabe_TextChanged(object sender, TextChangedEventArgs e)
@@ -117,6 +129,14 @@ namespace SchuBS_Textadventure
             {
                 StarteKampf(this);
             }
+        }
+        private void EingabefeldNutzen()
+        {
+            foreach (var button in ButtonsAktionen)
+            {
+                button.IsEnabled = false;
+            }
+            TextBoxEingabe.IsEnabled = true;
         }
 
         #endregion

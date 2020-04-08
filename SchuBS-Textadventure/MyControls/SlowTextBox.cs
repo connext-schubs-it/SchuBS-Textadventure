@@ -46,6 +46,7 @@ namespace SchuBS_Textadventure.MyControls
         public void SetText(string text)
         {
             Text = string.Empty;
+            this.text = null;
             AppendText(text);
         }
 

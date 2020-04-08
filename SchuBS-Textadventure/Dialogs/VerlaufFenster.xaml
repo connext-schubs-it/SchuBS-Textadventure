@@ -5,6 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SchuBS_Textadventure.Dialogs"
         mc:Ignorable="d"
-        Title="VerlaufFenster" Height="450" Width="800">
-    <TextBlock x:Name="TextBlockVerlaufText" />
+        Title="VerlaufFenster" Height="450" Width="400">
+   <ScrollViewer>
+      <TextBlock x:Name="TextBlockVerlaufText"
+               TextWrapping="Wrap" />
+   </ScrollViewer>
+   
 </Window>

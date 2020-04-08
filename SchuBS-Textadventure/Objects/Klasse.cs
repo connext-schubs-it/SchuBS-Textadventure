@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SchuBS_IT_2020
+namespace SchuBS_Textadventure.Objects
 {
     public enum KlassenTyp
     {
@@ -16,7 +16,7 @@ namespace SchuBS_IT_2020
     {
         private static readonly Dictionary<KlassenTyp, string> KlassenNamen = new Dictionary<KlassenTyp, string>
         {
-            { KlassenTyp.Keine,                 "Keine" },
+            { KlassenTyp.Keine,                 "wagemutiger Abenteurer" },
             { KlassenTyp.Krieger,               "Krieger" },
             { KlassenTyp.Waldlaeufer,           "Waldläufer" },
             { KlassenTyp.Magier,                "Magier" },
