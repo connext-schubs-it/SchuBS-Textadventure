@@ -113,21 +113,21 @@ namespace SchuBS_Textadventure
                         break;
 
                     case Previous.BerufErfragt:
-                        switch (TextBoxEingabe.Text)
+                        switch (TextBoxEingabe.Text.ToLower())
                         {
-                            case "Krieger":
+                            case "krieger":
                                 AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Krieger);
                                 ZielErfragen();
                                 break;
-                            case "Waldläufer":
+                            case "waldläufer":
                                 AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Waldlaeufer);
                                 ZielErfragen();
                                 break;
-                            case "Magier":
+                            case "magier":
                                 AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Magier);
                                 ZielErfragen();
                                 break;
-                            case "Assassine":
+                            case "assassine":
                                 AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Assassine);
                                 ZielErfragen();
                                 break;
