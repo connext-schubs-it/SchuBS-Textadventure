@@ -190,6 +190,7 @@ namespace SchuBS_Textadventure
 
         private void BerufErfragen()
         {
+            SetzeHintergrundBild("klassenvorschau.png");
             WriteText("Was ist denn dein Beruf?", "");
             EingabefeldNutzen();
             previous = Previous.BerufErfragt;
