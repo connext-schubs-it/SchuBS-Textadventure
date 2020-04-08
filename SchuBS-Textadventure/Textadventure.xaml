@@ -118,19 +118,20 @@
                 <ListBox x:Name="ListBoxInventar"
                          MinHeight="30"
                          VerticalAlignment="Stretch"
+                         ScrollViewer.VerticalScrollBarVisibility="Visible"
                          ItemsSource="{Binding ElementName=This, Path=AktuellerHeld.Inventar}">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <WrapPanel ItemWidth="64" />
+                            <UniformGrid Columns="3" />
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
 
                     <ListBox.ItemTemplate>
                         <DataTemplate DataType="{x:Type Objects:Item}">
-                            <StackPanel>
-                                <Image Source="{Binding Bild}" />
-                                <TextBlock HorizontalAlignment="Center"
-                                           Text="{Binding Name}" />
+                            <StackPanel HorizontalAlignment="Center">
+                                <Image Source="{Binding Bild}"
+                                       MaxHeight="64" />
+                                <TextBlock Text="{Binding Name}" />
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>

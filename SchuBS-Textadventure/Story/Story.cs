@@ -227,44 +227,11 @@ namespace SchuBS_Textadventure
             previous = Previous.ZielErfragt;
         }
 
-        public void StarteKampf(Textadventure adventure)
+        public void StarteKampf(Textadventure adventure, Gegner gegner)
         {
-            TextBoxHauptText.Text = "";
             TextBoxEingabe.Text = "";
 
-            Spieler spieler = new Spieler()
-            {
-                Lebenspunkte = 100,
-                Klasse = new Klasse(30, 10, 10, 10, 10)
-            };
-
-            Gegner gegner = new Gegner()
-            {
-                Lebenspunkte = 70,
-                Staerke = 15,
-                Verteidigung = 5,
-                Name = "Feuerdrache",
-                Reaktionen = new List<Reaktion>()
-                {
-                    new Reaktion()
-                    {
-                        LP = 95,
-                        Text = "Ha! Tat nicht mal weh!"
-                    },
-                    new Reaktion() 
-                    {
-                        LP = 50,
-                        Text = "Langsam reicht es mir mit dir"
-                    },
-                    new Reaktion()
-                    {
-                        LP = 15,
-                        Text = "Aua!"
-                    }
-                }
-            };
-
-            Kampf = new Kampf(spieler, gegner, null, adventure);
+            Kampf = new Kampf(AktuellerHeld, gegner, null, adventure);
             WriteText($"{gegner.Name} fordert dich zum Kampf! ", "Was wirst du tun?!");
             Kampf.Aktion();
         }

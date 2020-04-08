@@ -8,6 +8,8 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using System.Collections.Generic;
+using SchuBS_Textadventure.Helpers;
 
 namespace SchuBS_Textadventure
 {
@@ -139,7 +141,31 @@ namespace SchuBS_Textadventure
         {
             if (TextBoxEingabe.Text == "0815")
             {
-                StarteKampf(this);
+                StarteKampf(this, new Gegner()
+                {
+                    Lebenspunkte = 70,
+                    Staerke = 15,
+                    Verteidigung = 5,
+                    Name = "Feuerdrache",
+                    Reaktionen = new List<Reaktion>()
+                    {
+                        new Reaktion()
+                        {
+                            LP = 95,
+                            Text = "Ha! Tat nicht mal weh!"
+                        },
+                        new Reaktion()
+                        {
+                            LP = 50,
+                            Text = "Langsam reicht es mir mit dir"
+                        },
+                        new Reaktion()
+                        {
+                            LP = 15,
+                            Text = "Aua!"
+                        }
+                    }
+                });
             }
         }
 
@@ -153,5 +179,10 @@ namespace SchuBS_Textadventure
         }
 
         #endregion
+
+        private void ListBoxInventar_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
+        {
+
+        }
     }
 }
