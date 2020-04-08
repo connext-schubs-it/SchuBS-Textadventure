@@ -73,6 +73,16 @@ namespace SchuBS_Textadventure.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap berg_mit_eiswagen {
+            get {
+                object obj = ResourceManager.GetObject("berg_mit_eiswagen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap ei {
             get {
                 object obj = ResourceManager.GetObject("ei", resourceCulture);
@@ -123,6 +133,16 @@ namespace SchuBS_Textadventure.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap kuerbispalast {
+            get {
+                object obj = ResourceManager.GetObject("kuerbispalast", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap kuerbistan {
             get {
                 object obj = ResourceManager.GetObject("kuerbistan", resourceCulture);
@@ -146,6 +166,26 @@ namespace SchuBS_Textadventure.Properties {
         public static System.Drawing.Bitmap magierin {
             get {
                 object obj = ResourceManager.GetObject("magierin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap messerblock {
+            get {
+                object obj = ResourceManager.GetObject("messerblock", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap muenze {
+            get {
+                object obj = ResourceManager.GetObject("muenze", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,9 +233,9 @@ namespace SchuBS_Textadventure.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap waldlaeufer {
+        public static System.Drawing.Bitmap waldlaeuferin {
             get {
-                object obj = ResourceManager.GetObject("waldlaeufer", resourceCulture);
+                object obj = ResourceManager.GetObject("waldlaeuferin", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

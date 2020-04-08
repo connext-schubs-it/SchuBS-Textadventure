@@ -124,9 +124,6 @@
     <Resource Include="Resources\unbekannter_wanderer.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\waldlaeufer.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\kaffeebohnenplantage.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +152,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\ei.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\waldlaeuferin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\kuerbispalast.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\muenze.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\berg_mit_eiswagen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\messerblock.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
