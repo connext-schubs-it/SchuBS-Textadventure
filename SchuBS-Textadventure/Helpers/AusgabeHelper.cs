@@ -26,20 +26,20 @@ namespace SchuBS_Textadventure.Helpers
 
         public static void AusgabeSpielerAktion(Textadventure adventure, Reaktion reaktion)
         {
-            if (reaktion.text == null)
-                adventure.WriteText($"{reaktion.von.Name} hat {reaktion.schaden} Schaden erhalten.\r\n");
+            if (reaktion.Text == null)
+                adventure.WriteText($"{reaktion.Von.Name} hat {reaktion.Schaden} Schaden erhalten.\r\n");
             else
-                adventure.WriteText($"{reaktion.von.Name} hat {reaktion.schaden} Schaden erhalten.\r\n{reaktion.von.Name}: {reaktion.text}\r\n");
+                adventure.WriteText($"{reaktion.Von.Name} hat {reaktion.Schaden} Schaden erhalten.\r\n{reaktion.Von.Name}: {reaktion.Text}\r\n");
 
-            if (reaktion.von.Lebenspunkte <= 0)
-                adventure.WriteText($"{reaktion.von.Name} wurde besiegt!");
+            if (reaktion.Von.Lebenspunkte <= 0)
+                adventure.WriteText($"{reaktion.Von.Name} wurde besiegt!");
         }
 
         public static void AusgabeGegnerAktion(Textadventure adventure, Reaktion reaktion, Gegner gegner)
         {
-            adventure.WriteText($"{gegner.Name} greift dich an..."+"\r\n"+ $"Du hast {reaktion.schaden} Schaden erhalten.\r\n");
+            adventure.WriteText($"{gegner.Name} greift dich an..."+"\r\n"+ $"Du hast {reaktion.Schaden} Schaden erhalten.\r\n");
 
-            if (reaktion.von.Lebenspunkte <= 0)
+            if (reaktion.Von.Lebenspunkte <= 0)
             {
                 adventure.WriteText("Du wurdest besiegt!");
             }

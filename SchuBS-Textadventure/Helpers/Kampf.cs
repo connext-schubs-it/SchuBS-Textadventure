@@ -11,11 +11,11 @@ namespace SchuBS_Textadventure.Helpers
 {
     public class Kampf
     {
-        public Gegner gegner { get; set; }
-        public Spieler spieler { get; set; }
-        public bool ausgang { get; set; }
-        public Zug anDerReihe = Zug.spieler;
-        public Textadventure adventure;
+        public Gegner Gegner { get; set; }
+        public Spieler Spieler { get; set; }
+        public bool Ausgang { get; set; }
+        public Zug AnDerReihe { get; set; } = Zug.spieler;
+        public Textadventure Adventure { get; set; }
 
         public enum Zug
         {
@@ -34,36 +34,30 @@ namespace SchuBS_Textadventure.Helpers
 
         public Kampf(Spieler spieler, Gegner gegner, Umgebung umgebung, Textadventure adventure)
         {
-            this.gegner = gegner;
-            this.spieler = spieler;
-            this.adventure = adventure;
+            Gegner = gegner;
+            Spieler = spieler;
+            Adventure = adventure;
 
-            adventure.Button1.Content = "Angriff";
-            adventure.Button2.Content = "Magie";
-            adventure.Button3.Content = "Item benutzen";
-
-            adventure.Button1.Click += Button1_ClickAngriff;
-            adventure.Button2.Click += Button2_ClickMagie;
-            adventure.Button3.Click += Button3_ClickItem;
+            adventure.SetButtonsText("Angriff", "Magie", "Item benutzen");
         }
 
         public void Aktion()
         {
-            if (anDerReihe == Zug.spieler)
+            if (AnDerReihe == Zug.spieler)
             {
-                anDerReihe = Zug.gegner;
-                adventure.Button1.IsEnabled = true;
-                adventure.Button2.IsEnabled = true;
-                adventure.Button3.IsEnabled = true;
+                AnDerReihe = Zug.gegner;
+                Adventure.Button1.IsEnabled = true;
+                Adventure.Button2.IsEnabled = true;
+                Adventure.Button3.IsEnabled = true;
             }
             else
             {
-                anDerReihe = Zug.spieler;
-                adventure.Button1.IsEnabled = false;
-                adventure.Button2.IsEnabled = false;
-                adventure.Button3.IsEnabled = false;
+                AnDerReihe = Zug.spieler;
+                Adventure.Button1.IsEnabled = false;
+                Adventure.Button2.IsEnabled = false;
+                Adventure.Button3.IsEnabled = false;
                 AktionAusführen(AktionsTyp.GegnerAngriff);
-                adventure.WriteText("Was wirst du tun?\r\n");
+                Adventure.WriteText("Was wirst du tun?\r\n");
             }
         }
 
@@ -90,15 +84,15 @@ namespace SchuBS_Textadventure.Helpers
                     break;
             }
 
-            AusgabeHelper.AusgabeReaktion(adventure, reaktion, typ, gegner);
-            if (reaktion.von.Lebenspunkte > 0)
+            AusgabeHelper.AusgabeReaktion(Adventure, reaktion, typ, Gegner);
+            if (reaktion.Von.Lebenspunkte > 0)
                 Aktion();
         }
 
         private Reaktion SchadenErhalten()
         {
             int schaden = SchadenBerechnen(AktionsTyp.GegnerAngriff);
-            return spieler.ErhalteSchaden(schaden, "");
+            return Spieler.ErhalteSchaden(schaden, "");
         }
 
         private Reaktion ItemBenutzen()
@@ -109,13 +103,13 @@ namespace SchuBS_Textadventure.Helpers
         private Reaktion SchadenAusteilenMagie()
         {
             int schaden = SchadenBerechnen(AktionsTyp.SpielerMagie);
-            return gegner.ErhalteSchaden(schaden, "");
+            return Gegner.ErhalteSchaden(schaden, "");
         }
 
         public Reaktion SchadenAusteilenAngriff()
         {
             int schaden = SchadenBerechnen(AktionsTyp.SpielerAngriff);
-            return gegner.ErhalteSchaden(schaden, "");
+            return Gegner.ErhalteSchaden(schaden, "");
         }
 
         public int SchadenBerechnen(AktionsTyp typ)
@@ -134,17 +128,17 @@ namespace SchuBS_Textadventure.Helpers
 
         private int BerechneSchadenGegnerAngriff()
         {
-            return gegner.Staerke - spieler.Klasse.Verteidigung;
+            return Gegner.Staerke - Spieler.Klasse.Verteidigung;
         }
 
         private int BerechneSchadenNormal()
         {
-            return spieler.Klasse.Staerke - gegner.Verteidigung;
+            return Spieler.Klasse.Staerke - Gegner.Verteidigung;
         }
 
         private int BerechneSchadenMagie()
         {
-            return spieler.Klasse.Magie - gegner.Verteidigung;
+            return Spieler.Klasse.Magie - Gegner.Verteidigung;
         }
 
         public Reaktion SpezialAktionAusführen()
@@ -154,19 +148,19 @@ namespace SchuBS_Textadventure.Helpers
 
         private void Button1_ClickAngriff(object sender, RoutedEventArgs e)
         {
-            adventure.WriteText("Du greifst an...\r\n");
+            Adventure.WriteText("Du greifst an...\r\n");
             AktionAusführen(AktionsTyp.SpielerAngriff);
         }
 
         private void Button2_ClickMagie(object sender, RoutedEventArgs e)
         {
-            adventure.WriteText("Du wirkst Magie...\r\n");
+            Adventure.WriteText("Du wirkst Magie...\r\n");
             AktionAusführen(AktionsTyp.SpielerMagie);
         }
 
         private void Button3_ClickItem(object sender, RoutedEventArgs e)
         {
-            adventure.WriteText("Du nutzt einen Gegenstand...\r\n");
+            Adventure.WriteText("Du nutzt einen Gegenstand...\r\n");
             AktionAusführen(AktionsTyp.SpielerItem);
         }
     }

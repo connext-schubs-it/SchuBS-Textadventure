@@ -10,8 +10,8 @@ namespace SchuBS_Textadventure.Objects
 {
     public abstract class BaseObject
     {
-        public List<Reaktion> reaktionen { get; set; }
-        public List<string> spezial { get; set; }
+        public List<Reaktion> Reaktionen { get; set; }
+        public List<string> Spezial { get; set; }
         public string Name { get; set; }
         public int Lebenspunkte { get; set; }
 
@@ -19,27 +19,27 @@ namespace SchuBS_Textadventure.Objects
         {
             Reaktion currentMin = new Reaktion() { LP = int.MaxValue };
 
-            foreach (Reaktion item in reaktionen)
+            foreach (Reaktion item in Reaktionen)
             {
                 if (item.LP < currentMin.LP && lp <= item.LP)
                     currentMin = item;
             }
 
             Reaktion rkt = currentMin.Copy();
-            reaktionen.Remove(currentMin);
+            Reaktionen.Remove(currentMin);
 
             if (!specialItem.Equals(""))
-                currentMin.specialText = GetSpecialText(specialItem);
+                currentMin.SpecialText = GetSpecialText(specialItem);
 
-            rkt.von = this;
-            rkt.schaden = schaden;
+            rkt.Von = this;
+            rkt.Schaden = schaden;
 
             return rkt;
         }
 
         private string GetSpecialText(string specialItem)
         {
-            foreach (string line in spezial)
+            foreach (string line in Spezial)
             {
                 string[] splitted = line.Split(':');
                 if (splitted[0].Equals(specialItem))
@@ -54,9 +54,22 @@ namespace SchuBS_Textadventure.Objects
             Reaktion reaktion = null;
 
             if (this.GetType() == typeof(Gegner))
-                reaktion = this.GetReaktion(Lebenspunkte, item, schaden);
+            {
+                reaktion = GetReaktion(Lebenspunkte, item, schaden);
+            }
             else
-                reaktion = new Reaktion() { von = new Spieler() { Name = "Spieler", Lebenspunkte = 100 }, LP = Lebenspunkte, schaden = schaden };
+            {
+                reaktion = new Reaktion()
+                {
+                    Von = new Spieler()
+                    {
+                        Name = "Spieler",
+                        Lebenspunkte = 100
+                    },
+                    LP = Lebenspunkte,
+                    Schaden = schaden
+                };
+            }
 
             return reaktion;
         }
