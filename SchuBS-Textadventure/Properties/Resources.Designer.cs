@@ -83,6 +83,16 @@ namespace SchuBS_Textadventure.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap blaues_auge_deathscreen {
+            get {
+                object obj = ResourceManager.GetObject("blaues_auge_deathscreen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap ei {
             get {
                 object obj = ResourceManager.GetObject("ei", resourceCulture);
@@ -96,6 +106,16 @@ namespace SchuBS_Textadventure.Properties {
         public static System.Drawing.Bitmap feldweg_deathscreen {
             get {
                 object obj = ResourceManager.GetObject("feldweg_deathscreen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap food_truck_deathscreen {
+            get {
+                object obj = ResourceManager.GetObject("food_truck_deathscreen", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,6 +153,16 @@ namespace SchuBS_Textadventure.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap koenig_deathscreen {
+            get {
+                object obj = ResourceManager.GetObject("koenig_deathscreen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap krieger {
             get {
                 object obj = ResourceManager.GetObject("krieger", resourceCulture);
@@ -146,6 +176,16 @@ namespace SchuBS_Textadventure.Properties {
         public static System.Drawing.Bitmap kuerberlin_mit_kuerbispalast {
             get {
                 object obj = ResourceManager.GetObject("kuerberlin_mit_kuerbispalast", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap kuerbisfelder_koenig_deathscreen {
+            get {
+                object obj = ResourceManager.GetObject("kuerbisfelder_koenig_deathscreen", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
