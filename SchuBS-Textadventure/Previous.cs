@@ -13,6 +13,7 @@ namespace SchuBS_IT_2020
         EndeAugenGeschlossen = 2,
         BerufungErfragt = 3,
         BerufErfragt = 4,
-        ZielErfragt = 5
-    }
+        ZielErfragt = 5,
+        MachtGestartet = 6
+   }
 }

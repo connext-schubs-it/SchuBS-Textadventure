@@ -27,15 +27,18 @@ namespace SchuBS_Textadventure
                     Start();
                     break;
 
-                case previous.ZielErfragt:
+                case Previous.ZielErfragt:
                     MachtStart();
                     break;
 
                 case Previous.BerufungErfragt:
                     BerufErfragen();
                     break;
+                case Previous.MachtGestartet:
+                     KaffeBohnenplantage();
+                     break;
 
-                default:
+            default:
                     break;
             }
         }
@@ -52,8 +55,7 @@ namespace SchuBS_Textadventure
                     AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Keine);
                     ZielErfragen();
                     break;
-
-                default:
+            default:
                     break;
             }
         }
