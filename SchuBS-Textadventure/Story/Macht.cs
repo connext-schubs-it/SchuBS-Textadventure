@@ -77,6 +77,8 @@ namespace SchuBS_Textadventure
                 Verteidigung = 2
             };
 
+            WriteText($"Ungeheuer fordert dich zum Kampf!", "Was wirst du tun?!");
+            SetzeHintergrundBild("tiefsee_ungeheuer.png");
             StarteKampf(this, ungeheuer);
 
             previous = Previous.TiefseegrotteUngeheuerKaempfen;
@@ -135,57 +137,54 @@ namespace SchuBS_Textadventure
                       //IF-ABFRAGE,,WENN MAGIER, DANN....// 
                       "(5) I SHALL PASS!)");
 
-            
-
             previous = Previous.TiefseegrotteKonversation;
         }
 
-
-      public void KaffeBohnenplantage()
-      {
-         SetzeHintergrundBild("kaffeebohnenplantage.jpg");
+        public void KaffeBohnenplantage()
+        {
+            SetzeHintergrundBild("kaffeebohnenplantage.jpg");
             WriteText("Du verabschiedest dich von Thoron und schlenderst ganz gemütlich über die Kaffeebohnenplantage.",
-             "Du siehst einen Baum, in dessen Schatten du erstmal eine kleine Pause einlegst.",
-             "Abenteuer sind schließlich anstrengend.",
-             "Im Halbschlaf kommst du ins Grübeln: Ist dir Macht wirklich so wichtig? ");
-         SetButtonsText("Ja klar. Und ich liebe Kürbisse! ", "Was will ich denn mit Macht, wenn ich auch reich sein könnte");
-         previous = Previous.KaffeBohnenplantage;
-      }
+                "Du siehst einen Baum, in dessen Schatten du erstmal eine kleine Pause einlegst.",
+                "Abenteuer sind schließlich anstrengend.",
+                "Im Halbschlaf kommst du ins Grübeln: Ist dir Macht wirklich so wichtig? ");
+            SetButtonsText("Ja klar. Und ich liebe Kürbisse! ", "Was will ich denn mit Macht, wenn ich auch reich sein könnte");
+            previous = Previous.KaffeBohnenplantage;
+        }
 
-      public void istMachtWichtig()
-      {
-         SetzeHintergrundBild("kaffeebohnenplantage.jpg");
-         WriteText("Der Weg führt dich vorbei an einem Kürbisacker zu einem kleinen Dorf … ",
-             "Dir bietet sich ein grandioser Ausblick. Das Dorf Kürberlin liegt vor dir.",
-             "Abenteuerlust steigt in dir auf als du das Dorf betrittst, doch du spürst, dass etwas anders ist. ",
-             "Unheil liegt in der Luft.",
-             "Kein einziger Dorfbewohner ist zu sehen und zu allem Übel kommen drei sehr furchteinflößende Kobold-Punks auf dich zu. ",
-             "“Wir sind die Kobold-Punks, wir sind hier um die Menschen aufzumischen, und du bist der nächste.” ",
-             "Was wirst du tun? ");
-         SetButtonsText("Um Gnade flehen ", "Mit Eiern werfen ","Kämpfen!");
-         previous = Previous.MachtWichtig;
-      }
+        public void istMachtWichtig()
+        {
+            SetzeHintergrundBild("kaffeebohnenplantage.jpg");
+            WriteText("Der Weg führt dich vorbei an einem Kürbisacker zu einem kleinen Dorf … ",
+                "Dir bietet sich ein grandioser Ausblick. Das Dorf Kürberlin liegt vor dir.",
+                "Abenteuerlust steigt in dir auf als du das Dorf betrittst, doch du spürst, dass etwas anders ist. ",
+                "Unheil liegt in der Luft.",
+                "Kein einziger Dorfbewohner ist zu sehen und zu allem Übel kommen drei sehr furchteinflößende Kobold-Punks auf dich zu. ",
+                "“Wir sind die Kobold-Punks, wir sind hier um die Menschen aufzumischen, und du bist der nächste.” ",
+                "Was wirst du tun? ");
+            SetButtonsText("Um Gnade flehen ", "Mit Eiern werfen ", "Kämpfen!");
+            previous = Previous.MachtWichtig;
+        }
 
-      public void GnadeFlehen()
-      {
-         SetzeHintergrundBild("tiefsee_ungeheuer.png");
-         KaempfenKaffe("Du bittest um Verzeihung und versuchst, die finsteren Gestalten durch Selbstmitleid von ihren Machenschaften abzubringen.",
-            "“Kannste knicken”, schnauft der Anführer der Kobold-Punks.",
-            "Der Kampf beginnt ");
-      }
-      
+        public void GnadeFlehen()
+        {
+            SetzeHintergrundBild("tiefsee_ungeheuer.png");
+            KaempfenKaffe();
+        }
 
-      public void KaempfenKaffe(params string[] text)
-      {
-         SetzeHintergrundBild("tiefsee_ungeheuer.png");
-         Gegner ungeheuer = new Gegner
-         {
-            Lebenspunkte = 100,
-            Name = "Ungeheuer",
-            Staerke = 1,
-            Verteidigung = 0
-         };
-         StarteKampf1(this, ungeheuer, text);
-      }
-   }
+        public void KaempfenKaffe()
+        {
+            SetzeHintergrundBild("tiefsee_ungeheuer.png");
+            Gegner ungeheuer = new Gegner
+            {
+                Lebenspunkte = 100,
+                Name = "Ungeheuer",
+                Staerke = 1,
+                Verteidigung = 0
+            };
+            StarteKampf(this, ungeheuer);
+            WriteText("Du bittest um Verzeihung und versuchst, die finsteren Gestalten durch Selbstmitleid von ihren Machenschaften abzubringen.",
+                "“Kannste knicken”, schnauft der Anführer der Kobold-Punks.",
+                "Der Kampf beginnt ");
+        }
+    }
 }

@@ -139,10 +139,10 @@ namespace SchuBS_Textadventure
         {
             switch (previous)
             {
-                  case Previous.MachtWichtig:
-                     TiefseegrotteUngeheuerKaempfen(); ;
-                     break;
-            default:
+                case Previous.MachtWichtig:
+                    TiefseegrotteUngeheuerKaempfen();
+                    break;
+                default:
                     KaempfeWennMoeglich(buttonIndex: 2);
                     break;
             }
@@ -275,7 +275,6 @@ namespace SchuBS_Textadventure
 
         private void BerufErfragen()
         {
-
             SetzeHintergrundBild("klassenvorschau.png");
             WriteText("'Beruflich also? Was ist denn dein Beruf?'",
                 "(Mögliche Eingaben: Krieger, Waldläufer, Magier, Assassine. Entscheide weise!) "); ;
@@ -296,23 +295,12 @@ namespace SchuBS_Textadventure
 
         public void StarteKampf(Textadventure adventure, Gegner gegner)
         {
-            SetzeHintergrundBild("tiefsee_ungeheuer.png");
             TextBoxEingabe.Text = "";
 
             Kampf = new Kampf(AktuellerHeld, gegner, null, adventure);
-            WriteText($"{gegner.Name} fordert dich zum Kampf! ", "Was wirst du tun?!");
             Kampf.Aktion();
         }
 
-      public void StarteKampf1(Textadventure adventure, Gegner gegner, params string[] text)
-      {
-         TextBoxEingabe.Text = "";
-
-         Kampf = new Kampf(AktuellerHeld, gegner, null, adventure);
-         WriteText(text);
-         Kampf.Aktion();
-      }
-
-      #endregion
-   }
+        #endregion
+    }
 }
