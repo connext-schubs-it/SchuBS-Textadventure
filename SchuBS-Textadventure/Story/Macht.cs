@@ -36,7 +36,7 @@ namespace SchuBS_Textadventure
 
         public void TiefseegrotteSchwimmen()
         {
-            SetzeHintergrundBild("tiefseegrotte.jpg");
+            SetzeHintergrundBild("tiefseegrotte.png");
             AktuellerHeld.Inventar.Add(new Item("Test", GetBild("ei.png")));
             AktuellerHeld.Inventar.Add(new Item("Test2", null));
             WriteText("Du schwimmst angespannt und höchst aufmerksam durch die Tiefseegrotte. Hinter einer Ecke taucht eine Abzweigung auf.",
@@ -49,7 +49,7 @@ namespace SchuBS_Textadventure
 
         public void TiefseegrotteLinksSchwimmen()
         {
-            SetzeHintergrundBild("tiefseegrotte.jpg");
+            SetzeHintergrundBild("tiefseegrotte.png");
             AktuellerHeld.Inventar.Add(new Item("Test", GetBild("ei.png")));
             AktuellerHeld.Inventar.Add(new Item("Test2", null));
 
@@ -63,7 +63,7 @@ namespace SchuBS_Textadventure
 
         public void TiefseegrotteBegegnungUngeheuer()
         {
-            SetzeHintergrundBild("tiefsee_ungeheuer.jpg");
+            SetzeHintergrundBild("tiefsee_ungeheuer.png");
             AktuellerHeld.Inventar.Add(new Item("Test", GetBild("ei.png")));
             AktuellerHeld.Inventar.Add(new Item("Test2", null));
 
@@ -74,12 +74,30 @@ namespace SchuBS_Textadventure
 
             SetButtonsText("Kämpfen!","Vorbeimogeln");
             previous = Previous.TiefseegrotteUngeheuerBegegnet;
+        }
+
+        public void TiefseegrotteUngeheuerKaempfen()
+        {
             /*Kämpfen*/
+            Gegner Ungeheuer = new Gegner();
+            Ungeheuer.Lebenspunkte = 100;
+            Ungeheuer.Name = "Ungeheuer";
+            Ungeheuer.Staerke = 1;
+            Ungeheuer.Verteidigung = 0;
+            //Ungeheuer.Reaktionen = 0;
+            //Ungeheuer.Spezial = 0;
+
+            previous = Previous.TiefseegrotteUngeheuerKaempfen;
+        }
+
+        public void TiefseegrotteUngeheuerBesiegt()
+        {
+            previous = Previous.TiefseegrotteUngeheuerBesiegt;
         }
 
         public void TiefseegrotteVorbeimogeln()
         {
-            SetzeHintergrundBild("tiefsee_ungeheuer.jpg");
+            SetzeHintergrundBild("tiefsee_ungeheuer.png");
             AktuellerHeld.Inventar.Add(new Item("Test", GetBild("ei.png")));
             AktuellerHeld.Inventar.Add(new Item("Test2", null));
 

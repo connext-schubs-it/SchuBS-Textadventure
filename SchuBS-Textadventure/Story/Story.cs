@@ -48,6 +48,7 @@ namespace SchuBS_Textadventure
                 case Previous.TiefseegrotteGeschwommen:
                     TiefseegrotteLinksSchwimmen();
                     break;
+
                 case Previous.MachtGestartet:
                      KaffeBohnenplantage();
                      break;
@@ -57,6 +58,9 @@ namespace SchuBS_Textadventure
 
                 case Previous.EisKaufen:
                     Taube(true);
+                    break;
+                case Previous.TiefseegrotteUngeheuerBegegnet:
+                    TiefseegrotteUngeheuerKaempfen();
                     break;
 
                 case Previous.Taube:
@@ -109,6 +113,10 @@ namespace SchuBS_Textadventure
                      ZielErfragen();
                      break;
 
+                case Previous.TiefseegrotteUngeheuerBegegnet:
+                    TiefseegrotteVorbeimogeln();
+                    break;
+
 
             default:
                     KaempfeWennMoeglich(buttonIndex: 1);
@@ -130,22 +138,36 @@ namespace SchuBS_Textadventure
         {
             if (Kampf != null)
             {
-                switch (buttonIndex)
-                {
-                    case 1:
-                        Kampf.Button1Angriff();
-                        break;
-                    case 2:
-                        Kampf.Button2Magie();
-                        break;
-                    case 3:
-                        Kampf.Button3Item();
-                        break;
-                }
-
                 if (Kampf.IstZuende)
                 {
                     Kampf = null;
+
+                    switch (previous)
+                    {
+                        case Previous.TiefseegrotteUngeheuerKaempfen:
+                            TiefseegrotteUngeheuerBesiegt();
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (buttonIndex)
+                    {
+                        case 1:
+                            Kampf.Button1Angriff();
+                            break;
+                        case 2:
+                            Kampf.Button2Magie();
+                            break;
+                        case 3:
+                            Kampf.Button3Item();
+                            break;
+                    }
+
+                    if (Kampf.IstZuende)
+                    {
+                        SetButtonsText("Kampf beenden");
+                    }
                 }
             }
         }
