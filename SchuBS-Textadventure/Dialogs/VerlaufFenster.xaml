@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:SchuBS_Textadventure.Dialogs"
         mc:Ignorable="d"
         Title="VerlaufFenster" Height="450" Width="400">
-    <TextBlock x:Name="TextBlockVerlaufText"
+   <ScrollViewer>
+      <TextBlock x:Name="TextBlockVerlaufText"
                TextWrapping="Wrap" />
+   </ScrollViewer>
+   
 </Window>
