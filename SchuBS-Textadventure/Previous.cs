@@ -8,12 +8,16 @@ namespace SchuBS_IT_2020
 {
     public enum Previous
     {
-        Start = 0,
-        NameErfragt = 1,
-        EndeAugenGeschlossen = 2,
-        BerufungErfragt = 3,
-        BerufErfragt = 4,
-        ZielErfragt = 5,
+        Start,
+        NameErfragt,
+        EndeAugenGeschlossen,
+        BerufungErfragt,
+        BerufErfragt,
+        ZielErfragt,
+        EisKaufen,
+        Taube,
+        DeckungSuchen,
+        TaubeTreten,
         MachtGestartet,
         TiefseegrotteErfragt,
         TiefseegrotteGeschwommen,

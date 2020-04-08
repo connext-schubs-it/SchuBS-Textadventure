@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
+using System.Reflection;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
 using SchuBS_IT_2020;
@@ -53,6 +55,17 @@ namespace SchuBS_Textadventure
                      istMachtWichtig();
                      break;
 
+                case Previous.EisKaufen:
+                    Taube(true);
+                    break;
+
+                case Previous.Taube:
+                    DeckungSuchen();
+                    break;
+
+                case Previous.TaubeTreten:
+                    BrueckenZoll();
+                    break;
 
             default:
                     KaempfeWennMoeglich(buttonIndex: 0);
@@ -71,6 +84,18 @@ namespace SchuBS_Textadventure
                 case Previous.BerufungErfragt:
                     AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Keine);
                     ZielErfragen();
+                    break;
+
+                case Previous.ZielErfragt:
+                    EisKaufen();
+                    break;
+
+                case Previous.EisKaufen:
+                    Taube(false);
+                    break;
+
+                case Previous.Taube:
+                    TaubeTreten();
                     break;
 
                 case Previous.MachtGestartet:
@@ -173,7 +198,6 @@ namespace SchuBS_Textadventure
         {
             SetzeHintergrundBild("landschaft_1.jpg");
             AktuellerHeld.Inventar.Add(new Item("Test", GetBild("ei.png")));
-            AktuellerHeld.Inventar.Add(new Item("Test2", null));
             WriteText("Sei gegrüßt, Held!",
                 "Willkommen in der Welt von ##Weltname##!",
                 "In dieser Welt durchläufst du ein einzigartiges Abenteuer voller Mythen und Geheimnisse, Menschen und Monster, Zauber und Flüche. Und ganz viele Kürbisse. ",
@@ -228,7 +252,8 @@ namespace SchuBS_Textadventure
             WriteText("'Ein ##SpielerKlasse##! Spannend.",
                 "Dann wünsche ich dir viel Erfolg auf deinem Weg.",
                 "Hier hast du eine Münze. Gebrauche sie klug. Sie wird sich bestimmt noch als hilfreich erweisen.",
-                "Eine Frage noch, ##SpielerName##. Welches Begehren wird dich auf deinem Weg leiten?'?");
+                "Eine Frage noch, ##SpielerName## Welches Begehren wird dich auf deinem Weg leiten?'?");
+            AktuellerHeld.Inventar.Add(new Item("Münze", GetBild("muenze.png")));
             SetButtonsText("Macht.", "Reichtum.");
             previous = Previous.ZielErfragt;
         }
