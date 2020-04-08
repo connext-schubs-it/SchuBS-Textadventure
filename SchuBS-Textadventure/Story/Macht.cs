@@ -99,7 +99,25 @@ namespace SchuBS_Textadventure
              "Abenteuer sind schließlich anstrengend.",
              "Im Halbschlaf kommst du ins Grübeln: Ist dir Macht wirklich so wichtig? ");
          SetButtonsText("Ja klar. Und ich liebe Kürbisse! ", "Was will ich denn mit Macht, wenn ich auch reich sein könnte");
-         previous = Previous.MachtGestartet;
+         previous = Previous.KaffeBohnenplantage;
       }
-    }
+
+      public void istMachtWichtig()
+      {
+         SetzeHintergrundBild("landschaft_1.jpg");
+         AktuellerHeld.Inventar.Add(new Item("Test", GetBild("ei.png")));
+         AktuellerHeld.Inventar.Add(new Item("Test2", null));
+         WriteText("Der Weg führt dich vorbei an einem Kürbisacker zu einem kleinen Dorf … ",
+             "Dir bietet sich ein grandioser Ausblick. Das Dorf Kürberlin (kuerberlin) liegt vor dir.",
+             "Abenteuerlust steigt in dir auf als du das Dorf betrittst, doch du spürst, dass etwas anders ist. ",
+             "Unheil liegt in der Luft.",
+             "Kein einziger Dorfbewohner ist zu sehen und zu allem Übel kommen drei sehr furchteinflößende Kobold-Punks (kobold_punks) auf dich zu. ",
+             "“Wir sind die Kobold-Punks, wir sind hier um die Menschen aufzumischen, und du bist der nächste.” ",
+             "Was wirst du tun? ");
+         SetButtonsText("Um Gnade flehen ", "Mit Eiern werfen ","Kämpfen!");
+         previous = Previous.MachtWichtig;
+      }
+   }
+
+   
 }

@@ -49,9 +49,12 @@ namespace SchuBS_Textadventure
                 case Previous.MachtGestartet:
                      KaffeBohnenplantage();
                      break;
+               case Previous.KaffeBohnenplantage:
+                     istMachtWichtig();
+                     break;
 
 
-                default:
+            default:
                     KaempfeWennMoeglich(buttonIndex: 0);
                     break;
             }
@@ -77,9 +80,12 @@ namespace SchuBS_Textadventure
                 case Previous.TiefseegrotteGeschwommen:
                     TiefseegrotteBegegnungUngeheuer();
                     break;
+                case Previous.KaffeBohnenplantage:
+                     ZielErfragen();
+                     break;
 
 
-                default:
+            default:
                     KaempfeWennMoeglich(buttonIndex: 1);
                     break;
             }
