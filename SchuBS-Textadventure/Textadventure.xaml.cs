@@ -1,6 +1,7 @@
 ﻿using SchuBS_Textadventure.Dialogs;
 using SchuBS_Textadventure.Objects;
 
+using SchuBS_Textadventure.MyControls;
 using System;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -31,6 +32,7 @@ namespace SchuBS_Textadventure
         };
 
         public Button[] ButtonsAktionen;
+        public SlowTextBox AusgabeBox;
 
         #endregion
 
@@ -51,6 +53,7 @@ namespace SchuBS_Textadventure
                 Button2,
                 Button3,
             };
+            AusgabeBox = TextBoxHauptText;
             Start();
         }
 
@@ -88,19 +91,31 @@ namespace SchuBS_Textadventure
         /// <example><code>WriteText("Hallo!", "Wie gehts es dir?");</code></example>
         public void WriteText(params string[] zeilen)
         {
+            string text = GetText(zeilen);
+            VerlaufText.AppendLine(text);
+            TextBoxHauptText.SetText(text);
+        }
+
+        public void AppendText(params string[] zeilen)
+        {
+            string text = GetText(zeilen);
+            VerlaufText.AppendLine(text);
+            TextBoxHauptText.AppendText(text);
+        }
+
+        private string GetText(params string[] zeilen)
+        {
             string text = string.Join("\n", zeilen);
 
             Escape("SpielerName", AktuellerHeld.Name);
             Escape("SpielerKlasse", AktuellerHeld.Klasse.ToString());
             Escape("Weltname", Weltname);
 
-            VerlaufText.AppendLine(text);
-            TextBoxHauptText.SetText(text);
+            return text;
 
             string Escape(string textVaraible, string wert) =>
                 text = Regex.Replace(text, TextVariableDelimiter + textVaraible + TextVariableDelimiter, wert ?? string.Empty);
         }
-
 
         private void ButtonVerlauf_Click(object sender, RoutedEventArgs e)
         {
@@ -119,6 +134,14 @@ namespace SchuBS_Textadventure
         /// <param name="name">Der Name des Bildes mit Dateiendung.</param>
         /// <returns></returns>
         public BitmapImage GetBild(string name) => new BitmapImage(new Uri("pack://application:,,,/Resources/" + name));
+
+        private void TextBoxEingabe_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (TextBoxEingabe.Text == "0815")
+            {
+                StarteKampf(this);
+            }
+        }
 
         private void EingabefeldNutzen()
         {

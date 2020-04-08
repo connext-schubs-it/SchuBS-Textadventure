@@ -1,6 +1,8 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Input;
 using SchuBS_IT_2020;
+using SchuBS_Textadventure.Helpers;
 using SchuBS_Textadventure.Objects;
 
 namespace SchuBS_Textadventure
@@ -10,6 +12,8 @@ namespace SchuBS_Textadventure
         #region Variablen
 
         private Previous previous;
+
+        private Kampf Kampf { get; set; } = null;
 
         #endregion
 
@@ -38,7 +42,8 @@ namespace SchuBS_Textadventure
                      KaffeBohnenplantage();
                      break;
 
-            default:
+                default:
+                    KaempfeWennMoeglich(buttonIndex: 0);
                     break;
             }
         }
@@ -55,7 +60,9 @@ namespace SchuBS_Textadventure
                     AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Keine);
                     ZielErfragen();
                     break;
-            default:
+
+                default:
+                    KaempfeWennMoeglich(buttonIndex: 1);
                     break;
             }
         }
@@ -65,7 +72,32 @@ namespace SchuBS_Textadventure
             switch (previous)
             {
                 default:
+                    KaempfeWennMoeglich(buttonIndex: 2);
                     break;
+            }
+        }
+
+        private void KaempfeWennMoeglich(int buttonIndex)
+        {
+            if (Kampf != null)
+            {
+                switch (buttonIndex)
+                {
+                    case 1:
+                        Kampf.Button1Angriff();
+                        break;
+                    case 2:
+                        Kampf.Button2Magie();
+                        break;
+                    case 3:
+                        Kampf.Button3Item();
+                        break;
+                }
+
+                if (Kampf.IstZuende)
+                {
+                    Kampf = null;
+                }
             }
         }
 
@@ -171,6 +203,48 @@ namespace SchuBS_Textadventure
                 "Achso, eine Frage noch: Was leitet dich auf deinem Weg?");
             SetButtonsText("Macht", "Reichtum");
             previous = Previous.ZielErfragt;
+        }
+
+        public void StarteKampf(Textadventure adventure)
+        {
+            TextBoxHauptText.Text = "";
+            TextBoxEingabe.Text = "";
+
+            Spieler spieler = new Spieler()
+            {
+                Lebenspunkte = 100,
+                Klasse = new Klasse(30, 10, 10, 10, 10)
+            };
+
+            Gegner gegner = new Gegner()
+            {
+                Lebenspunkte = 70,
+                Staerke = 15,
+                Verteidigung = 5,
+                Name = "Feuerdrache",
+                Reaktionen = new List<Reaktion>()
+                {
+                    new Reaktion()
+                    {
+                        LP = 95,
+                        Text = "Ha! Tat nicht mal weh!"
+                    },
+                    new Reaktion() 
+                    {
+                        LP = 50,
+                        Text = "Langsam reicht es mir mit dir"
+                    },
+                    new Reaktion()
+                    {
+                        LP = 15,
+                        Text = "Aua!"
+                    }
+                }
+            };
+
+            Kampf = new Kampf(spieler, gegner, null, adventure);
+            WriteText($"{gegner.Name} fordert dich zum Kampf! ", "Was wirst du tun?!");
+            Kampf.Aktion();
         }
 
         #endregion
