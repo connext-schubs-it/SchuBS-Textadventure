@@ -168,13 +168,13 @@ namespace SchuBS_Textadventure
             SetzeHintergrundBild("landschaft_1.jpg");
             AktuellerHeld.Inventar.Add(new Item("Test", GetBild("ei.png")));
             AktuellerHeld.Inventar.Add(new Item("Test2", null));
-            WriteText("Seid gegrüßt, Held!",
+            WriteText("Sei gegrüßt, Held!",
                 "Willkommen in der Welt von ##Weltname##!",
-                "In dieser Welt durchlauft Ihr ein einzigartiges Abenteuer voller Mythen und Geheimnisse, Menschen und Monstern, Zauber und Flüche.",
-                "Die Länder dieser Welt verbergen viele Schätze, doch gebt Acht! Auf euren Wegen erwarten euch viele Gefahren und Herausforderungen...",
-                "Ihr erwacht.",
-                "Ihr spürt, dass Ihr auf dem Boden liegt.",
-                "Ihr fühlt keinen Schmerz, alles scheint wie immer und doch könnt Ihr Euch an nichts mehr erinnern...");
+                "In dieser Welt durchläufst du ein einzigartiges Abenteuer voller Mythen und Geheimnisse, Menschen und Monster, Zauber und Flüche. Und ganz viele Kürbisse. ",
+                "Die Länder von Cucurbita beherbergen viele Schätze, doch gib Acht! Auf deinen Wegen erwarten dich viele Gefahren und Herausforderungen. Entscheide weise, denn jede Entscheidung könnte deine letzte sein...  ",
+                "Du erwachst.",
+                "Du spürst, dass du auf hartem Boden liegst.",
+                "Du fühlst keinen Schmerz, alles scheint wie immer. Trotzdem kannst du dich an nichts mehr erinnern…");
 
             SetButtonsText("Augen öffnen", "Augen geschlossen lassen");
             previous = Previous.Start;
@@ -182,45 +182,48 @@ namespace SchuBS_Textadventure
 
         private void NameErfragen()
         {
-            WriteText("Ihr öffnet eure Augen. Es scheint ein Vormittag im frühen Sommer zu sein. Ihr liegt auf einem Feldweg. Um euch herum ist nicht viel, grüne Flächen, vereinzelte Felder und der Feldweg scheint bis an den Horizont zu führen.",
-                "Plötzlich fangt ihr an etwas zu erkennen. Eine Gestalt befindet sich auf dem Feldweg und bewegt sich in eure Richtung, zuerst langsam, doch als sie euch bemerkt, beginnt sie schneller zu laufen. Nun steht ein fremder Mann vor euch: ",
-                "Fremder Mann: 'Ein Mittagsschlaf hier unter der prallen Sonne? Recht ungewöhnlich für diese Gegend...",
-                "Verratet ihr mir euren Namen?'");
+            WriteText("Du öffnest deine Augen. Das helle Sonnenlicht blendet dich für einen Moment. Es scheint ein sonniger Vormittag im frühen Sommer zu sein. Du liegst auf einem staubigen Feldweg. In der Umgebung gibt es nicht viel zu sehen. Grüne Flächen, vereinzelte Felder und der Feldweg, der bis an den Horizont zu führen scheint.",
+                "Da regt sich etwas in der Ferne. Eine Gestalt befindet sich auf dem Weg und bewegt sich in eure Richtung, zuerst langsam, dann schneller, als sie dich bemerkt.",
+                "Nun steht ein fremder Mann vor dir.",
+                "'Ein Mittagsschlaf, hier in der prallen Sonne? Recht ungewöhnlich für diese Gegend. Fast schon verdächtig... ",
+                "Verrätst du mir deinen Namen?'");
             EingabefeldNutzen();
             previous = Previous.NameErfragt;
         }
 
         private void EndeAugenGeschlossen()
         {
-            WriteText("Euer ungestillter Durst nach Abenteuern führt zum unweigerlichen Ende.");
+            WriteText("So schnell wie dein Abenteuer anfing, so schnell ist es auch zu Ende. Du hast dich entschieden, deinem Schicksal zu entkommen. Dein ungestillter Durst nach Abenteuern führt zum unweigerlichen Ende.");
             SetButtonsText("Neustarten");
             previous = Previous.EndeAugenGeschlossen;
         }
 
         private void BerufungErfragen()
         {
-            WriteText("Ah, ##SpielerName##!",
-                "Von dir habe ich schon gehört, alle hier erzählen von dir!",
-                "Was führt dich hier her?");
-            SetButtonsText("Mein Beruf", "Pure Abenteuerlust");
+            WriteText("'Naja, jemand mit dem Namen kann gar nicht feindlich gesinnt sein! Freut mich dich kennenzulernen, ##SpielerName##!",
+                "Ich bin Thoron, der Wanderer, erster seines Namens, Sprenger der Ketten und Vater der Kürbisse. Aber du darfst mich ruhig Thoron nennen.",
+                "Was führt dich in unsere Lande, ##SpielerName##?'");
+            SetButtonsText("Ich bin beruflich hier.", "Pure Abenteuerlust.");
             previous = Previous.BerufungErfragt;
         }
 
         private void BerufErfragen()
-        {
+        { 
+
             SetzeHintergrundBild("klassenvorschau.png");
-            WriteText("Was ist denn dein Beruf?", "");
+            WriteText("'Beruflich also? Was ist denn dein Beruf?'",
+                "(Mögliche Eingaben: Krieger, Waldläufer, Magier, Assassine. Entscheide weise!) ");;
             EingabefeldNutzen();
             previous = Previous.BerufErfragt;
         }
 
         private void ZielErfragen()
         {
-            WriteText("Ein ##SpielerKlasse## also! Es ist schön dich kennenzulernen.",
-                "Hier hast du eine Münze, die wird bestimmt mal hilfreich. Aber nicht alles auf einmal ausgeben.",
-                "Viel Erfolg auf deinem Weg, ##SpielerName##!",
-                "Achso, eine Frage noch: Was leitet dich auf deinem Weg?");
-            SetButtonsText("Macht", "Reichtum");
+            WriteText("'Ein ##SpielerKlasse##!Spannend.",
+                "Dann wünsche ich dir viel Erfolg auf deinem Weg.",
+                "Hier hast du eine Münze. Gebrauche sie klug. Sie wird sich bestimmt noch als hilfreich erweisen.",
+                "Eine Frage noch, ##SpielerName##. Welches Begehren wird dich auf deinem Weg leiten?'?");
+            SetButtonsText("Macht.", "Reichtum.");
             previous = Previous.ZielErfragt;
         }
 
