@@ -219,7 +219,7 @@ namespace SchuBS_Textadventure
 
         private void ZielErfragen()
         {
-            WriteText("'Ein ##SpielerKlasse##!Spannend.",
+            WriteText("'Ein ##SpielerKlasse##! Spannend.",
                 "Dann wünsche ich dir viel Erfolg auf deinem Weg.",
                 "Hier hast du eine Münze. Gebrauche sie klug. Sie wird sich bestimmt noch als hilfreich erweisen.",
                 "Eine Frage noch, ##SpielerName##. Welches Begehren wird dich auf deinem Weg leiten?'?");
