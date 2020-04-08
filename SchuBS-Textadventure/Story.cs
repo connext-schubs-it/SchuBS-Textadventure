@@ -14,8 +14,7 @@ namespace SchuBS_Textadventure
         #endregion
 
         private void Button1_Click(object sender, RoutedEventArgs e)
-        {
-            /*
+        {/*
             switch (previous)
             {
                 case 0:
@@ -23,12 +22,11 @@ namespace SchuBS_Textadventure
                     break;
                 default:
                     break;
-            }
-            */
+            }*/
         }
 
         private void Button2_Click(object sender, RoutedEventArgs e)
-        {
+        {/*
             switch (previous)
             {
                 case 0:
@@ -36,7 +34,7 @@ namespace SchuBS_Textadventure
                     break;
                 default:
                     break;
-            }
+            }*/
         }
 
         private void Button3_Click(object sender, RoutedEventArgs e)
@@ -86,20 +84,20 @@ namespace SchuBS_Textadventure
             Spieler spieler = new Spieler()
             {
                 Lebenspunkte = 100,
-                Klasse = new Klasse(10, 10, 10, 10, 10)
+                Klasse = new Klasse(30, 10, 10, 10, 10)
             };
 
             Gegner gegner = new Gegner()
             {
-                Lebenspunkte = 100,
-                Staerke = 10,
+                Lebenspunkte = 70,
+                Staerke = 15,
                 Verteidigung = 5,
                 Name = "Feuerdrache",
                 reaktionen = new List<Reaktion>()
                 {
-                    new Reaktion() {lp = 95, text = "Ha! Tat nicht mal weh!"},
-                    new Reaktion() {lp = 50, text = "Langsam reicht es mir mit dir"},
-                    new Reaktion() {lp = 15, text = "Aua!"}
+                    new Reaktion() {LP = 95, text = "Ha! Tat nicht mal weh!"},
+                    new Reaktion() {LP = 50, text = "Langsam reicht es mir mit dir"},
+                    new Reaktion() {LP = 15, text = "Aua!"}
                 }
             };
 

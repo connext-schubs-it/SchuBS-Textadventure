@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SchuBS_Textadventure.Objects
 {
-    class Umgebung
+    public class Umgebung
     {
         Bitmap Hintergrund;
         // WMPLib.WindowsMediaPlayer Musik;

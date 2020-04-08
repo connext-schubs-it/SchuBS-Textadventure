@@ -15,23 +15,26 @@ namespace SchuBS_Textadventure.Objects
         public string Name { get; set; }
         public int Lebenspunkte { get; set; }
 
-        public Reaktion GetReaktion(int lp, string specialItem, string name, int schaden)
+        public Reaktion GetReaktion(int lp, string specialItem, int schaden)
         {
-            Reaktion currentMin = null;
+            Reaktion currentMin = new Reaktion() { LP = int.MaxValue };
 
             foreach (Reaktion item in reaktionen)
             {
-                if (currentMin == null || item.lp < currentMin.lp && lp <= item.lp)
+                if (item.LP < currentMin.LP && lp <= item.LP)
                     currentMin = item;
             }
+
+            Reaktion rkt = currentMin.Copy();
+            reaktionen.Remove(currentMin);
 
             if (!specialItem.Equals(""))
                 currentMin.specialText = GetSpecialText(specialItem);
 
-            currentMin.name = name;
-            currentMin.schaden = schaden;
+            rkt.von = this;
+            rkt.schaden = schaden;
 
-            return currentMin;
+            return rkt;
         }
 
         private string GetSpecialText(string specialItem)
@@ -48,11 +51,12 @@ namespace SchuBS_Textadventure.Objects
         public Reaktion ErhalteSchaden(int schaden, string item)
         {
             Lebenspunkte -= schaden;
-            Reaktion reaktion = new Reaktion();
+            Reaktion reaktion = null;
+
             if (this.GetType() == typeof(Gegner))
-                reaktion = this.GetReaktion(Lebenspunkte, item, Name, schaden);
+                reaktion = this.GetReaktion(Lebenspunkte, item, schaden);
             else
-                reaktion = new Reaktion() { lp = Lebenspunkte, name = "Du", schaden = schaden };
+                reaktion = new Reaktion() { von = new Spieler() { Name = "Spieler", Lebenspunkte = 100 }, LP = Lebenspunkte, schaden = schaden };
 
             return reaktion;
         }

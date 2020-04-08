@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SchuBS_Textadventure.Helpers
 {
-    class Kampf
+    public class Kampf
     {
         public Gegner gegner { get; set; }
         public Spieler spieler { get; set; }
@@ -63,6 +63,7 @@ namespace SchuBS_Textadventure.Helpers
                 adventure.Button2.IsEnabled = false;
                 adventure.Button3.IsEnabled = false;
                 AktionAusführen(AktionsTyp.GegnerAngriff);
+                adventure.WriteText("Was wirst du tun?\r\n");
             }
         }
 
@@ -73,66 +74,82 @@ namespace SchuBS_Textadventure.Helpers
             switch (typ)
             {
                 case AktionsTyp.SpielerAngriff:
-                    reaktion = SchadenAusteilen();
-                    AusgabeHelper.AusgabeSpielerAktion(adventure, reaktion, false);
-                    Aktion();
+                    reaktion = SchadenAusteilenAngriff();
                     break;
                 case AktionsTyp.SpielerMagie:
-                    reaktion = MagieBenutzen();
+                    reaktion = SchadenAusteilenMagie();
                     break;
                 case AktionsTyp.SpielerItem:
                     reaktion = ItemBenutzen();
                     break;
                 case AktionsTyp.GegnerAngriff:
                     reaktion = SchadenErhalten();
-                    AusgabeHelper.AusgabeGegnerAktion(adventure, reaktion, false, gegner);
-                    Aktion();
                     break;
                 case AktionsTyp.GegnerSpezial:
                     reaktion = SpezialAktionAusführen();
                     break;
             }
+
+            AusgabeHelper.AusgabeReaktion(adventure, reaktion, typ, gegner);
+            if (reaktion.von.Lebenspunkte > 0)
+                Aktion();
+        }
+
+        private Reaktion SchadenErhalten()
+        {
+            int schaden = SchadenBerechnen(AktionsTyp.GegnerAngriff);
+            return spieler.ErhalteSchaden(schaden, "");
         }
 
         private Reaktion ItemBenutzen()
         {
-            throw new NotImplementedException();
+            return null;
         }
 
-        private Reaktion MagieBenutzen()
+        private Reaktion SchadenAusteilenMagie()
         {
-            throw new NotImplementedException();
-        }
-
-        public Reaktion SchadenAusteilen()
-        {
-            int schaden = SchadenBerechnen();
-
+            int schaden = SchadenBerechnen(AktionsTyp.SpielerMagie);
             return gegner.ErhalteSchaden(schaden, "");
-
         }
 
-        public Reaktion SchadenErhalten()
+        public Reaktion SchadenAusteilenAngriff()
         {
-            int schaden = SchadenBerechnen();
-            return spieler.ErhalteSchaden(schaden, "");
+            int schaden = SchadenBerechnen(AktionsTyp.SpielerAngriff);
+            return gegner.ErhalteSchaden(schaden, "");
         }
 
-        public int SchadenBerechnen()
+        public int SchadenBerechnen(AktionsTyp typ)
         {
+            switch(typ)
+            {
+                case AktionsTyp.SpielerAngriff:
+                    return BerechneSchadenNormal();
+                case AktionsTyp.SpielerMagie:
+                    return BerechneSchadenMagie();
+                case AktionsTyp.GegnerAngriff:
+                    return BerechneSchadenGegnerAngriff();
+            }
             return 15;
+        }
+
+        private int BerechneSchadenGegnerAngriff()
+        {
+            return gegner.Staerke - spieler.Klasse.Verteidigung;
+        }
+
+        private int BerechneSchadenNormal()
+        {
+            return spieler.Klasse.Staerke - gegner.Verteidigung;
+        }
+
+        private int BerechneSchadenMagie()
+        {
+            return spieler.Klasse.Magie - gegner.Verteidigung;
         }
 
         public Reaktion SpezialAktionAusführen()
         {
             return null;
-        }
-
-        public string AktionsAusgabe(Reaktion reaktion)
-        {
-            string AusgabeText = $"{reaktion.name} hat {reaktion.schaden} Schaden erhalten!";
-            AusgabeText += $"\r\n{reaktion.text}\r\n";
-            return AusgabeText;
         }
 
         private void Button1_ClickAngriff(object sender, RoutedEventArgs e)
