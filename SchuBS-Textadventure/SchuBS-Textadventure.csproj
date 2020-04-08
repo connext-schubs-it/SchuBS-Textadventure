@@ -182,5 +182,8 @@
   <ItemGroup>
     <Resource Include="Resources\klassenvorschau.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\feldweg_deathscreen.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

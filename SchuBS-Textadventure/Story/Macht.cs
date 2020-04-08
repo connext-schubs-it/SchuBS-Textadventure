@@ -109,7 +109,9 @@ namespace SchuBS_Textadventure
 
       public void KaffeBohnenplantage()
       {
-         SetzeHintergrundBild("landschaft_1.jpg");
+         SetzeHintergrundBild("kaffeebohnenplantage.jpg");
+         AktuellerHeld.Inventar.Add(new Item("Test", GetBild("ei.png")));
+         AktuellerHeld.Inventar.Add(new Item("Test2", null));
          WriteText("Du verabschiedest dich von Thoron und schlenderst ganz gemütlich über die Kaffeebohnenplantage.",
              "Du siehst einen Baum, in dessen Schatten du erstmal eine kleine Pause einlegst.",
              "Abenteuer sind schließlich anstrengend.",

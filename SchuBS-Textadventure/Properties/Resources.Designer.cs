@@ -93,6 +93,16 @@ namespace SchuBS_Textadventure.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap feldweg_deathscreen {
+            get {
+                object obj = ResourceManager.GetObject("feldweg_deathscreen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap kaffeebohnenplantage {
             get {
                 object obj = ResourceManager.GetObject("kaffeebohnenplantage", resourceCulture);
