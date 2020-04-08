@@ -27,6 +27,10 @@ namespace SchuBS_Textadventure
                     Start();
                     break;
 
+                case previous.ZielErfragt:
+                    MachtStart();
+                    break;
+
                 case Previous.BerufungErfragt:
                     BerufErfragen();
                     break;
