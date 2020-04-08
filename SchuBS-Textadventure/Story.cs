@@ -20,15 +20,15 @@ namespace SchuBS_Textadventure
             switch (previous)
             {
                 case Previous.Start:
-                    AugenOeffnen();
+                    NameErfragen();
                     break;
 
-                case Previous.AugenGeschlossen:
+                case Previous.EndeAugenGeschlossen:
                     Start();
                     break;
 
                 case Previous.BerufungErfragt:
-                    Beruf();
+                    BerufErfragen();
                     break;
 
                 default:
@@ -41,12 +41,12 @@ namespace SchuBS_Textadventure
             switch (previous)
             {
                 case Previous.Start:
-                    AugenGeschlossen();
+                    EndeAugenGeschlossen();
                     break;
 
                 case Previous.BerufungErfragt:
                     AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Keine);
-                    Muenze();
+                    ZielErfragen();
                     break;
 
                 default:
@@ -71,7 +71,7 @@ namespace SchuBS_Textadventure
                 {
                     case Previous.NameErfragt:
                         AktuellerHeld.Name = TextBoxEingabe.Text;
-                        Namen();
+                        BerufungErfragen();
                         break;
 
                     case Previous.BerufErfragt:
@@ -79,19 +79,19 @@ namespace SchuBS_Textadventure
                         {
                             case "Krieger":
                                 AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Krieger);
-                                Muenze();
+                                ZielErfragen();
                                 break;
                             case "Waldläufer":
                                 AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Waldlaeufer);
-                                Muenze();
+                                ZielErfragen();
                                 break;
                             case "Magier":
                                 AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Magier);
-                                Muenze();
+                                ZielErfragen();
                                 break;
                             case "Assassine":
                                 AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Assassine);
-                                Muenze();
+                                ZielErfragen();
                                 break;
                             default:
                                 WriteText("Diesen Beruf kenne ich nicht. Kannst du ihn nochmal wiederholen?", "");
@@ -124,7 +124,7 @@ namespace SchuBS_Textadventure
             previous = Previous.Start;
         }
 
-        private void AugenOeffnen()
+        private void NameErfragen()
         {
             WriteText("Ihr öffnet eure Augen. Es scheint ein Vormittag im frühen Sommer zu sein. Ihr liegt auf einem Feldweg. Um euch herum ist nicht viel, grüne Flächen, vereinzelte Felder und der Feldweg scheint bis an den Horizont zu führen.",
                 "Plötzlich fangt ihr an etwas zu erkennen. Eine Gestalt befindet sich auf dem Feldweg und bewegt sich in eure Richtung, zuerst langsam, doch als sie euch bemerkt, beginnt sie schneller zu laufen. Nun steht ein fremder Mann vor euch: ",
@@ -134,14 +134,14 @@ namespace SchuBS_Textadventure
             previous = Previous.NameErfragt;
         }
 
-        private void AugenGeschlossen()
+        private void EndeAugenGeschlossen()
         {
             WriteText("Euer ungestillter Durst nach Abenteuern führt zum unweigerlichen Ende.");
             SetButtonsText("Neustarten");
-            previous = Previous.AugenGeschlossen;
+            previous = Previous.EndeAugenGeschlossen;
         }
 
-        private void Namen()
+        private void BerufungErfragen()
         {
             WriteText("Ah, ##SpielerName##!",
                 "Von dir habe ich schon gehört, alle hier erzählen von dir!",
@@ -150,14 +150,14 @@ namespace SchuBS_Textadventure
             previous = Previous.BerufungErfragt;
         }
 
-        private void Beruf()
+        private void BerufErfragen()
         {
             WriteText("Was ist denn dein Beruf?", "");
             EingabefeldNutzen();
             previous = Previous.BerufErfragt;
         }
 
-        private void Muenze()
+        private void ZielErfragen()
         {
             WriteText("Ein ##SpielerKlasse## also! Es ist schön dich kennenzulernen.",
                 "Hier hast du eine Münze, die wird bestimmt mal hilfreich. Aber nicht alles auf einmal ausgeben.",

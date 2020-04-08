@@ -10,7 +10,7 @@ namespace SchuBS_IT_2020
     {
         Start = 0,
         NameErfragt = 1,
-        AugenGeschlossen = 2,
+        EndeAugenGeschlossen = 2,
         BerufungErfragt = 3,
         BerufErfragt = 4,
         ZielErfragt = 5
