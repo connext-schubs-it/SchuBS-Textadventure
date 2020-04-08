@@ -174,13 +174,13 @@
     <Resource Include="Resources\messerblock.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\taube_mit_nunchakus.png" />
+    <Resource Include="Resources\taube_mit_nunchakus.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\nunchakus.png" />
+    <Resource Include="Resources\nunchakus.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\klassenvorschau.png" />
+    <Resource Include="Resources\klassenvorschau.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
