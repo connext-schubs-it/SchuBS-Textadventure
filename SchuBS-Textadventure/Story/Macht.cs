@@ -135,7 +135,40 @@ namespace SchuBS_Textadventure
                       //IF-ABFRAGE,,WENN MAGIER, DANN....// 
                       "(5) I SHALL PASS!)");
 
+            //BEI 1 UND 3 SOLL DER SPIELER STERBEN-> TiefseegrotteFalscheAntwort
+            //BEI 2,4 UND 5 SOLL DER SPIELER ITEM ,,EIER" ERHALTEN-> TiefseegrotteRichtigeAntwort
+
             previous = Previous.TiefseegrotteKonversation;
+        }
+
+        public void TiefseegrotteFalscheAntwort()
+        {
+            //BEI 1 UND 3 SOLL DER SPIELER STERBEN
+
+            SetzeHintergrundBild("you_died_lol.png");
+            AktuellerHeld.Inventar.Add(new Item("Test", GetBild("ei.png")));
+            AktuellerHeld.Inventar.Add(new Item("Test2", null));
+
+            
+            WriteText("Das Ungeheuer wird wütend und schlägt wild um sich.Du hättest seine Gefühle nicht verletzen sollen.",
+                      "So ein Mist aber auch.");
+
+            previous = Previous.TiefseegrotteFalscheAntwort;
+            //Spieler stirbt
+        }
+
+        public void TiefseegrotteRichtigeAntwort()
+        {
+            //BEI 2,4,5 GIBT ES DAS ITEM EIER UND ES GEHT WEITER
+
+            SetzeHintergrundBild("you_died_lol.png");
+            AktuellerHeld.Inventar.Add(new Item("Test", GetBild("ei.png")));
+            AktuellerHeld.Inventar.Add(new Item("Test2", null));
+
+            WriteText("Das Ungeheuer streckt seine Zunge raus und überreicht dir eine Packung Eier(ITEM).",
+                      "Es tritt zur Seite und salutiert, während du stolz, aber auch ziemlich verwundert zum Ausgang der Grotte schreitest.");
+
+            previous = Previous.TiefseegrotteRichtigeAntwort;
         }
 
         public void KaffeBohnenplantage()

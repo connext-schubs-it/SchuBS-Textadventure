@@ -33,6 +33,8 @@ namespace SchuBS_Textadventure.Objects
             Mana = mana;
         }
 
+        
+
         public int Lebenspunkte { get; set; }
         public int Staerke { get; set; }
         public int Verteidigung { get; set; }
