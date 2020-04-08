@@ -44,6 +44,8 @@ namespace SchuBS_Textadventure
 
         public StringBuilder VerlaufText = new StringBuilder();
 
+        public List<Gegner> GegnerListe = null;
+
         #endregion
 
         public Textadventure()
@@ -56,6 +58,7 @@ namespace SchuBS_Textadventure
                 Button3,
             };
             AusgabeBox = TextBoxHauptText;
+            GegnerListe = Gegner.LadeGegner();
             Start();
         }
 
