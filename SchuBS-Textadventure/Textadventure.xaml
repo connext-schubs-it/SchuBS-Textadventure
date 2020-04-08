@@ -39,7 +39,8 @@
                                     IsReadOnly="True"
                                     TextWrapping="Wrap"
                                     Foreground="White"
-                                    FontSize="14">
+                                    FontSize="14"
+                                    TextSpeed="3">
                 <MyControls:SlowTextBox.Background>
                     <SolidColorBrush Color="Blue" Opacity="0.7"/>
                 </MyControls:SlowTextBox.Background>

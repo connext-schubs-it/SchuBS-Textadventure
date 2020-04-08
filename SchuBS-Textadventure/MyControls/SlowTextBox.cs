@@ -21,7 +21,7 @@ namespace SchuBS_Textadventure.MyControls
             set
             {
                 textSpeed = value;
-                Timer.Interval = TimeSpan.FromSeconds((int)(CharInterval / textSpeed));
+                Timer.Interval = TimeSpan.FromMilliseconds((int)(CharInterval / textSpeed));
             }
         }
 
