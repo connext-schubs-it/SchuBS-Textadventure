@@ -10,8 +10,8 @@ namespace SchuBS_Textadventure.Objects
 {
     public abstract class BaseObject
     {
-        public List<Reaktion> Reaktionen { get; set; }
-        public List<string> Spezial { get; set; }
+        public List<Reaktion> Reaktionen { get; set; } = new List<Reaktion>();
+        public List<string> Spezial { get; set; } = new List<string>();
         public string Name { get; set; }
         public int Lebenspunkte { get; set; }
 

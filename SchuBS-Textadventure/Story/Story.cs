@@ -161,13 +161,13 @@ namespace SchuBS_Textadventure
                 {
                     switch (buttonIndex)
                     {
-                        case 1:
+                        case 0:
                             Kampf.Button1Angriff();
                             break;
-                        case 2:
+                        case 1:
                             Kampf.Button2Magie();
                             break;
-                        case 3:
+                        case 2:
                             Kampf.Button3Item();
                             break;
                     }
