@@ -130,6 +130,9 @@
   <data name="kaffeebohnenplantage" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\kaffeebohnenplantage.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="klassenvorschau" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\klassenvorschau.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="kobold_punks" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\kobold_punks.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -157,8 +160,14 @@
   <data name="muenze" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\muenze.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="nunchakus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\nunchakus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="packung_eier" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\packung_eier.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="taube_mit_nunchakus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\taube_mit_nunchakus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tiefseegrotte" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\tiefseegrotte.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

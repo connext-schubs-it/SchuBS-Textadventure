@@ -103,6 +103,16 @@ namespace SchuBS_Textadventure.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap klassenvorschau {
+            get {
+                object obj = ResourceManager.GetObject("klassenvorschau", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap kobold_punks {
             get {
                 object obj = ResourceManager.GetObject("kobold_punks", resourceCulture);
@@ -193,9 +203,29 @@ namespace SchuBS_Textadventure.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap nunchakus {
+            get {
+                object obj = ResourceManager.GetObject("nunchakus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap packung_eier {
             get {
                 object obj = ResourceManager.GetObject("packung_eier", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap taube_mit_nunchakus {
+            get {
+                object obj = ResourceManager.GetObject("taube_mit_nunchakus", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
