@@ -21,25 +21,29 @@ namespace SchuBS_Textadventure
             previous = Previous.EisKaufen;
         }
 
-        private void Taube(bool eisGekauft)
+        private void EisGekauft()
+        {
+            WriteText("Das Kürbiseis ist gar nicht mal so gut. Was für eine Abzocke! Aber der Messerblock könnte noch von Nutzen sein. Ist ganz schön schwer, das Ding.");
+
+            var muenze = AktuellerHeld.Inventar.FirstOrDefault(x => x.Name == "Münze");
+            AktuellerHeld.Inventar.Remove(muenze);
+            AktuellerHeld.Inventar.Add(new Item("Messerblock", GetBild("messerblock.png")));
+            SetButtonsText("weiter");
+            previous = Previous.EisGekauft;
+        }
+
+        private void EisNichtGekauft()
+        {
+            WriteText("obwohl so ein Eis echt lecker wäre...");
+            SetButtonsText("weiter");
+            previous = Previous.EisNichtGekauft;
+        }
+
+        private void Taube()
         {
             SetzeHintergrundBild("taube_mit_nunchakus.png");
-            if (eisGekauft)
-            {
-                WriteText("Das Kürbiseis ist gar nicht mal so gut. Was für eine Abzocke! Aber der Messerblock könnte noch von Nutzen sein. Ist ganz schön schwer, das Ding.",
-                    "Du gehst weiter die Straße entlang.",
-                    "Von weitem kannst du schon den Berg erspähen. Auf einmal springt dir eine dicke, türkise Taube in den Weg. Im Schnabel trägt sie ein paar Nunchucks, die sie drohend in deine Richtung schwenkt. Ihr tiefes Gurren geht durch Mark und Bein.");
-               
-                var muenze = AktuellerHeld.Inventar.FirstOrDefault(x => x.Name == "Münze");
-                AktuellerHeld.Inventar.Remove(muenze);
-                AktuellerHeld.Inventar.Add(new Item("Messerblock", GetBild("messerblock.png")));
-            }
-            else
-            {
-                WriteText("obwohl so ein Eis echt lecker wäre...",
-                    "Du gehst weiter die Straße entlang.",
-                    "Von weitem kannst du schon den Berg erspähen. Auf einmal springt dir eine dicke, türkise Taube in den Weg. Im Schnabel trägt sie ein paar Nunchucks, die sie drohend in deine Richtung schwenkt.Ihr tiefes Gurren geht durch Mark und Bein.");
-            }
+           WriteText("Du gehst weiter die Straße entlang.",
+               "Von weitem kannst du schon den Berg erspähen. Auf einmal springt dir eine dicke, türkise Taube in den Weg. Im Schnabel trägt sie ein paar Nunchucks, die sie drohend in deine Richtung schwenkt.Ihr tiefes Gurren geht durch Mark und Bein.");
             SetButtonsText("Im Gebüsch Deckung suchen", "Die Taube mit einem beherzten Karatekick in die nächste Böschung befördern.");
             previous = Previous.Taube;
         }
@@ -62,21 +66,48 @@ namespace SchuBS_Textadventure
 
         private void BrueckenZoll()
         {
+            WriteText("Du gehst weiter auf dem Weg.",
+                "Vor dir liegt eine Brücke. In einem kleinen Häuschen sitzt ein Zollbeamter.",
+                "Das Passieren dieser  kürbistanischen Staatsbrücke ist kostenpflichtig. Das wären für sie ... mal sehen ... Brückenpauschale plus Bearbeitungsgebühr minus Feiertagsrabatt plus Mittagszuschlag ... 3 im Sinn ... eine Münze.");
+
             bool muenze = AktuellerHeld.Inventar.FirstOrDefault(x => x.Name == "Münze") != null;
             if (muenze)
             {
-                WriteText("Du gehst weiter auf dem Weg.",
-                    "Vor dir liegt eine Brücke. In einem kleinen Häuschen sitzt ein Zollbeamter.",
-                    "Das Passieren dieser  kürbistanischen Staatsbrücke ist kostenpflichtig. Das wären für sie ... mal sehen ... Brückenpauschale plus Bearbeitungsgebühr minus Feiertagsrabatt plus Mittagszuschlag ... 3 im Sinn ... eine Münze.",
-                    "");
+                SetButtonsText("Klar, kein Problem.", "Das ist ja Wucher! Ich suche mir einen anderen Weg!");
+                previous = Previous.BrueckenZollMuenzeVorhanden;
             }
             else
             {
-                WriteText("Du gehst weiter auf dem Weg.",
-                    "Vor dir liegt eine Brücke. In einem kleinen Häuschen sitzt ein Zollbeamter.",
-                    "Das Passieren dieser kürbistanischen Staatsbrücke ist kostenpflichtig. Das wären für sie ... mal sehen ... Brückenpauschale plus Bearbeitungsgebühr minus Feiertagsrabatt plus Mittagszuschlag ... 3 im Sinn ... eine Münze.",
-                    "");
+                SetButtonsText("Dann muss ich mir wohl einen anderen Weg suchen.");
+                previous = Previous.BrueckenZollMuenzeNichtVorhanden;
             }
+        }
+
+        private void WegZurTiefseegrotte()
+        {
+            WriteText("Der einzige weitere Weg führt durch den dunklen Wald.",
+                "Du bist nun tief im Wald. Deine Orientierung ist im Eimer. Na toll.",
+                "Blindlings stoplerst du durch das Unterholz, aber der Wald wird immer dichter.",
+                "Schließlich ist es so dunkel, dass du dich nur noch tastend fortbewegen kannst. Immer wieder hörst du es knacken, wenn du mal wieder über einen Ast gerobbt bist.",
+                "Doch plötzlich hörst du ein ganz lautes Knacken, gefolgt von einem Knirschen und urplötzlich verliertst du den Boden unter dem Körper. Du fällst und fällst und machst dich auf den Aufprall gefasst.",
+                "Dieser gestaltet sich anders als erwartet. Deine Füße tauchen zuerst ein. Kühles Nass.",
+                "Du scheinst in einer Unterwassergrotte gelandet zu sein!");
+            SetButtonsText("weiter");
+            previous = Previous.WegZurTiefseegrotte;
+
+        }
+
+        private void RaetselMauer()
+        {
+            var muenze = AktuellerHeld.Inventar.FirstOrDefault(x => x.Name == "Münze");
+            AktuellerHeld.Inventar.Remove(muenze);
+            WriteText("Du passierst die Brücke und gehst munter weiter. Fast stößt du dir den Kopf, als die Straße abrupt vor einer hohen Wand endet. Links und rechts ist kein Ende der Mauer in Sicht.",
+                "Als du prüfend an die Wand klopfst, erscheint folgender Text:",
+                "'Wanderer hab Acht: Ginget Ihr in eine Hütte, derer Bewohner drei und verließen zwei Bewohner das Bauwerk, während durch die Hinterpforte fünf Menschen einträten, wie viele habt Ihr?", "",
+                "Eins? Fünf? Vierunddreißig? Acht? Kürbis?'",
+                "(Gib deine Antwort unten ein");
+            EingabefeldNutzen();
+
         }
     }
 }

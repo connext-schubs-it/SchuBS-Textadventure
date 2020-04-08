@@ -58,7 +58,12 @@ namespace SchuBS_Textadventure
                     break;
 
                 case Previous.EisKaufen:
-                    Taube(true);
+                    EisGekauft();
+                    break;
+
+                case Previous.EisGekauft:
+                case Previous.EisNichtGekauft:
+                    Taube();
                     break;
 
                 case Previous.TiefseegrotteBegegnungUngeheuer:
@@ -69,11 +74,27 @@ namespace SchuBS_Textadventure
                     DeckungSuchen();
                     break;
 
+                case Previous.DeckungSuchen:
+                    WegZurTiefseegrotte();
+                    break;
+
                 case Previous.TaubeTreten:
                     BrueckenZoll();
                     break;
                 case Previous.MachtWichtig:
                     GnadeFlehen();
+                    break;
+
+                case Previous.BrueckenZollMuenzeVorhanden:
+                    RaetselMauer();
+                    break;
+
+                case Previous.BrueckenZollMuenzeNichtVorhanden:
+                    WegZurTiefseegrotte();
+                    break;
+
+                case Previous.WegZurTiefseegrotte:
+                    TiefseegrotteSchwimmen();
                     break;
 
             default:
@@ -100,7 +121,7 @@ namespace SchuBS_Textadventure
                     break;
 
                 case Previous.EisKaufen:
-                    Taube(false);
+                    EisNichtGekauft();
                     break;
 
                 case Previous.Taube:
@@ -126,6 +147,9 @@ namespace SchuBS_Textadventure
 
                 case Previous.TiefseegrotteVorbeimogeln:
                     TiefseegrotteKonversation();
+                    break;
+                case Previous.BrueckenZollMuenzeVorhanden:
+                    WegZurTiefseegrotte();
                     break;
 
 
