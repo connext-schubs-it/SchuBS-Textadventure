@@ -91,19 +91,31 @@ namespace SchuBS_Textadventure
         /// <example><code>WriteText("Hallo!", "Wie gehts es dir?");</code></example>
         public void WriteText(params string[] zeilen)
         {
+            string text = GetText(zeilen);
+            VerlaufText.AppendLine(text);
+            TextBoxHauptText.SetText(text);
+        }
+
+        public void AppendText(params string[] zeilen)
+        {
+            string text = GetText(zeilen);
+            VerlaufText.AppendLine(text);
+            TextBoxHauptText.AppendText(text);
+        }
+
+        private string GetText(params string[] zeilen)
+        {
             string text = string.Join("\n", zeilen);
 
             Escape("SpielerName", AktuellerHeld.Name);
             Escape("SpielerKlasse", AktuellerHeld.Klasse.ToString());
             Escape("Weltname", Weltname);
 
-            VerlaufText.AppendLine(text);
-            TextBoxHauptText.SetText(text);
+            return text;
 
             string Escape(string textVaraible, string wert) =>
                 text = Regex.Replace(text, TextVariableDelimiter + textVaraible + TextVariableDelimiter, wert ?? string.Empty);
         }
-
 
         private void ButtonVerlauf_Click(object sender, RoutedEventArgs e)
         {
@@ -130,6 +142,7 @@ namespace SchuBS_Textadventure
                 StarteKampf(this);
             }
         }
+
         private void EingabefeldNutzen()
         {
             foreach (var button in ButtonsAktionen)

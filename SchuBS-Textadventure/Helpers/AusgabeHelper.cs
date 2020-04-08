@@ -10,39 +10,59 @@ namespace SchuBS_Textadventure.Helpers
 {
     public static class AusgabeHelper
     {
-        public static void AusgabeReaktion(Textadventure adventure, Reaktion reaktion, Kampf.AktionsTyp typ, Gegner gegner)
+        public static List<string> AusgabeReaktion(Reaktion reaktion, Kampf.AktionsTyp typ, Gegner gegner)
         {
+            List<string> ausgabe;
             switch (typ)
             {
                 case Kampf.AktionsTyp.SpielerAngriff:
                 case Kampf.AktionsTyp.SpielerMagie:
-                    AusgabeSpielerAktion(adventure, reaktion);
+                    ausgabe = AusgabeSpielerAktion(reaktion);
                     break;
                 case Kampf.AktionsTyp.GegnerAngriff:
-                    AusgabeGegnerAktion(adventure, reaktion, gegner);
+                    ausgabe = AusgabeGegnerAktion(reaktion, gegner);
+                    break;
+                default:
+                    ausgabe = new List<string>();
                     break;
             }
+
+            return ausgabe;
         }
 
-        public static void AusgabeSpielerAktion(Textadventure adventure, Reaktion reaktion)
+        public static List<string> AusgabeSpielerAktion(Reaktion reaktion)
         {
+            List<string> ausgabe = new List<string>();
             if (reaktion.Text == null)
-                adventure.WriteText($"{reaktion.Von.Name} hat {reaktion.Schaden} Schaden erhalten.\r\n");
+            {
+                ausgabe.Add($"{reaktion.Von.Name} hat {reaktion.Schaden} Schaden erhalten.");
+            }
             else
-                adventure.WriteText($"{reaktion.Von.Name} hat {reaktion.Schaden} Schaden erhalten.\r\n{reaktion.Von.Name}: {reaktion.Text}\r\n");
-
-            if (reaktion.Von.Lebenspunkte <= 0)
-                adventure.WriteText($"{reaktion.Von.Name} wurde besiegt!");
-        }
-
-        public static void AusgabeGegnerAktion(Textadventure adventure, Reaktion reaktion, Gegner gegner)
-        {
-            adventure.WriteText($"{gegner.Name} greift dich an..."+"\r\n"+ $"Du hast {reaktion.Schaden} Schaden erhalten.\r\n");
+            {
+                ausgabe.Add($"{reaktion.Von.Name} hat {reaktion.Schaden} Schaden erhalten.");
+                ausgabe.Add($"{reaktion.Von.Name}: {reaktion.Text}");
+            }
 
             if (reaktion.Von.Lebenspunkte <= 0)
             {
-                adventure.WriteText("Du wurdest besiegt!");
+                ausgabe.Add($"{reaktion.Von.Name} wurde besiegt!");
             }
+
+            return ausgabe;
+        }
+
+        public static List<string> AusgabeGegnerAktion(Reaktion reaktion, Gegner gegner)
+        {
+            List<string> ausgabe = new List<string>();
+            ausgabe.Add($"{gegner.Name} greift dich an...");
+            ausgabe.Add($"Du hast {reaktion.Schaden} Schaden erhalten.\r\n");
+
+            if (reaktion.Von.Lebenspunkte <= 0)
+            {
+                ausgabe.Add("Du wurdest besiegt!");
+            }
+
+            return ausgabe;
         }
     }
 }

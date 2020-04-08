@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace SchuBS_Textadventure.Helpers
 {
@@ -13,14 +14,16 @@ namespace SchuBS_Textadventure.Helpers
     {
         public Gegner Gegner { get; set; }
         public Spieler Spieler { get; set; }
-        public bool Ausgang { get; set; }
-        public Zug AnDerReihe { get; set; } = Zug.spieler;
+        public bool IstZuende { get; set; } = false;
+        public Zug LetzteAktionVon { get; set; } = Zug.Spieler;
         public Textadventure Adventure { get; set; }
+
+        private List<string> Ausgabe { get; } = new List<string>();
 
         public enum Zug
         {
-            spieler,
-            gegner
+            Spieler,
+            Gegner
         }
 
         public enum AktionsTyp
@@ -43,22 +46,33 @@ namespace SchuBS_Textadventure.Helpers
 
         public void Aktion()
         {
-            if (AnDerReihe == Zug.spieler)
+            if (LetzteAktionVon == Zug.Spieler)
             {
-                AnDerReihe = Zug.gegner;
-                Adventure.Button1.IsEnabled = true;
-                Adventure.Button2.IsEnabled = true;
-                Adventure.Button3.IsEnabled = true;
+                LetzteAktionVon = Zug.Gegner;
+
+                foreach (Button button in Adventure.ButtonsAktionen)
+                {
+                    button.IsEnabled = true;
+                }
             }
             else
             {
-                AnDerReihe = Zug.spieler;
-                Adventure.Button1.IsEnabled = false;
-                Adventure.Button2.IsEnabled = false;
-                Adventure.Button3.IsEnabled = false;
+                LetzteAktionVon = Zug.Spieler;
+                foreach (Button button in Adventure.ButtonsAktionen)
+                {
+                    button.IsEnabled = false;
+                }
+
                 AktionAusführen(AktionsTyp.GegnerAngriff);
-                Adventure.WriteText("Was wirst du tun?\r\n");
+                Ausgabe.Add("Was wirst du tun?");
+                SchreibeAusgabe();
             }
+        }
+
+        private void SchreibeAusgabe()
+        {
+            Adventure.WriteText(Ausgabe.ToArray());
+            Ausgabe.Clear();
         }
 
         public void AktionAusführen(AktionsTyp typ)
@@ -84,9 +98,16 @@ namespace SchuBS_Textadventure.Helpers
                     break;
             }
 
-            AusgabeHelper.AusgabeReaktion(Adventure, reaktion, typ, Gegner);
+            Ausgabe.AddRange(AusgabeHelper.AusgabeReaktion(reaktion, typ, Gegner));
             if (reaktion.Von.Lebenspunkte > 0)
+            {
                 Aktion();
+            }
+            else
+            {
+                SchreibeAusgabe();
+                IstZuende = true;
+            }
         }
 
         private Reaktion SchadenErhalten()
@@ -146,21 +167,21 @@ namespace SchuBS_Textadventure.Helpers
             return null;
         }
 
-        private void Button1_ClickAngriff(object sender, RoutedEventArgs e)
+        public void Button1Angriff()
         {
-            Adventure.WriteText("Du greifst an...\r\n");
+            Ausgabe.Add("Du greifst an...");
             AktionAusführen(AktionsTyp.SpielerAngriff);
         }
 
-        private void Button2_ClickMagie(object sender, RoutedEventArgs e)
+        public void Button2Magie()
         {
-            Adventure.WriteText("Du wirkst Magie...\r\n");
+            Ausgabe.Add("Du wirkst Magie...");
             AktionAusführen(AktionsTyp.SpielerMagie);
         }
 
-        private void Button3_ClickItem(object sender, RoutedEventArgs e)
+        public void Button3Item()
         {
-            Adventure.WriteText("Du nutzt einen Gegenstand...\r\n");
+            Ausgabe.Add("Du nutzt einen Gegenstand...");
             AktionAusführen(AktionsTyp.SpielerItem);
         }
     }

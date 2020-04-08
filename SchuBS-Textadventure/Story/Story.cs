@@ -13,6 +13,8 @@ namespace SchuBS_Textadventure
 
         private Previous previous;
 
+        private Kampf Kampf { get; set; } = null;
+
         #endregion
 
         #region Eingaben
@@ -38,6 +40,7 @@ namespace SchuBS_Textadventure
                     break;
 
                 default:
+                    KaempfeWennMoeglich(buttonIndex: 0);
                     break;
             }
         }
@@ -56,6 +59,7 @@ namespace SchuBS_Textadventure
                     break;
 
                 default:
+                    KaempfeWennMoeglich(buttonIndex: 1);
                     break;
             }
         }
@@ -65,7 +69,32 @@ namespace SchuBS_Textadventure
             switch (previous)
             {
                 default:
+                    KaempfeWennMoeglich(buttonIndex: 2);
                     break;
+            }
+        }
+
+        private void KaempfeWennMoeglich(int buttonIndex)
+        {
+            if (Kampf != null)
+            {
+                switch (buttonIndex)
+                {
+                    case 1:
+                        Kampf.Button1Angriff();
+                        break;
+                    case 2:
+                        Kampf.Button2Magie();
+                        break;
+                    case 3:
+                        Kampf.Button3Item();
+                        break;
+                }
+
+                if (Kampf.IstZuende)
+                {
+                    Kampf = null;
+                }
             }
         }
 
@@ -190,18 +219,29 @@ namespace SchuBS_Textadventure
                 Staerke = 15,
                 Verteidigung = 5,
                 Name = "Feuerdrache",
-                reaktionen = new List<Reaktion>()
+                Reaktionen = new List<Reaktion>()
                 {
-                    new Reaktion() {LP = 95, text = "Ha! Tat nicht mal weh!"},
-                    new Reaktion() {LP = 50, text = "Langsam reicht es mir mit dir"},
-                    new Reaktion() {LP = 15, text = "Aua!"}
+                    new Reaktion()
+                    {
+                        LP = 95,
+                        Text = "Ha! Tat nicht mal weh!"
+                    },
+                    new Reaktion() 
+                    {
+                        LP = 50,
+                        Text = "Langsam reicht es mir mit dir"
+                    },
+                    new Reaktion()
+                    {
+                        LP = 15,
+                        Text = "Aua!"
+                    }
                 }
             };
 
-            Kampf kampf = new Kampf(spieler, gegner, null, adventure);
-            WriteText($"{gegner.Name} fordert dich zum Kampf! ");
-            WriteText("Was wirst du tun?!\r\n");
-            kampf.Aktion();
+            Kampf = new Kampf(spieler, gegner, null, adventure);
+            WriteText($"{gegner.Name} fordert dich zum Kampf! ", "Was wirst du tun?!");
+            Kampf.Aktion();
         }
 
         #endregion
