@@ -31,16 +31,25 @@ namespace SchuBS_Textadventure
                     Start();
                     break;
 
+                case Previous.BerufungErfragt:
+                    BerufErfragen();
+                    break;
+
                 case Previous.ZielErfragt:
                     MachtStart();
                     break;
 
-                case Previous.BerufungErfragt:
-                    BerufErfragen();
+                case Previous.TiefseegrotteErfragt:
+                    TiefseegrotteSchwimmen();
+                    break;
+
+                case Previous.TiefseegrotteGeschwommen:
+                    TiefseegrotteLinksSchwimmen();
                     break;
                 case Previous.MachtGestartet:
                      KaffeBohnenplantage();
                      break;
+
 
                 default:
                     KaempfeWennMoeglich(buttonIndex: 0);
@@ -60,6 +69,15 @@ namespace SchuBS_Textadventure
                     AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Keine);
                     ZielErfragen();
                     break;
+
+                case Previous.MachtGestartet:
+                    TiefseegrotteFragen();
+                    break;
+
+                case Previous.TiefseegrotteGeschwommen:
+                    TiefseegrotteBegegnungUngeheuer();
+                    break;
+
 
                 default:
                     KaempfeWennMoeglich(buttonIndex: 1);
