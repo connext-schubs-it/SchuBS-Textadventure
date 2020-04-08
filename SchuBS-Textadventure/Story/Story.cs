@@ -97,6 +97,14 @@ namespace SchuBS_Textadventure
                     TiefseegrotteSchwimmen();
                     break;
 
+                case Previous.Windstoß:
+                    BrueckenZoll();
+                    break;
+
+                case Previous.Weggabelung:
+                    Aufzug();
+                    break;
+
             default:
                     KaempfeWennMoeglich(buttonIndex: 0);
                     break;
@@ -152,6 +160,9 @@ namespace SchuBS_Textadventure
                     WegZurTiefseegrotte();
                     break;
 
+                case Previous.Weggabelung:
+                    Fußweg();
+                    break;
 
                 default:
                     KaempfeWennMoeglich(buttonIndex: 1);
@@ -242,6 +253,46 @@ namespace SchuBS_Textadventure
                                 break;
                             default:
                                 WriteText("Diesen Beruf kenne ich nicht. Kannst du ihn nochmal wiederholen?", "");
+                                break;
+                        }
+                        break;
+
+                    case Previous.RaetselMauer:
+                        switch (TextBoxEingabe.Text.ToLower())
+                        {
+                            case "kürbis":
+                            case "vierunddreißig":
+                            case "fünf":
+                            case "eins":
+                                Raetsel2();
+                                break;
+
+                            case "acht":
+                                Weggabelung();
+                                break;
+
+                            default:
+                                WriteText("Das ist auf jeden Fall keine Antwortmöglichkeit!", "");
+                                break;
+                        }
+                        break;
+
+                    case Previous.Raetsel2:
+                        switch (TextBoxEingabe.Text.ToLower())
+                        {
+                            case "thoron":
+                            case "Eierkarton":
+                            case "donald j trumpkin":
+                            case "blau":
+                                Windstoß();
+                                break;
+
+                            case "acht":
+                                Weggabelung();
+                                break;
+
+                            default:
+                                WriteText("Das ist auf jeden Fall keine Antwortmöglichkeit!", "");
                                 break;
                         }
                         break;

@@ -33,10 +33,15 @@ namespace SchuBS_IT_2020
         TiefseegrotteUngeheuerBesiegt,
         TiefseegrotteBegegnungUngeheuer,
         TiefseegrotteVorbeimogeln,
-        TiefseegrotteKonversation,
         TiefseegrotteRichtigeAntwort,
-        TiefseegrotteFalscheAntwort
+        TiefseegrotteFalscheAntwort,
+        GnafeFlehen
         TiefseegrotteKonversation,
-      GnafeFlehen
-   }
+        RaetselMauer,
+        Raetsel2,
+        Windstoß,
+        Weggabelung,
+        Aufzug,
+        Fußweg
+    }
 }

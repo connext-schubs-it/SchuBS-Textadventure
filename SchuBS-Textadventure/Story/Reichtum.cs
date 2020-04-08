@@ -107,7 +107,62 @@ namespace SchuBS_Textadventure
                 "Eins? Fünf? Vierunddreißig? Acht? Kürbis?'",
                 "(Gib deine Antwort unten ein");
             EingabefeldNutzen();
+            previous = Previous.RaetselMauer;
+        }
 
+        private void Raetsel2()
+        {
+            WriteText("Selbstsicher sprichst du das Passwort und läufst auf die Wand zu. Klatsch! Krach! Du liegst am Boden. Als du dir den Kopf reibst, erscheint ein neuer Text auf der Wand",
+                "'Idiot! Normalerweise wäre es aus mit dir, aber du bist unterhaltsam. Ich gebe dir noch eine Gelegenheit.",
+                "Wanderer hab Acht: Ginget Ihr in eine Hütte, derer Bewohner drei und verließen zwei Bewohner das Bauwerk, während durch die Hinterpforte fünf Menschen einträten, wie viel habt Ihr?",
+                "Blau? Donald J Trumpkin? Eierkarton? Acht? Thoron?'",
+                "(Gib deine Antwort unten ein)");
+            EingabefeldNutzen();
+            previous = Previous.Raetsel2;
+        }
+
+        private void Windstoß()
+        {
+            WriteText("Ein orkanartiger Windstoß erfasst dich. Du wirbelst durch die Luft und siehst schon dein ganzes Leben an deinem inneren Augen vorbeifliegen. Mit einem harten Aufprall landest du auf dem Boden.",
+                "[-Gesundheit]");
+            SetButtonsText("weiter");
+            AktuellerHeld.Lebenspunkte = AktuellerHeld.Lebenspunkte - 5;
+            previous = Previous.Windstoß;
+        }
+
+        private void Weggabelung()
+        {
+            WriteText("Mit lautem scharren pellt sich wie von Geisterhand ein Torbogen aus der Wand. Du trittst hindurch.",
+                "Du gehst weiter und lässt die Wand hinter dir. Nun bemerkst du zum ersten Mal, wie viele Tiere hier leben. Kaninchen hoppeln umher, Vögel zwitschern, Wildschweine suhlen sich im Dreck, Sumpfpichler picheln vor sich hin. Idyllisch!",
+                "Der Weg wird steiler und mühsamer, Allgäuer Latschenkiefern säumen den Wegesrand. Im Hintergrund hörst du einen Bergmann jodeln. Du hast den Fuß des Berges erreicht.",
+                "An einer Weggabelung stehen zwei Schilder.", 
+                "Das Schild 'Sicherer Tod' zeigt nach links. Das andere 'Zuckerwatte' zeigt nach rechts.",
+                "Welchen Weg schlägst du ein?");
+            SetButtonsText("Sicherer Tod", "Zuckerwatte");
+            previous = Previous.Weggabelung;
+        }
+
+        private void Aufzug()
+        {
+            WriteText("Der Weg führt um die Ecke. Da steht ein Aufzug herum. Mitten in der Natur! Du gehst hinein. Im Aufzug steht bereits ein Troll, den du mit einem leisen 'Guten Tag' und so wenig Augenkontakt wie möglich begrüßt.",
+                "Du drückst auf den Knopf 'Zum Schatz' und quetscht dich neben den riesigen Troll.",
+                "Der Aufzug setzt sich in Bewegung und im Hintergrund spielt leise 'Old Town Road'. Peinliches Schweigen.",
+                "Auf der Etage 'Kinderfresser' verlässt der Troll mit einem grunzenden Abschied und einem kurzen Lupfen seines Hutes den Aufzug. Du atmest durch.",
+                "Mit einem 'Pling' öffnet sich die Tür auf der Etage 'Schatz' und vor dir leuchtet der größte Schatz, den man sich nur vorstellen kann. Freudig stürzt du dich auf das Gold!");
+            SetButtonsText("weiter");
+            previous = Previous.Aufzug;
+        }
+
+        private void Fußweg()
+        {
+            WriteText("Das Schild war eine glatte Lüge! Du schleppst dich die gänzlich zuckerwattefreie Treppe hoch und bist damit etliche zugange.",
+                "Zu Beginn zählst du noch die Stufen, um hinterher mit der schieren Anzahl angeben zu können, aber bei 84.287 fallen dir die Augen zu und du fällst einige Meter zurück. Dabei vergisst du deine Zählung. So ein Mist ab auch!",
+                "Völlig abgekämpft erreichst du nach gefühlten Ewigkeiten den Gipfel. Links von dir steht ein Aufzug. Hättest du doch den anderen Weg genommen!",
+                "Aber dann bricht ein Funkeln durch die schweren Lider. Mit müden Augen erspähst du den Schatz. Eine Wunderpracht! Du träumst bereits davon, wie Dagobert Duck in Talern zu schwimmen!",
+                "Mit Freudentränen, die dein Gesicht herunterströmen, gehst du langsam auf den Geoldberg zu.");
+            SetButtonsText("weiter");
+            AktuellerHeld.Lebenspunkte = AktuellerHeld.Lebenspunkte - 5;
+            previous = Previous.Fußweg;
         }
     }
 }
