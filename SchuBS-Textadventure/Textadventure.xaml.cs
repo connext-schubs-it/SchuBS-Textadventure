@@ -137,38 +137,6 @@ namespace SchuBS_Textadventure
         /// <returns></returns>
         public BitmapImage GetBild(string name) => new BitmapImage(new Uri("pack://application:,,,/Resources/" + name));
 
-        private void TextBoxEingabe_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (TextBoxEingabe.Text == "0815")
-            {
-                StarteKampf(this, new Gegner()
-                {
-                    Lebenspunkte = 70,
-                    Staerke = 15,
-                    Verteidigung = 5,
-                    Name = "Feuerdrache",
-                    Reaktionen = new List<Reaktion>()
-                    {
-                        new Reaktion()
-                        {
-                            LP = 95,
-                            Text = "Ha! Tat nicht mal weh!"
-                        },
-                        new Reaktion()
-                        {
-                            LP = 50,
-                            Text = "Langsam reicht es mir mit dir"
-                        },
-                        new Reaktion()
-                        {
-                            LP = 15,
-                            Text = "Aua!"
-                        }
-                    }
-                });
-            }
-        }
-
         private void EingabefeldNutzen()
         {
             foreach (var button in ButtonsAktionen)
@@ -179,10 +147,5 @@ namespace SchuBS_Textadventure
         }
 
         #endregion
-
-        private void ListBoxInventar_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
-        {
-
-        }
     }
 }

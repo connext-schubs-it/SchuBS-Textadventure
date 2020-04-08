@@ -71,13 +71,11 @@ namespace SchuBS_Textadventure
             /*Kämpfen*/
             Gegner ungeheuer = new Gegner
             {
-                Lebenspunkte = 100,
+                Lebenspunkte = 70,
                 Name = "Ungeheuer",
-                Staerke = 1,
-                Verteidigung = 0
+                Staerke = 7,
+                Verteidigung = 2
             };
-            //Ungeheuer.Reaktionen = 0;
-            //Ungeheuer.Spezial = 0;
 
             StarteKampf(this, ungeheuer);
 

@@ -143,13 +143,14 @@ namespace SchuBS_Textadventure.Helpers
                     return BerechneSchadenMagie();
                 case AktionsTyp.GegnerAngriff:
                     return BerechneSchadenGegnerAngriff();
+                default:
+                    return 15;
             }
-            return 15;
         }
 
         private int BerechneSchadenGegnerAngriff()
         {
-            return Gegner.Staerke - Spieler.Klasse.Verteidigung;
+            return Math.Max(1, Gegner.Staerke - Spieler.Klasse.Verteidigung);
         }
 
         private int BerechneSchadenNormal()
