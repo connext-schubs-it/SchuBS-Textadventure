@@ -190,11 +190,11 @@ namespace SchuBS_Textadventure
                                 AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Krieger);
                                 ZielErfragen();
                                 break;
-                            case "waldläufer":
+                            case "waldläuferin":
                                 AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Waldlaeufer);
                                 ZielErfragen();
                                 break;
-                            case "magier":
+                            case "magierin":
                                 AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Magier);
                                 ZielErfragen();
                                 break;
@@ -219,8 +219,7 @@ namespace SchuBS_Textadventure
         public void Start()
         {
             SetzeHintergrundBild("landschaft_1.jpg");
-            AktuellerHeld.Inventar.Add(new Item("Test", GetBild("ei.png")));
-            WriteText("Sei gegrüßt, Held!",
+            WriteText("Seid gegrüßt, Held!",
                 "Willkommen in der Welt von ##Weltname##!",
                 "In dieser Welt durchläufst du ein einzigartiges Abenteuer voller Mythen und Geheimnisse, Menschen und Monster, Zauber und Flüche. Und ganz viele Kürbisse. ",
                 "Die Länder von Cucurbita beherbergen viele Schätze, doch gib Acht! Auf deinen Wegen erwarten dich viele Gefahren und Herausforderungen. Entscheide weise, denn jede Entscheidung könnte deine letzte sein...  ",
@@ -245,7 +244,8 @@ namespace SchuBS_Textadventure
 
         private void EndeAugenGeschlossen()
         {
-            WriteText("So schnell wie dein Abenteuer anfing, so schnell ist es auch zu Ende. Du hast dich entschieden, deinem Schicksal zu entkommen. Dein ungestillter Durst nach Abenteuern führt zum unweigerlichen Ende.");
+            SetzeHintergrundBild("feldweg_deathscreen.png");
+            WriteText("Euer ungestillter Durst nach Abenteuern führt zum unweigerlichen Ende.");
             SetButtonsText("Neustarten");
             previous = Previous.EndeAugenGeschlossen;
         }
