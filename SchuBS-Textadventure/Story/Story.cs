@@ -113,8 +113,9 @@ namespace SchuBS_Textadventure
                     break;
 
                 case Previous.KaffeBohnenplantage:
-                    ZielErfragen();
-                    break;
+                     AktuellerHeld.Inventar.Clear();
+                     ZielErfragen();
+                     break;
 
                 case Previous.TiefseegrotteUngeheuerBegegnet:
                     TiefseegrotteVorbeimogeln();
