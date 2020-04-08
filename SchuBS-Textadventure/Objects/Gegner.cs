@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Newtonsoft.Json;
 using SchuBS_Textadventure.Helpers;
 using SchuBS_Textadventure.Objects;
 
