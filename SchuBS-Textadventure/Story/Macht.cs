@@ -55,7 +55,7 @@ namespace SchuBS_Textadventure
 
         public void TiefseegrotteBegegnungUngeheuer()
         {
-            SetzeHintergrundBild("tiefsee_ungeheuer.png");
+            SetzePersonenBild("tiefsee_ungeheuer.png");
 
             WriteText("Du schwimmst ein ganzes Stück immer geradeaus.",
                       "Es wird immer heller und als du denkst, du hat die Grotte schon fast verlassen, steht dir plötzlich ein Ungeheuer im Weg.",
@@ -78,7 +78,6 @@ namespace SchuBS_Textadventure
             };
 
             WriteText($"Ungeheuer fordert dich zum Kampf!", "Was wirst du tun?!");
-            SetzeHintergrundBild("tiefsee_ungeheuer.png");
             StarteKampf(this, ungeheuer);
 
             previous = Previous.TiefseegrotteUngeheuerKaempfen;
@@ -86,6 +85,7 @@ namespace SchuBS_Textadventure
 
         public void TiefseegrotteUngeheuerBesiegt()
         {
+            SetzePersonenBild();
             WriteText("Du hast das Ungeheuer besiegt und kannst ungehindert deinen Weg fortsetzen.",
                       "Der Weg bis zur Wasseroberfläche ist tatsächlich nicht mehr weit und dir gelingt es an Land zu klettern.");
             previous = Previous.TiefseegrotteUngeheuerBesiegt;
@@ -93,8 +93,6 @@ namespace SchuBS_Textadventure
 
         public void TiefseegrotteVorbeimogeln()
         {
-            SetzeHintergrundBild("tiefsee_ungeheuer.png");
-
             WriteText("Du versteckst dich hinter einem Felsvorsprung und imitierst das Gackern eines Huhnes.",
                       "“Versuch locker zu bleiben”,sagst du dir immer wieder.",
                       "Das Ungeheuer kriecht hungrig auf dich zu und hinterlässt eine Spur aus Sabber auf seinem Weg.",

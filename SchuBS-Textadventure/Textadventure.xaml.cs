@@ -124,9 +124,9 @@ namespace SchuBS_Textadventure
             new VerlaufFenster(VerlaufText.ToString()).ShowDialog();
         }
 
-        public void SetzeHintergrundBild(string bildName) => ImageHintergrund.Source = GetBild(bildName);
+        public void SetzeHintergrundBild(string bildName = null) => ImageHintergrund.Source = GetBild(bildName);
 
-        public void SetzePersonenBild(string bildName) => ImagePerson.Source = GetBild(bildName);
+        public void SetzePersonenBild(string bildName = null) => ImagePerson.Source = GetBild(bildName);
 
         /// <summary>
         /// Holt ein Bild aus dem Resources-Ordner.<br/>
@@ -135,7 +135,7 @@ namespace SchuBS_Textadventure
         /// </summary>
         /// <param name="name">Der Name des Bildes mit Dateiendung.</param>
         /// <returns></returns>
-        public BitmapImage GetBild(string name) => new BitmapImage(new Uri("pack://application:,,,/Resources/" + name));
+        public BitmapImage GetBild(string name = null) => name is null ? null : new BitmapImage(new Uri("pack://application:,,,/Resources/" + name));
 
         private void EingabefeldNutzen()
         {
