@@ -63,7 +63,7 @@ namespace SchuBS_Textadventure
                       "Möchtest du gegen das Ungeheuer kämpfen oder versuchen dich an dem Ungeheuer vorbei zu mogeln?");
 
             SetButtonsText("Kämpfen!","Vorbeimogeln");
-            previous = Previous.TiefseegrotteUngeheuerBegegnet;
+            previous = Previous.TiefseegrotteBegegnungUngeheuer;
         }
 
         public void TiefseegrotteUngeheuerKaempfen()
@@ -86,6 +86,8 @@ namespace SchuBS_Textadventure
 
         public void TiefseegrotteUngeheuerBesiegt()
         {
+            WriteText("Du hast das Ungeheuer besiegt und kannst ungehindert deinen Weg fortsetzen.",
+                      "Der Weg bis zur Wasseroberfläche ist tatsächlich nicht mehr weit und dir gelingt es an Land zu klettern.");
             previous = Previous.TiefseegrotteUngeheuerBesiegt;
         }
 
@@ -95,7 +97,49 @@ namespace SchuBS_Textadventure
 
             WriteText("Du versteckst dich hinter einem Felsvorsprung und imitierst das Gackern eines Huhnes.",
                       "“Versuch locker zu bleiben”,sagst du dir immer wieder.",
-                      "");
+                      "Das Ungeheuer kriecht hungrig auf dich zu und hinterlässt eine Spur aus Sabber auf seinem Weg.",
+                      "Du gerätst in Panik, du hast seine Größe unterschätzt. Vielleicht war das nicht die klügste Entscheidung. Aber was wirst du tun?");
+
+            SetButtonsText("Panisch versuchen, um das Monster herum zu rennen!", "Versuchen, eine erwachsene Konversation zu führen");
+
+            previous = Previous.TiefseegrotteVorbeimogeln;
+        }
+
+        public void TiefseegrotteVorbeimogeldTod()
+        {
+            SetzeHintergrundBild("you_died_lol.png");
+            AktuellerHeld.Inventar.Add(new Item("Test", GetBild("ei.png")));
+            AktuellerHeld.Inventar.Add(new Item("Test2", null));
+
+            WriteText("Kreischend und mit wild schlackernden Armen rennst du auf das Ungeheuer zu. Das Ungetüm ist eingeschüchtert und wirkt ängstlich.",
+                      "Wieso schreist du so laut?! Es zieht seinen Kopf ein und winselt um Gnade, was du aber aufgrund der Panik nicht wahrnimmst.",
+                      "Du läufst in Schlangenlinien um das Ungeheuer, doch rutscht anmutig auf der Sabberspur aus.",
+                      "Du stößt dir den Kopf und alles wird schwarz.");
+
+            //HIER WIRD GESTORBEN, MOOOOOOIS-> Muss auch in Story.cs angegeben werden
+        }
+
+        public void TiefseegrotteKonversation()
+        {
+            //Button2
+            SetzeHintergrundBild("tiefsee_ungeheuer.png");
+            AktuellerHeld.Inventar.Add(new Item("Test", GetBild("ei.png")));
+            AktuellerHeld.Inventar.Add(new Item("Test2", null));
+
+            WriteText("Du atmest tief durch und trittst vor das Ungeheuer. Deine Knie sind weich, doch du stehst erhobenen Hauptes und fragst das Monster nach dem Grund seines Zorns.",
+                      "Bittere, riesige Tränen kullern an den scharfen Fangzähnen des Ungeheuers vorbei. Es gibt unverständliche Grunzlaute von sich und versucht, dir etwas mitzuteilen.",
+                      "Aber was kann das nur sein? Du beschließt, konsequent darauf zu antworten und sagst:…",
+                      "(Gib deine Antwort in das Textfeld ein. Mögliche Antworten:",
+                      "(1) Hör auf zu flennen.",
+                      "(2) Mir hat auch mal jemand das Herz gebrochen.",
+                      "(3) Ein paar Kilogramm weniger könntest du schon vertragen",
+                      "(4) Hör mal, ich habe wirklich keine Zeit dafür.",
+                      //IF-ABFRAGE,,WENN MAGIER, DANN....// 
+                      "(5) I SHALL PASS!)");
+
+            
+
+            previous = Previous.TiefseegrotteKonversation;
         }
 
 

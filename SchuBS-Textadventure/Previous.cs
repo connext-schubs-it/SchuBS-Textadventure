@@ -21,10 +21,12 @@ namespace SchuBS_IT_2020
         MachtGestartet,
         TiefseegrotteErfragt,
         TiefseegrotteGeschwommen,
-        TiefseegrotteUngeheuerBegegnet,
+        TiefseegrotteBegegnungUngeheuer,
         TiefseegrotteUngeheuerKaempfen,
         TiefseegrotteUngeheuerBesiegt,
         MachtWichtig,
-        KaffeBohnenplantage
+        KaffeBohnenplantage,
+        TiefseegrotteVorbeimogeln,
+        TiefseegrotteKonversation,
     }
 }

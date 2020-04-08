@@ -61,7 +61,7 @@ namespace SchuBS_Textadventure
                     Taube(true);
                     break;
 
-                case Previous.TiefseegrotteUngeheuerBegegnet:
+                case Previous.TiefseegrotteBegegnungUngeheuer:
                     TiefseegrotteUngeheuerKaempfen();
                     break;
 
@@ -117,8 +117,12 @@ namespace SchuBS_Textadventure
                      ZielErfragen();
                      break;
 
-                case Previous.TiefseegrotteUngeheuerBegegnet:
+                case Previous.TiefseegrotteBegegnungUngeheuer:
                     TiefseegrotteVorbeimogeln();
+                    break;
+
+                case Previous.TiefseegrotteVorbeimogeln:
+                    TiefseegrotteKonversation();
                     break;
 
 
