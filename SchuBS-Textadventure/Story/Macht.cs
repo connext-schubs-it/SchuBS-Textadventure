@@ -156,7 +156,7 @@ namespace SchuBS_Textadventure
 
       public void istMachtWichtig()
       {
-         SetzeHintergrundBild("landschaft_1.jpg");
+         SetzeHintergrundBild("kaffeebohnenplantage.jpg");
          WriteText("Der Weg führt dich vorbei an einem Kürbisacker zu einem kleinen Dorf … ",
              "Dir bietet sich ein grandioser Ausblick. Das Dorf Kürberlin liegt vor dir.",
              "Abenteuerlust steigt in dir auf als du das Dorf betrittst, doch du spürst, dass etwas anders ist. ",
@@ -167,7 +167,27 @@ namespace SchuBS_Textadventure
          SetButtonsText("Um Gnade flehen ", "Mit Eiern werfen ","Kämpfen!");
          previous = Previous.MachtWichtig;
       }
-   }
 
-   
+      public void GnadeFlehen()
+      {
+         SetzeHintergrundBild("tiefsee_ungeheuer.png");
+         KaempfenKaffe("Du bittest um Verzeihung und versuchst, die finsteren Gestalten durch Selbstmitleid von ihren Machenschaften abzubringen.",
+            "“Kannste knicken”, schnauft der Anführer der Kobold-Punks.",
+            "Der Kampf beginnt ");
+      }
+      
+
+      public void KaempfenKaffe(params string[] text)
+      {
+         SetzeHintergrundBild("tiefsee_ungeheuer.png");
+         Gegner ungeheuer = new Gegner
+         {
+            Lebenspunkte = 100,
+            Name = "Ungeheuer",
+            Staerke = 1,
+            Verteidigung = 0
+         };
+         StarteKampf1(this, ungeheuer, text);
+      }
+   }
 }

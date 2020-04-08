@@ -72,8 +72,11 @@ namespace SchuBS_Textadventure
                 case Previous.TaubeTreten:
                     BrueckenZoll();
                     break;
+                case Previous.MachtWichtig:
+                    GnadeFlehen();
+                    break;
 
-                default:
+            default:
                     KaempfeWennMoeglich(buttonIndex: 0);
                     break;
             }
@@ -136,7 +139,10 @@ namespace SchuBS_Textadventure
         {
             switch (previous)
             {
-                default:
+                  case Previous.MachtWichtig:
+                     TiefseegrotteUngeheuerKaempfen(); ;
+                     break;
+            default:
                     KaempfeWennMoeglich(buttonIndex: 2);
                     break;
             }
@@ -290,6 +296,7 @@ namespace SchuBS_Textadventure
 
         public void StarteKampf(Textadventure adventure, Gegner gegner)
         {
+            SetzeHintergrundBild("tiefsee_ungeheuer.png");
             TextBoxEingabe.Text = "";
 
             Kampf = new Kampf(AktuellerHeld, gegner, null, adventure);
@@ -297,6 +304,15 @@ namespace SchuBS_Textadventure
             Kampf.Aktion();
         }
 
-        #endregion
-    }
+      public void StarteKampf1(Textadventure adventure, Gegner gegner, params string[] text)
+      {
+         TextBoxEingabe.Text = "";
+
+         Kampf = new Kampf(AktuellerHeld, gegner, null, adventure);
+         WriteText(text);
+         Kampf.Aktion();
+      }
+
+      #endregion
+   }
 }
