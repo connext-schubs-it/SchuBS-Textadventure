@@ -63,7 +63,9 @@
     <Compile Include="MyControls\SlowTextBox.cs" />
     <Compile Include="Objects\Item.cs" />
     <Compile Include="Previous.cs" />
-    <Compile Include="Story.cs" />
+    <Compile Include="Story\Macht.cs" />
+    <Compile Include="Story\Reichtum.cs" />
+    <Compile Include="Story\Story.cs" />
     <Compile Include="Textadventure.xaml.cs">
       <DependentUpon>Textadventure.xaml</DependentUpon>
     </Compile>
