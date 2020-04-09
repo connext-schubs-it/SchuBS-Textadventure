@@ -216,6 +216,30 @@ namespace SchuBS_Textadventure
 
             previous = Previous.GeschenkeAnnehmen;
         }
+         public void WeiteSuchen()
+         {
+            SetzeHintergrundBild("kaffeebohnenplantage.jpg");
+            WriteText("Du fliehst vor dem wütenden Mob, diese sind aber ziemlich flink für ihre magere Statur. Schließlich sind in Kürbissen Vitamine und Ballaststoffe vertreten.   ",
+                "Du lässt die getragenen Kürbisse aufgrund der kritischen Situation fallen und entkommst den zornigen Bewohnern. ",
+                "Diese bleiben zurück und singen Klagelieder für die am Boden zerschellten Kürbisse. ",
+                "Trauerstimmung macht sich breit. Aber nicht für dich, denn du stehst nun unmittelbar vor dem Kürbispalast. ",
+                "Nachdem du eingelassen wurdest, wirst du auch schon direkt in den Thronsaal geleitet. Jetzt steht dir und dem Königstitel nichts mehr im Wege. ",
+                "Außer dem einzigen anderen Anwärter: Donald J. Trumpkin. ",
+                "Der erbitterte Wahlkampf beginnt. Donald J. Trumpkin weiß worauf es ankommt. Er verspricht dem Volk die Aufrüstung der Kürbisgrenzen und Sanktionen für das benachbarte Rübanien. ",
+                "Er hat gute Chancen. Aber du weißt, was die Bewohner wirklich wollen. ",
+                "Sie wollen....");
+            bool eier = AktuellerHeld.HatItem("Ei");
+            if (eier)
+            {
+               SetButtonsText("...mehr Kürbisse ", "...Eier");
+            }
+            else
+            {
+               SetButtonsText("...mehr Kürbisse ");
+            }
+
+         previous = Previous.WeiteSuchen;
+         }
 
         public void KuerberlinGnadeFlehen()
         {

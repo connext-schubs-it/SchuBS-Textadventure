@@ -146,7 +146,9 @@ namespace SchuBS_Textadventure
                 case Previous.TiefseegrotteVorbeimogeln:
                     TiefseegrotteVorbeimogeldTod();
                     break;
-
+               case Previous.GeschenkeAnnehmen:
+                  WeiteSuchen();
+                  break;
                 default:
                     if (TextBoxEingabe.IsEnabled)
                     {

@@ -52,5 +52,6 @@
         Geschenkeabweisen,
         KaempfenKaffeeKobolde,
         KaempfenKoboldanfuehrer,
+        WeiteSuchen,
     }
 }
