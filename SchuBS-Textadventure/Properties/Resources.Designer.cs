@@ -193,16 +193,6 @@ namespace SchuBS_Textadventure.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap koenig_deathscreen {
-            get {
-                object obj = ResourceManager.GetObject("koenig_deathscreen", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
-        /// </summary>
         public static System.Drawing.Bitmap krieger {
             get {
                 object obj = ResourceManager.GetObject("krieger", resourceCulture);

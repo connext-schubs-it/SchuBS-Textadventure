@@ -191,9 +191,6 @@
     <Resource Include="Resources\kuerbisfelder_koenig_deathscreen.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\koenig_deathscreen.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\food_truck_deathscreen.png" />
   </ItemGroup>
   <ItemGroup>
@@ -213,6 +210,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\kobold_handlanger_new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\koenig_deathscreen_new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fuss_des_berges.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\natur_aufzug.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\drachenhoehle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\drachenhoehle_phase2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
