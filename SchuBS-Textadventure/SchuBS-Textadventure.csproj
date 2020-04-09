@@ -205,5 +205,8 @@
   <ItemGroup>
     <Resource Include="Resources\cucurbita_icon.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\bruecke_mit_zollamt.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
