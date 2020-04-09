@@ -21,6 +21,7 @@
         MachtWichtig,
         KaffeBohnenplantage,
         BrueckenZollMuenzeVorhanden,
+        TiefseegrotteLinksSchwimmen,
         BrueckenZollMuenzeNichtVorhanden,
         WegZurTiefseegrotte,
         TiefseegrotteUngeheuerKaempfen,

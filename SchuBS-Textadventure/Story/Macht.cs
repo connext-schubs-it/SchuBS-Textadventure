@@ -47,7 +47,11 @@ namespace SchuBS_Textadventure
                       "Doch entgegen deiner Erwartungen bringt dich der Strudel an die Wasseroberfläche. Du schaffst es zum Ufer und kletterst an Land.",
                       "Du entdeckst einen Weg.",
                       "Der Weg führt dich vorbei an einem Kürbisacker zu einem kleinen Dorf…");
+
+            previous = Previous.TiefseegrotteLinksSchwimmen;
+
             /*Hier fehlt noch die Verbindung zum Dorf Kürberlin*/
+            //Button mit weiter
         }
 
         public void TiefseegrotteBegegnungUngeheuer()
