@@ -208,5 +208,11 @@
   <ItemGroup>
     <Resource Include="Resources\bruecke_mit_zollamt.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kobold_anfuehrer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kobold_handlanger.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
