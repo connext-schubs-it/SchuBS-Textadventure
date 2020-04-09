@@ -226,7 +226,7 @@ namespace SchuBS_Textadventure
 
                 case Previous.KaffeBohnenplantage:
                     AktuellerHeld.EntferneItem("Münze");
-                    ZielErfragen();
+                    EisKaufen();
                     break;
 
                 case Previous.TiefseegrotteBegegnungUngeheuer:
