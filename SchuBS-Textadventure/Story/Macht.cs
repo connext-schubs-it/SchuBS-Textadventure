@@ -48,10 +48,8 @@ namespace SchuBS_Textadventure
                       "Du entdeckst einen Weg.",
                       "Der Weg führt dich vorbei an einem Kürbisacker zu einem kleinen Dorf…");
 
+            SetButtonsText("Weiter");
             previous = Previous.TiefseegrotteLinksSchwimmen;
-
-            /*Hier fehlt noch die Verbindung zum Dorf Kürberlin*/
-            //Button mit weiter
         }
 
         public void TiefseegrotteBegegnungUngeheuer()

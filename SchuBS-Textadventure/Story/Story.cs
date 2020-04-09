@@ -128,13 +128,20 @@ namespace SchuBS_Textadventure
                 case Previous.TauschMesserblock:
                     EndeThemenpark();
                     break;
+
                case Previous.MitEierWerfen:
                   GeschenkeAbweisen();
                   break;
+
                case Previous.Geschenkeabweisen:
                   MitEiernWerfen();
                   break;
-            default:
+
+                case Previous.TiefseegrotteLinksSchwimmen:
+                    istMachtWichtig();
+                    break;
+
+                default:
                     if (TextBoxEingabe.IsEnabled)
                     {
                         VerarbeiteTextEingabe();
