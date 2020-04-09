@@ -104,6 +104,18 @@ namespace SchuBS_Textadventure
                     Aufzug();
                     break;
 
+                case Previous.TiefseegrotteRichtigeAntwort:
+                    istMachtWichtig();
+                    break;
+
+                     case Previous.MachtWichtig:
+                     KuerberlinGnadeFlehen();
+                    break;
+
+                case  Previous.KuerberlinGnadeFlehen:
+                    KuerberlinKoboldKampf();
+                    break;
+
                 default:
                     if (TextBoxEingabe.IsEnabled)
                     {
@@ -187,9 +199,15 @@ namespace SchuBS_Textadventure
                     MitEiernWerfen();
                     break;
 
+                case Previous.MachtWichtig:
+                    KuerberlinEier();
+                    break;
+
                 default:
                     KaempfeWennMoeglich(buttonIndex: 2);
                     break;
+
+
             }
         }
 

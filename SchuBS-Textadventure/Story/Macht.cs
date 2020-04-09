@@ -150,6 +150,8 @@ namespace SchuBS_Textadventure
             WriteText("Das Ungeheuer streckt seine Zunge raus und überreicht dir eine Packung Eier(ITEM).",
                       "Es tritt zur Seite und salutiert, während du stolz, aber auch ziemlich verwundert zum Ausgang der Grotte schreitest.");
 
+            SetButtonsText("Weiter");
+
             previous = Previous.TiefseegrotteRichtigeAntwort;
         }
 
@@ -160,13 +162,15 @@ namespace SchuBS_Textadventure
                 "Du siehst einen Baum, in dessen Schatten du erstmal eine kleine Pause einlegst.",
                 "Abenteuer sind schließlich anstrengend.",
                 "Im Halbschlaf kommst du ins Grübeln: Ist dir Macht wirklich so wichtig? ");
+
             SetButtonsText("Ja klar. Und ich liebe Kürbisse! ", "Was will ich denn mit Macht, wenn ich auch reich sein könnte?");
+
             previous = Previous.KaffeBohnenplantage;
         }
 
         public void istMachtWichtig()
         {
-            SetzeHintergrundBild("kaffeebohnenplantage.jpg");
+            SetzeHintergrundBild("kobold_punks.png");
             WriteText("Der Weg führt dich vorbei an einem Kürbisacker zu einem kleinen Dorf … ",
                 "Dir bietet sich ein grandioser Ausblick. Das Dorf Kürberlin liegt vor dir.",
                 "Abenteuerlust steigt in dir auf als du das Dorf betrittst, doch du spürst, dass etwas anders ist. ",
@@ -183,8 +187,65 @@ namespace SchuBS_Textadventure
             {
                SetButtonsText("Um Gnade flehen ",  "Kämpfen!");
             }
+
             previous = Previous.MachtWichtig;
         }
+
+        public void KuerberlinGnadeFlehen()
+            {
+                SetzeHintergrundBild("kobold_punks.png");
+                
+                WriteText("Du bittest um Verzeihung und versuchst, die finsteren Gestalten durch Selbstmitleid von ihren Machenschaften abzubringen.",
+                          "“Kannste knicken”, schnauft der Anführer der Kobold-Punks. Der Kampf beginnt.");
+            
+                //Hier wird drei mal hintereinander gekämpft
+
+                SetButtonsText("Weiter");
+
+                previous = Previous.KuerberlinGnadeFlehen;
+            }
+
+        public void KuerberlinKampfGewonnen()
+            {
+                SetzeHintergrundBild("kobold_punks.png");
+
+                WriteText("Du bist der Sieger, ein Gewinner. Die Kobold-Punks ziehen mit geknickten Mienen von dannen.",
+                          "Sie konnten dir nichts entgegensetzen und denken nun über eine Umschulung nach.");
+                
+                SetButtonsText("Weiter");
+
+                previous = Previous.KuerberlinKampfGewonnen;
+            }
+
+        public void KuerberlinKampfVerloren()
+            {
+                SetzeHintergrundBild("blaues_auge_deathscreen.png");
+
+                WriteText("Du wurdest aufgemischt. Lass den Kopf nicht hängen. Selbstverständlich kannst du es nochmal versuchen. Am Anfang des Spiels.");
+            
+                SetButtonsText("Weiter");
+
+                previous = Previous.KuerberlinKampfVerloren();
+            }
+
+        public void KuerberlinEier()
+            {
+                SetzeHintergrundBild("kobold_punks.png");
+
+                WriteText("Du zückst die Packung Eier und wirfst drauf los. Noch bevor die Kobold-Punks reagieren können, fliegen ihnen auch schon Eier um die übergroßen Ohren.",
+                          "Eier sind ihre größte Schwachstelle. Niemand wusste das, du aber schon. Gut gemacht.");
+                
+                SetButtonsText("Weiter");
+
+                 previous = Previous.KuerberlinEier();
+
+            }
+
+        public void KuerberlinKoboldKampf()
+            {
+                //Hier wird gekämpft
+
+            }
 
         public void MitEiernWerfen()
         {

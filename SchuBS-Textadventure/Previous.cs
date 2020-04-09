@@ -38,6 +38,12 @@
         Weggabelung,
         Aufzug,
         Fußweg,
+        KuerberlinKampfVerloren,
+        KuerberlinKampfGewonnen,
+        KuerberlinGnadeFlehen,
+        KuerberlinEier,
+    }
+        Fußweg,
       MitEierWerfen
    }
 }
