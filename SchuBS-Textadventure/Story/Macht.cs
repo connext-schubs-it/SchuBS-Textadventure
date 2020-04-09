@@ -297,6 +297,28 @@ namespace SchuBS_Textadventure
 
          previous = Previous.WeiteSuchen;
          }
+        //----------------------------------------------------------------Kuerberlin
+
+        public void KueberlinAnkunft()
+        {
+            SetzeHintergrundBild("kuerberlin_mit_kuerbispalast.png");
+            SetzePersonenBild("kobold_punks_new.png");
+            WriteText("Der Weg führt dich vorbei an einem Kürbisacker zu einem kleinen Dorf … ",
+                "Dir bietet sich ein grandioser Ausblick. Das Dorf Kürberlin liegt vor dir.",
+                "Abenteuerlust steigt in dir auf als du das Dorf betrittst, doch du spürst, dass etwas anders ist. ",
+                "Unheil liegt in der Luft.",
+                "Kein einziger Dorfbewohner ist zu sehen und zu allem Übel kommen drei sehr furchteinflößende Kobold-Punks auf dich zu. ",
+                "“Wir sind die Kobold-Punks, wir sind hier um die Menschen aufzumischen, und du bist der nächste!” ",
+                "Was wirst du tun? ");
+            bool eier = AktuellerHeld.HatItem("Ei");
+            if (eier)
+            {
+                SetButtonsText("Um Gnade flehen ", "Kämpfen!", "Mit Eiern werfen ");
+            }
+            else
+            {
+                SetButtonsText("Um Gnade flehen ", "Kämpfen!");
+            }
 
         public void KuerberlinGnadeFlehen()
         {
@@ -400,7 +422,7 @@ namespace SchuBS_Textadventure
 
         public void KuerbistanGeschenkeAnnehmen()
         {
-            SetzeHintergrundBild("kuerberlin_mit_kuerbispalast.png");
+            SetzeHintergrundBild("kuerbispalast.jpg");
 
             WriteText("Nachdem du die gütigen Geschenke empfängst und auf direktem Weg zum Kürbispalast bist, strecken dir auch schon die ersten ihre leeren Hände entgegen.",
                       "Das sind schließlich Händler, die vom Kürbishandel leben.",
@@ -411,6 +433,39 @@ namespace SchuBS_Textadventure
             previous = Previous.KuerbistanGeschenkeAnnehmen;
         }
 
+        public void KuerbistanWahlkampf()
+        {
+            //Button1
+            SetzeHintergrundBild("kuerbispalast.jpg");
+
+            WriteText("Du fliehst vor dem wütenden Mob, diese sind aber ziemlich flink für ihre magere Statur. Schließlich sind in Kürbissen Vitamine und Ballaststoffe vertreten.",
+                      "Du lässt die getragenen Kürbisse aufgrund der kritischen Situation fallen und entkommst den zornigen Bewohnern.",
+                      "Diese bleiben zurück und singen Klagelieder für die am Boden zerschellten Kürbisse. Trauerstimmung macht sich breit.",
+                      "Aber nicht für dich, denn du stehst nun unmittelbar vor dem Kürbispalast. Nachdem du eingelassen wurdest, wirst du auch schon direkt in den Thronsaal geleitet.",
+                      "Jetzt steht dir und dem Königstitel nichts mehr im Wege. Außer dem einzigen anderen Anwärter: Donald J. Trumpkin.",
+                      "Der erbitterte Wahlkampf beginnt. Donald J. Trumpkin weiß worauf es ankommt.",
+                      "Er verspricht dem Volk die Aufrüstung der Kürbisgrenzen und Sanktionen für das benachbarte Rübanien.",
+                      "Er hat gute Chancen. Aber du weißt, was die Bewohner wirklich wollen. Sie wollen.... ");
+
+            bool eier = AktuellerHeld.HatItem("Ei");
+            if (eier)
+            {
+                SetButtonsText("...mehr Kürbisse", "...Eier");
+            }
+            else
+            {
+                SetButtonsText("...mehr Kürbisse");
+            }
+
+            previous = Previous.KuerbistanWahlkampf;
+            //-------------------> hier weiter
+        }
+
+        public void KuerbistanVerantwortung()
+        {
+            //Button2
+            
+        }
 
         public void KuerbistanGeschenkeAblehnen()
         {

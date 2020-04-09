@@ -143,6 +143,19 @@ namespace SchuBS_Textadventure
                     KaffeBohnenplantageMitEiernWerfen();
                     break;
 
+                case Previous.TiefseegrotteUngeheuerBesiegt:
+                    KueberlinAnkunft();
+                    break;
+
+                case Previous.KuerbistanGeschenkeAblehnen:
+                    KuerbistanAnkunft();
+                    break;
+
+                case Previous.KuerbistanGeschenkeAnnehmen:
+                    KuerbistanWahlkampf();
+                    break;
+
+
                 case Previous.TiefseegrotteVorbeimogeln:
                     TiefseegrotteVorbeimogeldTod();
                     break;
@@ -258,6 +271,13 @@ namespace SchuBS_Textadventure
             // case Previous.istMachtWichtig:
             //    MitEiernWerfen();
             //  break;
+
+                case Previous.KuerbistanGeschenkeAnnehmen:
+                    KuerbistanVerantwortung();
+                    break;
+                // case Previous.istMachtWichtig:
+                //    MitEiernWerfen();
+                //  break;
 
             default:
                     KaempfeWennMoeglich(buttonIndex: 1);

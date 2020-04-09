@@ -55,6 +55,9 @@
         KaempfenKaffeeKobolde,
         KaempfenKoboldanfuehrer,
         WeiteSuchen,
+        KuerbistanVerantwortung,
+        KuerbistanWahlkampf,
+    
       KaffeBohnenPlantagemehrKuerbisse,
       KaffeBohnenPlantageWollenEier,
       IstMachtWichtig,
