@@ -179,7 +179,7 @@ namespace SchuBS_Textadventure
 
         public void KaffeBohnenplantageIstMachtWichtig()
         {
-         AktuellerHeld.FuegeItemHinzu(new Item("Ei", GetBild("ei.png"))); //VOR PUSHEN DELETE
+         
          SetzeHintergrundBild("kuerberlin_mit_kuerbispalast.png");
             SetzePersonenBild("kobold_punks_new.png");
             WriteText("Der Weg führt dich vorbei an einem Kürbisacker zu einem kleinen Dorf … ",
