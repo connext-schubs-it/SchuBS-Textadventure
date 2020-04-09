@@ -229,5 +229,8 @@
   <ItemGroup>
     <Resource Include="Resources\deathscreen_villa.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\weg_wand.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
