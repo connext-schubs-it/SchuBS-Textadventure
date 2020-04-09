@@ -191,19 +191,19 @@
     <Resource Include="Resources\feldweg_deathscreen.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\blaues_auge_deathscreen.png" />
+    <Resource Include="Resources\blaues_auge_deathscreen.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\kuerbisfelder_koenig_deathscreen.png" />
+    <Resource Include="Resources\kuerbisfelder_koenig_deathscreen.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\koenig_deathscreen.png" />
+    <Resource Include="Resources\koenig_deathscreen.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\food_truck_deathscreen.png" />
+    <Resource Include="Resources\food_truck_deathscreen.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\cucurbita_icon.ico" />
+    <Resource Include="Resources\cucurbita_icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

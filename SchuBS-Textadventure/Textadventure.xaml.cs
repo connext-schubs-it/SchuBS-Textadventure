@@ -10,6 +10,7 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using System.Collections.Generic;
 using SchuBS_Textadventure.Helpers;
+using System.Linq;
 
 namespace SchuBS_Textadventure
 {
@@ -25,13 +26,6 @@ namespace SchuBS_Textadventure
         public const string TextVariableDelimiter = "##";
 
         public const string Weltname = "Cucurbita";
-
-        public string[] DefaultButtonText = new string[]
-        {
-            "Button 1",
-            "Button 2",
-            "Button 3",
-        };
 
         public Button[] ButtonsAktionen;
         public SlowTextBox AusgabeBox;
@@ -71,20 +65,27 @@ namespace SchuBS_Textadventure
                 if (i < text.Length)
                 {
                     SetButtonText(i, text[i]);
-                    ButtonsAktionen[i].IsEnabled = true;
                 }
                 else
                 {
                     SetButtonText(i, null);
-                    ButtonsAktionen[i].IsEnabled = false;
                 }
             }
-            TextBoxEingabe.IsEnabled = false;
-        }
 
-        public void SetButtonText(int buttonIndex, string text)
-        {
-            ButtonsAktionen[buttonIndex].Content = text ?? DefaultButtonText[buttonIndex];
+            if (TextBoxEingabe.IsEnabled)
+            {
+                ButtonsAktionen[0].Focus();
+                TextBoxEingabe.IsEnabled = false;
+            }
+
+            UniforgridButtons.Columns = ButtonsAktionen.Count(button => button.Visibility == Visibility.Visible);
+
+            void SetButtonText(int buttonIndex, string buttonText = "")
+            {
+                ButtonsAktionen[buttonIndex].Content = buttonText;
+                ButtonsAktionen[buttonIndex].Visibility = string.IsNullOrEmpty(buttonText) ? Visibility.Collapsed : Visibility.Visible;
+                ButtonsAktionen[buttonIndex].IsEnabled = !string.IsNullOrEmpty(buttonText);
+            }
         }
 
         /// <summary>
@@ -142,11 +143,9 @@ namespace SchuBS_Textadventure
 
         private void EingabefeldNutzen()
         {
-            foreach (var button in ButtonsAktionen)
-            {
-                button.IsEnabled = false;
-            }
+            SetButtonsText("Bestätigen");
             TextBoxEingabe.IsEnabled = true;
+            TextBoxEingabe.Focus();
         }
 
         #endregion

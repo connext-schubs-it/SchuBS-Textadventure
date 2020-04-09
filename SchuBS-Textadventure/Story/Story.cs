@@ -104,7 +104,14 @@ namespace SchuBS_Textadventure
                     break;
 
                 default:
-                    KaempfeWennMoeglich(buttonIndex: 0);
+                    if (TextBoxEingabe.IsEnabled)
+                    {
+                        VerarbeiteTextEingabe();
+                    }
+                    else
+                    {
+                        KaempfeWennMoeglich(buttonIndex: 0);
+                    }
                     break;
             }
         }
@@ -224,80 +231,85 @@ namespace SchuBS_Textadventure
         {
             if (e.Key == Key.Enter)
             {
-                switch (previous)
-                {
-                    case Previous.NameErfragt:
-                        AktuellerHeld.Name = TextBoxEingabe.Text;
-                        BerufungErfragen();
-                        break;
-
-                    case Previous.BerufErfragt:
-                        switch (TextBoxEingabe.Text.ToLower())
-                        {
-                            case "krieger":
-                                AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Krieger);
-                                ZielErfragen();
-                                break;
-                            case "waldläuferin":
-                                AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Waldlaeufer);
-                                ZielErfragen();
-                                break;
-                            case "magierin":
-                                AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Magier);
-                                ZielErfragen();
-                                break;
-                            case "assassine":
-                                AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Assassine);
-                                ZielErfragen();
-                                break;
-                            default:
-                                WriteText("Diesen Beruf kenne ich nicht. Kannst du ihn nochmal wiederholen?", "");
-                                break;
-                        }
-                        break;
-
-                    case Previous.RaetselMauer:
-                        switch (TextBoxEingabe.Text.ToLower())
-                        {
-                            case "kürbis":
-                            case "vierunddreißig":
-                            case "fünf":
-                            case "eins":
-                                Raetsel2();
-                                break;
-
-                            case "acht":
-                                Weggabelung();
-                                break;
-
-                            default:
-                                WriteText("Das ist auf jeden Fall keine Antwortmöglichkeit!", "");
-                                break;
-                        }
-                        break;
-
-                    case Previous.Raetsel2:
-                        switch (TextBoxEingabe.Text.ToLower())
-                        {
-                            case "thoron":
-                            case "Eierkarton":
-                            case "donald j trumpkin":
-                            case "blau":
-                                Windstoß();
-                                break;
-
-                            case "acht":
-                                Weggabelung();
-                                break;
-
-                            default:
-                                WriteText("Das ist auf jeden Fall keine Antwortmöglichkeit!", "");
-                                break;
-                        }
-                        break;
-                }
-                TextBoxEingabe.Text = "";
+                VerarbeiteTextEingabe();
             }
+        }
+
+        private void VerarbeiteTextEingabe()
+        {
+            switch (previous)
+            {
+                case Previous.NameErfragt:
+                    AktuellerHeld.Name = TextBoxEingabe.Text;
+                    BerufungErfragen();
+                    break;
+
+                case Previous.BerufErfragt:
+                    switch (TextBoxEingabe.Text.ToLower())
+                    {
+                        case "krieger":
+                            AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Krieger);
+                            ZielErfragen();
+                            break;
+                        case "waldläuferin":
+                            AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Waldlaeufer);
+                            ZielErfragen();
+                            break;
+                        case "magierin":
+                            AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Magier);
+                            ZielErfragen();
+                            break;
+                        case "assassine":
+                            AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Assassine);
+                            ZielErfragen();
+                            break;
+                        default:
+                            WriteText("Diesen Beruf kenne ich nicht. Kannst du ihn nochmal wiederholen?", "");
+                            break;
+                    }
+                    break;
+
+                case Previous.RaetselMauer:
+                    switch (TextBoxEingabe.Text.ToLower())
+                    {
+                        case "kürbis":
+                        case "vierunddreißig":
+                        case "fünf":
+                        case "eins":
+                            Raetsel2();
+                            break;
+
+                        case "acht":
+                            Weggabelung();
+                            break;
+
+                        default:
+                            WriteText("Das ist auf jeden Fall keine Antwortmöglichkeit!", "");
+                            break;
+                    }
+                    break;
+
+                case Previous.Raetsel2:
+                    switch (TextBoxEingabe.Text.ToLower())
+                    {
+                        case "thoron":
+                        case "Eierkarton":
+                        case "donald j trumpkin":
+                        case "blau":
+                            Windstoß();
+                            break;
+
+                        case "acht":
+                            Weggabelung();
+                            break;
+
+                        default:
+                            WriteText("Das ist auf jeden Fall keine Antwortmöglichkeit!", "");
+                            break;
+                    }
+                    break;
+            }
+            TextBoxEingabe.Text = "";
         }
 
         #endregion
