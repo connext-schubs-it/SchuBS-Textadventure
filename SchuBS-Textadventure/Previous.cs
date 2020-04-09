@@ -37,6 +37,7 @@
         Windstoß,
         Weggabelung,
         Aufzug,
-        Fußweg
-    }
+        Fußweg,
+      MitEierWerfen
+   }
 }

@@ -170,8 +170,8 @@ namespace SchuBS_Textadventure
                     Fußweg();
                     break;
                case Previous.MachtWichtig:
-                     MitEiernWerfen();
-                     break;
+                    MitEiernWerfen();
+                    break;
 
                 default:
                     KaempfeWennMoeglich(buttonIndex: 1);
@@ -184,7 +184,7 @@ namespace SchuBS_Textadventure
             switch (previous)
             {
                 case Previous.MachtWichtig:
-                    TiefseegrotteUngeheuerKaempfen();
+                    MitEiernWerfen();
                     break;
 
                 default:

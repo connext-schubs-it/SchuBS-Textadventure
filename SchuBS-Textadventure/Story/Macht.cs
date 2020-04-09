@@ -177,7 +177,7 @@ namespace SchuBS_Textadventure
             bool eier = AktuellerHeld.HatItem("Ei");
             if (eier)
             {
-               SetButtonsText("Um Gnade flehen ", "Mit Eiern werfen ", "Kämpfen!");
+               SetButtonsText("Um Gnade flehen ", "Kämpfen!", "Mit Eiern werfen ");
             }
             else
             {
@@ -188,22 +188,21 @@ namespace SchuBS_Textadventure
 
         public void MitEiernWerfen()
         {
-            bool eier = AktuellerHeld.HatItem("Ei");
-            if (eier)
-            {
+         SetzeHintergrundBild("tiefsee_ungeheuer.png");
+         KaempfenKaffe(2);
 
-            }
+         previous = Previous.MitEierWerfen;
+        }
 
-      }
 
         public void GnadeFlehen()
         {
             SetzeHintergrundBild("tiefsee_ungeheuer.png");
-            KaempfenKaffe();
+            KaempfenKaffe(1);
             previous = Previous.GnafeFlehen;
         }
 
-        public void KaempfenKaffe()
+        public void KaempfenKaffe(int buttonNumber)
         {
             SetzeHintergrundBild("tiefsee_ungeheuer.png");
             Gegner ungeheuer = new Gegner
@@ -214,9 +213,17 @@ namespace SchuBS_Textadventure
                 Verteidigung = 0
             };
             StarteKampf(this, ungeheuer);
+         if (buttonNumber.Equals(1))
+         {
             WriteText("Du bittest um Verzeihung und versuchst, die finsteren Gestalten durch Selbstmitleid von ihren Machenschaften abzubringen.",
-                "“Kannste knicken”, schnauft der Anführer der Kobold-Punks.",
-                "Der Kampf beginnt.");
+                            "“Kannste knicken”, schnauft der Anführer der Kobold-Punks.",
+                            "Der Kampf beginnt.");
+         }
+         else
+         {
+            WriteText($"Ungeheuer fordert dich zum Kampf!", "Was wirst du tun?!");
+         }
+            
         }
     }
 }
