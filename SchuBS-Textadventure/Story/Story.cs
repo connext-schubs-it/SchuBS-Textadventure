@@ -65,6 +65,10 @@ namespace SchuBS_Textadventure
                     Taube();
                     break;
 
+                case Previous.TiefseegrotteLinksSchwimmen:
+                    IstMachtWichtig();
+                    break;
+
                 case Previous.TiefseegrotteBegegnungUngeheuer:
                     TiefseegrotteUngeheuerKaempfen();
                     break;
@@ -139,10 +143,6 @@ namespace SchuBS_Textadventure
                     MitEiernWerfen();
                     break;
 
-                case Previous.TiefseegrotteLinksSchwimmen:
-                    IstMachtWichtig();
-                    break;
-
                 case Previous.TiefseegrotteVorbeimogeln:
                     TiefseegrotteVorbeimogeldTod();
                     break;
@@ -212,6 +212,10 @@ namespace SchuBS_Textadventure
                     WegZurTiefseegrotte();
                     break;
 
+                case Previous.KuerbistanAnkunft:
+                    KuerbistanGeschenkeAblehnen();
+                    break;
+
                 case Previous.Weggabelung:
                     Fußweg();
                     break;
@@ -246,7 +250,7 @@ namespace SchuBS_Textadventure
                     break;
                 //case Previous.istMachtWichtig:
                 //KuerberlinEier();
-                //   break;
+                  // break;
 
                 default:
                     KaempfeWennMoeglich(buttonIndex: 2);

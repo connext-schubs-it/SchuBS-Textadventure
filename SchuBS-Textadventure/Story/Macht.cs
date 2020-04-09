@@ -156,7 +156,7 @@ namespace SchuBS_Textadventure
         public void KaffeBohnenplantage()
         {
             SetzeHintergrundBild("kaffeebohnenplantage.jpg");
-            WriteText("Du verabschiedest dich von Thoron und schlenderst ganz gemütlich über die Kaffeebohnenplantage.",
+            WriteText("Du verabschiedest dich und schlenderst ganz gemütlich über die Kaffeebohnenplantage.",
                 "Du siehst einen Baum, in dessen Schatten du erstmal eine kleine Pause einlegst.",
                 "Abenteuer sind schließlich anstrengend.",
                 "Im Halbschlaf kommst du ins Grübeln: Ist dir Macht wirklich so wichtig? ");
@@ -262,6 +262,8 @@ namespace SchuBS_Textadventure
 
             SetButtonsText("Weiter");
 
+            AktuellerHeld.EntferneItem("Ei");
+
             previous = Previous.KuerberlinEier;
         }
 
@@ -291,6 +293,48 @@ namespace SchuBS_Textadventure
             SetButtonsText("Weiter");
 
             previous = Previous.KuerberlinKampfVerloren;
+            //Spieler stirbt
+        }
+
+        public void KuerbistanAnkunft()
+        {
+            SetzeHintergrundBild("kuerberlin_mit_kuerbispalast.png");
+
+            WriteText("Das Königreich Kürbistan liegt vor dir. Kürbisfelder soweit das Auge reicht.",
+                      "Die örtlichen Bewohner empfangen dich wehenden Flaggen und reichen dir Kürbisse in allen Farben und Formen.",
+                      "Die Menschen strecken dir mehr Kürbisse entgegen als du jemals tragen könntest. Weiß ja schließlich niemand, dass du im Grunde gar keine Kürbisse magst.",
+                      "Aber du nimmst die gütigen Geschenke entgegen. Oder etwa nicht?");
+
+            SetButtonsText("Geschenke annehmen", "Geschenke abweisen");
+
+            previous = Previous.KuerbistanAnkunft;
+        }
+
+        public void KuerbistanGeschenkeAnnehmen()
+        {
+            SetzeHintergrundBild("kuerberlin_mit_kuerbispalast.png");
+
+            WriteText("Nachdem du die gütigen Geschenke empfängst und auf direktem Weg zum Kürbispalast bist, strecken dir auch schon die ersten ihre leeren Hände entgegen.",
+                      "Das sind schließlich Händler, die vom Kürbishandel leben.",
+                      "Wie? Das wusstest du nicht? Wie willst du dann ihr König werden?! Du beschließt.... ");
+
+            SetButtonsText("...das Weite zu suchen!", "… dich deiner Verantwortung zu stellen.");
+
+            previous = Previous.KuerbistanGeschenkeAnnehmen;
+        }
+
+
+        public void KuerbistanGeschenkeAblehnen()
+        {
+            SetzeHintergrundBild("kuerberlin_mit_kuerbispalast.png");
+
+            WriteText("Wie undankbar. Die gütigen Bewohner des Königreichs wollen dir ihr letztes Hab und Kürbistum anbieten und du lehnst ab. Schäm dich.",
+                      "Den Bürgern gefällt deine Einstellung ganz und gar nicht. Sie schmeißen dich umgehend aus der Stadt und sagen dir, dass du nie wieder ihr Land betreten sollst.",
+                      "Wie gut, dass anscheinend alle hier an Amnesie leiden.");
+
+            SetButtonsText("Weiter");
+
+            previous = Previous.KuerbistanGeschenkeAblehnen;
         }
 
         public void MitEiernWerfen()
