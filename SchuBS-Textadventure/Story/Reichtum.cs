@@ -7,15 +7,15 @@ namespace SchuBS_Textadventure
         private void EisKaufen()
         {
             SetzeHintergrundBild("berg_mit_eiswagen.png");
-            WriteText("Reichtum! Ein ##SpielerKlasse## ganz nach meinem Geschmack! Es gibt Gerüchte, dass sich auf dem Berg da drüben ein riesiger Schatz befindet, behütet von einer wilden Bestie.",
-                "Wenn ich du wäre, würde ich dem ganzen mal nachgehen. Aber wenn jemand fragt, den Tipp hast du nicht von mir. Der Weg führt durch den Steinbogen da vorne. Ich bin dann mal weg. Tschüssi!",
+            WriteText("“Reichtum! Ein ##SpielerKlasse## ganz nach meinem Geschmack! Es gibt Gerüchte, dass sich auf dem Berg da drüben ein riesiger Schatz befindet, behütet von einer wilden Bestie.",
+                "Wenn ich du wäre, würde ich dem ganzen mal nachgehen. Aber wenn jemand fragt, den Tipp hast du nicht von mir. Der Weg führt durch den Steinbogen da vorne. Ich bin dann mal weg. Tschüssi!”",
                 "Thoron verschwindet im nächsten Gebüsch und wird nie wieder gesehen", "",
                 "Du gehst zielsicher durch den Steinbogen. Der erste Schritt Richtung Reichtum ist getan.",
                 " Einige Minuten später siehst du am Wegesrand einen bunten Verkaufsstand. Die exzentrische, pinkhaarige Verkäuferin preist lautstark Eis an.",
-                "'Das beste Eis in Kürbistan! Kürbiseis! Nur heute für den kleinen, kleinen Preis von einer Münze! Wenn Sie jetzt anhalten und sofort bestellen, gibt es einen Messerblock kostenlos dazu!'",
+                "“Das beste Eis in Kürbistan! Kürbiseis! Nur heute für den kleinen, kleinen Preis von einer Münze! Wenn Sie jetzt anhalten und sofort bestellen, gibt es einen Messerblock kostenlos dazu!”",
                 "Du bist die einzige Person auf der Straße und fühlst dich angesprochen.",
                 "Möchtest du ein Eis kaufen, oder ignorierst du diese süße Versuchung?");
-            SetButtonsText("Ich nehme ein Kürbiseis!", "Weitergehen, Keinen Augenkontakt aufnehmen!");
+            SetButtonsText("“Ich nehme ein Kürbiseis!”", "Weitergehen, Keinen Augenkontakt aufnehmen!");
             previous = Previous.EisKaufen;
         }
 
@@ -65,17 +65,17 @@ namespace SchuBS_Textadventure
         {
             WriteText("Du gehst weiter auf dem Weg.",
                 "Vor dir liegt eine Brücke. In einem kleinen Häuschen sitzt ein Zollbeamter.",
-                "Das Passieren dieser  kürbistanischen Staatsbrücke ist kostenpflichtig. Das wären für sie ... mal sehen ... Brückenpauschale plus Bearbeitungsgebühr minus Feiertagsrabatt plus Mittagszuschlag ... 3 im Sinn ... eine Münze.");
+                "“Das Passieren dieser kürbistanischen Staatsbrücke ist kostenpflichtig. Das wären für sie ... mal sehen ... Brückenpauschale plus Bearbeitungsgebühr minus Feiertagsrabatt plus Mittagszuschlag ... 3 im Sinn ... eine Münze.”");
 
             bool muenze = AktuellerHeld.HatItem("Münze");
             if (muenze)
             {
-                SetButtonsText("Klar, kein Problem.", "Das ist ja Wucher! Ich suche mir einen anderen Weg!");
+                SetButtonsText("“Klar, kein Problem.”", "“Das ist ja Wucher! Ich suche mir einen anderen Weg!”");
                 previous = Previous.BrueckenZollMuenzeVorhanden;
             }
             else
             {
-                SetButtonsText("Dann muss ich mir wohl einen anderen Weg suchen.");
+                SetButtonsText("“Dann muss ich mir wohl einen anderen Weg suchen.”");
                 previous = Previous.BrueckenZollMuenzeNichtVorhanden;
             }
         }
@@ -99,8 +99,8 @@ namespace SchuBS_Textadventure
             AktuellerHeld.EntferneItem("Münze");
             WriteText("Du passierst die Brücke und gehst munter weiter. Fast stößt du dir den Kopf, als die Straße abrupt vor einer hohen Wand endet. Links und rechts ist kein Ende der Mauer in Sicht.",
                 "Als du prüfend an die Wand klopfst, erscheint folgender Text:",
-                "'Wanderer hab Acht: Ginget Ihr in eine Hütte, derer Bewohner drei und verließen zwei Bewohner das Bauwerk, während durch die Hinterpforte fünf Menschen einträten, wie viele habt Ihr?", "",
-                "Eins? Fünf? Vierunddreißig? Acht? Kürbis?'",
+                "“Wanderer hab Acht: Ginget Ihr in eine Hütte, derer Bewohner drei und verließen zwei Bewohner das Bauwerk, während durch die Hinterpforte fünf Menschen einträten, wie viele habt Ihr?", "",
+                "Eins? Fünf? Vierunddreißig? Acht? Kürbis?”",
                 "(Gib deine Antwort unten ein");
             EingabefeldNutzen();
             previous = Previous.RaetselMauer;
@@ -109,9 +109,9 @@ namespace SchuBS_Textadventure
         private void Raetsel2()
         {
             WriteText("Selbstsicher sprichst du das Passwort und läufst auf die Wand zu. Klatsch! Krach! Du liegst am Boden. Als du dir den Kopf reibst, erscheint ein neuer Text auf der Wand",
-                "'Idiot! Normalerweise wäre es aus mit dir, aber du bist unterhaltsam. Ich gebe dir noch eine Gelegenheit.",
+                "“Idiot! Normalerweise wäre es aus mit dir, aber du bist unterhaltsam. Ich gebe dir noch eine Gelegenheit.",
                 "Wanderer hab Acht: Ginget Ihr in eine Hütte, derer Bewohner drei und verließen zwei Bewohner das Bauwerk, während durch die Hinterpforte fünf Menschen einträten, wie viel habt Ihr?",
-                "Blau? Donald J Trumpkin? Eierkarton? Acht? Thoron?'",
+                "Blau? Donald J Trumpkin? Eierkarton? Acht? Thoron?”",
                 "(Gib deine Antwort unten ein)");
             EingabefeldNutzen();
             previous = Previous.Raetsel2;
@@ -132,26 +132,26 @@ namespace SchuBS_Textadventure
                 "Du gehst weiter und lässt die Wand hinter dir. Nun bemerkst du zum ersten Mal, wie viele Tiere hier leben. Kaninchen hoppeln umher, Vögel zwitschern, Wildschweine suhlen sich im Dreck, Sumpfpichler picheln vor sich hin. Idyllisch!",
                 "Der Weg wird steiler und mühsamer, Allgäuer Latschenkiefern säumen den Wegesrand. Im Hintergrund hörst du einen Bergmann jodeln. Du hast den Fuß des Berges erreicht.",
                 "An einer Weggabelung stehen zwei Schilder.",
-                "Das Schild 'Sicherer Tod' zeigt nach links. Das andere 'Zuckerwatte' zeigt nach rechts.",
+                "Das Schild “Sicherer Tod” zeigt nach links. Das andere “Zuckerwatte” zeigt nach rechts.",
                 "Welchen Weg schlägst du ein?");
-            SetButtonsText("Sicherer Tod", "Zuckerwatte");
+            SetButtonsText("Sicherer Tod.", "Zuckerwatte.");
             previous = Previous.Weggabelung;
         }
 
         private void Aufzug()
         {
-            WriteText("Der Weg führt um die Ecke. Da steht ein Aufzug herum. Mitten in der Natur! Du gehst hinein. Im Aufzug steht bereits ein Troll, den du mit einem leisen 'Guten Tag' und so wenig Augenkontakt wie möglich begrüßt.",
-                "Du drückst auf den Knopf 'Zum Schatz' und quetscht dich neben den riesigen Troll.",
-                "Der Aufzug setzt sich in Bewegung und im Hintergrund spielt leise 'Old Town Road'. Peinliches Schweigen.",
-                "Auf der Etage 'Kinderfresser' verlässt der Troll mit einem grunzenden Abschied und einem kurzen Lupfen seines Hutes den Aufzug. Du atmest durch.",
-                "Mit einem 'Pling' öffnet sich die Tür auf der Etage 'Schatz' und vor dir leuchtet der größte Schatz, den man sich nur vorstellen kann. Freudig stürzt du dich auf das Gold!");
+            WriteText("Der Weg führt um die Ecke. Da steht ein Aufzug herum. Mitten in der Natur! Du gehst hinein. Im Aufzug steht bereits ein Troll, den du mit einem leisen “Mahlzeit” und so wenig Augenkontakt wie möglich begrüßt.",
+                "Du drückst auf den Knopf “Zum Schatz” und quetscht dich neben den riesigen Troll.",
+                "Der Aufzug setzt sich in Bewegung und im Hintergrund spielt leise “Old Town Road”. Peinliches Schweigen.",
+                "Auf der Etage “Kinderfresser” verlässt der Troll mit einem grunzenden Abschied und einem kurzen Lupfen seines Hutes den Aufzug. Du atmest durch.",
+                "Mit einem “Pling” öffnet sich die Tür auf der Etage 'Schatz' und vor dir leuchtet der größte Schatz, den man sich nur vorstellen kann. Freudig stürzt du dich auf das Gold!");
             SetButtonsText("weiter");
             previous = Previous.Aufzug;
         }
 
         private void Fußweg()
         {
-            WriteText("Das Schild war eine glatte Lüge! Du schleppst dich die gänzlich zuckerwattefreie Treppe hoch und bist damit etliche zugange.",
+            WriteText("Das Schild war eine glatte Lüge! Du schleppst dich die gänzlich zuckerwattefreie Treppe hoch und bist damit etliche Stunden zugange.",
                 "Zu Beginn zählst du noch die Stufen, um hinterher mit der schieren Anzahl angeben zu können, aber bei 84.287 fallen dir die Augen zu und du fällst einige Meter zurück. Dabei vergisst du deine Zählung. So ein Mist ab auch!",
                 "Völlig abgekämpft erreichst du nach gefühlten Ewigkeiten den Gipfel. Links von dir steht ein Aufzug. Hättest du doch den anderen Weg genommen!",
                 "Aber dann bricht ein Funkeln durch die schweren Lider. Mit müden Augen erspähst du den Schatz. Eine Wunderpracht! Du träumst bereits davon, wie Dagobert Duck in Talern zu schwimmen!",

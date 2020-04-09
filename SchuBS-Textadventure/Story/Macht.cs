@@ -57,9 +57,9 @@ namespace SchuBS_Textadventure
             WriteText("Du schwimmst ein ganzes Stück immer geradeaus.",
                       "Es wird immer heller und als du denkst, du hat die Grotte schon fast verlassen, steht dir plötzlich ein Ungeheuer im Weg.",
                       "Es sieht sehr groß und mächtig aus.",
-                      "Möchtest du gegen das Ungeheuer kämpfen oder versuchen dich an dem Ungeheuer vorbei zu mogeln?");
+                      "Möchtest du gegen das Ungeheuer kämpfen oder versuchen, dich an dem Ungeheuer vorbei zu mogeln?");
 
-            SetButtonsText("Kämpfen!", "Vorbeimogeln");
+            SetButtonsText("Kämpfen!", "Vorbeimogeln.");
             previous = Previous.TiefseegrotteBegegnungUngeheuer;
         }
 
@@ -156,7 +156,7 @@ namespace SchuBS_Textadventure
                 "Du siehst einen Baum, in dessen Schatten du erstmal eine kleine Pause einlegst.",
                 "Abenteuer sind schließlich anstrengend.",
                 "Im Halbschlaf kommst du ins Grübeln: Ist dir Macht wirklich so wichtig? ");
-            SetButtonsText("Ja klar. Und ich liebe Kürbisse! ", "Was will ich denn mit Macht, wenn ich auch reich sein könnte");
+            SetButtonsText("Ja klar. Und ich liebe Kürbisse! ", "Was will ich denn mit Macht, wenn ich auch reich sein könnte?");
             previous = Previous.KaffeBohnenplantage;
         }
 
@@ -168,9 +168,9 @@ namespace SchuBS_Textadventure
                 "Abenteuerlust steigt in dir auf als du das Dorf betrittst, doch du spürst, dass etwas anders ist. ",
                 "Unheil liegt in der Luft.",
                 "Kein einziger Dorfbewohner ist zu sehen und zu allem Übel kommen drei sehr furchteinflößende Kobold-Punks auf dich zu. ",
-                "“Wir sind die Kobold-Punks, wir sind hier um die Menschen aufzumischen, und du bist der nächste.” ",
+                "“Wir sind die Kobold-Punks, wir sind hier um die Menschen aufzumischen, und du bist der nächste!” ",
                 "Was wirst du tun? ");
-            SetButtonsText("Um Gnade flehen ", "Mit Eiern werfen ", "Kämpfen!");
+            SetButtonsText("Um Gnade flehen.", "Mit Eiern werfen!", "Kämpfen!");
             previous = Previous.MachtWichtig;
         }
 
@@ -200,7 +200,7 @@ namespace SchuBS_Textadventure
             StarteKampf(this, ungeheuer);
             WriteText("Du bittest um Verzeihung und versuchst, die finsteren Gestalten durch Selbstmitleid von ihren Machenschaften abzubringen.",
                 "“Kannste knicken”, schnauft der Anführer der Kobold-Punks.",
-                "Der Kampf beginnt ");
+                "Der Kampf beginnt.");
         }
     }
 }
