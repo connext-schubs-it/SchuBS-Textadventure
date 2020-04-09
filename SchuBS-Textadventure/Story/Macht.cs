@@ -19,7 +19,6 @@ namespace SchuBS_Textadventure
             previous = Previous.MachtGestartet;
         }
 
-        //---------------------------------------------------Tiefseegrotte
         public void TiefseegrotteFragen()
         {
             SetzeHintergrundBild("landschaft_1.jpg");
@@ -80,7 +79,6 @@ namespace SchuBS_Textadventure
             EntferneGegner();
             WriteText("Du hast das Ungeheuer besiegt und kannst ungehindert deinen Weg fortsetzen.",
                       "Der Weg bis zur Wasseroberfläche ist tatsächlich nicht mehr weit und dir gelingt es an Land zu klettern.");
-            SetButtonsText("Weiter");
             previous = Previous.TiefseegrotteUngeheuerBesiegt;
         }
 
@@ -166,7 +164,6 @@ namespace SchuBS_Textadventure
             previous = Previous.TiefseegrotteRichtigeAntwort;
         }
 
-        //----------------------------------------------------------------------Kaffeebohnenplantage
         public void KaffeBohnenplantage()
         {
             SetzeHintergrundBild("kaffeebohnenplantage.jpg");
@@ -180,9 +177,10 @@ namespace SchuBS_Textadventure
             previous = Previous.KaffeBohnenplantage;
         }
 
-        public void IstMachtWichtig()
+        public void KaffeBohnenplantageIstMachtWichtig()
         {
-            SetzeHintergrundBild("kuerberlin_mit_kuerbispalast.png");
+         AktuellerHeld.FuegeItemHinzu(new Item("Ei", GetBild("ei.png"))); //VOR PUSHEN DELETE
+         SetzeHintergrundBild("kuerberlin_mit_kuerbispalast.png");
             SetzePersonenBild("kobold_punks_new.png");
             WriteText("Der Weg führt dich vorbei an einem Kürbisacker zu einem kleinen Dorf … ",
                 "Dir bietet sich ein grandioser Ausblick. Das Dorf Kürberlin liegt vor dir.",
@@ -205,7 +203,7 @@ namespace SchuBS_Textadventure
             previous = Previous.MachtWichtig;
         }
 
-        public void GeschenkeAbweisen()
+        public void KaffeBohnenplantageGeschenkeAbweisen()
         {
             SetzeHintergrundBild("kaffeebohnenplantage.jpg");
             WriteText("Wie undankbar.  ",
@@ -219,7 +217,7 @@ namespace SchuBS_Textadventure
             previous = Previous.Geschenkeabweisen;
         }
 
-        public void GeschenkeAnnehmen()
+        public void KaffeBohnenplantageGeschenkeAnnehmen()
         {
             SetzeHintergrundBild("kaffeebohnenplantage.jpg");
             WriteText("Nachdem du die gütigen Geschenke empfängst und auf direktem Weg zum Kürbispalast bist, strecken dir auch schon die ersten ihre leeren Hände entgegen.  ",
@@ -231,7 +229,7 @@ namespace SchuBS_Textadventure
 
             previous = Previous.GeschenkeAnnehmen;
         }
-         public void KuerbistanWeiteSuchen()
+         public void KaffeBohnenplantageWeiteSuchen()
          {
             SetzeHintergrundBild("kaffeebohnenplantage.jpg");
             WriteText("Du fliehst vor dem wütenden Mob, diese sind aber ziemlich flink für ihre magere Statur. Schließlich sind in Kürbissen Vitamine und Ballaststoffe vertreten.   ",
@@ -255,31 +253,6 @@ namespace SchuBS_Textadventure
 
          previous = Previous.WeiteSuchen;
          }
-        //----------------------------------------------------------------Kueberlin
-
-        public void KueberlinAnkunft()
-        {
-            SetzeHintergrundBild("kuerberlin_mit_kuerbispalast.png");
-            SetzePersonenBild("kobold_punks_new.png");
-            WriteText("Der Weg führt dich vorbei an einem Kürbisacker zu einem kleinen Dorf … ",
-                "Dir bietet sich ein grandioser Ausblick. Das Dorf Kürberlin liegt vor dir.",
-                "Abenteuerlust steigt in dir auf als du das Dorf betrittst, doch du spürst, dass etwas anders ist. ",
-                "Unheil liegt in der Luft.",
-                "Kein einziger Dorfbewohner ist zu sehen und zu allem Übel kommen drei sehr furchteinflößende Kobold-Punks auf dich zu. ",
-                "“Wir sind die Kobold-Punks, wir sind hier um die Menschen aufzumischen, und du bist der nächste!” ",
-                "Was wirst du tun? ");
-            bool eier = AktuellerHeld.HatItem("Ei");
-            if (eier)
-            {
-                SetButtonsText("Um Gnade flehen ", "Kämpfen!", "Mit Eiern werfen ");
-            }
-            else
-            {
-                SetButtonsText("Um Gnade flehen ", "Kämpfen!");
-            }
-
-            previous = Previous.MachtWichtig;
-        }
 
         public void KuerberlinGnadeFlehen()
         {
@@ -293,7 +266,35 @@ namespace SchuBS_Textadventure
             previous = Previous.KuerberlinGnadeFlehen;
         }
 
-        public void KuerberlinEier()
+      public void KaffeBohnenmehrKuerbisse()
+      {
+         SetzeHintergrundBild("kuerbisfelder_koenig_deathscreen.png");
+         WriteText("Das Kürbisreich verlangt nach noch mehr Kürbis! So etwas hätte ich nicht für möglich gehalten. Aber es stimmt.",
+             "Donald J. Trumpkin verspricht dem Volk eine Kürbisflotte, woraufhin du mit Kürbisversicherungen konterst. ",
+             "Argument nach Argument, Versprechen nach Versprechen, Stunden vergehen bis sich der hohe Rat berät und den Sieger bekannt gibt: Euch beide! Ihr habt gleich viele Stimmen und seid somit beide König.",
+             "Als dir die Kürbiskrone aufgesetzt wird, erkennt der Pöbel den dreisten Kürbisdieb von neulich wieder. ",
+             "Das ist nicht weiter schlimm. ",
+             "Dann regierst du einfach von den Kürbisfeldern weiter, auf denen du deine Schulden abarbeitest.",
+             " Kein König war seinem Volk je so nahe. ");
+         SetButtonsText();
+         previous = Previous.KaffeBohnenPlantagemehrKuerbisse;
+      }
+      public void KaffeBohnenWollenEier()
+      {
+         SetzeHintergrundBild("koenig_deathscreen_new.png");
+         WriteText("Dir fallen beim besten Willen keine Argumente ein und so beschließt du dich dazu, nichtssagend eine Schachtel Eier emporzuhalten.",
+             "Stillschweigen setzt ein, das Volk wirkt schockiert. ",
+             "Es hat so etwas schließlich noch nie gesehen. ",
+             "Aus Mythen und Legenden hat es von einem Nahrungsmittel gehört, welches keinen Gramm Kürbis enthalten soll. ",
+             "Nie hätten sie es für möglich gehalten so etwas wunderschönes jemals zu Gesicht zu bekommen. ",
+             "Dem sekundenlangen Schweigen folgt ein Jubeln der Masse.",
+             "Die Stimmen sind eindeutig, du bist ihr neuer König. ");
+         SetButtonsText();
+         previous = Previous.KaffeBohnenPlantageWollenEier;
+      }
+
+
+      public void KuerberlinEier()
         {
             SetzePersonenBild("kobold_punks.png");
 
@@ -335,7 +336,7 @@ namespace SchuBS_Textadventure
             previous = Previous.KuerberlinKampfVerloren;
             //Spieler stirbt
         }
-        //--------------------------------------------------------------Kuerbistan
+
         public void KuerbistanAnkunft()
         {
             SetzeHintergrundBild("kuerberlin_mit_kuerbispalast.png");
@@ -376,30 +377,28 @@ namespace SchuBS_Textadventure
 
             previous = Previous.KuerbistanGeschenkeAblehnen;
         }
-        //-------------------------------------------------------------------------------------------Noch offen
 
-        
-
-        public void MitEiernWerfen()
+        public void KaffeBohnenplantageMitEiernWerfen()
         {
             SetzeHintergrundBild("kuerberlin_mit_kuerbispalast.png");
+            SetzePersonenBild();
             WriteText("Du zückst die Packung Eier und wirfst drauf los. ",
-                "Noch bevor die Kobold-Punks reagieren können, fliegen ihnen auch schon Eier um die übergroßen Ohren. ",
-                "Eier sind ihre größte Schwachstelle.",
-                "Niemand wusste das, du aber schon. Gut gemacht. ",
-                " ",
-                "Das Königreich Kürbistan liegt vor dir.",
-                "Kürbisfelder soweit das Auge reicht. Die örtlichen Bewohner empfangen dich wehenden Flaggen und reichen dir Kürbisse in allen Farben und Formen.",
-                "Die Menschen strecken dir mehr Kürbisse entgegen als du jemals tragen könntest.",
-                "Weiß ja schließlich niemand, dass du im Grunde gar keine Kürbisse magst.",
-                "Aber du nimmst die gütigen Geschenke entgegen.",
-                "Oder etwa nicht?");
+                   "Noch bevor die Kobold-Punks reagieren können, fliegen ihnen auch schon Eier um die übergroßen Ohren. ",
+                   "Eier sind ihre größte Schwachstelle.",
+                   "Niemand wusste das, du aber schon. Gut gemacht. ",
+                   " ",
+                   "Das Königreich Kürbistan liegt vor dir.",
+                   "Kürbisfelder soweit das Auge reicht. Die örtlichen Bewohner empfangen dich wehenden Flaggen und reichen dir Kürbisse in allen Farben und Formen.",
+                   "Die Menschen strecken dir mehr Kürbisse entgegen als du jemals tragen könntest.",
+                   "Weiß ja schließlich niemand, dass du im Grunde gar keine Kürbisse magst.",
+                   "Aber du nimmst die gütigen Geschenke entgegen.",
+                   "Oder etwa nicht?");
             SetButtonsText("Geschenke abweisen.", "Geschenke annehmen.");
 
             previous = Previous.MitEierWerfen;
         }
 
-        public void GnadeFlehen()
+        public void KaffeBohnenplantageGnadeFlehen()
         {
             SetzeHintergrundBild("kuerberlin_mit_kuerbispalast.png");
             WriteText("Du bittest um Verzeihung und versuchst, die finsteren Gestalten durch Selbstmitleid von ihren Machenschaften abzubringen.",

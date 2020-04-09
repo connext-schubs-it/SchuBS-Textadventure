@@ -55,6 +55,8 @@
         KaempfenKaffeeKobolde,
         KaempfenKoboldanfuehrer,
         WeiteSuchen,
-        
-    }
+      KaffeBohnenPlantagemehrKuerbisse,
+      KaffeBohnenPlantageWollenEier,
+      IstMachtWichtig,
+   }
 }

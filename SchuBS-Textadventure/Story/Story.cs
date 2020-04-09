@@ -53,7 +53,7 @@ namespace SchuBS_Textadventure
                     break;
 
                 case Previous.KaffeBohnenplantage:
-                    KueberlinAnkunft();
+                     KaffeBohnenplantageIstMachtWichtig();
                     break;
 
                 case Previous.EisKaufen:
@@ -66,7 +66,7 @@ namespace SchuBS_Textadventure
                     break;
 
                 case Previous.TiefseegrotteLinksSchwimmen:
-                    KueberlinAnkunft();
+                     KaffeBohnenplantageIstMachtWichtig();
                     break;
 
                 case Previous.TiefseegrotteBegegnungUngeheuer:
@@ -86,7 +86,7 @@ namespace SchuBS_Textadventure
                     break;
 
                 case Previous.MachtWichtig:
-                    GnadeFlehen();
+                    KaffeBohnenplantageGnadeFlehen();
                     break;
 
                 case Previous.BrueckenZollMuenzeVorhanden:
@@ -110,10 +110,10 @@ namespace SchuBS_Textadventure
                     break;
 
                 case Previous.TiefseegrotteRichtigeAntwort:
-                    KueberlinAnkunft();
+                  KaffeBohnenplantageIstMachtWichtig();
                     break;
 
-                case Previous.KueberlinAnkunft:
+                case Previous.IstMachtWichtig:
                     KuerberlinGnadeFlehen();
                     break;
 
@@ -136,23 +136,21 @@ namespace SchuBS_Textadventure
                     break;
 
                 case Previous.MitEierWerfen:
-                    GeschenkeAbweisen();
+                    KaffeBohnenplantageGeschenkeAbweisen();
                     break;
 
                 case Previous.Geschenkeabweisen:
-                    MitEiernWerfen();
+                    KaffeBohnenplantageMitEiernWerfen();
                     break;
-
-                case Previous.TiefseegrotteUngeheuerBesiegt:
-                    KueberlinAnkunft();
-                    break;
-
 
                 case Previous.TiefseegrotteVorbeimogeln:
                     TiefseegrotteVorbeimogeldTod();
                     break;
                case Previous.GeschenkeAnnehmen:
-                  KuerbistanWeiteSuchen();
+                  KaffeBohnenplantageWeiteSuchen();
+                  break;
+               case Previous.WeiteSuchen:
+                  KaffeBohnenmehrKuerbisse();
                   break;
                 default:
                     if (TextBoxEingabe.IsEnabled)
@@ -234,13 +232,16 @@ namespace SchuBS_Textadventure
                     break;
 
                 case Previous.MitEierWerfen:
-                    GeschenkeAnnehmen();
+                    KaffeBohnenplantageGeschenkeAnnehmen();
                     break;
-                // case Previous.istMachtWichtig:
-                //    MitEiernWerfen();
-                //  break;
+                case Previous.WeiteSuchen:
+                    KaffeBohnenWollenEier();
+                    break;
+            // case Previous.istMachtWichtig:
+            //    MitEiernWerfen();
+            //  break;
 
-                default:
+            default:
                     KaempfeWennMoeglich(buttonIndex: 1);
                     break;
             }
@@ -251,7 +252,7 @@ namespace SchuBS_Textadventure
             switch (previous)
             {
                 case Previous.MachtWichtig:
-                    MitEiernWerfen();
+                    KaffeBohnenplantageMitEiernWerfen();
                     break;
                 //case Previous.istMachtWichtig:
                 //KuerberlinEier();
