@@ -273,7 +273,7 @@ namespace SchuBS_Textadventure
             //  break;
 
                 case Previous.KuerbistanGeschenkeAnnehmen:
-                    KuerbistanVerantwortung();
+                    KaffeBohnenplantageVerantwortungStellen();
                     break;
                 // case Previous.istMachtWichtig:
                 //    MitEiernWerfen();

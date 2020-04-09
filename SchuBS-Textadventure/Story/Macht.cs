@@ -260,7 +260,7 @@ namespace SchuBS_Textadventure
                 "Jürgen gefällt dein Sinn für Geschmack. Er bietet dir einen Arbeitsplatz in seinem Food-truck an, den du selbstverständlich gerne annimmst.",
                 " Mit brutzelndem Fleischduft in der Nase macht das Schulden abarbeiten viel mehr Spaß. ",
                 "Schönes Leben noch. ");
-            SetButtonsText();
+            SpielZuende();
         }
         public void KaffeBohnenplantageSalzverwenden()
         {
@@ -270,7 +270,7 @@ namespace SchuBS_Textadventure
                 "Nein?!  ",
                 "Das muss es aber.",
                 "Schönes Leben noch.");
-            SetButtonsText();
+            SpielZuende();
         }
 
         public void KaffeBohnenplantageWeiteSuchen()
