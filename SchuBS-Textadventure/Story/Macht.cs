@@ -174,14 +174,25 @@ namespace SchuBS_Textadventure
                 "Kein einziger Dorfbewohner ist zu sehen und zu allem Übel kommen drei sehr furchteinflößende Kobold-Punks auf dich zu. ",
                 "“Wir sind die Kobold-Punks, wir sind hier um die Menschen aufzumischen, und du bist der nächste!” ",
                 "Was wirst du tun? ");
-            SetButtonsText("Um Gnade flehen.", "Mit Eiern werfen!", "Kämpfen!");
+            bool eier = AktuellerHeld.HatItem("Ei");
+            if (eier)
+            {
+               SetButtonsText("Um Gnade flehen ", "Mit Eiern werfen ", "Kämpfen!");
+            }
+            else
+            {
+               SetButtonsText("Um Gnade flehen ",  "Kämpfen!");
+            }
             previous = Previous.MachtWichtig;
         }
 
         public void MitEiernWerfen()
         {
             bool eier = AktuellerHeld.HatItem("Ei");
-            AktuellerHeld.EntferneItem("Ei");
+            if (eier)
+            {
+
+            }
 
       }
 
