@@ -144,12 +144,14 @@ namespace SchuBS_Textadventure
             TextBoxEingabe.Focus();
         }
 
-        public void StarteKampf(Textadventure adventure, Gegner gegner)
+        public void StarteKampf(GegnerTyp gegnerTyp) => StarteKampf(Gegner.GetByTyp(gegnerTyp));
+
+        public void StarteKampf(Gegner gegner)
         {
             TextBoxEingabe.Text = "";
 
             SetzeGegner(gegner);
-            Kampf = new Kampf(AktuellerHeld, gegner, null, adventure);
+            Kampf = new Kampf(AktuellerHeld, gegner, null, this);
             Kampf.Aktion();
         }
 
@@ -169,9 +171,9 @@ namespace SchuBS_Textadventure
 
         public void EntferneGegner() => SetzeGegner(null);
 
-        private void SpielerTod()
+        private void SpielZuende()
         {
-            previous = Previous.Gestorben;
+            previous = Previous.SpielZuende;
             SetButtonsText("Neustarten");
         }
         #endregion

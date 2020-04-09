@@ -69,7 +69,7 @@ namespace SchuBS_Textadventure
         public void TiefseegrotteUngeheuerKaempfen()
         {
             WriteText($"Ungeheuer fordert dich zum Kampf!", "Was wirst du tun?!");
-            StarteKampf(this, Gegner.GetByTyp(GegnerTyp.Ungeheuer));
+            StarteKampf(GegnerTyp.Ungeheuer);
 
             previous = Previous.TiefseegrotteUngeheuerKaempfen;
         }
@@ -103,7 +103,7 @@ namespace SchuBS_Textadventure
                       "Du läufst in Schlangenlinien um das Ungeheuer, doch rutscht anmutig auf der Sabberspur aus.",
                       "Du stößt dir den Kopf und alles wird schwarz.");
 
-            SpielerTod();
+            SpielZuende();
         }
 
         public void TiefseegrotteKonversation()
@@ -147,7 +147,7 @@ namespace SchuBS_Textadventure
             WriteText("Das Ungeheuer wird wütend und schlägt wild um sich.Du hättest seine Gefühle nicht verletzen sollen.",
                       "So ein Mist aber auch.");
 
-            SpielerTod();
+            SpielZuende();
         }
 
         public void TiefseegrotteRichtigeAntwort()
@@ -453,13 +453,13 @@ namespace SchuBS_Textadventure
 
         public void KaempfenKaffeeGegenKobolde()
         {
-            StarteKampf(this, Gegner.GetByTyp(GegnerTyp.Kobolde));
+            StarteKampf(GegnerTyp.Kobolde);
             previous = Previous.KaempfenKaffeeKobolde;
         }
 
         public void KaempfenKoboldanfuehrer()
         {
-            StarteKampf(this, Gegner.GetByTyp(GegnerTyp.KoboldAnfuehrer));
+            StarteKampf(GegnerTyp.KoboldAnfuehrer);
             previous = Previous.KaempfenKoboldanfuehrer;
         }
     }

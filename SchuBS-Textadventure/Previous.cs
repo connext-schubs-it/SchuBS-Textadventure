@@ -3,7 +3,7 @@
     public enum Previous
     {
         Start,
-        Gestorben,
+        SpielZuende,
         NameErfragt,
         BerufungErfragt,
         BerufErfragt,

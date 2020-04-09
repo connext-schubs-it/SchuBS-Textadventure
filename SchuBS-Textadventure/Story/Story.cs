@@ -27,7 +27,7 @@ namespace SchuBS_Textadventure
                     NameErfragen();
                     break;
 
-                case Previous.Gestorben:
+                case Previous.SpielZuende:
                     new Textadventure().Show();
                     Close();
                     break;
@@ -314,7 +314,7 @@ namespace SchuBS_Textadventure
                         if (AktuellerHeld.Lebenspunkte <= 0)
                         {
                             WriteText("Du bist im Kampf gestorben!");
-                            SpielerTod();
+                            SpielZuende();
                         }
                         else
                         {
@@ -546,7 +546,7 @@ namespace SchuBS_Textadventure
             SetzeHintergrundBild("feldweg_deathscreen.png");
             WriteText("So schnell wie dein Abenteuer anfing, so schnell ist es auch zu Ende. " +
                 "Du hast dich entschieden, deinem Schicksal zu entkommen. Dein ungestillter Durst nach Abenteuern führt zum unweigerlichen Ende.");
-            SpielerTod();
+            SpielZuende();
         }
 
         private void BerufungErfragen()

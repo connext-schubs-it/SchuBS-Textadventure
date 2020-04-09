@@ -14,7 +14,7 @@ namespace SchuBS_Textadventure.Objects
 
     public class Klasse
     {
-        private static readonly Dictionary<KlassenTyp, string> KlassenNamen = new Dictionary<KlassenTyp, string>
+        private static Dictionary<KlassenTyp, string> KlassenNamen { get; } = new Dictionary<KlassenTyp, string>
         {
             { KlassenTyp.Keine,                 "wagemutiger Abenteurer" },
             { KlassenTyp.Krieger,               "Krieger" },
