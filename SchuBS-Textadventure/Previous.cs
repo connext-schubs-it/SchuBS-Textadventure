@@ -57,10 +57,10 @@
         WeiteSuchen,
         KuerbistanVerantwortung,
         KuerbistanWahlkampf,
-    
-      KaffeBohnenPlantagemehrKuerbisse,
-      KaffeBohnenPlantageWollenEier,
-      IstMachtWichtig,
-      KaffeBohnenplantageVerantwortungStellen,
-   }
+        KuerbistanMehrKuerbis,
+        KaffeBohnenPlantagemehrKuerbisse,
+        KaffeBohnenPlantageWollenEier,
+        IstMachtWichtig,
+        KaffeBohnenplantageVerantwortungStellen,
+    }
 }

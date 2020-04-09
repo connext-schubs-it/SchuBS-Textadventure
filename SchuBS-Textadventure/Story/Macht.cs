@@ -459,7 +459,33 @@ namespace SchuBS_Textadventure
             }
 
             previous = Previous.KuerbistanWahlkampf;
-            //-------------------> hier weiter
+        }
+
+            public void KuerbistanMehrKuerbis()
+        {
+            SetzeHintergrundBild("kuerbisfelder_koenig_deathscreen.png");
+
+            WriteText("Das Kürbisreich verlangt nach noch mehr Kürbis! So etwas hätte ich nicht für möglich gehalten.",
+                      "Aber es stimmt. Donald J. Trumpkin verspricht dem Volk eine Kürbisflotte, woraufhin du mit Kürbisversicherungen konterst.",
+                      "Argument nach Argument, Versprechen nach Versprechen, Stunden vergehen bis sich der hohe Rat berät und den Sieger bekannt gibt: Euch beide!",
+                      "Ihr habt gleich viele Stimmen und seid somit beide König. Als dir die Kürbiskrone aufgesetzt wird, erkennt der Pöbel den dreisten Kürbisdieb von neulich wieder.",
+                      "Das ist nicht weiter schlimm. Dann regierst du einfach von den Kürbisfeldern weiter, auf denen du deine Schulden abarbeitest.",
+                      "Kein König war seinem Volk je so nahe.");
+
+            SpielZuende();
+        }
+
+            public void KuerbistanEier()
+        {
+            SetzeHintergrundBild("koenig_deathscreen_new.png");
+
+            WriteText("Dir fallen beim besten Willen keine Argumente ein und so beschließt du dich dazu, nichtssagend eine Schachtel Eier emporzuhalten.",
+                      "Stillschweigen setzt ein, das Volk wirkt schockiert. Es hat so etwas schließlich noch nie gesehen.",
+                      "Aus Mythen und Legenden hat es von einem Nahrungsmittel gehört, welches keinen Gramm Kürbis enthalten soll.",
+                      "Nie hätten sie es für möglich gehalten so etwas wunderschönes jemals zu Gesicht zu bekommen.",
+                      "Dem sekundenlangen Schweigen folgt ein Jubeln der Masse. Die Stimmen sind eindeutig, du bist ihr neuer König.");
+
+            SpielZuende();
         }
 
         public void KuerbistanVerantwortung()
