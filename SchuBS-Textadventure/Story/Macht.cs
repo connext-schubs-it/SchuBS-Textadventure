@@ -168,6 +168,7 @@ namespace SchuBS_Textadventure
 
         public void IstMachtWichtig()
         {
+            SetzeHintergrundBild("kuerberlin_mit_kuerbispalast.png");
             SetzePersonenBild("kobold_punks_new.png");
             WriteText("Der Weg führt dich vorbei an einem Kürbisacker zu einem kleinen Dorf … ",
                 "Dir bietet sich ein grandioser Ausblick. Das Dorf Kürberlin liegt vor dir.",
