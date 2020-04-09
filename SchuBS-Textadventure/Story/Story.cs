@@ -402,11 +402,23 @@ namespace SchuBS_Textadventure
                             AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Krieger);
                             ZielErfragen();
                             break;
+                        case "kriegerin":
+                            AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Krieger);
+                            ZielErfragen();
+                            break;
                         case "waldläuferin":
                             AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Waldlaeufer);
                             ZielErfragen();
                             break;
+                        case "waldläufer":
+                            AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Waldlaeufer);
+                            ZielErfragen();
+                            break;
                         case "magierin":
+                            AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Magier);
+                            ZielErfragen();
+                            break;
+                        case "magier":
                             AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Magier);
                             ZielErfragen();
                             break;
