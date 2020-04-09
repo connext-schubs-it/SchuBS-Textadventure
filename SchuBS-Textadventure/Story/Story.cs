@@ -108,7 +108,7 @@ namespace SchuBS_Textadventure
                     istMachtWichtig();
                     break;
 
-                     case Previous.MachtWichtig:
+                     case Previous.istMachtWichtig:
                      KuerberlinGnadeFlehen();
                     break;
 
@@ -181,9 +181,10 @@ namespace SchuBS_Textadventure
                 case Previous.Weggabelung:
                     Fußweg();
                     break;
-               case Previous.MachtWichtig:
-                    MitEiernWerfen();
-                    break;
+
+              // case Previous.istMachtWichtig:
+                //    MitEiernWerfen();
+                  //  break;
 
                 default:
                     KaempfeWennMoeglich(buttonIndex: 1);
@@ -195,13 +196,13 @@ namespace SchuBS_Textadventure
         {
             switch (previous)
             {
-                case Previous.MachtWichtig:
+                case Previous.istMachtWichtig:
                     MitEiernWerfen();
                     break;
 
-                case Previous.MachtWichtig:
-                    KuerberlinEier();
-                    break;
+                //case Previous.istMachtWichtig:
+                    //KuerberlinEier();
+                 //   break;
 
                 default:
                     KaempfeWennMoeglich(buttonIndex: 2);
