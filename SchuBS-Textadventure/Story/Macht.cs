@@ -19,6 +19,7 @@ namespace SchuBS_Textadventure
             previous = Previous.MachtGestartet;
         }
 
+        //---------------------------------------------------Tiefseegrotte
         public void TiefseegrotteFragen()
         {
             SetzeHintergrundBild("landschaft_1.jpg");
@@ -79,6 +80,7 @@ namespace SchuBS_Textadventure
             EntferneGegner();
             WriteText("Du hast das Ungeheuer besiegt und kannst ungehindert deinen Weg fortsetzen.",
                       "Der Weg bis zur Wasseroberfläche ist tatsächlich nicht mehr weit und dir gelingt es an Land zu klettern.");
+            SetButtonsText("Weiter");
             previous = Previous.TiefseegrotteUngeheuerBesiegt;
         }
 
@@ -164,6 +166,7 @@ namespace SchuBS_Textadventure
             previous = Previous.TiefseegrotteRichtigeAntwort;
         }
 
+        //----------------------------------------------------------------------Kaffeebohnenplantage
         public void KaffeBohnenplantage()
         {
             SetzeHintergrundBild("kaffeebohnenplantage.jpg");
@@ -228,7 +231,7 @@ namespace SchuBS_Textadventure
 
             previous = Previous.GeschenkeAnnehmen;
         }
-         public void WeiteSuchen()
+         public void KuerbistanWeiteSuchen()
          {
             SetzeHintergrundBild("kaffeebohnenplantage.jpg");
             WriteText("Du fliehst vor dem wütenden Mob, diese sind aber ziemlich flink für ihre magere Statur. Schließlich sind in Kürbissen Vitamine und Ballaststoffe vertreten.   ",
@@ -252,6 +255,31 @@ namespace SchuBS_Textadventure
 
          previous = Previous.WeiteSuchen;
          }
+        //----------------------------------------------------------------Kueberlin
+
+        public void KueberlinAnkunft()
+        {
+            SetzeHintergrundBild("kuerberlin_mit_kuerbispalast.png");
+            SetzePersonenBild("kobold_punks_new.png");
+            WriteText("Der Weg führt dich vorbei an einem Kürbisacker zu einem kleinen Dorf … ",
+                "Dir bietet sich ein grandioser Ausblick. Das Dorf Kürberlin liegt vor dir.",
+                "Abenteuerlust steigt in dir auf als du das Dorf betrittst, doch du spürst, dass etwas anders ist. ",
+                "Unheil liegt in der Luft.",
+                "Kein einziger Dorfbewohner ist zu sehen und zu allem Übel kommen drei sehr furchteinflößende Kobold-Punks auf dich zu. ",
+                "“Wir sind die Kobold-Punks, wir sind hier um die Menschen aufzumischen, und du bist der nächste!” ",
+                "Was wirst du tun? ");
+            bool eier = AktuellerHeld.HatItem("Ei");
+            if (eier)
+            {
+                SetButtonsText("Um Gnade flehen ", "Kämpfen!", "Mit Eiern werfen ");
+            }
+            else
+            {
+                SetButtonsText("Um Gnade flehen ", "Kämpfen!");
+            }
+
+            previous = Previous.MachtWichtig;
+        }
 
         public void KuerberlinGnadeFlehen()
         {
@@ -307,7 +335,7 @@ namespace SchuBS_Textadventure
             previous = Previous.KuerberlinKampfVerloren;
             //Spieler stirbt
         }
-
+        //--------------------------------------------------------------Kuerbistan
         public void KuerbistanAnkunft()
         {
             SetzeHintergrundBild("kuerberlin_mit_kuerbispalast.png");
@@ -348,6 +376,9 @@ namespace SchuBS_Textadventure
 
             previous = Previous.KuerbistanGeschenkeAblehnen;
         }
+        //-------------------------------------------------------------------------------------------Noch offen
+
+        
 
         public void MitEiernWerfen()
         {

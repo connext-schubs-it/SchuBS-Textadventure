@@ -53,7 +53,7 @@ namespace SchuBS_Textadventure
                     break;
 
                 case Previous.KaffeBohnenplantage:
-                    IstMachtWichtig();
+                    KueberlinAnkunft();
                     break;
 
                 case Previous.EisKaufen:
@@ -66,7 +66,7 @@ namespace SchuBS_Textadventure
                     break;
 
                 case Previous.TiefseegrotteLinksSchwimmen:
-                    IstMachtWichtig();
+                    KueberlinAnkunft();
                     break;
 
                 case Previous.TiefseegrotteBegegnungUngeheuer:
@@ -110,10 +110,10 @@ namespace SchuBS_Textadventure
                     break;
 
                 case Previous.TiefseegrotteRichtigeAntwort:
-                    IstMachtWichtig();
+                    KueberlinAnkunft();
                     break;
 
-                case Previous.IstMachtWichtig:
+                case Previous.KueberlinAnkunft:
                     KuerberlinGnadeFlehen();
                     break;
 
@@ -143,11 +143,16 @@ namespace SchuBS_Textadventure
                     MitEiernWerfen();
                     break;
 
+                case Previous.TiefseegrotteUngeheuerBesiegt:
+                    KueberlinAnkunft();
+                    break;
+
+
                 case Previous.TiefseegrotteVorbeimogeln:
                     TiefseegrotteVorbeimogeldTod();
                     break;
                case Previous.GeschenkeAnnehmen:
-                  WeiteSuchen();
+                  KuerbistanWeiteSuchen();
                   break;
                 default:
                     if (TextBoxEingabe.IsEnabled)

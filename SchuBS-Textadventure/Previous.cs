@@ -40,7 +40,7 @@
         KuerberlinKampfVerloren,
         KuerberlinKampfGewonnen,
         KuerberlinGnadeFlehen,
-        IstMachtWichtig,
+        KueberlinAnkunft,
         KuerberlinEier,
         MitEierWerfen,
         KuerbistanAnkunft,
@@ -55,5 +55,6 @@
         KaempfenKaffeeKobolde,
         KaempfenKoboldanfuehrer,
         WeiteSuchen,
+        
     }
 }
