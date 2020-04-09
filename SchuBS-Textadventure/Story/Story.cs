@@ -359,6 +359,7 @@ namespace SchuBS_Textadventure
 
         private void ZielErfragen()
         {
+            WrapPanelStats.Visibility = Visibility.Visible;
             WriteText("'Ein ##SpielerKlasse##! Spannend.",
                 "Dann wünsche ich dir viel Erfolg auf deinem Weg.",
                 "Hier hast du eine Münze. Gebrauche sie klug. Sie wird sich bestimmt noch als hilfreich erweisen.",
