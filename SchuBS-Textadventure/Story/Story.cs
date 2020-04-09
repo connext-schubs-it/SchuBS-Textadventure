@@ -394,8 +394,8 @@ namespace SchuBS_Textadventure
                     }
 
                     break;
-                    TextBoxEingabe.Text = "";
             }
+            TextBoxEingabe.Text = "";
         }
 
         #endregion
@@ -453,7 +453,6 @@ namespace SchuBS_Textadventure
             SetzeHintergrundBild("klassenvorschau.png");
             WriteText("“Beruflich also? Was ist denn dein Beruf?”",
                 "(Mögliche Eingaben: Krieger, Waldläufer, Magier, Assassine. Entscheide weise!) ");
-            ;
             EingabefeldNutzen();
             previous = Previous.BerufErfragt;
         }
