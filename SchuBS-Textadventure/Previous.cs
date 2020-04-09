@@ -3,8 +3,8 @@
     public enum Previous
     {
         Start,
+        Gestorben,
         NameErfragt,
-        EndeAugenGeschlossen,
         BerufungErfragt,
         BerufErfragt,
         ZielErfragt,
@@ -30,7 +30,6 @@
         TiefseegrotteVorbeimogeln,
         TiefseegrotteRichtigeAntwort,
         TiefseegrotteFalscheAntwort,
-        TiefseegrotteVorbeimogeldTod,
         GnafeFlehen,
         TiefseegrotteKonversation,
         RaetselMauer,
@@ -42,14 +41,16 @@
         KuerberlinKampfVerloren,
         KuerberlinKampfGewonnen,
         KuerberlinGnadeFlehen,
+        IstMachtWichtig,
         KuerberlinEier,
         MitEierWerfen,
-        IstMachtWichtig,
         JoshkaBegegnen,
         Tauschgeschaeft,
         TauschNunchakus,
         TauschMesserblock,
-      GeschenkeAnnehmen,
-      Geschenkeabweisen,
-   }
+        GeschenkeAnnehmen,
+        Geschenkeabweisen,
+        KaempfenKaffeeKobolde,
+        KaempfenKoboldanfuehrer,
+    }
 }

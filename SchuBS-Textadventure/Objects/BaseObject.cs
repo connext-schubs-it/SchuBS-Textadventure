@@ -11,6 +11,8 @@ namespace SchuBS_Textadventure.Objects
         public List<string> Spezial { get; set; } = new List<string>();
         public string Name { get; set; }
 
+        public int MaxLebenspunkte { get; protected set; }
+
         public int Lebenspunkte
         {
             get => (int)GetValue(LebenspunkteProperty);
@@ -20,6 +22,12 @@ namespace SchuBS_Textadventure.Objects
         // Using a DependencyProperty as the backing store for LebensPunkte.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty LebenspunkteProperty =
             DependencyProperty.Register("Lebenspunkte", typeof(int), typeof(BaseObject), new PropertyMetadata(0));
+
+        protected BaseObject(int maxLebenspunkte, string name)
+        {
+            MaxLebenspunkte = Lebenspunkte = maxLebenspunkte;
+            Name = name;
+        }
 
         public Reaktion GetReaktion(int lp, string specialItem, int schaden)
         {

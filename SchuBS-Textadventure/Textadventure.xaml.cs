@@ -1,16 +1,14 @@
 ﻿using SchuBS_Textadventure.Dialogs;
-using SchuBS_Textadventure.Objects;
-
+using SchuBS_Textadventure.Helpers;
 using SchuBS_Textadventure.MyControls;
+using SchuBS_Textadventure.Objects;
 using System;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
-using System.Collections.Generic;
-using SchuBS_Textadventure.Helpers;
-using System.Linq;
 
 namespace SchuBS_Textadventure
 {
@@ -38,8 +36,6 @@ namespace SchuBS_Textadventure
 
         public StringBuilder VerlaufText = new StringBuilder();
 
-        public List<Gegner> GegnerListe = null;
-
         #endregion
 
         public Textadventure()
@@ -52,7 +48,6 @@ namespace SchuBS_Textadventure
                 Button3,
             };
             AusgabeBox = TextBoxHauptText;
-            GegnerListe = Gegner.LadeGegner();
             Start();
         }
 
@@ -139,7 +134,7 @@ namespace SchuBS_Textadventure
         /// </summary>
         /// <param name="name">Der Name des Bildes mit Dateiendung.</param>
         /// <returns></returns>
-        public BitmapImage GetBild(string name = null) => name is null ? null : new BitmapImage(new Uri("pack://application:,,,/Resources/" + name));
+        public BitmapImage GetBild(string name = null) => string.IsNullOrWhiteSpace(name) ? null : new BitmapImage(new Uri("pack://application:,,,/Resources/" + name));
 
         private void EingabefeldNutzen()
         {
@@ -149,6 +144,36 @@ namespace SchuBS_Textadventure
             TextBoxEingabe.Focus();
         }
 
+        public void StarteKampf(Textadventure adventure, Gegner gegner)
+        {
+            TextBoxEingabe.Text = "";
+
+            SetzeGegner(gegner);
+            Kampf = new Kampf(AktuellerHeld, gegner, null, adventure);
+            Kampf.Aktion();
+        }
+
+        public void SetzeGegner(Gegner gegner)
+        {
+            PersonStats.DataContext = gegner;
+            if (gegner != null)
+            {
+                SetzePersonenBild(gegner.Bild);
+                PersonStats.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                PersonStats.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        public void EntferneGegner() => SetzeGegner(null);
+
+        private void SpielerTod()
+        {
+            previous = Previous.Gestorben;
+            SetButtonsText("Neustarten");
+        }
         #endregion
     }
 }

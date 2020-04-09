@@ -68,14 +68,14 @@ namespace SchuBS_Textadventure
         public void TiefseegrotteUngeheuerKaempfen()
         {
             WriteText($"Ungeheuer fordert dich zum Kampf!", "Was wirst du tun?!");
-            StarteKampf(this, Gegner.GetByTyp(GegnerListe, Gegner.Typ.Ungeheuer));
+            StarteKampf(this, Gegner.GetByTyp(GegnerTyp.Ungeheuer));
 
             previous = Previous.TiefseegrotteUngeheuerKaempfen;
         }
 
         public void TiefseegrotteUngeheuerBesiegt()
         {
-            SetzePersonenBild();
+            EntferneGegner();
             WriteText("Du hast das Ungeheuer besiegt und kannst ungehindert deinen Weg fortsetzen.",
                       "Der Weg bis zur Wasseroberfläche ist tatsächlich nicht mehr weit und dir gelingt es an Land zu klettern.");
             previous = Previous.TiefseegrotteUngeheuerBesiegt;
@@ -101,10 +101,8 @@ namespace SchuBS_Textadventure
                       "Wieso schreist du so laut?! Es zieht seinen Kopf ein und winselt um Gnade, was du aber aufgrund der Panik nicht wahrnimmst.",
                       "Du läufst in Schlangenlinien um das Ungeheuer, doch rutscht anmutig auf der Sabberspur aus.",
                       "Du stößt dir den Kopf und alles wird schwarz.");
-            
-            SetButtonsText("Neustarten");
 
-            previous = Previous.TiefseegrotteVorbeimogeldTod;
+            SpielerTod();
         }
 
         public void TiefseegrotteKonversation()
@@ -168,11 +166,9 @@ namespace SchuBS_Textadventure
             previous = Previous.KaffeBohnenplantage;
         }
 
-        public void istMachtWichtig()
+        public void IstMachtWichtig()
         {
-         AktuellerHeld.FuegeItemHinzu(new Item("Ei", GetBild("ei.png"))); //EI HINZU ALS PROBE ***DELETE DANACH***
-
-         SetzeHintergrundBild("kobold_punks.png");
+            SetzePersonenBild("kobold_punks_new.png");
             WriteText("Der Weg führt dich vorbei an einem Kürbisacker zu einem kleinen Dorf … ",
                 "Dir bietet sich ein grandioser Ausblick. Das Dorf Kürberlin liegt vor dir.",
                 "Abenteuerlust steigt in dir auf als du das Dorf betrittst, doch du spürst, dass etwas anders ist. ",
@@ -193,50 +189,65 @@ namespace SchuBS_Textadventure
             previous = Previous.MachtWichtig;
         }
 
-      public void GeschenkeAbweisen()
-      {
-         SetzeHintergrundBild("kaffeebohnenplantage.jpg");
-         WriteText("Wie undankbar.  ",
-             "Die gütigen Bewohner des Königreichs wollen dir ihr letztes Hab und Kürbistum anbieten und du lehnst ab. ",
-             "Schäm dich.",
-             "Den Bürgern gefällt deine Einstellung ganz und gar nicht. ",
-             "Sie schmeißen dich umgehend aus der Stadt und sagen dir, dass du nie wieder ihr Land betreten sollst. ",
-             "Wie gut, dass anscheinend alle hier an Amnesie leiden.");
-         SetButtonsText("Weiter");
-
-         previous = Previous.Geschenkeabweisen;
-      }
-
-      public void GeschenkeAnnehmen()
-      {
-         SetzeHintergrundBild("kaffeebohnenplantage.jpg");
-         WriteText("Nachdem du die gütigen Geschenke empfängst und auf direktem Weg zum Kürbispalast bist, strecken dir auch schon die ersten ihre leeren Hände entgegen.  ",
-             "Das sind schließlich Händler, die vom Kürbishandel leben.  ",
-             "Wie? ",
-             "Das wusstest du nicht? ",
-             "Wie willst du dann ihr König werden?! Du beschließt....  ");
-         SetButtonsText("...das Weite zu suchen!", "...dich deiner Verantwortung zu stellen.");
-
-         previous = Previous.GeschenkeAnnehmen;
-      }
-
-      public void KuerberlinGnadeFlehen()
+        public void GeschenkeAbweisen()
         {
-            SetzeHintergrundBild("kobold_punks.png");
+            SetzeHintergrundBild("kaffeebohnenplantage.jpg");
+            WriteText("Wie undankbar.  ",
+                "Die gütigen Bewohner des Königreichs wollen dir ihr letztes Hab und Kürbistum anbieten und du lehnst ab. ",
+                "Schäm dich.",
+                "Den Bürgern gefällt deine Einstellung ganz und gar nicht. ",
+                "Sie schmeißen dich umgehend aus der Stadt und sagen dir, dass du nie wieder ihr Land betreten sollst. ",
+                "Wie gut, dass anscheinend alle hier an Amnesie leiden.");
+            SetButtonsText("Weiter");
+
+            previous = Previous.Geschenkeabweisen;
+        }
+
+        public void GeschenkeAnnehmen()
+        {
+            SetzeHintergrundBild("kaffeebohnenplantage.jpg");
+            WriteText("Nachdem du die gütigen Geschenke empfängst und auf direktem Weg zum Kürbispalast bist, strecken dir auch schon die ersten ihre leeren Hände entgegen.  ",
+                "Das sind schließlich Händler, die vom Kürbishandel leben.  ",
+                "Wie? ",
+                "Das wusstest du nicht? ",
+                "Wie willst du dann ihr König werden?! Du beschließt....  ");
+            SetButtonsText("...das Weite zu suchen!", "...dich deiner Verantwortung zu stellen.");
+
+            previous = Previous.GeschenkeAnnehmen;
+        }
+
+        public void KuerberlinGnadeFlehen()
+        {
+            SetzePersonenBild("kobold_punks.png");
 
             WriteText("Du bittest um Verzeihung und versuchst, die finsteren Gestalten durch Selbstmitleid von ihren Machenschaften abzubringen.",
                       "“Kannste knicken”, schnauft der Anführer der Kobold-Punks. Der Kampf beginnt.");
-
-            //Hier wird drei mal hintereinander gekämpft
 
             SetButtonsText("Weiter");
 
             previous = Previous.KuerberlinGnadeFlehen;
         }
 
+        public void KuerberlinEier()
+        {
+            SetzePersonenBild("kobold_punks.png");
+
+            WriteText("Du zückst die Packung Eier und wirfst drauf los. Noch bevor die Kobold-Punks reagieren können, fliegen ihnen auch schon Eier um die übergroßen Ohren.",
+                      "Eier sind ihre größte Schwachstelle. Niemand wusste das, du aber schon. Gut gemacht.");
+
+            SetButtonsText("Weiter");
+
+            previous = Previous.KuerberlinEier;
+        }
+
+        public void KuerberlinKoboldKampf()
+        {
+            KaempfenKaffeeGegenKobolde();
+        }
+
         public void KuerberlinKampfGewonnen()
         {
-            SetzeHintergrundBild("kobold_punks.png");
+            SetzePersonenBild("kobold_punks.png");
 
             WriteText("Du bist der Sieger, ein Gewinner. Die Kobold-Punks ziehen mit geknickten Mienen von dannen.",
                       "Sie konnten dir nichts entgegensetzen und denken nun über eine Umschulung nach.");
@@ -257,25 +268,6 @@ namespace SchuBS_Textadventure
             previous = Previous.KuerberlinKampfVerloren;
         }
 
-        public void KuerberlinEier()
-        {
-            SetzeHintergrundBild("kobold_punks.png");
-
-            WriteText("Du zückst die Packung Eier und wirfst drauf los. Noch bevor die Kobold-Punks reagieren können, fliegen ihnen auch schon Eier um die übergroßen Ohren.",
-                      "Eier sind ihre größte Schwachstelle. Niemand wusste das, du aber schon. Gut gemacht.");
-
-            SetButtonsText("Weiter");
-
-            previous = Previous.KuerberlinEier;
-
-        }
-
-        public void KuerberlinKoboldKampf()
-        {
-            //Hier wird gekämpft
-
-        }
-
         public void MitEiernWerfen()
         {
             SetzeHintergrundBild("kaffeebohnenplantage.jpg");
@@ -293,31 +285,27 @@ namespace SchuBS_Textadventure
             SetButtonsText("Geschenke abweisen.", "Geschenke annehmen.");
 
             previous = Previous.MitEierWerfen;
-      }
-
+        }
 
         public void GnadeFlehen()
         {
-            SetzeHintergrundBild("kobold_punks.png");
-            KaempfenKaffe(1);
-            previous = Previous.GnafeFlehen;
+            SetzeHintergrundBild("kaffeebohnenplantage.jpg");
+            WriteText("Du bittest um Verzeihung und versuchst, die finsteren Gestalten durch Selbstmitleid von ihren Machenschaften abzubringen.",
+                "“Kannste knicken”, schnauft der Anführer der Kobold-Punks.",
+                "Der Kampf beginnt.");
+            KaempfenKaffeeGegenKobolde();
         }
 
-        public void KaempfenKaffe(int buttonNumber)
+        public void KaempfenKaffeeGegenKobolde()
         {
-            SetzePersonenBild("kobold_punks.png");
-            StarteKampf(this, Gegner.GetByTyp(GegnerListe, Gegner.Typ.Ungeheuer));
-            if (buttonNumber.Equals(1))
-            {
-                WriteText("Du bittest um Verzeihung und versuchst, die finsteren Gestalten durch Selbstmitleid von ihren Machenschaften abzubringen.",
-                                "“Kannste knicken”, schnauft der Anführer der Kobold-Punks.",
-                                "Der Kampf beginnt.");
-            }
-            else
-            {
-                WriteText($"Ungeheuer fordert dich zum Kampf!", "Was wirst du tun?!");
-            }
+            StarteKampf(this, Gegner.GetByTyp(GegnerTyp.Kobolde));
+            previous = Previous.KaempfenKaffeeKobolde;
+        }
 
+        public void KaempfenKoboldanfuehrer()
+        {
+            StarteKampf(this, Gegner.GetByTyp(GegnerTyp.KoboldAnfuehrer));
+            previous = Previous.KaempfenKoboldanfuehrer;
         }
     }
 }

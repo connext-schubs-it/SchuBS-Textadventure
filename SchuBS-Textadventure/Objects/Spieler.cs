@@ -8,6 +8,8 @@ namespace SchuBS_Textadventure.Objects
     {
         private Klasse klasse = Klasse.GetByKlassenTyp(KlassenTyp.Keine);
 
+        public Spieler() : base(0, "") { }
+
         public Klasse Klasse
         {
             get => klasse;
@@ -16,10 +18,12 @@ namespace SchuBS_Textadventure.Objects
                 klasse = value;
                 if (Lebenspunkte < Klasse.Lebenspunkte)
                 {
+                    MaxLebenspunkte = Klasse.Lebenspunkte;
                     Lebenspunkte = Klasse.Lebenspunkte;
                 }
             }
         }
+
         public List<Previous> Level { get; set; } = new List<Previous>();
         public IList<Item> Inventar { get; } = new ObservableCollection<Item>();
 

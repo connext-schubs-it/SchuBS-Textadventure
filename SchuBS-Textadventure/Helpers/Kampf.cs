@@ -100,7 +100,7 @@ namespace SchuBS_Textadventure.Helpers
             }
 
             Ausgabe.AddRange(AusgabeHelper.AusgabeReaktion(reaktion, typ, Gegner));
-            if (reaktion.Von.Lebenspunkte > 0)
+            if (reaktion != null && reaktion.Von.Lebenspunkte > 0)
             {
                 Aktion();
             }

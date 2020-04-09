@@ -27,8 +27,9 @@ namespace SchuBS_Textadventure
                     NameErfragen();
                     break;
 
-                case Previous.EndeAugenGeschlossen:
-                    Start();
+                case Previous.Gestorben:
+                    new Textadventure().Show();
+                    Close();
                     break;
 
                 case Previous.BerufungErfragt:
@@ -52,7 +53,7 @@ namespace SchuBS_Textadventure
                     break;
 
                 case Previous.KaffeBohnenplantage:
-                    istMachtWichtig();
+                    IstMachtWichtig();
                     break;
 
                 case Previous.EisKaufen:
@@ -105,7 +106,7 @@ namespace SchuBS_Textadventure
                     break;
 
                 case Previous.TiefseegrotteRichtigeAntwort:
-                    istMachtWichtig();
+                    IstMachtWichtig();
                     break;
 
                 case Previous.IstMachtWichtig:
@@ -113,6 +114,7 @@ namespace SchuBS_Textadventure
                     break;
 
                 case Previous.KuerberlinGnadeFlehen:
+                case Previous.KuerberlinEier:
                     KuerberlinKoboldKampf();
                     break;
 
@@ -129,24 +131,20 @@ namespace SchuBS_Textadventure
                     EndeThemenpark();
                     break;
 
-               case Previous.MitEierWerfen:
-                  GeschenkeAbweisen();
-                  break;
+                case Previous.MitEierWerfen:
+                    GeschenkeAbweisen();
+                    break;
 
-               case Previous.Geschenkeabweisen:
-                  MitEiernWerfen();
-                  break;
+                case Previous.Geschenkeabweisen:
+                    MitEiernWerfen();
+                    break;
 
                 case Previous.TiefseegrotteLinksSchwimmen:
-                    istMachtWichtig();
+                    IstMachtWichtig();
                     break;
 
                 case Previous.TiefseegrotteVorbeimogeln:
                     TiefseegrotteVorbeimogeldTod();
-                    break;
-
-                case Previous.TiefseegrotteVorbeimogeldTod:
-                    Start();
                     break;
 
                 default:
@@ -219,17 +217,19 @@ namespace SchuBS_Textadventure
                 case Previous.JoshkaBegegnen:
                     Tauschgeschaeft();
                     break;
-               case Previous.MachtWichtig:
-                  KaempfenKaffe(2);
-                  break;
-               case Previous.MitEierWerfen:
-                  GeschenkeAnnehmen();
-                  break;
-            // case Previous.istMachtWichtig:
-            //    MitEiernWerfen();
-            //  break;
 
-            default:
+                case Previous.MachtWichtig:
+                    KaempfenKaffeeGegenKobolde();
+                    break;
+
+                case Previous.MitEierWerfen:
+                    GeschenkeAnnehmen();
+                    break;
+                // case Previous.istMachtWichtig:
+                //    MitEiernWerfen();
+                //  break;
+
+                default:
                     KaempfeWennMoeglich(buttonIndex: 1);
                     break;
             }
@@ -239,18 +239,16 @@ namespace SchuBS_Textadventure
         {
             switch (previous)
             {
-               case Previous.MachtWichtig:
-                  MitEiernWerfen();
-                  break;
-            //case Previous.istMachtWichtig:
-            //KuerberlinEier();
-            //   break;
+                case Previous.MachtWichtig:
+                    MitEiernWerfen();
+                    break;
+                //case Previous.istMachtWichtig:
+                //KuerberlinEier();
+                //   break;
 
-            default:
+                default:
                     KaempfeWennMoeglich(buttonIndex: 2);
                     break;
-
-
             }
         }
 
@@ -266,6 +264,10 @@ namespace SchuBS_Textadventure
                     {
                         case Previous.TiefseegrotteUngeheuerKaempfen:
                             TiefseegrotteUngeheuerBesiegt();
+                            break;
+
+                        case Previous.KaempfenKaffeeKobolde:
+                            KaempfenKoboldanfuehrer();
                             break;
                     }
                 }
@@ -286,7 +288,15 @@ namespace SchuBS_Textadventure
 
                     if (Kampf.IstZuende)
                     {
-                        SetButtonsText("Kampf beenden");
+                        if (AktuellerHeld.Lebenspunkte <= 0)
+                        {
+                            WriteText("Du bist im Kampf gestorben!");
+                            SpielerTod();
+                        }
+                        else
+                        {
+                            SetButtonsText("Kampf beenden");
+                        }
                     }
                 }
             }
@@ -457,10 +467,9 @@ namespace SchuBS_Textadventure
         private void EndeAugenGeschlossen()
         {
             SetzeHintergrundBild("feldweg_deathscreen.png");
-            WriteText(
-                "So schnell wie dein Abenteuer anfing, so schnell ist es auch zu Ende. Du hast dich entschieden, deinem Schicksal zu entkommen. Dein ungestillter Durst nach Abenteuern führt zum unweigerlichen Ende.");
-            SetButtonsText("Neustarten");
-            previous = Previous.EndeAugenGeschlossen;
+            WriteText("So schnell wie dein Abenteuer anfing, so schnell ist es auch zu Ende. " +
+                "Du hast dich entschieden, deinem Schicksal zu entkommen. Dein ungestillter Durst nach Abenteuern führt zum unweigerlichen Ende.");
+            SpielerTod();
         }
 
         private void BerufungErfragen()
@@ -492,14 +501,6 @@ namespace SchuBS_Textadventure
             AktuellerHeld.FuegeItemHinzu(new Item("Münze", GetBild("muenze.png")));
             SetButtonsText("Macht.", "Reichtum.");
             previous = Previous.ZielErfragt;
-        }
-
-        public void StarteKampf(Textadventure adventure, Gegner gegner)
-        {
-            TextBoxEingabe.Text = "";
-
-            Kampf = new Kampf(AktuellerHeld, gegner, null, adventure);
-            Kampf.Aktion();
         }
 
         #endregion
