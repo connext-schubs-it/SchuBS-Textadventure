@@ -2,6 +2,7 @@
 using SchuBS_Textadventure.Helpers;
 using SchuBS_Textadventure.MyControls;
 using SchuBS_Textadventure.Objects;
+
 using System;
 using System.Linq;
 using System.Text;
@@ -73,7 +74,7 @@ namespace SchuBS_Textadventure
                 TextBoxEingabe.IsEnabled = false;
             }
 
-            UniforgridButtons.Columns = ButtonsAktionen.Count(button => button.Visibility == Visibility.Visible);
+            UniformGridButtons.Columns = ButtonsAktionen.Count(button => button.Visibility == Visibility.Visible);
 
             void SetButtonText(int buttonIndex, string buttonText)
             {

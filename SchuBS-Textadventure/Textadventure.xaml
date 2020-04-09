@@ -136,7 +136,7 @@
                 </StackPanel>
             </WrapPanel>
 
-            <UniformGrid x:Name="UniforgridButtons"
+            <UniformGrid x:Name="UniformGridButtons"
                          Grid.Row="1"
                          Columns="3"
                          MyControls:MarginSetter.Margin="0,5,5,0">
