@@ -155,6 +155,11 @@ namespace SchuBS_Textadventure
                case Previous.KaffeBohnenplantageVerantwortungStellen:
                   KaffeBohnenplantageSalzverwenden();
                   break;
+
+                case Previous.KuerbistanAnkunft:
+                    KuerbistanGeschenkeAnnehmen();
+                    break;
+
                 default:
                     if (TextBoxEingabe.IsEnabled)
                     {
