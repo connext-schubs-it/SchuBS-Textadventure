@@ -202,5 +202,8 @@
   <ItemGroup>
     <None Include="Resources\food_truck_deathscreen.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cucurbita_icon.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

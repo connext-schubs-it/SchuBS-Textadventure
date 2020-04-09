@@ -127,6 +127,9 @@
   <data name="blaues_auge_deathscreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\blaues_auge_deathscreen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="cucurbita_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cucurbita_icon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ei" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ei.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
