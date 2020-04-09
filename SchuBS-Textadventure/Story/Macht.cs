@@ -359,7 +359,9 @@ namespace SchuBS_Textadventure
 
         public void KuerberlinKampfGewonnen()
         {
-            SetzePersonenBild("kobold_punks.png");
+            EntferneGegner();
+
+            SetzePersonenBild("kobold_punks_new.png");
 
             WriteText("Du bist der Sieger, ein Gewinner. Die Kobold-Punks ziehen mit geknickten Mienen von dannen.",
                       "Sie konnten dir nichts entgegensetzen und denken nun über eine Umschulung nach.");
@@ -384,6 +386,7 @@ namespace SchuBS_Textadventure
         public void KuerbistanAnkunft()
         {
             SetzeHintergrundBild("kuerberlin_mit_kuerbispalast.png");
+            SetzePersonenBild();
 
             WriteText("Das Königreich Kürbistan liegt vor dir. Kürbisfelder soweit das Auge reicht.",
                       "Die örtlichen Bewohner empfangen dich wehenden Flaggen und reichen dir Kürbisse in allen Farben und Formen.",

@@ -160,6 +160,10 @@ namespace SchuBS_Textadventure
                     KuerbistanGeschenkeAnnehmen();
                     break;
 
+                case Previous.KuerberlinKampfGewonnen:
+                    KuerbistanAnkunft();
+                    break;
+
                 default:
                     if (TextBoxEingabe.IsEnabled)
                     {
@@ -294,6 +298,10 @@ namespace SchuBS_Textadventure
 
                         case Previous.KaempfenKaffeeKobolde:
                             KaempfenKoboldanfuehrer();
+                            break;
+
+                        case Previous.KaempfenKoboldanfuehrer:
+                            KuerberlinKampfGewonnen();
                             break;
                     }
                 }
