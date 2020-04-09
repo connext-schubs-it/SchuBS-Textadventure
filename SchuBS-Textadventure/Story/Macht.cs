@@ -179,7 +179,7 @@ namespace SchuBS_Textadventure
 
         public void KaffeBohnenplantageIstMachtWichtig()
         {
-         
+
          SetzeHintergrundBild("kuerberlin_mit_kuerbispalast.png");
             SetzePersonenBild("kobold_punks_new.png");
             WriteText("Der Weg führt dich vorbei an einem Kürbisacker zu einem kleinen Dorf … ",
@@ -229,6 +229,50 @@ namespace SchuBS_Textadventure
 
             previous = Previous.GeschenkeAnnehmen;
         }
+         public void KaffeBohnenplantageVerantwortungStellen()
+         {
+            SetzeHintergrundBild("kaffeebohnenplantage.jpg");
+            WriteText("Du stellst dich deinem Schicksal und erklärst den Bewohner deine missliche Lage.",
+                "Nun wirst du bis ans Ende aller Tage deine Schulden auf den Kürbisackern von Kürbistan arbeiten.",
+                "Du wirst nicht reich und auch nicht mächtig, jedoch gibt es von nun an jeden Morgen Kürbisbrot.",
+                "Vielleicht gewöhnst du dich eines Tages daran.",
+                "Außer...");
+            SetButtonsText("...das Weite zu suchen!", "...dich deiner Verantwortung zu stellen.");
+            bool muenze = AktuellerHeld.HatItem("Münze");
+            if (muenze)
+            {
+               SetButtonsText("...du verwendest mehr Salz", "...du gönnst dir mal ein richtiges Steak.  ");
+            }
+            else
+            {
+               SetButtonsText("...du verwendest mehr Salz ");
+            }
+            previous = Previous.KaffeBohnenplantageVerantwortungStellen;
+         }
+      public void KaffeBohnenplantageSteak()
+      {
+         SetzeHintergrundBild("food_truck_deathscreen.png");
+         WriteText("Außerhalb der Stadt steht ein Food-Truck Food-to-Goat. ",
+             "Dein alter Kumpel Jürgen bedient dich heute. ",
+             "Er empfiehlt dir direkt ein Stück seines besten Fantasy-Ziegenfleisches, welches er für dich sofort auf den Grill schmeißt.  ",
+             "Dieses Steak ist mehr als du dir jemals erträumen konntest.",
+             "Die saftige Konsistenz, der ausfüllende Duft, der dir in die Nase steigt, die goldig braune Farbe dieses anmutigen Stückes köstlichen Fleisches.",
+             "Jürgen gefällt dein Sinn für Geschmack. Er bietet dir einen Arbeitsplatz in seinem Food-truck an, den du selbstverständlich gerne annimmst.",
+             " Mit brutzelndem Fleischduft in der Nase macht das Schulden abarbeiten viel mehr Spaß. ",
+             "Schönes Leben noch. ");
+         SetButtonsText();
+      }
+      public void KaffeBohnenplantageSalzverwenden()
+      {
+         SetzeHintergrundBild("kaffeebohnenplantage.jpg");
+            WriteText("Mmmhhhhh, das schmeckt. Gar nicht übel.",
+                "Reicht dir eine Prise Salz für den Rest deines Lebens?",
+                "Nein?!  ",
+                "Das muss es aber.",
+                "Schönes Leben noch.");
+            SetButtonsText();
+      }
+
          public void KaffeBohnenplantageWeiteSuchen()
          {
             SetzeHintergrundBild("kaffeebohnenplantage.jpg");

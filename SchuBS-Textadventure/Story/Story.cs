@@ -152,6 +152,9 @@ namespace SchuBS_Textadventure
                case Previous.WeiteSuchen:
                   KaffeBohnenmehrKuerbisse();
                   break;
+               case Previous.KaffeBohnenplantageVerantwortungStellen:
+                  KaffeBohnenplantageSalzverwenden();
+                  break;
                 default:
                     if (TextBoxEingabe.IsEnabled)
                     {
@@ -237,6 +240,12 @@ namespace SchuBS_Textadventure
                 case Previous.WeiteSuchen:
                     KaffeBohnenWollenEier();
                     break;
+               case Previous.GeschenkeAnnehmen:
+               KaffeBohnenplantageVerantwortungStellen();
+                     break;
+               case Previous.KaffeBohnenplantageVerantwortungStellen:
+               KaffeBohnenplantageSteak();
+                  break;
             // case Previous.istMachtWichtig:
             //    MitEiernWerfen();
             //  break;

@@ -58,5 +58,6 @@
       KaffeBohnenPlantagemehrKuerbisse,
       KaffeBohnenPlantageWollenEier,
       IstMachtWichtig,
+      KaffeBohnenplantageVerantwortungStellen,
    }
 }
