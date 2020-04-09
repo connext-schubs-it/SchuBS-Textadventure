@@ -326,15 +326,17 @@ namespace SchuBS_Textadventure
 
         private void VerarbeiteTextEingabe()
         {
+            string eingabe = TextBoxEingabe.Text;
+            int zahl = TextAlsZahl(eingabe);
             switch (previous)
             {
                 case Previous.NameErfragt:
-                    AktuellerHeld.Name = TextBoxEingabe.Text;
+                    AktuellerHeld.Name = eingabe;
                     BerufungErfragen();
                     break;
 
                 case Previous.BerufErfragt:
-                    switch (TextBoxEingabe.Text.ToLower())
+                    switch (eingabe.ToLower())
                     {
                         case "krieger":
                             AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Krieger);
@@ -360,7 +362,7 @@ namespace SchuBS_Textadventure
                     break;
 
                 case Previous.RaetselMauer:
-                    switch (TextBoxEingabe.Text.ToLower())
+                    switch (eingabe.ToLower())
                     {
                         case "kürbis":
                         case "vierunddreißig":
@@ -381,7 +383,7 @@ namespace SchuBS_Textadventure
                     break;
 
                 case Previous.Raetsel2:
-                    switch (TextBoxEingabe.Text.ToLower())
+                    switch (eingabe.ToLower())
                     {
                         case "thoron":
                         case "Eierkarton":
@@ -402,7 +404,7 @@ namespace SchuBS_Textadventure
                     break;
 
                 case Previous.Tauschgeschaeft:
-                    switch (TextBoxEingabe.Text.ToLower())
+                    switch (eingabe.ToLower())
                     {
                         case "nunchakus":
                             if (AktuellerHeld.HatItem("Nunchakus"))
@@ -411,9 +413,8 @@ namespace SchuBS_Textadventure
                             }
                             else
                             {
-                                WriteText("Dieses Item befindet sich nicht in deinem Inventar.");
+                                goto default;
                             }
-
                             break;
 
                         case "messerblock":
@@ -423,9 +424,8 @@ namespace SchuBS_Textadventure
                             }
                             else
                             {
-                                WriteText("Dieses Item befindet sich nicht in deinem Inventar.");
+                                goto default;
                             }
-
                             break;
 
                         default:
@@ -434,8 +434,52 @@ namespace SchuBS_Textadventure
                     }
 
                     break;
+
+                case Previous.TiefseegrotteKonversation:
+                    if (zahl == 5 && AktuellerHeld.Klasse.KlassenTyp != KlassenTyp.Magier)
+                    {
+                        zahl = -1;
+                    }
+
+                    switch (zahl)
+                    {
+                        case 1:
+                        case 3:
+                            TiefseegrotteFalscheAntwort();
+                            break;
+
+                        case 2:
+                        case 4:
+                        case 5:
+                            TiefseegrotteRichtigeAntwort();
+                            break;
+
+                        default:
+                            WriteText("Diese Antwortmöglichkeit gibt es nicht");
+                            break;
+                    }
+                    break;
             }
+
             TextBoxEingabe.Text = "";
+        }
+
+        /// <summary>
+        /// Versucht den <paramref name="text"/> in einen <see cref="int"/> umzuwandlen und gibt diesen zurück.
+        /// Ist keine Umwandlung möglich wird <c>-1</c> zurückgegeben.
+        /// </summary>
+        /// <param name="text">Der text, der zu einem <see cref="int"/> umgewandelt werden soll.</param>
+        /// <returns>Den <paramref name="text"/> als <see cref="int"/>.</returns>
+        public int TextAlsZahl(string text)
+        {
+            if (int.TryParse(text, out int eingabeZahl))
+            {
+                return eingabeZahl;
+            }
+            else
+            {
+                return -1;
+            }
         }
 
         #endregion

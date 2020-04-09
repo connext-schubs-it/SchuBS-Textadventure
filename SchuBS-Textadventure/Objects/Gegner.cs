@@ -36,10 +36,10 @@ namespace SchuBS_Textadventure.Objects
                         Verteidigung = 10,
                         Reaktionen = new List<Reaktion>()
                         {
-                            new Reaktion() { LP = 90, Text = "Ha das war ja gar nichts!"},
-                            new Reaktion() { LP = 60, Text = "Gar nicht mal schlecht!"},
-                            new Reaktion() { LP = 30, Text = "Ouch!"},
-                            new Reaktion() { LP = 10, Text = "Aufhören!"}
+                            new Reaktion() { LP = 90, Text = "Ha das war ja gar nichts!" },
+                            new Reaktion() { LP = 60, Text = "Gar nicht mal schlecht!" },
+                            new Reaktion() { LP = 30, Text = "Ouch!" },
+                            new Reaktion() { LP = 10, Text = "Aufhören!" }
                         }
                     };
                     break;

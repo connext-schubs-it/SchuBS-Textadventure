@@ -29,7 +29,6 @@
         TiefseegrotteBegegnungUngeheuer,
         TiefseegrotteVorbeimogeln,
         TiefseegrotteRichtigeAntwort,
-        TiefseegrotteFalscheAntwort,
         GnafeFlehen,
         TiefseegrotteKonversation,
         RaetselMauer,

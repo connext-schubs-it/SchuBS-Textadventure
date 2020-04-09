@@ -1,4 +1,5 @@
 ﻿using SchuBS_Textadventure.Objects;
+using System.Collections.Generic;
 
 namespace SchuBS_Textadventure
 {
@@ -107,19 +108,30 @@ namespace SchuBS_Textadventure
 
         public void TiefseegrotteKonversation()
         {
-            //Button2
-            SetzeHintergrundBild("tiefsee_ungeheuer.png");
+            EingabefeldNutzen();
 
-            WriteText("Du atmest tief durch und trittst vor das Ungeheuer. Deine Knie sind weich, doch du stehst erhobenen Hauptes und fragst das Monster nach dem Grund seines Zorns.",
-                      "Bittere, riesige Tränen kullern an den scharfen Fangzähnen des Ungeheuers vorbei. Es gibt unverständliche Grunzlaute von sich und versucht, dir etwas mitzuteilen.",
-                      "Aber was kann das nur sein? Du beschließt, konsequent darauf zu antworten und sagst:…",
-                      "(Gib deine Antwort in das Textfeld ein. Mögliche Antworten:",
-                      "(1) Hör auf zu flennen.",
-                      "(2) Mir hat auch mal jemand das Herz gebrochen.",
-                      "(3) Ein paar Kilogramm weniger könntest du schon vertragen",
-                      "(4) Hör mal, ich habe wirklich keine Zeit dafür.",
-                      //IF-ABFRAGE,,WENN MAGIER, DANN....// 
-                      "(5) I SHALL PASS!)");
+            List<string> text = new List<string>()
+            {
+                "Du atmest tief durch und trittst vor das Ungeheuer. Deine Knie sind weich, doch du stehst erhobenen Hauptes und fragst das Monster nach dem Grund seines Zorns.",
+                "Bittere, riesige Tränen kullern an den scharfen Fangzähnen des Ungeheuers vorbei. Es gibt unverständliche Grunzlaute von sich und versucht, dir etwas mitzuteilen.",
+                "Aber was kann das nur sein? Du beschließt, konsequent darauf zu antworten und sagst:…",
+                "(Gib die die Zahl der Antwort in das Textfeld ein. Mögliche Antworten:",
+                "(1) Hör auf zu flennen.",
+                "(2) Mir hat auch mal jemand das Herz gebrochen.",
+                "(3) Ein paar Kilogramm weniger könntest du schon vertragen",
+                "(4) Hör mal, ich habe wirklich keine Zeit dafür."
+            };
+
+            if (AktuellerHeld.Klasse.KlassenTyp == KlassenTyp.Magier)
+            {
+                text.Add("(5) I SHALL PASS!)");
+            }
+            else
+            {
+                text[text.Count - 1] += ")";
+            }
+
+            WriteText(text.ToArray());
 
             //BEI 1 UND 3 SOLL DER SPIELER STERBEN-> TiefseegrotteFalscheAntwort
             //BEI 2,4 UND 5 SOLL DER SPIELER ITEM ,,EIER" ERHALTEN-> TiefseegrotteRichtigeAntwort
@@ -135,15 +147,14 @@ namespace SchuBS_Textadventure
             WriteText("Das Ungeheuer wird wütend und schlägt wild um sich.Du hättest seine Gefühle nicht verletzen sollen.",
                       "So ein Mist aber auch.");
 
-            previous = Previous.TiefseegrotteFalscheAntwort;
-            //Spieler stirbt
+            SpielerTod();
         }
 
         public void TiefseegrotteRichtigeAntwort()
         {
             //BEI 2,4,5 GIBT ES DAS ITEM EIER UND ES GEHT WEITER
 
-            SetzeHintergrundBild("you_died_lol.png");
+            AktuellerHeld.FuegeItemHinzu(new Item("Ei", GetBild("ei.png")));
 
             WriteText("Das Ungeheuer streckt seine Zunge raus und überreicht dir eine Packung Eier(ITEM).",
                       "Es tritt zur Seite und salutiert, während du stolz, aber auch ziemlich verwundert zum Ausgang der Grotte schreitest.");
@@ -177,6 +188,7 @@ namespace SchuBS_Textadventure
                 "Kein einziger Dorfbewohner ist zu sehen und zu allem Übel kommen drei sehr furchteinflößende Kobold-Punks auf dich zu. ",
                 "“Wir sind die Kobold-Punks, wir sind hier um die Menschen aufzumischen, und du bist der nächste!” ",
                 "Was wirst du tun? ");
+
             bool eier = AktuellerHeld.HatItem("Ei");
             if (eier)
             {
