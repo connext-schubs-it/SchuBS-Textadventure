@@ -113,6 +113,36 @@ namespace SchuBS_Textadventure.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap deathscreen_villa {
+            get {
+                object obj = ResourceManager.GetObject("deathscreen_villa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap drachenhoehle {
+            get {
+                object obj = ResourceManager.GetObject("drachenhoehle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap drachenhoehle_phase2 {
+            get {
+                object obj = ResourceManager.GetObject("drachenhoehle_phase2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap dunkler_wald {
             get {
                 object obj = ResourceManager.GetObject("dunkler_wald", resourceCulture);
@@ -153,6 +183,16 @@ namespace SchuBS_Textadventure.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap fuss_des_berges {
+            get {
+                object obj = ResourceManager.GetObject("fuss_des_berges", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap kaffeebohnenplantage {
             get {
                 object obj = ResourceManager.GetObject("kaffeebohnenplantage", resourceCulture);
@@ -183,9 +223,29 @@ namespace SchuBS_Textadventure.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap kobold_handlanger_new {
+            get {
+                object obj = ResourceManager.GetObject("kobold_handlanger_new", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap kobold_punks_new {
             get {
                 object obj = ResourceManager.GetObject("kobold_punks_new", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap koenig_deathscreen_new {
+            get {
+                object obj = ResourceManager.GetObject("koenig_deathscreen_new", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -276,6 +336,16 @@ namespace SchuBS_Textadventure.Properties {
         public static System.Drawing.Bitmap muenze {
             get {
                 object obj = ResourceManager.GetObject("muenze", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap natur_aufzug {
+            get {
+                object obj = ResourceManager.GetObject("natur_aufzug", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
