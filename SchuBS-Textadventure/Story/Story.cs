@@ -128,8 +128,13 @@ namespace SchuBS_Textadventure
                 case Previous.TauschMesserblock:
                     EndeThemenpark();
                     break;
-
-                default:
+               case Previous.MitEierWerfen:
+                  GeschenkeAbweisen();
+                  break;
+               case Previous.Geschenkeabweisen:
+                  MitEiernWerfen();
+                  break;
+            default:
                     if (TextBoxEingabe.IsEnabled)
                     {
                         VerarbeiteTextEingabe();
@@ -199,12 +204,17 @@ namespace SchuBS_Textadventure
                 case Previous.JoshkaBegegnen:
                     Tauschgeschaeft();
                     break;
+               case Previous.MachtWichtig:
+                  KaempfenKaffe(2);
+                  break;
+               case Previous.MitEierWerfen:
+                  GeschenkeAnnehmen();
+                  break;
+            // case Previous.istMachtWichtig:
+            //    MitEiernWerfen();
+            //  break;
 
-                // case Previous.istMachtWichtig:
-                //    MitEiernWerfen();
-                //  break;
-
-                default:
+            default:
                     KaempfeWennMoeglich(buttonIndex: 1);
                     break;
             }
@@ -214,15 +224,14 @@ namespace SchuBS_Textadventure
         {
             switch (previous)
             {
-                case Previous.IstMachtWichtig:
-                    MitEiernWerfen();
-                    break;
+               case Previous.MachtWichtig:
+                  MitEiernWerfen();
+                  break;
+            //case Previous.istMachtWichtig:
+            //KuerberlinEier();
+            //   break;
 
-                //case Previous.istMachtWichtig:
-                //KuerberlinEier();
-                //   break;
-
-                default:
+            default:
                     KaempfeWennMoeglich(buttonIndex: 2);
                     break;
 

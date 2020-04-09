@@ -170,7 +170,9 @@ namespace SchuBS_Textadventure
 
         public void istMachtWichtig()
         {
-            SetzeHintergrundBild("kobold_punks.png");
+         AktuellerHeld.FuegeItemHinzu(new Item("Ei", GetBild("ei.png"))); //EI HINZU ALS PROBE ***DELETE DANACH***
+
+         SetzeHintergrundBild("kobold_punks.png");
             WriteText("Der Weg führt dich vorbei an einem Kürbisacker zu einem kleinen Dorf … ",
                 "Dir bietet sich ein grandioser Ausblick. Das Dorf Kürberlin liegt vor dir.",
                 "Abenteuerlust steigt in dir auf als du das Dorf betrittst, doch du spürst, dass etwas anders ist. ",
@@ -191,7 +193,34 @@ namespace SchuBS_Textadventure
             previous = Previous.MachtWichtig;
         }
 
-        public void KuerberlinGnadeFlehen()
+      public void GeschenkeAbweisen()
+      {
+         SetzeHintergrundBild("kaffeebohnenplantage.jpg");
+         WriteText("Wie undankbar.  ",
+             "Die gütigen Bewohner des Königreichs wollen dir ihr letztes Hab und Kürbistum anbieten und du lehnst ab. ",
+             "Schäm dich.",
+             "Den Bürgern gefällt deine Einstellung ganz und gar nicht. ",
+             "Sie schmeißen dich umgehend aus der Stadt und sagen dir, dass du nie wieder ihr Land betreten sollst. ",
+             "Wie gut, dass anscheinend alle hier an Amnesie leiden.");
+         SetButtonsText("Weiter");
+
+         previous = Previous.Geschenkeabweisen;
+      }
+
+      public void GeschenkeAnnehmen()
+      {
+         SetzeHintergrundBild("kaffeebohnenplantage.jpg");
+         WriteText("Nachdem du die gütigen Geschenke empfängst und auf direktem Weg zum Kürbispalast bist, strecken dir auch schon die ersten ihre leeren Hände entgegen.  ",
+             "Das sind schließlich Händler, die vom Kürbishandel leben.  ",
+             "Wie? ",
+             "Das wusstest du nicht? ",
+             "Wie willst du dann ihr König werden?! Du beschließt....  ");
+         SetButtonsText("...das Weite zu suchen!", "...dich deiner Verantwortung zu stellen.");
+
+         previous = Previous.GeschenkeAnnehmen;
+      }
+
+      public void KuerberlinGnadeFlehen()
         {
             SetzeHintergrundBild("kobold_punks.png");
 
@@ -250,22 +279,33 @@ namespace SchuBS_Textadventure
         public void MitEiernWerfen()
         {
             SetzeHintergrundBild("kaffeebohnenplantage.jpg");
-            KaempfenKaffe(2);
+            WriteText("Du zückst die Packung Eier und wirfst drauf los. ",
+                "Noch bevor die Kobold-Punks reagieren können, fliegen ihnen auch schon Eier um die übergroßen Ohren. ",
+                "Eier sind ihre größte Schwachstelle.",
+                "Niemand wusste das, du aber schon. Gut gemacht. ",
+                " ",
+                "Das Königreich Kürbistan liegt vor dir.",
+                "Kürbisfelder soweit das Auge reicht. Die örtlichen Bewohner empfangen dich wehenden Flaggen und reichen dir Kürbisse in allen Farben und Formen.",
+                "Die Menschen strecken dir mehr Kürbisse entgegen als du jemals tragen könntest.",
+                "Weiß ja schließlich niemand, dass du im Grunde gar keine Kürbisse magst.",
+                "Aber du nimmst die gütigen Geschenke entgegen.",
+                "Oder etwa nicht?");
+            SetButtonsText("Geschenke abweisen.", "Geschenke annehmen.");
 
             previous = Previous.MitEierWerfen;
-        }
+      }
 
 
         public void GnadeFlehen()
         {
-            SetzeHintergrundBild("kaffeebohnenplantage.jpg");
+            SetzeHintergrundBild("kobold_punks.png");
             KaempfenKaffe(1);
             previous = Previous.GnafeFlehen;
         }
 
         public void KaempfenKaffe(int buttonNumber)
         {
-            SetzePersonenBild("tiefsee_ungeheuer.png");
+            SetzePersonenBild("kobold_punks.png");
             StarteKampf(this, Gegner.GetByTyp(GegnerListe, Gegner.Typ.Ungeheuer));
             if (buttonNumber.Equals(1))
             {

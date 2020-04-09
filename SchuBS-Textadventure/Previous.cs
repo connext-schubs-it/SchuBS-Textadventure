@@ -48,5 +48,7 @@
         Tauschgeschaeft,
         TauschNunchakus,
         TauschMesserblock,
-    }
+      GeschenkeAnnehmen,
+      Geschenkeabweisen,
+   }
 }
