@@ -333,14 +333,14 @@ namespace SchuBS_Textadventure
         private void EndeAugenGeschlossen()
         {
             SetzeHintergrundBild("feldweg_deathscreen.png");
-            WriteText("Euer ungestillter Durst nach Abenteuern führt zum unweigerlichen Ende.");
+            WriteText("So schnell wie dein Abenteuer anfing, so schnell ist es auch zu Ende. Du hast dich entschieden, deinem Schicksal zu entkommen. Dein ungestillter Durst nach Abenteuern führt zum unweigerlichen Ende.");
             SetButtonsText("Neustarten");
             previous = Previous.EndeAugenGeschlossen;
         }
 
         private void BerufungErfragen()
         {
-            WriteText("'Naja, jemand mit dem Namen kann gar nicht feindlich gesinnt sein! Freut mich dich kennenzulernen, ##SpielerName##!",
+            WriteText("'Naja, jemand mit deinem Namen kann gar nicht feindlich gesinnt sein! Freut mich dich kennenzulernen, ##SpielerName##!",
                 "Ich bin Thoron, der Wanderer, erster seines Namens, Sprenger der Ketten und Vater der Kürbisse. Aber du darfst mich ruhig Thoron nennen.",
                 "Was führt dich in unsere Lande, ##SpielerName##?'");
             SetButtonsText("Ich bin beruflich hier.", "Pure Abenteuerlust.");
@@ -362,7 +362,7 @@ namespace SchuBS_Textadventure
             WriteText("'Ein ##SpielerKlasse##! Spannend.",
                 "Dann wünsche ich dir viel Erfolg auf deinem Weg.",
                 "Hier hast du eine Münze. Gebrauche sie klug. Sie wird sich bestimmt noch als hilfreich erweisen.",
-                "Eine Frage noch, ##SpielerName## Welches Begehren wird dich auf deinem Weg leiten?'?");
+                "Eine Frage noch, ##SpielerName##. Welches Begehren wird dich auf deinem Weg leiten?'");
             AktuellerHeld.FuegeItemHinzu(new Item("Münze", GetBild("muenze.png")));
             SetButtonsText("Macht.", "Reichtum.");
             previous = Previous.ZielErfragt;
