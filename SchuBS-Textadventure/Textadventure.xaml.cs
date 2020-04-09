@@ -80,7 +80,7 @@ namespace SchuBS_Textadventure
 
             UniforgridButtons.Columns = ButtonsAktionen.Count(button => button.Visibility == Visibility.Visible);
 
-            void SetButtonText(int buttonIndex, string buttonText = "")
+            void SetButtonText(int buttonIndex, string buttonText)
             {
                 ButtonsAktionen[buttonIndex].Content = buttonText;
                 ButtonsAktionen[buttonIndex].Visibility = string.IsNullOrEmpty(buttonText) ? Visibility.Collapsed : Visibility.Visible;
@@ -144,6 +144,7 @@ namespace SchuBS_Textadventure
         private void EingabefeldNutzen()
         {
             SetButtonsText("Bestätigen");
+            ButtonsAktionen[0].IsEnabled = false;
             TextBoxEingabe.IsEnabled = true;
             TextBoxEingabe.Focus();
         }

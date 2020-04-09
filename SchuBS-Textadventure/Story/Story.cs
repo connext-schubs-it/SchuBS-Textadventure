@@ -2,6 +2,7 @@
 using SchuBS_Textadventure.Objects;
 
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace SchuBS_Textadventure
@@ -232,6 +233,14 @@ namespace SchuBS_Textadventure
             if (e.Key == Key.Enter)
             {
                 VerarbeiteTextEingabe();
+            }
+        }
+
+        private void TextBoxEingabe_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (TextBoxEingabe.IsEnabled)
+            {
+                ButtonsAktionen[0].IsEnabled = !string.IsNullOrWhiteSpace(TextBoxEingabe.Text);
             }
         }
 
