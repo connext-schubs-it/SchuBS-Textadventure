@@ -324,8 +324,8 @@ namespace SchuBS_Textadventure
             WriteText("Du öffnest deine Augen. Das helle Sonnenlicht blendet dich für einen Moment. Es scheint ein sonniger Vormittag im frühen Sommer zu sein. Du liegst auf einem staubigen Feldweg. In der Umgebung gibt es nicht viel zu sehen. Grüne Flächen, vereinzelte Felder und der Feldweg, der bis an den Horizont zu führen scheint.",
                 "Da regt sich etwas in der Ferne. Eine Gestalt befindet sich auf dem Weg und bewegt sich in eure Richtung, zuerst langsam, dann schneller, als sie dich bemerkt.",
                 "Nun steht ein fremder Mann vor dir.",
-                "'Ein Mittagsschlaf, hier in der prallen Sonne? Recht ungewöhnlich für diese Gegend. Fast schon verdächtig... ",
-                "Verrätst du mir deinen Namen?'");
+                "“Ein Mittagsschlaf, hier in der prallen Sonne? Recht ungewöhnlich für diese Gegend. Fast schon verdächtig... ",
+                "Verrätst du mir deinen Namen?”");
             EingabefeldNutzen();
             previous = Previous.NameErfragt;
         }
@@ -340,9 +340,9 @@ namespace SchuBS_Textadventure
 
         private void BerufungErfragen()
         {
-            WriteText("'Naja, jemand mit deinem Namen kann gar nicht feindlich gesinnt sein! Freut mich dich kennenzulernen, ##SpielerName##!",
+            WriteText("“Naja, jemand mit deinem Namen kann gar nicht feindlich gesinnt sein! Freut mich dich kennenzulernen, ##SpielerName##!",
                 "Ich bin Thoron, der Wanderer, erster seines Namens, Sprenger der Ketten und Vater der Kürbisse. Aber du darfst mich ruhig Thoron nennen.",
-                "Was führt dich in unsere Lande, ##SpielerName##?'");
+                "Was führt dich in unsere Lande, ##SpielerName##?”");
             SetButtonsText("Ich bin beruflich hier.", "Pure Abenteuerlust.");
             previous = Previous.BerufungErfragt;
         }
@@ -350,7 +350,7 @@ namespace SchuBS_Textadventure
         private void BerufErfragen()
         {
             SetzeHintergrundBild("klassenvorschau.png");
-            WriteText("'Beruflich also? Was ist denn dein Beruf?'",
+            WriteText("“Beruflich also? Was ist denn dein Beruf?”",
                 "(Mögliche Eingaben: Krieger, Waldläufer, Magier, Assassine. Entscheide weise!) "); ;
             EingabefeldNutzen();
             previous = Previous.BerufErfragt;
@@ -359,10 +359,10 @@ namespace SchuBS_Textadventure
         private void ZielErfragen()
         {
             WrapPanelStats.Visibility = Visibility.Visible;
-            WriteText("'Ein ##SpielerKlasse##! Spannend.",
+            WriteText("“Ein ##SpielerKlasse##! Spannend.",
                 "Dann wünsche ich dir viel Erfolg auf deinem Weg.",
                 "Hier hast du eine Münze. Gebrauche sie klug. Sie wird sich bestimmt noch als hilfreich erweisen.",
-                "Eine Frage noch, ##SpielerName##. Welches Begehren wird dich auf deinem Weg leiten?'");
+                "Eine Frage noch, ##SpielerName##. Welches Begehren wird dich auf deinem Weg leiten?”");
             AktuellerHeld.FuegeItemHinzu(new Item("Münze", GetBild("muenze.png")));
             SetButtonsText("Macht.", "Reichtum.");
             previous = Previous.ZielErfragt;
