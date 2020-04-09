@@ -14,7 +14,7 @@ namespace SchuBS_Textadventure.Objects
 
     public class Gegner : BaseObject
     {
-        public Gegner(int maxLebenspunkte, string name) : base(maxLebenspunkte, name) { }
+        public Gegner(int maxLebenspunkte, string name) : base(maxLebenspunkte, name) { ItemReaktionen = new List<Reaktion>(); }
 
         public int Staerke { get; set; }
         public int Verteidigung { get; set; }
@@ -22,6 +22,8 @@ namespace SchuBS_Textadventure.Objects
         public string Bild { get; set; }
 
         public GegnerTyp Typ { get; set; }
+
+        public List<Reaktion> ItemReaktionen { get; set; }
 
         public static Gegner GetByTyp(GegnerTyp typ)
         {
@@ -36,10 +38,10 @@ namespace SchuBS_Textadventure.Objects
                         Verteidigung = 10,
                         Reaktionen = new List<Reaktion>()
                         {
-                            new Reaktion() { LP = 90, Text = "Ha das war ja gar nichts!" },
-                            new Reaktion() { LP = 60, Text = "Gar nicht mal schlecht!" },
-                            new Reaktion() { LP = 30, Text = "Ouch!" },
-                            new Reaktion() { LP = 10, Text = "Aufhören!" }
+                            new Reaktion() { LP = 90, Text1 = "Ha das war ja gar nichts!" },
+                            new Reaktion() { LP = 60, Text1 = "Gar nicht mal schlecht!" },
+                            new Reaktion() { LP = 30, Text1 = "Ouch!" },
+                            new Reaktion() { LP = 10, Text1 = "Aufhören!" }
                         }
                     };
                     break;
@@ -52,10 +54,14 @@ namespace SchuBS_Textadventure.Objects
                         Verteidigung = 0,
                         Reaktionen = new List<Reaktion>()
                         {
-                            new Reaktion() { LP = 90, Text = "Ha das war ja gar nichts!" },
-                            new Reaktion() { LP = 60, Text = "Gar nicht mal schlecht!" },
-                            new Reaktion() { LP = 30, Text = "Ouch!" },
-                            new Reaktion() { LP = 10, Text = "Aufhören!" }
+                            new Reaktion() { LP = 90, Text1 = "Ha das war ja gar nichts!" },
+                            new Reaktion() { LP = 60, Text1 = "Gar nicht mal schlecht!" },
+                            new Reaktion() { LP = 30, Text1 = "Ouch!" },
+                            new Reaktion() { LP = 10, Text1 = "Aufhören!" }
+                        },
+                        ItemReaktionen = new List<Reaktion>()
+                        {
+                            new Reaktion() { ItemName = "Nunchakus", Schaden = 50, Text1 = "Oh Nein du bist in Besitz der mächtigen Nunchakus! Hab erbarmen!", Text2 = "Gnade!"}
                         }
                     };
                     break;
@@ -84,6 +90,19 @@ namespace SchuBS_Textadventure.Objects
 
             gegner.Typ = typ;
             return gegner;
+        }
+
+        internal Reaktion GetReaktionAufItem(Item item)
+        {
+            foreach (Reaktion reakt in ItemReaktionen)
+            {
+                if (reakt.ItemName.Equals(item.Name))
+                {
+                    return reakt;
+                }
+
+            }
+            return null;
         }
     }
 }

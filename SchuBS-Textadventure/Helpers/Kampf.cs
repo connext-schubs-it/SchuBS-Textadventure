@@ -13,6 +13,7 @@ namespace SchuBS_Textadventure.Helpers
         public bool IstZuende { get; set; } = false;
         public Zug LetzteAktionVon { get; set; } = Zug.Spieler;
         public Textadventure Adventure { get; set; }
+        public Item Item { get; set; }
 
         private List<string> Ausgabe { get; } = new List<string>();
 
@@ -100,7 +101,7 @@ namespace SchuBS_Textadventure.Helpers
             }
 
             Ausgabe.AddRange(AusgabeHelper.AusgabeReaktion(reaktion, typ, Gegner));
-            if (reaktion != null && reaktion.Von.Lebenspunkte > 0)
+            if (reaktion != null && Spieler.Lebenspunkte > 0 && Gegner.Lebenspunkte > 0)
             {
                 Aktion();
             }
@@ -119,7 +120,17 @@ namespace SchuBS_Textadventure.Helpers
 
         private Reaktion ItemBenutzen()
         {
-            return null;
+            Reaktion reaktion = Gegner.GetReaktionAufItem(Item);
+
+            if (reaktion == null)
+            {
+                reaktion = new Reaktion();
+                reaktion.Text1 = $"{Item.Name} hat keine Wirkung auf {Gegner.Name}";
+            }
+            else
+                Gegner.Lebenspunkte -= reaktion.Schaden;
+
+            return reaktion;
         }
 
         private Reaktion SchadenAusteilenMagie()
@@ -185,8 +196,9 @@ namespace SchuBS_Textadventure.Helpers
             AktionAusführen(AktionsTyp.SpielerMagie);
         }
 
-        public void Button3Item()
+        public void Button3Item(Item item)
         {
+            Item = item;
             Ausgabe.Add("Du nutzt einen Gegenstand...");
             AktionAusführen(AktionsTyp.SpielerItem);
         }

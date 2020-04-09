@@ -42,10 +42,7 @@ namespace SchuBS_Textadventure.Objects
             Reaktion rkt = currentMin.Copy();
             Reaktionen.Remove(currentMin);
 
-            if (!specialItem.Equals(""))
-                currentMin.SpecialText = GetSpecialText(specialItem);
-
-            rkt.Von = this;
+            rkt.Ziel = this;
             rkt.Schaden = schaden;
 
             return rkt;
@@ -75,7 +72,7 @@ namespace SchuBS_Textadventure.Objects
                 case Spieler spieler:
                     reaktion = new Reaktion()
                     {
-                        Von = this,
+                        Ziel = this,
                         LP = Lebenspunkte,
                         Schaden = schaden
                     };
@@ -83,7 +80,7 @@ namespace SchuBS_Textadventure.Objects
                 default:
                     reaktion = new Reaktion()
                     {
-                        Von = new Spieler()
+                        Ziel = new Spieler()
                         {
                             Name = "Spieler",
                             Lebenspunkte = 100

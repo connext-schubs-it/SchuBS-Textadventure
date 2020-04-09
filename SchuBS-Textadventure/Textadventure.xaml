@@ -186,6 +186,7 @@
                 <ListBox x:Name="ListBoxInventar"
                          VerticalAlignment="Stretch"
                          MinHeight="74"
+                         MouseDoubleClick="ListBoxInventar_MouseDoubleClick"
                          ItemsSource="{Binding ElementName=ThisWindow, Path=AktuellerHeld.Inventar}">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>

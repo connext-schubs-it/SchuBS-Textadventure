@@ -303,7 +303,9 @@ namespace SchuBS_Textadventure
                             Kampf.Button2Magie();
                             break;
                         case 2:
-                            Kampf.Button3Item();
+                            Item selectedItem = (Item)ListBoxInventar.SelectedItem;
+                            if (selectedItem != null)
+                                Kampf.Button3Item(selectedItem);
                             break;
                     }
 
@@ -320,6 +322,16 @@ namespace SchuBS_Textadventure
                         }
                     }
                 }
+            }
+        }
+
+        private void ListBoxInventar_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (Kampf != null && !Kampf.IstZuende)
+            {
+                Kampf.Button3Item((Item)ListBoxInventar.SelectedItem);
+                if(Kampf.IstZuende)
+                    SetButtonsText("Kampf beenden");
             }
         }
 
