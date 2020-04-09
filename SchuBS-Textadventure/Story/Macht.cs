@@ -180,7 +180,7 @@ namespace SchuBS_Textadventure
         public void KaffeBohnenplantageIstMachtWichtig()
         {
 
-         SetzeHintergrundBild("kuerberlin_mit_kuerbispalast.png");
+            SetzeHintergrundBild("kuerberlin_mit_kuerbispalast.png");
             SetzePersonenBild("kobold_punks_new.png");
             WriteText("Der Weg führt dich vorbei an einem Kürbisacker zu einem kleinen Dorf … ",
                 "Dir bietet sich ein grandioser Ausblick. Das Dorf Kürberlin liegt vor dir.",
@@ -229,8 +229,8 @@ namespace SchuBS_Textadventure
 
             previous = Previous.GeschenkeAnnehmen;
         }
-         public void KaffeBohnenplantageVerantwortungStellen()
-         {
+        public void KaffeBohnenplantageVerantwortungStellen()
+        {
             SetzeHintergrundBild("kaffeebohnenplantage.jpg");
             WriteText("Du stellst dich deinem Schicksal und erklärst den Bewohner deine missliche Lage.",
                 "Nun wirst du bis ans Ende aller Tage deine Schulden auf den Kürbisackern von Kürbistan arbeiten.",
@@ -241,40 +241,40 @@ namespace SchuBS_Textadventure
             bool muenze = AktuellerHeld.HatItem("Münze");
             if (muenze)
             {
-               SetButtonsText("...du verwendest mehr Salz", "...du gönnst dir mal ein richtiges Steak.  ");
+                SetButtonsText("...du verwendest mehr Salz", "...du gönnst dir mal ein richtiges Steak.  ");
             }
             else
             {
-               SetButtonsText("...du verwendest mehr Salz ");
+                SetButtonsText("...du verwendest mehr Salz ");
             }
             previous = Previous.KaffeBohnenplantageVerantwortungStellen;
-         }
-      public void KaffeBohnenplantageSteak()
-      {
-         SetzeHintergrundBild("food_truck_deathscreen.png");
-         WriteText("Außerhalb der Stadt steht ein Food-Truck Food-to-Goat. ",
-             "Dein alter Kumpel Jürgen bedient dich heute. ",
-             "Er empfiehlt dir direkt ein Stück seines besten Fantasy-Ziegenfleisches, welches er für dich sofort auf den Grill schmeißt.  ",
-             "Dieses Steak ist mehr als du dir jemals erträumen konntest.",
-             "Die saftige Konsistenz, der ausfüllende Duft, der dir in die Nase steigt, die goldig braune Farbe dieses anmutigen Stückes köstlichen Fleisches.",
-             "Jürgen gefällt dein Sinn für Geschmack. Er bietet dir einen Arbeitsplatz in seinem Food-truck an, den du selbstverständlich gerne annimmst.",
-             " Mit brutzelndem Fleischduft in der Nase macht das Schulden abarbeiten viel mehr Spaß. ",
-             "Schönes Leben noch. ");
-         SetButtonsText();
-      }
-      public void KaffeBohnenplantageSalzverwenden()
-      {
-         SetzeHintergrundBild("kaffeebohnenplantage.jpg");
+        }
+        public void KaffeBohnenplantageSteak()
+        {
+            SetzeHintergrundBild("food_truck_deathscreen.png");
+            WriteText("Außerhalb der Stadt steht ein Food-Truck Food-to-Goat. ",
+                "Dein alter Kumpel Jürgen bedient dich heute. ",
+                "Er empfiehlt dir direkt ein Stück seines besten Fantasy-Ziegenfleisches, welches er für dich sofort auf den Grill schmeißt.  ",
+                "Dieses Steak ist mehr als du dir jemals erträumen konntest.",
+                "Die saftige Konsistenz, der ausfüllende Duft, der dir in die Nase steigt, die goldig braune Farbe dieses anmutigen Stückes köstlichen Fleisches.",
+                "Jürgen gefällt dein Sinn für Geschmack. Er bietet dir einen Arbeitsplatz in seinem Food-truck an, den du selbstverständlich gerne annimmst.",
+                " Mit brutzelndem Fleischduft in der Nase macht das Schulden abarbeiten viel mehr Spaß. ",
+                "Schönes Leben noch. ");
+            SetButtonsText();
+        }
+        public void KaffeBohnenplantageSalzverwenden()
+        {
+            SetzeHintergrundBild("kaffeebohnenplantage.jpg");
             WriteText("Mmmhhhhh, das schmeckt. Gar nicht übel.",
                 "Reicht dir eine Prise Salz für den Rest deines Lebens?",
                 "Nein?!  ",
                 "Das muss es aber.",
                 "Schönes Leben noch.");
             SetButtonsText();
-      }
+        }
 
-         public void KaffeBohnenplantageWeiteSuchen()
-         {
+        public void KaffeBohnenplantageWeiteSuchen()
+        {
             SetzeHintergrundBild("kaffeebohnenplantage.jpg");
             WriteText("Du fliehst vor dem wütenden Mob, diese sind aber ziemlich flink für ihre magere Statur. Schließlich sind in Kürbissen Vitamine und Ballaststoffe vertreten.   ",
                 "Du lässt die getragenen Kürbisse aufgrund der kritischen Situation fallen und entkommst den zornigen Bewohnern. ",
@@ -288,15 +288,15 @@ namespace SchuBS_Textadventure
             bool eier = AktuellerHeld.HatItem("Ei");
             if (eier)
             {
-               SetButtonsText("...mehr Kürbisse ", "...Eier");
+                SetButtonsText("...mehr Kürbisse ", "...Eier");
             }
             else
             {
-               SetButtonsText("...mehr Kürbisse ");
+                SetButtonsText("...mehr Kürbisse ");
             }
 
-         previous = Previous.WeiteSuchen;
-         }
+            previous = Previous.WeiteSuchen;
+        }
         //----------------------------------------------------------------Kuerberlin
 
         public void KueberlinAnkunft()
@@ -319,6 +319,7 @@ namespace SchuBS_Textadventure
             {
                 SetButtonsText("Um Gnade flehen ", "Kämpfen!");
             }
+        }
 
         public void KuerberlinGnadeFlehen()
         {
@@ -332,35 +333,35 @@ namespace SchuBS_Textadventure
             previous = Previous.KuerberlinGnadeFlehen;
         }
 
-      public void KaffeBohnenmehrKuerbisse()
-      {
-         SetzeHintergrundBild("kuerbisfelder_koenig_deathscreen.png");
-         WriteText("Das Kürbisreich verlangt nach noch mehr Kürbis! So etwas hätte ich nicht für möglich gehalten. Aber es stimmt.",
-             "Donald J. Trumpkin verspricht dem Volk eine Kürbisflotte, woraufhin du mit Kürbisversicherungen konterst. ",
-             "Argument nach Argument, Versprechen nach Versprechen, Stunden vergehen bis sich der hohe Rat berät und den Sieger bekannt gibt: Euch beide! Ihr habt gleich viele Stimmen und seid somit beide König.",
-             "Als dir die Kürbiskrone aufgesetzt wird, erkennt der Pöbel den dreisten Kürbisdieb von neulich wieder. ",
-             "Das ist nicht weiter schlimm. ",
-             "Dann regierst du einfach von den Kürbisfeldern weiter, auf denen du deine Schulden abarbeitest.",
-             " Kein König war seinem Volk je so nahe. ");
-         SetButtonsText();
-         previous = Previous.KaffeBohnenPlantagemehrKuerbisse;
-      }
-      public void KaffeBohnenWollenEier()
-      {
-         SetzeHintergrundBild("koenig_deathscreen_new.png");
-         WriteText("Dir fallen beim besten Willen keine Argumente ein und so beschließt du dich dazu, nichtssagend eine Schachtel Eier emporzuhalten.",
-             "Stillschweigen setzt ein, das Volk wirkt schockiert. ",
-             "Es hat so etwas schließlich noch nie gesehen. ",
-             "Aus Mythen und Legenden hat es von einem Nahrungsmittel gehört, welches keinen Gramm Kürbis enthalten soll. ",
-             "Nie hätten sie es für möglich gehalten so etwas wunderschönes jemals zu Gesicht zu bekommen. ",
-             "Dem sekundenlangen Schweigen folgt ein Jubeln der Masse.",
-             "Die Stimmen sind eindeutig, du bist ihr neuer König. ");
-         SetButtonsText();
-         previous = Previous.KaffeBohnenPlantageWollenEier;
-      }
+        public void KaffeBohnenmehrKuerbisse()
+        {
+            SetzeHintergrundBild("kuerbisfelder_koenig_deathscreen.png");
+            WriteText("Das Kürbisreich verlangt nach noch mehr Kürbis! So etwas hätte ich nicht für möglich gehalten. Aber es stimmt.",
+                "Donald J. Trumpkin verspricht dem Volk eine Kürbisflotte, woraufhin du mit Kürbisversicherungen konterst. ",
+                "Argument nach Argument, Versprechen nach Versprechen, Stunden vergehen bis sich der hohe Rat berät und den Sieger bekannt gibt: Euch beide! Ihr habt gleich viele Stimmen und seid somit beide König.",
+                "Als dir die Kürbiskrone aufgesetzt wird, erkennt der Pöbel den dreisten Kürbisdieb von neulich wieder. ",
+                "Das ist nicht weiter schlimm. ",
+                "Dann regierst du einfach von den Kürbisfeldern weiter, auf denen du deine Schulden abarbeitest.",
+                " Kein König war seinem Volk je so nahe. ");
+            SetButtonsText();
+            previous = Previous.KaffeBohnenPlantagemehrKuerbisse;
+        }
+        public void KaffeBohnenWollenEier()
+        {
+            SetzeHintergrundBild("koenig_deathscreen_new.png");
+            WriteText("Dir fallen beim besten Willen keine Argumente ein und so beschließt du dich dazu, nichtssagend eine Schachtel Eier emporzuhalten.",
+                "Stillschweigen setzt ein, das Volk wirkt schockiert. ",
+                "Es hat so etwas schließlich noch nie gesehen. ",
+                "Aus Mythen und Legenden hat es von einem Nahrungsmittel gehört, welches keinen Gramm Kürbis enthalten soll. ",
+                "Nie hätten sie es für möglich gehalten so etwas wunderschönes jemals zu Gesicht zu bekommen. ",
+                "Dem sekundenlangen Schweigen folgt ein Jubeln der Masse.",
+                "Die Stimmen sind eindeutig, du bist ihr neuer König. ");
+            SetButtonsText();
+            previous = Previous.KaffeBohnenPlantageWollenEier;
+        }
 
 
-      public void KuerberlinEier()
+        public void KuerberlinEier()
         {
             SetzePersonenBild("kobold_punks.png");
 
@@ -464,7 +465,7 @@ namespace SchuBS_Textadventure
         public void KuerbistanVerantwortung()
         {
             //Button2
-            
+
         }
 
         public void KuerbistanGeschenkeAblehnen()
