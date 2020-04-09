@@ -181,8 +181,9 @@ namespace SchuBS_Textadventure
         public void MitEiernWerfen()
         {
             bool eier = AktuellerHeld.HatItem("Ei");
+            AktuellerHeld.EntferneItem("Ei");
 
-        }
+      }
 
         public void GnadeFlehen()
         {

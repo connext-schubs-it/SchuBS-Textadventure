@@ -151,8 +151,8 @@ namespace SchuBS_Textadventure
                     break;
 
                 case Previous.KaffeBohnenplantage:
-                    AktuellerHeld.Inventar.Clear();
-                    ZielErfragen();
+                     AktuellerHeld.EntferneItem("Münze");
+                     ZielErfragen();
                     break;
 
                 case Previous.TiefseegrotteBegegnungUngeheuer:
@@ -169,6 +169,9 @@ namespace SchuBS_Textadventure
                 case Previous.Weggabelung:
                     Fußweg();
                     break;
+               case Previous.MachtWichtig:
+                     MitEiernWerfen();
+                     break;
 
                 default:
                     KaempfeWennMoeglich(buttonIndex: 1);
