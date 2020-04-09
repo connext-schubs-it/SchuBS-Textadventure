@@ -42,8 +42,7 @@
         KuerberlinKampfGewonnen,
         KuerberlinGnadeFlehen,
         KuerberlinEier,
-        Fußweg,
-        MitEierWerfen
+        MitEierWerfen,
+        IstMachtWichtig
     }
-        
-   }
+}

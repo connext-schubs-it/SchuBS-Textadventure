@@ -181,78 +181,78 @@ namespace SchuBS_Textadventure
             bool eier = AktuellerHeld.HatItem("Ei");
             if (eier)
             {
-               SetButtonsText("Um Gnade flehen ", "Kämpfen!", "Mit Eiern werfen ");
+                SetButtonsText("Um Gnade flehen ", "Kämpfen!", "Mit Eiern werfen ");
             }
             else
             {
-               SetButtonsText("Um Gnade flehen ",  "Kämpfen!");
+                SetButtonsText("Um Gnade flehen ", "Kämpfen!");
             }
 
             previous = Previous.MachtWichtig;
         }
 
         public void KuerberlinGnadeFlehen()
-            {
-                SetzeHintergrundBild("kobold_punks.png");
-                
-                WriteText("Du bittest um Verzeihung und versuchst, die finsteren Gestalten durch Selbstmitleid von ihren Machenschaften abzubringen.",
-                          "“Kannste knicken”, schnauft der Anführer der Kobold-Punks. Der Kampf beginnt.");
-            
-                //Hier wird drei mal hintereinander gekämpft
+        {
+            SetzeHintergrundBild("kobold_punks.png");
 
-                SetButtonsText("Weiter");
+            WriteText("Du bittest um Verzeihung und versuchst, die finsteren Gestalten durch Selbstmitleid von ihren Machenschaften abzubringen.",
+                      "“Kannste knicken”, schnauft der Anführer der Kobold-Punks. Der Kampf beginnt.");
 
-                previous = Previous.KuerberlinGnadeFlehen;
-            }
+            //Hier wird drei mal hintereinander gekämpft
+
+            SetButtonsText("Weiter");
+
+            previous = Previous.KuerberlinGnadeFlehen;
+        }
 
         public void KuerberlinKampfGewonnen()
-            {
-                SetzeHintergrundBild("kobold_punks.png");
+        {
+            SetzeHintergrundBild("kobold_punks.png");
 
-                WriteText("Du bist der Sieger, ein Gewinner. Die Kobold-Punks ziehen mit geknickten Mienen von dannen.",
-                          "Sie konnten dir nichts entgegensetzen und denken nun über eine Umschulung nach.");
-                
-                SetButtonsText("Weiter");
+            WriteText("Du bist der Sieger, ein Gewinner. Die Kobold-Punks ziehen mit geknickten Mienen von dannen.",
+                      "Sie konnten dir nichts entgegensetzen und denken nun über eine Umschulung nach.");
 
-                previous = Previous.KuerberlinKampfGewonnen;
-            }
+            SetButtonsText("Weiter");
+
+            previous = Previous.KuerberlinKampfGewonnen;
+        }
 
         public void KuerberlinKampfVerloren()
-            {
-                SetzeHintergrundBild("blaues_auge_deathscreen.png");
+        {
+            SetzeHintergrundBild("blaues_auge_deathscreen.png");
 
-                WriteText("Du wurdest aufgemischt. Lass den Kopf nicht hängen. Selbstverständlich kannst du es nochmal versuchen. Am Anfang des Spiels.");
-            
-                SetButtonsText("Weiter");
+            WriteText("Du wurdest aufgemischt. Lass den Kopf nicht hängen. Selbstverständlich kannst du es nochmal versuchen. Am Anfang des Spiels.");
 
-                previous = Previous.KuerberlinKampfVerloren();
-            }
+            SetButtonsText("Weiter");
+
+            previous = Previous.KuerberlinKampfVerloren;
+        }
 
         public void KuerberlinEier()
-            {
-                SetzeHintergrundBild("kobold_punks.png");
+        {
+            SetzeHintergrundBild("kobold_punks.png");
 
-                WriteText("Du zückst die Packung Eier und wirfst drauf los. Noch bevor die Kobold-Punks reagieren können, fliegen ihnen auch schon Eier um die übergroßen Ohren.",
-                          "Eier sind ihre größte Schwachstelle. Niemand wusste das, du aber schon. Gut gemacht.");
-                
-                SetButtonsText("Weiter");
+            WriteText("Du zückst die Packung Eier und wirfst drauf los. Noch bevor die Kobold-Punks reagieren können, fliegen ihnen auch schon Eier um die übergroßen Ohren.",
+                      "Eier sind ihre größte Schwachstelle. Niemand wusste das, du aber schon. Gut gemacht.");
 
-                 previous = Previous.KuerberlinEier();
+            SetButtonsText("Weiter");
 
-            }
+            previous = Previous.KuerberlinEier;
+
+        }
 
         public void KuerberlinKoboldKampf()
-            {
-                //Hier wird gekämpft
+        {
+            //Hier wird gekämpft
 
-            }
+        }
 
         public void MitEiernWerfen()
         {
-         SetzeHintergrundBild("kaffeebohnenplantage.jpg");
-         KaempfenKaffe(2);
+            SetzeHintergrundBild("kaffeebohnenplantage.jpg");
+            KaempfenKaffe(2);
 
-         previous = Previous.MitEierWerfen;
+            previous = Previous.MitEierWerfen;
         }
 
 
@@ -265,19 +265,19 @@ namespace SchuBS_Textadventure
 
         public void KaempfenKaffe(int buttonNumber)
         {
-         SetzePersonenBild("tiefsee_ungeheuer.png");
-         StarteKampf(this, Gegner.GetByTyp(GegnerListe, Gegner.Typ.Ungeheuer));
-         if (buttonNumber.Equals(1))
-         {
-            WriteText("Du bittest um Verzeihung und versuchst, die finsteren Gestalten durch Selbstmitleid von ihren Machenschaften abzubringen.",
-                            "“Kannste knicken”, schnauft der Anführer der Kobold-Punks.",
-                            "Der Kampf beginnt.");
-         }
-         else
-         {
-            WriteText($"Ungeheuer fordert dich zum Kampf!", "Was wirst du tun?!");
-         }
-            
+            SetzePersonenBild("tiefsee_ungeheuer.png");
+            StarteKampf(this, Gegner.GetByTyp(GegnerListe, Gegner.Typ.Ungeheuer));
+            if (buttonNumber.Equals(1))
+            {
+                WriteText("Du bittest um Verzeihung und versuchst, die finsteren Gestalten durch Selbstmitleid von ihren Machenschaften abzubringen.",
+                                "“Kannste knicken”, schnauft der Anführer der Kobold-Punks.",
+                                "Der Kampf beginnt.");
+            }
+            else
+            {
+                WriteText($"Ungeheuer fordert dich zum Kampf!", "Was wirst du tun?!");
+            }
+
         }
     }
 }

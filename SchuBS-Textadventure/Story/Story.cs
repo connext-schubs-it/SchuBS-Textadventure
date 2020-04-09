@@ -108,11 +108,11 @@ namespace SchuBS_Textadventure
                     istMachtWichtig();
                     break;
 
-                     case Previous.istMachtWichtig:
-                     KuerberlinGnadeFlehen();
+                case Previous.IstMachtWichtig:
+                    KuerberlinGnadeFlehen();
                     break;
 
-                case  Previous.KuerberlinGnadeFlehen:
+                case Previous.KuerberlinGnadeFlehen:
                     KuerberlinKoboldKampf();
                     break;
 
@@ -163,8 +163,8 @@ namespace SchuBS_Textadventure
                     break;
 
                 case Previous.KaffeBohnenplantage:
-                     AktuellerHeld.EntferneItem("Münze");
-                     ZielErfragen();
+                    AktuellerHeld.EntferneItem("Münze");
+                    ZielErfragen();
                     break;
 
                 case Previous.TiefseegrotteBegegnungUngeheuer:
@@ -182,9 +182,9 @@ namespace SchuBS_Textadventure
                     Fußweg();
                     break;
 
-              // case Previous.istMachtWichtig:
+                // case Previous.istMachtWichtig:
                 //    MitEiernWerfen();
-                  //  break;
+                //  break;
 
                 default:
                     KaempfeWennMoeglich(buttonIndex: 1);
@@ -196,13 +196,13 @@ namespace SchuBS_Textadventure
         {
             switch (previous)
             {
-                case Previous.istMachtWichtig:
+                case Previous.IstMachtWichtig:
                     MitEiernWerfen();
                     break;
 
                 //case Previous.istMachtWichtig:
-                    //KuerberlinEier();
-                 //   break;
+                //KuerberlinEier();
+                //   break;
 
                 default:
                     KaempfeWennMoeglich(buttonIndex: 2);
