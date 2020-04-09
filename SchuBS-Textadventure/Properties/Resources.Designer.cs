@@ -91,6 +91,16 @@ namespace SchuBS_Textadventure.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap bruecke_mit_zollamt {
+            get {
+                object obj = ResourceManager.GetObject("bruecke_mit_zollamt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Icon ähnlich wie (Symbol).
         /// </summary>
         public static System.Drawing.Icon cucurbita_icon {
