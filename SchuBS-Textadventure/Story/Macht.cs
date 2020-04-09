@@ -351,7 +351,7 @@ namespace SchuBS_Textadventure
 
         public void MitEiernWerfen()
         {
-            SetzeHintergrundBild("kaffeebohnenplantage.jpg");
+            SetzeHintergrundBild("kuerberlin_mit_kuerbispalast.png");
             WriteText("Du zückst die Packung Eier und wirfst drauf los. ",
                 "Noch bevor die Kobold-Punks reagieren können, fliegen ihnen auch schon Eier um die übergroßen Ohren. ",
                 "Eier sind ihre größte Schwachstelle.",
@@ -370,7 +370,7 @@ namespace SchuBS_Textadventure
 
         public void GnadeFlehen()
         {
-            SetzeHintergrundBild("kaffeebohnenplantage.jpg");
+            SetzeHintergrundBild("kuerberlin_mit_kuerbispalast.png");
             WriteText("Du bittest um Verzeihung und versuchst, die finsteren Gestalten durch Selbstmitleid von ihren Machenschaften abzubringen.",
                 "“Kannste knicken”, schnauft der Anführer der Kobold-Punks.",
                 "Der Kampf beginnt.");
