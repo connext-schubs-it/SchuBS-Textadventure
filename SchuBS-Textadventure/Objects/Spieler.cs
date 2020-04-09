@@ -1,21 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 
 namespace SchuBS_Textadventure.Objects
 {
     public class Spieler : BaseObject
     {
-        private Klasse klasse = Klasse.GetByKlassenTyp(KlassenTyp.Keine);
-
         public Spieler() : base(0, "") { }
 
         public Klasse Klasse
         {
-            get => klasse;
+            get => (Klasse)GetValue(KlasseProperty);
             set
             {
-                klasse = value;
+                SetValue(KlasseProperty, value);
                 if (Lebenspunkte < Klasse.Lebenspunkte)
                 {
                     MaxLebenspunkte = Klasse.Lebenspunkte;
@@ -24,7 +23,10 @@ namespace SchuBS_Textadventure.Objects
             }
         }
 
-        public List<Previous> Level { get; set; } = new List<Previous>();
+        public static readonly DependencyProperty KlasseProperty =
+            DependencyProperty.Register("Klasse", typeof(Klasse), typeof(Spieler), new PropertyMetadata(Klasse.GetByKlassenTyp(KlassenTyp.Keine)));
+
+        public List<Previous> Level { get; } = new List<Previous>();
         public IList<Item> Inventar { get; } = new ObservableCollection<Item>();
 
         public bool HatItem(string name) => Inventar.Contains(new Item(name));
