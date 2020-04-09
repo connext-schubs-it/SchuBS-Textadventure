@@ -20,7 +20,7 @@ namespace SchuBS_Textadventure.Objects
                 }
             }
         }
-        public int Level { get; set; }
+        public List<Previous> Level { get; set; } = new List<Previous>();
         public IList<Item> Inventar { get; } = new ObservableCollection<Item>();
 
         public bool HatItem(string name) => Inventar.Contains(new Item(name));
@@ -30,5 +30,9 @@ namespace SchuBS_Textadventure.Objects
         public bool EntferneItem(string name) => Inventar.Remove(new Item(name));
 
         public void FuegeItemHinzu(Item item) => Inventar.Add(item);
+
+        public void FuegeLevelHinzu(Previous previous) => Level.Add(previous);
+
+        public bool HatLevel(Previous previous) => Level.Contains(previous);
     }
 }

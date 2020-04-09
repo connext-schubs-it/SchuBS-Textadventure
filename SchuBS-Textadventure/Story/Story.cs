@@ -116,6 +116,19 @@ namespace SchuBS_Textadventure
                     KuerberlinKoboldKampf();
                     break;
 
+                case Previous.Fußweg:
+                case Previous.Aufzug:
+                    JoshkaBegegnen();
+                    break;
+
+                case Previous.JoshkaBegegnen:
+                    StarteKampfFeuerdrache();
+                    break;
+
+                case Previous.TauschMesserblock:
+                    EndeThemenpark();
+                    break;
+
                 default:
                     if (TextBoxEingabe.IsEnabled)
                     {
@@ -125,6 +138,7 @@ namespace SchuBS_Textadventure
                     {
                         KaempfeWennMoeglich(buttonIndex: 0);
                     }
+
                     break;
             }
         }
@@ -180,6 +194,10 @@ namespace SchuBS_Textadventure
 
                 case Previous.Weggabelung:
                     Fußweg();
+                    break;
+
+                case Previous.JoshkaBegegnen:
+                    Tauschgeschaeft();
                     break;
 
                 // case Previous.istMachtWichtig:
@@ -298,6 +316,7 @@ namespace SchuBS_Textadventure
                             WriteText("Diesen Beruf kenne ich nicht. Kannst du ihn nochmal wiederholen?", "");
                             break;
                     }
+
                     break;
 
                 case Previous.RaetselMauer:
@@ -318,6 +337,7 @@ namespace SchuBS_Textadventure
                             WriteText("Das ist auf jeden Fall keine Antwortmöglichkeit!", "");
                             break;
                     }
+
                     break;
 
                 case Previous.Raetsel2:
@@ -338,9 +358,44 @@ namespace SchuBS_Textadventure
                             WriteText("Das ist auf jeden Fall keine Antwortmöglichkeit!", "");
                             break;
                     }
+
                     break;
+
+                case Previous.Tauschgeschaeft:
+                    switch (TextBoxEingabe.Text.ToLower())
+                    {
+                        case "nunchakus":
+                            if (AktuellerHeld.HatItem("Nunchakus"))
+                            {
+                                TauschNunchakus();
+                            }
+                            else
+                            {
+                                WriteText("Dieses Item befindet sich nicht in deinem Inventar.");
+                            }
+
+                            break;
+
+                        case "messerblock":
+                            if (AktuellerHeld.HatItem("Messerblock"))
+                            {
+                                TauschMesserblock();
+                            }
+                            else
+                            {
+                                WriteText("Dieses Item befindet sich nicht in deinem Inventar.");
+                            }
+
+                            break;
+
+                        default:
+                            WriteText("Dieses Item befindet sich nicht in deinem Inventar.");
+                            break;
+                    }
+
+                    break;
+                    TextBoxEingabe.Text = "";
             }
-            TextBoxEingabe.Text = "";
         }
 
         #endregion
@@ -364,7 +419,8 @@ namespace SchuBS_Textadventure
 
         private void NameErfragen()
         {
-            WriteText("Du öffnest deine Augen. Das helle Sonnenlicht blendet dich für einen Moment. Es scheint ein sonniger Vormittag im frühen Sommer zu sein. Du liegst auf einem staubigen Feldweg. In der Umgebung gibt es nicht viel zu sehen. Grüne Flächen, vereinzelte Felder und der Feldweg, der bis an den Horizont zu führen scheint.",
+            WriteText(
+                "Du öffnest deine Augen. Das helle Sonnenlicht blendet dich für einen Moment. Es scheint ein sonniger Vormittag im frühen Sommer zu sein. Du liegst auf einem staubigen Feldweg. In der Umgebung gibt es nicht viel zu sehen. Grüne Flächen, vereinzelte Felder und der Feldweg, der bis an den Horizont zu führen scheint.",
                 "Da regt sich etwas in der Ferne. Eine Gestalt befindet sich auf dem Weg und bewegt sich in eure Richtung, zuerst langsam, dann schneller, als sie dich bemerkt.",
                 "Nun steht ein fremder Mann vor dir.",
                 "“Ein Mittagsschlaf, hier in der prallen Sonne? Recht ungewöhnlich für diese Gegend. Fast schon verdächtig... ",
@@ -376,14 +432,16 @@ namespace SchuBS_Textadventure
         private void EndeAugenGeschlossen()
         {
             SetzeHintergrundBild("feldweg_deathscreen.png");
-            WriteText("So schnell wie dein Abenteuer anfing, so schnell ist es auch zu Ende. Du hast dich entschieden, deinem Schicksal zu entkommen. Dein ungestillter Durst nach Abenteuern führt zum unweigerlichen Ende.");
+            WriteText(
+                "So schnell wie dein Abenteuer anfing, so schnell ist es auch zu Ende. Du hast dich entschieden, deinem Schicksal zu entkommen. Dein ungestillter Durst nach Abenteuern führt zum unweigerlichen Ende.");
             SetButtonsText("Neustarten");
             previous = Previous.EndeAugenGeschlossen;
         }
 
         private void BerufungErfragen()
         {
-            WriteText("“Naja, jemand mit deinem Namen kann gar nicht feindlich gesinnt sein! Freut mich dich kennenzulernen, ##SpielerName##!",
+            WriteText(
+                "“Naja, jemand mit deinem Namen kann gar nicht feindlich gesinnt sein! Freut mich dich kennenzulernen, ##SpielerName##!",
                 "Ich bin Thoron, der Wanderer, erster seines Namens, Sprenger der Ketten und Vater der Kürbisse. Aber du darfst mich ruhig Thoron nennen.",
                 "Was führt dich in unsere Lande, ##SpielerName##?”");
             SetButtonsText("Ich bin beruflich hier.", "Pure Abenteuerlust.");
@@ -394,7 +452,8 @@ namespace SchuBS_Textadventure
         {
             SetzeHintergrundBild("klassenvorschau.png");
             WriteText("“Beruflich also? Was ist denn dein Beruf?”",
-                "(Mögliche Eingaben: Krieger, Waldläufer, Magier, Assassine. Entscheide weise!) "); ;
+                "(Mögliche Eingaben: Krieger, Waldläufer, Magier, Assassine. Entscheide weise!) ");
+            ;
             EingabefeldNutzen();
             previous = Previous.BerufErfragt;
         }

@@ -43,6 +43,10 @@
         KuerberlinGnadeFlehen,
         KuerberlinEier,
         MitEierWerfen,
-        IstMachtWichtig
+        IstMachtWichtig,
+        JoshkaBegegnen,
+        Tauschgeschaeft,
+        TauschNunchakus,
+        TauschMesserblock,
     }
 }

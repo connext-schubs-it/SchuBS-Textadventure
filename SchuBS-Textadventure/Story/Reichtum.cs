@@ -40,7 +40,7 @@ namespace SchuBS_Textadventure
         {
             SetzeHintergrundBild("taube_mit_nunchakus.png");
             WriteText("Du gehst weiter die Straße entlang.",
-                "Von weitem kannst du schon den Berg erspähen. Auf einmal springt dir eine dicke, türkise Taube in den Weg. Im Schnabel trägt sie ein paar Nunchucks, die sie drohend in deine Richtung schwenkt.Ihr tiefes Gurren geht durch Mark und Bein.");
+                "Von weitem kannst du schon den Berg erspähen. Auf einmal springt dir eine dicke, türkise Taube in den Weg. Im Schnabel trägt sie ein paar Nunchakus, die sie drohend in deine Richtung schwenkt.Ihr tiefes Gurren geht durch Mark und Bein.");
             SetButtonsText("Im Gebüsch Deckung suchen", "Die Taube mit einem beherzten Karatekick in die nächste Böschung befördern.");
             previous = Previous.Taube;
         }
@@ -54,9 +54,9 @@ namespace SchuBS_Textadventure
 
         private void TaubeTreten()
         {
-            WriteText("Die Taube fliegt wie ein Fußball durch die Luft und landet mit traurigem Gurren im Wald. Das sollte sich erstmal erledigt haben! Die Nunchucks nimmst du an dich",
-                "Die Nunchucks nimmst du an dich.");
-            AktuellerHeld.FuegeItemHinzu(new Item("Nunchucks", GetBild("nunchakus.png")));
+            WriteText("Die Taube fliegt wie ein Fußball durch die Luft und landet mit traurigem Gurren im Wald. Das sollte sich erstmal erledigt haben! Die Nunchakus nimmst du an dich",
+                "Die Nunchakus nimmst du an dich.");
+            AktuellerHeld.FuegeItemHinzu(new Item("Nunchakus", GetBild("nunchakus.png")));
             SetButtonsText("weiter");
             previous = Previous.TaubeTreten;
         }
@@ -146,6 +146,7 @@ namespace SchuBS_Textadventure
                 "Auf der Etage “Kinderfresser” verlässt der Troll mit einem grunzenden Abschied und einem kurzen Lupfen seines Hutes den Aufzug. Du atmest durch.",
                 "Mit einem “Pling” öffnet sich die Tür auf der Etage 'Schatz' und vor dir leuchtet der größte Schatz, den man sich nur vorstellen kann. Freudig stürzt du dich auf das Gold!");
             SetButtonsText("weiter");
+            AktuellerHeld.FuegeLevelHinzu(Previous.Aufzug);
             previous = Previous.Aufzug;
         }
 
@@ -158,7 +159,75 @@ namespace SchuBS_Textadventure
                 "Mit Freudentränen, die dein Gesicht herunterströmen, gehst du langsam auf den Geoldberg zu.");
             SetButtonsText("weiter");
             AktuellerHeld.Lebenspunkte = AktuellerHeld.Lebenspunkte - 5;
+            AktuellerHeld.FuegeLevelHinzu(Previous.Fußweg);
             previous = Previous.Fußweg;
+        }
+
+        private void JoshkaBegegnen()
+        {
+            WriteText("Du hörst ein lautes Schnaufen hinter dir. Noch bevor du dich umdrehen kannst, wirst du auch schon meterweit in Richtung des Goldberges geschleudert.",
+                "Deine Gier nach Gold hat dich genau ins Nest des Drachen Joshka geführt. Der Drache speit Feuer im Anblick deiner winzigen Statur und wird wild.",
+                "Das Feuer verfehlt dich knapp und du stellst dich dem Ungetüm entgegen. Dies ist der entscheidende Moment. Ein Entkommen ist unmöglich.",
+                "Wirst du dich dem Monster entgegenstellen und für wenige Goldstücke dein Leben riskieren? Oder lässt du dich auf ein Tauschgeschäft ein?");
+            if (AktuellerHeld.HatItem("Messerblock") || AktuellerHeld.HatItem("Nunchakus"))
+            {
+                SetButtonsText("Kämpfen!", "Tauschgeschäft");
+            }
+            else
+            {
+                SetButtonsText("Kämpfen!");
+            }
+            previous = Previous.JoshkaBegegnen;
+        }
+
+        private void Tauschgeschaeft()
+        {
+            WriteText("Was möchtest du zum Tausch anbieten?");
+            EingabefeldNutzen();
+            previous = Previous.Tauschgeschaeft;
+        }
+
+        private void TauschNunchakus()
+        {
+            WriteText("Der Drache findet deine asiatischen Kampfstöckchen ziemlich mager. Mit einem Klauenschnippen werden deine Nunchakus bis nach Kürbistan befördert. Der Drache wird noch zorniger und speit Feuer gen Himmel.",
+                "Der Himmel wird blutrot. Joshka ist gewillt dich nun völlig zu erledigen. Er zieht alle Register und breitet seine gewaltigen Flügel aus. Der letzte Kampf beginnt...");
+            SetButtonsText("weiter");
+            previous = Previous.TauschNunchakus;
+        }
+
+        private void TauschMesserblock()
+        {
+            WriteText("Die Augen des Drachen funkeln im Angesicht der scharfen Messer. Er erinnert sich an eine längst vergangene Zeit zurück, als er noch keine Klauen hatte und sein Opfer mit frisch geschliffenen Küchenmessern bearbeiten musste.",
+                "Alte Erinnerungen quellen empor. Der Drache denkt an seine alte Jugendlieben das Leben auf der Farm und schwelgt abwesend vor sich hin.",
+                "Du Fuchs, du nutzt natürlich die Gelegenheit uns stopfst dir die Taschen mit unzähligen Golddublonen voll. Zeit abzuhauen.",
+                "Du kehrst dem Drachen den Rücken zu und erfüllst dir endlich deinen lang gehegten Traum. Ein Pony.");
+            SetButtonsText("weiter");
+            previous = Previous.TauschMesserblock;
+        }
+
+        private void EndeThemenpark()
+        {
+            if (AktuellerHeld.HatLevel(Previous.Fußweg))
+            {
+                WriteText("Du machst dich mit deinen neu erlangten Reichtümern auf den Weg nach Hause.", "",
+                    "Ein Jahr später. Die Eröffnung deines eigenen Themenparks. Besonders stolz bist du auf die Achterbahn, die durch einen ausgestopften Drachen führt.",
+                    "Die Bürger von Kürbistan sind in Scharen angekommen und haben dir Unmengen an Geld und Kürbissen gegeben, nur um dieses neue Highlight im Königreich zu bewundern. Davon werden sie noch ihren Kindern erzählen!",
+                    "Außerdem hast du, nach deinem Treppenmartyrium beim Drachenkampf geschworen, nie wieder auch nur eine Stufe zu erklimmen. Deine Leibwächter tragen dich im Sonnenuntergangslicht zu deiner Villa.",
+                    "Das Leben ist schön!");
+            }
+            else if (AktuellerHeld.HatLevel(Previous.Aufzug))
+            {
+                WriteText("Du machst dich mit deinen neu erlangten Reichtümern auf den Weg nach Hause.", "",
+                    "Ein Jahr später. Die Eröffnung deines eigenen Themenparks. Besonders stolz bist du auf die Achterbahn, die durch einen ausgestopften Drachen führt.",
+                    "Die Bürger von Kürbistan sind in Scharen angekommen und haben dir Unmengen an Geld und Kürbissen gegeben, nur um dieses neue Highlight im Königreich zu bewundern. Davon werden sie noch ihren Kindern erzählen!",
+                    "Du gehst Richtung Sonnenuntergang deiner Villa entgegen.",
+                    "Das Leben ist schön!");
+            }
+        }
+
+        private void StarteKampfFeuerdrache()
+        {
+
         }
     }
 }
