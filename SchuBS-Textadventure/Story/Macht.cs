@@ -188,7 +188,7 @@ namespace SchuBS_Textadventure
 
         public void MitEiernWerfen()
         {
-         SetzeHintergrundBild("tiefsee_ungeheuer.png");
+         SetzeHintergrundBild("kaffeebohnenplantage.jpg");
          KaempfenKaffe(2);
 
          previous = Previous.MitEierWerfen;
@@ -197,22 +197,15 @@ namespace SchuBS_Textadventure
 
         public void GnadeFlehen()
         {
-            SetzeHintergrundBild("tiefsee_ungeheuer.png");
+            SetzeHintergrundBild("kaffeebohnenplantage.jpg");
             KaempfenKaffe(1);
             previous = Previous.GnafeFlehen;
         }
 
         public void KaempfenKaffe(int buttonNumber)
         {
-            SetzeHintergrundBild("tiefsee_ungeheuer.png");
-            Gegner ungeheuer = new Gegner
-            {
-                Lebenspunkte = 100,
-                Name = "Ungeheuer",
-                Staerke = 1,
-                Verteidigung = 0
-            };
-            StarteKampf(this, ungeheuer);
+         SetzePersonenBild("tiefsee_ungeheuer.png");
+         StarteKampf(this, Gegner.GetByTyp(GegnerListe, Gegner.Typ.Ungeheuer));
          if (buttonNumber.Equals(1))
          {
             WriteText("Du bittest um Verzeihung und versuchst, die finsteren Gestalten durch Selbstmitleid von ihren Machenschaften abzubringen.",
