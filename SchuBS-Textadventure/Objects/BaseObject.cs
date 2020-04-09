@@ -1,15 +1,25 @@
 ﻿using SchuBS_Textadventure.Helpers;
 
 using System.Collections.Generic;
+using System.Windows;
 
 namespace SchuBS_Textadventure.Objects
 {
-    public abstract class BaseObject
+    public abstract class BaseObject : DependencyObject
     {
         public List<Reaktion> Reaktionen { get; set; } = new List<Reaktion>();
         public List<string> Spezial { get; set; } = new List<string>();
         public string Name { get; set; }
-        public int Lebenspunkte { get; set; }
+
+        public int Lebenspunkte
+        {
+            get => (int)GetValue(LebenspunkteProperty);
+            set => SetValue(LebenspunkteProperty, value);
+        }
+
+        // Using a DependencyProperty as the backing store for LebensPunkte.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty LebenspunkteProperty =
+            DependencyProperty.Register("Lebenspunkte", typeof(int), typeof(BaseObject), new PropertyMetadata(0));
 
         public Reaktion GetReaktion(int lp, string specialItem, int schaden)
         {

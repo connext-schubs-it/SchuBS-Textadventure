@@ -6,7 +6,20 @@ namespace SchuBS_Textadventure.Objects
 {
     public class Spieler : BaseObject
     {
-        public Klasse Klasse { get; set; } = Klasse.GetByKlassenTyp(KlassenTyp.Keine);
+        private Klasse klasse = Klasse.GetByKlassenTyp(KlassenTyp.Keine);
+
+        public Klasse Klasse
+        {
+            get => klasse;
+            set
+            {
+                klasse = value;
+                if (Lebenspunkte < Klasse.Lebenspunkte)
+                {
+                    Lebenspunkte = Klasse.Lebenspunkte;
+                }
+            }
+        }
         public int Level { get; set; }
         public IList<Item> Inventar { get; } = new ObservableCollection<Item>();
 
