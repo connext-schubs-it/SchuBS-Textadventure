@@ -141,6 +141,14 @@ namespace SchuBS_Textadventure
                     istMachtWichtig();
                     break;
 
+                case Previous.TiefseegrotteVorbeimogeln:
+                    TiefseegrotteVorbeimogeldTod();
+                    break;
+
+                case Previous.TiefseegrotteVorbeimogeldTod:
+                    Start();
+                    break;
+
                 default:
                     if (TextBoxEingabe.IsEnabled)
                     {

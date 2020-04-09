@@ -30,6 +30,7 @@
         TiefseegrotteVorbeimogeln,
         TiefseegrotteRichtigeAntwort,
         TiefseegrotteFalscheAntwort,
+        TiefseegrotteVorbeimogeldTod,
         GnafeFlehen,
         TiefseegrotteKonversation,
         RaetselMauer,

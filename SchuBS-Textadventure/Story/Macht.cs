@@ -101,8 +101,10 @@ namespace SchuBS_Textadventure
                       "Wieso schreist du so laut?! Es zieht seinen Kopf ein und winselt um Gnade, was du aber aufgrund der Panik nicht wahrnimmst.",
                       "Du läufst in Schlangenlinien um das Ungeheuer, doch rutscht anmutig auf der Sabberspur aus.",
                       "Du stößt dir den Kopf und alles wird schwarz.");
+            
+            SetButtonsText("Neustarten");
 
-            //HIER WIRD GESTORBEN, MOOOOOOIS-> Muss auch in Story.cs angegeben werden
+            previous = Previous.TiefseegrotteVorbeimogeldTod;
         }
 
         public void TiefseegrotteKonversation()
