@@ -6,10 +6,11 @@ namespace SchuBS_Textadventure.Objects
 {
     public enum GegnerTyp
     {
-        Feuerdrache,
+        FeuerdracheStark,
         Ungeheuer,
         Kobolde,
         KoboldAnfuehrer,
+        FeuerdracheSchwach
     }
 
     public class Gegner : BaseObject
@@ -30,10 +31,9 @@ namespace SchuBS_Textadventure.Objects
             Gegner gegner;
             switch (typ)
             {
-                case GegnerTyp.Feuerdrache:
+                case GegnerTyp.FeuerdracheStark:
                     gegner = new Gegner(100, "Feuerdrache")
                     {
-                        Bild = "tiefsee_ungeheuer.png",
                         Staerke = 10,
                         Verteidigung = 10,
                         Reaktionen = new List<Reaktion>()
@@ -81,6 +81,14 @@ namespace SchuBS_Textadventure.Objects
                         Bild = "kobold_anfuehrer.png",
                         Staerke = 6,
                         Verteidigung = 3,
+                    };
+                    break;
+
+                case GegnerTyp.FeuerdracheSchwach:
+                    gegner = new Gegner(50, "Feuerdrache")
+                    {
+                        Staerke = 1,
+                        Verteidigung = 0
                     };
                     break;
 

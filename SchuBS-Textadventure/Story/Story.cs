@@ -128,11 +128,15 @@ namespace SchuBS_Textadventure
                     break;
 
                 case Previous.JoshkaBegegnen:
-                    StarteKampfFeuerdrache();
+                    KampfFeuerdracheSchwach();
                     break;
 
                 case Previous.TauschMesserblock:
                     EndeThemenpark();
+                    break;
+
+                case Previous.TauschNunchakus:
+                    KampfFeuerdracheStark();
                     break;
 
                 case Previous.MitEierWerfen:
@@ -175,6 +179,11 @@ namespace SchuBS_Textadventure
 
                 case Previous.KuerberlinKampfGewonnen:
                     KuerbistanAnkunft();
+                    break;
+
+
+                case Previous.FeuerdracheSchwachBesiegt:
+                    KampfFeuerdracheStark();
                     break;
 
                 default:
@@ -323,6 +332,10 @@ namespace SchuBS_Textadventure
                         case Previous.KaempfenKoboldanfuehrer:
                             KuerberlinKampfGewonnen();
                             break;
+
+                        case Previous.FeuerdracheStarkKaempfen:
+                            EndeThemenpark();
+                            break;
                     }
                 }
                 else
@@ -346,12 +359,27 @@ namespace SchuBS_Textadventure
                     {
                         if (AktuellerHeld.Lebenspunkte <= 0)
                         {
-                            WriteText("Du bist im Kampf gestorben!");
+                            if (previous == Previous.FeuerdracheSchwachKaempfen ||
+                                previous == Previous.FeuerdracheStarkKaempfen)
+                            {
+                                TodKampf();
+                            }
+                            else
+                            {
+                                WriteText("Du bist im Kampf gestorben!");
+                            }
                             SpielZuende();
                         }
                         else
                         {
-                            SetButtonsText("Kampf beenden");
+                            if (previous == Previous.FeuerdracheSchwachKaempfen)
+                            {
+                                KampfSchwachBeendet();
+                            }
+                            else
+                            {
+                                SetButtonsText("Kampf beenden");
+                            }
                         }
                     }
                 }

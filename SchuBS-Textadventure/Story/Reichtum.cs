@@ -63,6 +63,7 @@ namespace SchuBS_Textadventure
 
         private void BrueckenZoll()
         {
+            SetzeHintergrundBild("bruecke_mit_zollamt.png");
             WriteText("Du gehst weiter auf dem Weg.",
                 "Vor dir liegt eine Brücke. In einem kleinen Häuschen sitzt ein Zollbeamter.",
                 "“Das Passieren dieser kürbistanischen Staatsbrücke ist kostenpflichtig. Das wären für sie ... mal sehen ... Brückenpauschale plus Bearbeitungsgebühr minus Feiertagsrabatt plus Mittagszuschlag ... 3 im Sinn ... eine Münze.”");
@@ -82,6 +83,7 @@ namespace SchuBS_Textadventure
 
         private void WegZurTiefseegrotte()
         {
+            SetzeHintergrundBild("dunkler_wald.jpg");
             WriteText("Der einzige weitere Weg führt durch den dunklen Wald.",
                 "Du bist nun tief im Wald. Deine Orientierung ist im Eimer. Na toll.",
                 "Blindlings stoplerst du durch das Unterholz, aber der Wald wird immer dichter.",
@@ -96,6 +98,7 @@ namespace SchuBS_Textadventure
 
         private void RaetselMauer()
         {
+            SetzeHintergrundBild("weg_wand.png");
             AktuellerHeld.EntferneItem("Münze");
             WriteText("Du passierst die Brücke und gehst munter weiter. Fast stößt du dir den Kopf, als die Straße abrupt vor einer hohen Wand endet. Links und rechts ist kein Ende der Mauer in Sicht.",
                 "Als du prüfend an die Wand klopfst, erscheint folgender Text:",
@@ -128,6 +131,7 @@ namespace SchuBS_Textadventure
 
         private void Weggabelung()
         {
+            SetzeHintergrundBild("fuss_des_berges.jpg");
             WriteText("Mit lautem scharren pellt sich wie von Geisterhand ein Torbogen aus der Wand. Du trittst hindurch.",
                 "Du gehst weiter und lässt die Wand hinter dir. Nun bemerkst du zum ersten Mal, wie viele Tiere hier leben. Kaninchen hoppeln umher, Vögel zwitschern, Wildschweine suhlen sich im Dreck, Sumpfpichler picheln vor sich hin. Idyllisch!",
                 "Der Weg wird steiler und mühsamer, Allgäuer Latschenkiefern säumen den Wegesrand. Im Hintergrund hörst du einen Bergmann jodeln. Du hast den Fuß des Berges erreicht.",
@@ -140,6 +144,7 @@ namespace SchuBS_Textadventure
 
         private void Aufzug()
         {
+            SetzeHintergrundBild("natur_aufzug.png");
             WriteText("Der Weg führt um die Ecke. Da steht ein Aufzug herum. Mitten in der Natur! Du gehst hinein. Im Aufzug steht bereits ein Troll, den du mit einem leisen “Mahlzeit” und so wenig Augenkontakt wie möglich begrüßt.",
                 "Du drückst auf den Knopf “Zum Schatz” und quetscht dich neben den riesigen Troll.",
                 "Der Aufzug setzt sich in Bewegung und im Hintergrund spielt leise “Old Town Road”. Peinliches Schweigen.",
@@ -191,6 +196,7 @@ namespace SchuBS_Textadventure
         {
             WriteText("Der Drache findet deine asiatischen Kampfstöckchen ziemlich mager. Mit einem Klauenschnippen werden deine Nunchakus bis nach Kürbistan befördert. Der Drache wird noch zorniger und speit Feuer gen Himmel.",
                 "Der Himmel wird blutrot. Joshka ist gewillt dich nun völlig zu erledigen. Er zieht alle Register und breitet seine gewaltigen Flügel aus. Der letzte Kampf beginnt...");
+            AktuellerHeld.EntferneItem("Nunchakus");
             SetButtonsText("weiter");
             previous = Previous.TauschNunchakus;
         }
@@ -205,13 +211,40 @@ namespace SchuBS_Textadventure
             previous = Previous.TauschMesserblock;
         }
 
+        #region Kampf
+        private void KampfFeuerdracheSchwach()
+        {
+            SetzeHintergrundBild("drachenhoehle.png");
+            StarteKampf(GegnerTyp.FeuerdracheSchwach);
+            previous = Previous.FeuerdracheSchwachKaempfen;
+        }
+
+        private void KampfSchwachBeendet()
+        {
+            SetzeHintergrundBild("drachenhoehle_phase2.png");
+            WriteText("Der Drache ist beeindruckt von deinen Ninjafähigkeiten. Noch nie hat er jemanden getroffen, der so erbittert mit ihm gekämpft hat.",
+                "Er kann jedoch nicht einknicken. Dies ist nicht sein Gold, es ist nur geliehen. Joshka ist gewillt dich nun völlig zu erledigen.",
+                "Er zieht alle Register und breitet seine gewaltigen Flügel aus. Der letzte Kampf beginnt...");
+            SetButtonsText("Zum nächsten Kampf");
+            previous = Previous.FeuerdracheSchwachBesiegt;
+        }
+
+        private void KampfFeuerdracheStark()
+        {
+            StarteKampf(GegnerTyp.FeuerdracheStark);
+            previous = Previous.FeuerdracheStarkKaempfen;
+        }
+        #endregion
+
+        #region Enden
         private void EndeThemenpark()
         {
+            SetzeHintergrundBild("deathscreen_villa.png");
             if (AktuellerHeld.HatLevel(Previous.Fußweg))
             {
                 WriteText("Du machst dich mit deinen neu erlangten Reichtümern auf den Weg nach Hause.", "",
                     "Ein Jahr später. Die Eröffnung deines eigenen Themenparks. Besonders stolz bist du auf die Achterbahn, die durch einen ausgestopften Drachen führt.",
-                    "Die Bürger von Kürbistan sind in Scharen angekommen und haben dir Unmengen an Geld und Kürbissen gegeben, nur um dieses neue Highlight im Königreich zu bewundern. Davon werden sie noch ihren Kindern erzählen!",
+                    "Die Bürger von Kürberlin sind in Scharen angekommen und haben dir Unmengen an Geld und Kürbissen gegeben, nur um dieses neue Highlight im Königreich zu bewundern. Davon werden sie noch ihren Kindern erzählen!",
                     "Außerdem hast du, nach deinem Treppenmartyrium beim Drachenkampf geschworen, nie wieder auch nur eine Stufe zu erklimmen. Deine Leibwächter tragen dich im Sonnenuntergangslicht zu deiner Villa.",
                     "Das Leben ist schön!");
             }
@@ -219,15 +252,20 @@ namespace SchuBS_Textadventure
             {
                 WriteText("Du machst dich mit deinen neu erlangten Reichtümern auf den Weg nach Hause.", "",
                     "Ein Jahr später. Die Eröffnung deines eigenen Themenparks. Besonders stolz bist du auf die Achterbahn, die durch einen ausgestopften Drachen führt.",
-                    "Die Bürger von Kürbistan sind in Scharen angekommen und haben dir Unmengen an Geld und Kürbissen gegeben, nur um dieses neue Highlight im Königreich zu bewundern. Davon werden sie noch ihren Kindern erzählen!",
+                    "Die Bürger von Kürberlin sind in Scharen angekommen und haben dir Unmengen an Geld und Kürbissen gegeben, nur um dieses neue Highlight im Königreich zu bewundern. Davon werden sie noch ihren Kindern erzählen!",
                     "Du gehst Richtung Sonnenuntergang deiner Villa entgegen.",
                     "Das Leben ist schön!");
             }
+            SpielZuende();
         }
 
-        private void StarteKampfFeuerdrache()
+        private void TodKampf()
         {
-
+            SetzeHintergrundBild("you_died_lol.png");
+            WriteText("Du fällst getroffen, wie in Zeitlupe, zu Boden. Oh grausames Schicksal! Oh schlimmer Tod! Es ist dein endgültiges Ende, welches dein Dasein beendet.",
+                "So hat du es nicht gewollt, aber dem Schicksal kann man nicht auf ewig entfliehen.",
+                "Du durchläufst im Bruckteil einer Sekunde alle fünf Phasen der Trauer nach Kübler-Ross und endlich akzeptierst du dein Dahinscheiden. Adieu, schnöde Welt!");
         }
+        #endregion
     }
 }
