@@ -54,6 +54,11 @@ namespace SchuBS_Textadventure
 
         #region Funktionen
 
+        /// <summary>
+        /// Setzt den Text der Aktions-Knöpfe.
+        /// <code>SetButtonsText("Links", "Rechts");</code>
+        /// </summary>
+        /// <param name="text"></param>
         public void SetButtonsText(params string[] text)
         {
             for (int i = 0; i < 3; i++)
@@ -87,10 +92,16 @@ namespace SchuBS_Textadventure
         /// <summary>
         /// Schreibt die Zeilen in die ausgabe Textbox. Nach jeder Zeile wird ein Zeilenumbruch eingefügt.<br/>
         /// Im Text enthaltene Variablen (mit <see cref="TextVariableDelimiter"/> umschlossen) werden durch die entsprechenden
-        /// Werte ersetzt.
+        /// Werte ersetzt.<br/>
+        /// Mögliche Werte sind:
+        /// <list type="bullet">
+        /// <item><description>SpielerName</description></item>
+        /// <item><description>SpielerKlasse</description></item>
+        /// <item><description>Weltname</description></item>
+        /// </list>
+        /// <code>WriteText("Hallo", "Wie gehts es dir?");</code>
         /// </summary>
-        /// <param name="zeilen"></param>
-        /// <example><code>WriteText("Hallo!", "Wie gehts es dir?");</code></example>
+        /// <param name="zeilen">Die Zeilen, die in die Ausgabe geschreiben werden sollen.</param>
         public void WriteText(params string[] zeilen)
         {
             string text = GetText(zeilen);
@@ -98,6 +109,19 @@ namespace SchuBS_Textadventure
             TextBoxHauptText.SetText(text);
         }
 
+        /// <summary>
+        /// Fügt die Zeilen zur ausgabe Textbox hinzu. Nach jeder Zeile wird ein Zeilenumbruch eingefügt.<br/>
+        /// Im Text enthaltene Variablen (mit <see cref="TextVariableDelimiter"/> umschlossen) werden durch die entsprechenden
+        /// Werte ersetzt.<br/>
+        /// Mögliche Werte sind:
+        /// <list type="bullet">
+        /// <item><description>SpielerName</description></item>
+        /// <item><description>SpielerKlasse</description></item>
+        /// <item><description>Weltname</description></item>
+        /// </list>
+        /// <code>AppendText("Hallo", "Wie gehts es dir?");</code>
+        /// </summary>
+        /// <param name="zeilen">Die Zeilen, die angehangen werden sollen.</param>
         public void AppendText(params string[] zeilen)
         {
             string text = GetText(zeilen);
@@ -124,8 +148,16 @@ namespace SchuBS_Textadventure
             new VerlaufFenster(VerlaufText.ToString()).ShowDialog();
         }
 
+        /// <summary>
+        /// Setzt das <paramref name="bildName"/> als Hintergrundbild.
+        /// </summary>
+        /// <param name="bildName">Der Name des Bildes.</param>
         public void SetzeHintergrundBild(string bildName = null) => ImageHintergrund.Source = GetBild(bildName);
 
+        /// <summary>
+        /// Setzt das <paramref name="bildName"/> als Personenbild.
+        /// </summary>
+        /// <param name="bildName">Der Name des Bildes.</param>
         public void SetzePersonenBild(string bildName = null) => ImagePerson.Source = GetBild(bildName);
 
         /// <summary>
@@ -137,6 +169,10 @@ namespace SchuBS_Textadventure
         /// <returns></returns>
         public BitmapImage GetBild(string name = null) => string.IsNullOrWhiteSpace(name) ? null : new BitmapImage(new Uri("pack://application:,,,/Resources/" + name));
 
+        /// <summary>
+        /// Bereitet die Oberfläche so vor, dass das Eingabefeld genutzt wird.<br/>
+        /// Die Überprüfung der Eingabe findet in <see cref="VerarbeiteTextEingabe"/> (Story.cs) statt.
+        /// </summary>
         private void EingabefeldNutzen()
         {
             SetButtonsText("Bestätigen");
@@ -145,6 +181,10 @@ namespace SchuBS_Textadventure
             TextBoxEingabe.Focus();
         }
 
+        /// <summary>
+        /// Startet einen kampf gegen den <paramref name="gegnerTyp"/>.
+        /// </summary>
+        /// <param name="gegnerTyp">Der Gegner.</param>
         public void StarteKampf(GegnerTyp gegnerTyp) => StarteKampf(Gegner.GetByTyp(gegnerTyp));
 
         public void StarteKampf(Gegner gegner)
@@ -170,8 +210,14 @@ namespace SchuBS_Textadventure
             }
         }
 
+        /// <summary>
+        /// Rufe diese Methode auf, nachdem ein Gegner besiegt wurde.
+        /// </summary>
         public void EntferneGegner() => SetzeGegner(null);
 
+        /// <summary>
+        /// Das Spiel wird beendet und nachdem der Spieler "Neustarten" klickt startet ein neues Spiel.
+        /// </summary>
         private void SpielZuende()
         {
             previous = Previous.SpielZuende;
