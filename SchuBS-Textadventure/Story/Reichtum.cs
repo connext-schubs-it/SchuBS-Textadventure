@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using SchuBS_IT_2020;
+﻿using SchuBS_IT_2020;
 using SchuBS_Textadventure.Objects;
 
 namespace SchuBS_Textadventure
@@ -11,7 +10,7 @@ namespace SchuBS_Textadventure
             SetzeHintergrundBild("berg_mit_eiswagen.png");
             WriteText("Reichtum! Ein ##SpielerKlasse## ganz nach meinem Geschmack! Es gibt Gerüchte, dass sich auf dem Berg da drüben ein riesiger Schatz befindet, behütet von einer wilden Bestie.",
                 "Wenn ich du wäre, würde ich dem ganzen mal nachgehen. Aber wenn jemand fragt, den Tipp hast du nicht von mir. Der Weg führt durch den Steinbogen da vorne. Ich bin dann mal weg. Tschüssi!",
-                "Thoron verschwindet im nächsten Gebüsch und wird nie wieder gesehen", "", 
+                "Thoron verschwindet im nächsten Gebüsch und wird nie wieder gesehen", "",
                 "Du gehst zielsicher durch den Steinbogen. Der erste Schritt Richtung Reichtum ist getan.",
                 " Einige Minuten später siehst du am Wegesrand einen bunten Verkaufsstand. Die exzentrische, pinkhaarige Verkäuferin preist lautstark Eis an.",
                 "'Das beste Eis in Kürbistan! Kürbiseis! Nur heute für den kleinen, kleinen Preis von einer Münze! Wenn Sie jetzt anhalten und sofort bestellen, gibt es einen Messerblock kostenlos dazu!'",
@@ -25,9 +24,8 @@ namespace SchuBS_Textadventure
         {
             WriteText("Das Kürbiseis ist gar nicht mal so gut. Was für eine Abzocke! Aber der Messerblock könnte noch von Nutzen sein. Ist ganz schön schwer, das Ding.");
 
-            var muenze = AktuellerHeld.Inventar.FirstOrDefault(x => x.Name == "Münze");
-            AktuellerHeld.Inventar.Remove(muenze);
-            AktuellerHeld.Inventar.Add(new Item("Messerblock", GetBild("messerblock.png")));
+            AktuellerHeld.EntferneItem("Münze");
+            AktuellerHeld.FuegeItemHinzu(new Item("Messerblock", GetBild("messerblock.png")));
             SetButtonsText("weiter");
             previous = Previous.EisGekauft;
         }
@@ -42,8 +40,8 @@ namespace SchuBS_Textadventure
         private void Taube()
         {
             SetzeHintergrundBild("taube_mit_nunchakus.png");
-           WriteText("Du gehst weiter die Straße entlang.",
-               "Von weitem kannst du schon den Berg erspähen. Auf einmal springt dir eine dicke, türkise Taube in den Weg. Im Schnabel trägt sie ein paar Nunchucks, die sie drohend in deine Richtung schwenkt.Ihr tiefes Gurren geht durch Mark und Bein.");
+            WriteText("Du gehst weiter die Straße entlang.",
+                "Von weitem kannst du schon den Berg erspähen. Auf einmal springt dir eine dicke, türkise Taube in den Weg. Im Schnabel trägt sie ein paar Nunchucks, die sie drohend in deine Richtung schwenkt.Ihr tiefes Gurren geht durch Mark und Bein.");
             SetButtonsText("Im Gebüsch Deckung suchen", "Die Taube mit einem beherzten Karatekick in die nächste Böschung befördern.");
             previous = Previous.Taube;
         }
@@ -59,7 +57,7 @@ namespace SchuBS_Textadventure
         {
             WriteText("Die Taube fliegt wie ein Fußball durch die Luft und landet mit traurigem Gurren im Wald. Das sollte sich erstmal erledigt haben! Die Nunchucks nimmst du an dich",
                 "Die Nunchucks nimmst du an dich.");
-            AktuellerHeld.Inventar.Add(new Item("Nunchucks", GetBild("nunchakus.png")));
+            AktuellerHeld.FuegeItemHinzu(new Item("Nunchucks", GetBild("nunchakus.png")));
             SetButtonsText("weiter");
             previous = Previous.TaubeTreten;
         }
@@ -70,7 +68,7 @@ namespace SchuBS_Textadventure
                 "Vor dir liegt eine Brücke. In einem kleinen Häuschen sitzt ein Zollbeamter.",
                 "Das Passieren dieser  kürbistanischen Staatsbrücke ist kostenpflichtig. Das wären für sie ... mal sehen ... Brückenpauschale plus Bearbeitungsgebühr minus Feiertagsrabatt plus Mittagszuschlag ... 3 im Sinn ... eine Münze.");
 
-            bool muenze = AktuellerHeld.Inventar.FirstOrDefault(x => x.Name == "Münze") != null;
+            bool muenze = AktuellerHeld.HatItem("Münze");
             if (muenze)
             {
                 SetButtonsText("Klar, kein Problem.", "Das ist ja Wucher! Ich suche mir einen anderen Weg!");
@@ -99,8 +97,7 @@ namespace SchuBS_Textadventure
 
         private void RaetselMauer()
         {
-            var muenze = AktuellerHeld.Inventar.FirstOrDefault(x => x.Name == "Münze");
-            AktuellerHeld.Inventar.Remove(muenze);
+            AktuellerHeld.EntferneItem("Münze");
             WriteText("Du passierst die Brücke und gehst munter weiter. Fast stößt du dir den Kopf, als die Straße abrupt vor einer hohen Wand endet. Links und rechts ist kein Ende der Mauer in Sicht.",
                 "Als du prüfend an die Wand klopfst, erscheint folgender Text:",
                 "'Wanderer hab Acht: Ginget Ihr in eine Hütte, derer Bewohner drei und verließen zwei Bewohner das Bauwerk, während durch die Hinterpforte fünf Menschen einträten, wie viele habt Ihr?", "",
@@ -135,7 +132,7 @@ namespace SchuBS_Textadventure
             WriteText("Mit lautem scharren pellt sich wie von Geisterhand ein Torbogen aus der Wand. Du trittst hindurch.",
                 "Du gehst weiter und lässt die Wand hinter dir. Nun bemerkst du zum ersten Mal, wie viele Tiere hier leben. Kaninchen hoppeln umher, Vögel zwitschern, Wildschweine suhlen sich im Dreck, Sumpfpichler picheln vor sich hin. Idyllisch!",
                 "Der Weg wird steiler und mühsamer, Allgäuer Latschenkiefern säumen den Wegesrand. Im Hintergrund hörst du einen Bergmann jodeln. Du hast den Fuß des Berges erreicht.",
-                "An einer Weggabelung stehen zwei Schilder.", 
+                "An einer Weggabelung stehen zwei Schilder.",
                 "Das Schild 'Sicherer Tod' zeigt nach links. Das andere 'Zuckerwatte' zeigt nach rechts.",
                 "Welchen Weg schlägst du ein?");
             SetButtonsText("Sicherer Tod", "Zuckerwatte");

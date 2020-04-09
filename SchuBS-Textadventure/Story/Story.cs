@@ -1,11 +1,9 @@
-﻿using System.Linq;
-using System.Reflection;
-using System.Collections.Generic;
-using System.Windows;
-using System.Windows.Input;
-using SchuBS_IT_2020;
+﻿using SchuBS_IT_2020;
 using SchuBS_Textadventure.Helpers;
 using SchuBS_Textadventure.Objects;
+
+using System.Windows;
+using System.Windows.Input;
 
 namespace SchuBS_Textadventure
 {
@@ -81,6 +79,7 @@ namespace SchuBS_Textadventure
                 case Previous.TaubeTreten:
                     BrueckenZoll();
                     break;
+
                 case Previous.MachtWichtig:
                     GnadeFlehen();
                     break;
@@ -105,7 +104,7 @@ namespace SchuBS_Textadventure
                     Aufzug();
                     break;
 
-            default:
+                default:
                     KaempfeWennMoeglich(buttonIndex: 0);
                     break;
             }
@@ -145,9 +144,9 @@ namespace SchuBS_Textadventure
                     break;
 
                 case Previous.KaffeBohnenplantage:
-                     AktuellerHeld.Inventar.Clear();
-                     ZielErfragen();
-                     break;
+                    AktuellerHeld.Inventar.Clear();
+                    ZielErfragen();
+                    break;
 
                 case Previous.TiefseegrotteBegegnungUngeheuer:
                     TiefseegrotteVorbeimogeln();
@@ -177,6 +176,7 @@ namespace SchuBS_Textadventure
                 case Previous.MachtWichtig:
                     TiefseegrotteUngeheuerKaempfen();
                     break;
+
                 default:
                     KaempfeWennMoeglich(buttonIndex: 2);
                     break;
@@ -363,7 +363,7 @@ namespace SchuBS_Textadventure
                 "Dann wünsche ich dir viel Erfolg auf deinem Weg.",
                 "Hier hast du eine Münze. Gebrauche sie klug. Sie wird sich bestimmt noch als hilfreich erweisen.",
                 "Eine Frage noch, ##SpielerName## Welches Begehren wird dich auf deinem Weg leiten?'?");
-            AktuellerHeld.Inventar.Add(new Item("Münze", GetBild("muenze.png")));
+            AktuellerHeld.FuegeItemHinzu(new Item("Münze", GetBild("muenze.png")));
             SetButtonsText("Macht.", "Reichtum.");
             previous = Previous.ZielErfragt;
         }

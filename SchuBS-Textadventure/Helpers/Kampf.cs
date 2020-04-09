@@ -1,11 +1,7 @@
-﻿using SchuBS_IT_2020;
-using SchuBS_Textadventure.Objects;
+﻿using SchuBS_Textadventure.Objects;
+
 using System;
-using System.Windows;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 
 namespace SchuBS_Textadventure.Helpers
@@ -53,6 +49,11 @@ namespace SchuBS_Textadventure.Helpers
                 foreach (Button button in Adventure.ButtonsAktionen)
                 {
                     button.IsEnabled = true;
+                }
+
+                if (Spieler.Klasse.Magie <= 0)
+                {
+                    Adventure.ButtonsAktionen[1].IsEnabled = false;
                 }
             }
             else
@@ -135,17 +136,21 @@ namespace SchuBS_Textadventure.Helpers
 
         public int SchadenBerechnen(AktionsTyp typ)
         {
-            switch(typ)
+            int schaden = 10;
+            switch (typ)
             {
                 case AktionsTyp.SpielerAngriff:
-                    return BerechneSchadenNormal();
+                    schaden = BerechneSchadenNormal();
+                    break;
                 case AktionsTyp.SpielerMagie:
-                    return BerechneSchadenMagie();
+                    schaden = BerechneSchadenMagie();
+                    break;
                 case AktionsTyp.GegnerAngriff:
-                    return BerechneSchadenGegnerAngriff();
-                default:
-                    return 15;
+                    schaden = BerechneSchadenGegnerAngriff();
+                    break;
             }
+
+            return Math.Max(0, schaden);
         }
 
         private int BerechneSchadenGegnerAngriff()

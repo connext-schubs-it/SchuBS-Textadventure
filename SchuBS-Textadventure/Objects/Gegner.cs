@@ -1,6 +1,6 @@
-﻿
+﻿using System;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+
 using SchuBS_Textadventure.Helpers;
 
 namespace SchuBS_Textadventure.Objects
@@ -10,24 +10,24 @@ namespace SchuBS_Textadventure.Objects
         public int Staerke { get; set; }
         public int Verteidigung { get; set; }
 
-        public enum GegnerTyp
+        public enum Typ
         {
             Feuerdrache,
-            Ungeheur
+            Ungeheuer
         }
 
-        internal static Gegner GetGegnerByTyp(List<Gegner> gegnerListe, GegnerTyp typ)
+        public static Gegner GetByTyp(List<Gegner> gegnerListe, Typ typ)
         {
             foreach (Gegner item in gegnerListe)
             {
-                if (item.Name.Equals(nameof(typ)))
+                if (item.Name.Equals(Enum.GetName(typeof(Typ), typ)))
                     return item;
             }
 
             return null;
         }
 
-        internal static List<Gegner> LadeGegner()
+        public static List<Gegner> LadeGegner()
         {
             List<Gegner> gegnerList = new List<Gegner>()
             {

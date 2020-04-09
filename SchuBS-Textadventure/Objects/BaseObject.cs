@@ -1,10 +1,6 @@
-﻿using SchuBS_IT_2020;
-using SchuBS_Textadventure.Helpers;
-using System;
+﻿using SchuBS_Textadventure.Helpers;
+
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SchuBS_Textadventure.Objects
 {
@@ -51,24 +47,33 @@ namespace SchuBS_Textadventure.Objects
         public Reaktion ErhalteSchaden(int schaden, string item)
         {
             Lebenspunkte -= schaden;
-            Reaktion reaktion = null;
+            Reaktion reaktion;
 
-            if (this.GetType() == typeof(Gegner))
+            switch(this)
             {
-                reaktion = GetReaktion(Lebenspunkte, item, schaden);
-            }
-            else
-            {
-                reaktion = new Reaktion()
-                {
-                    Von = new Spieler()
+                case Gegner gegner:
+                    reaktion = GetReaktion(Lebenspunkte, item, schaden);
+                    break;
+                case Spieler spieler:
+                    reaktion = new Reaktion()
                     {
-                        Name = "Spieler",
-                        Lebenspunkte = 100
-                    },
-                    LP = Lebenspunkte,
-                    Schaden = schaden
-                };
+                        Von = this,
+                        LP = Lebenspunkte,
+                        Schaden = schaden
+                    };
+                    break;
+                default:
+                    reaktion = new Reaktion()
+                    {
+                        Von = new Spieler()
+                        {
+                            Name = "Spieler",
+                            Lebenspunkte = 100
+                        },
+                        LP = Lebenspunkte,
+                        Schaden = schaden
+                    };
+                    break;
             }
 
             return reaktion;

@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 
 namespace SchuBS_Textadventure.Objects
 {
     public class Umgebung
     {
-        Bitmap Hintergrund;
-        // WMPLib.WindowsMediaPlayer Musik;
+        public Bitmap Hintergrund { get; set; }
     }
 }

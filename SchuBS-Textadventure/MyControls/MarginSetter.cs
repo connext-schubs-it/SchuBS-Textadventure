@@ -33,10 +33,10 @@ namespace SchuBS_Textadventure.MyControls
 
         private static void Panel_Loaded(object sender, RoutedEventArgs e)
         {
-            var panel = sender as Panel;
+            Panel panel = (Panel)sender;
 
             // Go over the children and set margin for them:
-            foreach (var child in panel.Children)
+            foreach (UIElement child in panel.Children)
             {
                 if (child is FrameworkElement fe)
                 {

@@ -1,10 +1,6 @@
-﻿using SchuBS_IT_2020;
-using SchuBS_Textadventure.Objects;
-using System;
+﻿using SchuBS_Textadventure.Objects;
+
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SchuBS_Textadventure.Helpers
 {

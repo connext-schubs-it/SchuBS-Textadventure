@@ -35,7 +35,7 @@ namespace SchuBS_IT_2020
         TiefseegrotteVorbeimogeln,
         TiefseegrotteRichtigeAntwort,
         TiefseegrotteFalscheAntwort,
-        GnafeFlehen
+        GnafeFlehen,
         TiefseegrotteKonversation,
         RaetselMauer,
         Raetsel2,

@@ -1,7 +1,4 @@
-﻿using System.Linq;
-using System.Windows;
-using System.Windows.Input;
-using SchuBS_IT_2020;
+﻿using SchuBS_IT_2020;
 using SchuBS_Textadventure.Objects;
 
 namespace SchuBS_Textadventure
@@ -63,23 +60,14 @@ namespace SchuBS_Textadventure
                       "Es sieht sehr groß und mächtig aus.",
                       "Möchtest du gegen das Ungeheuer kämpfen oder versuchen dich an dem Ungeheuer vorbei zu mogeln?");
 
-            SetButtonsText("Kämpfen!","Vorbeimogeln");
+            SetButtonsText("Kämpfen!", "Vorbeimogeln");
             previous = Previous.TiefseegrotteBegegnungUngeheuer;
         }
 
         public void TiefseegrotteUngeheuerKaempfen()
         {
-            /*Kämpfen*/
-            Gegner ungeheuer = new Gegner
-            {
-                Lebenspunkte = 70,
-                Name = "Ungeheuer",
-                Staerke = 7,
-                Verteidigung = 2
-            };
-
             WriteText($"Ungeheuer fordert dich zum Kampf!", "Was wirst du tun?!");
-            StarteKampf(this, ungeheuer);
+            StarteKampf(this, Gegner.GetByTyp(GegnerListe, Gegner.Typ.Ungeheuer));
 
             previous = Previous.TiefseegrotteUngeheuerKaempfen;
         }
@@ -107,8 +95,6 @@ namespace SchuBS_Textadventure
         public void TiefseegrotteVorbeimogeldTod()
         {
             SetzeHintergrundBild("you_died_lol.png");
-            AktuellerHeld.Inventar.Add(new Item("Test", GetBild("ei.png")));
-            AktuellerHeld.Inventar.Add(new Item("Test2", null));
 
             WriteText("Kreischend und mit wild schlackernden Armen rennst du auf das Ungeheuer zu. Das Ungetüm ist eingeschüchtert und wirkt ängstlich.",
                       "Wieso schreist du so laut?! Es zieht seinen Kopf ein und winselt um Gnade, was du aber aufgrund der Panik nicht wahrnimmst.",
@@ -122,8 +108,6 @@ namespace SchuBS_Textadventure
         {
             //Button2
             SetzeHintergrundBild("tiefsee_ungeheuer.png");
-            AktuellerHeld.Inventar.Add(new Item("Test", GetBild("ei.png")));
-            AktuellerHeld.Inventar.Add(new Item("Test2", null));
 
             WriteText("Du atmest tief durch und trittst vor das Ungeheuer. Deine Knie sind weich, doch du stehst erhobenen Hauptes und fragst das Monster nach dem Grund seines Zorns.",
                       "Bittere, riesige Tränen kullern an den scharfen Fangzähnen des Ungeheuers vorbei. Es gibt unverständliche Grunzlaute von sich und versucht, dir etwas mitzuteilen.",
@@ -147,10 +131,6 @@ namespace SchuBS_Textadventure
             //BEI 1 UND 3 SOLL DER SPIELER STERBEN
 
             SetzeHintergrundBild("you_died_lol.png");
-            AktuellerHeld.Inventar.Add(new Item("Test", GetBild("ei.png")));
-            AktuellerHeld.Inventar.Add(new Item("Test2", null));
-
-            
             WriteText("Das Ungeheuer wird wütend und schlägt wild um sich.Du hättest seine Gefühle nicht verletzen sollen.",
                       "So ein Mist aber auch.");
 
@@ -163,8 +143,6 @@ namespace SchuBS_Textadventure
             //BEI 2,4,5 GIBT ES DAS ITEM EIER UND ES GEHT WEITER
 
             SetzeHintergrundBild("you_died_lol.png");
-            AktuellerHeld.Inventar.Add(new Item("Test", GetBild("ei.png")));
-            AktuellerHeld.Inventar.Add(new Item("Test2", null));
 
             WriteText("Das Ungeheuer streckt seine Zunge raus und überreicht dir eine Packung Eier(ITEM).",
                       "Es tritt zur Seite und salutiert, während du stolz, aber auch ziemlich verwundert zum Ausgang der Grotte schreitest.");
@@ -199,15 +177,16 @@ namespace SchuBS_Textadventure
 
         public void MitEiernWerfen()
         {
-            bool eier = AktuellerHeld.Inventar.FirstOrDefault(x => x.Name == "Ei") != null;
+            bool eier = AktuellerHeld.HatItem("Ei");
 
-         }
+        }
+
         public void GnadeFlehen()
         {
             SetzeHintergrundBild("tiefsee_ungeheuer.png");
             KaempfenKaffe();
             previous = Previous.GnafeFlehen;
-      }
+        }
 
         public void KaempfenKaffe()
         {
@@ -223,7 +202,6 @@ namespace SchuBS_Textadventure
             WriteText("Du bittest um Verzeihung und versuchst, die finsteren Gestalten durch Selbstmitleid von ihren Machenschaften abzubringen.",
                 "“Kannste knicken”, schnauft der Anführer der Kobold-Punks.",
                 "Der Kampf beginnt ");
-            
         }
     }
 }

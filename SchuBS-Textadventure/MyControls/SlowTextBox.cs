@@ -11,7 +11,7 @@ namespace SchuBS_Textadventure.MyControls
         private readonly DispatcherTimer Timer = new DispatcherTimer();
 
         private IEnumerator<char> text = null;
-        private static float textSpeed = 1f;
+        private float textSpeed = 1f;
 
         public bool IsWriting => Timer.IsEnabled;
 
