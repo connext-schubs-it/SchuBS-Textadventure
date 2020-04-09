@@ -149,9 +149,6 @@
     <Resource Include="Resources\tiefsee_ungeheuer.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\kobold_punks.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\you_died_lol.png" />
   </ItemGroup>
   <ItemGroup>
@@ -212,7 +209,13 @@
     <None Include="Resources\kobold_anfuehrer.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\kobold_handlanger.png" />
+    <None Include="Resources\dunkler_wald.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kobold_punks_new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kobold_handlanger_new.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

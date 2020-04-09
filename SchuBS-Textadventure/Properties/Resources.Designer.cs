@@ -113,6 +113,16 @@ namespace SchuBS_Textadventure.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap dunkler_wald {
+            get {
+                object obj = ResourceManager.GetObject("dunkler_wald", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap ei {
             get {
                 object obj = ResourceManager.GetObject("ei", resourceCulture);
@@ -173,19 +183,9 @@ namespace SchuBS_Textadventure.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap kobold_handlanger {
+        public static System.Drawing.Bitmap kobold_punks_new {
             get {
-                object obj = ResourceManager.GetObject("kobold_handlanger", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap kobold_punks {
-            get {
-                object obj = ResourceManager.GetObject("kobold_punks", resourceCulture);
+                object obj = ResourceManager.GetObject("kobold_punks_new", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
