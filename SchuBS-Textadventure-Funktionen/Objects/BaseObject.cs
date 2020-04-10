@@ -1,25 +1,42 @@
-﻿using SchuBS_Textadventure.Helpers;
+﻿using SchuBS_Textadventure.KampfHelper;
 
 using System.Collections.Generic;
 using System.Windows;
 
 namespace SchuBS_Textadventure.Objects
 {
+    /// <summary>
+    /// Dient als Basisklasse für bestimmte Klassen im Textadventure, z.B. Spieler und Gegner.
+    /// </summary>
     public abstract class BaseObject : DependencyObject
     {
+        /// <summary>
+        /// Eine List mit Reaktionen des Objektes.
+        /// </summary>
         public List<Reaktion> Reaktionen { get; set; } = new List<Reaktion>();
-        public List<string> Spezial { get; set; } = new List<string>();
+
+        private List<string> Spezial { get; set; } = new List<string>();
+
+        /// <summary>
+        /// Der Name des Objektes.
+        /// </summary>
         public string Name { get; set; }
 
+        /// <summary>
+        /// Die Maximalen Lebenspunkte.
+        /// </summary>
         public int MaxLebenspunkte { get; protected set; }
 
+        /// <summary>
+        /// Die aktuellen Lebenspunkte des Objektes.
+        /// </summary>
         public int Lebenspunkte
         {
             get => (int)GetValue(LebenspunkteProperty);
             set => SetValue(LebenspunkteProperty, value);
         }
 
-        // Using a DependencyProperty as the backing store for LebensPunkte.  This enables animation, styling, binding, etc...
+        /// Using a DependencyProperty as the backing store for LebensPunkte.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty LebenspunkteProperty =
             DependencyProperty.Register("Lebenspunkte", typeof(int), typeof(BaseObject), new PropertyMetadata(0));
 
@@ -29,17 +46,17 @@ namespace SchuBS_Textadventure.Objects
             Name = name;
         }
 
-        public Reaktion GetReaktion(int lp, string specialItem, int schaden)
+        internal Reaktion GetReaktion(int lp, int schaden)
         {
             Reaktion currentMin = new Reaktion() { LP = int.MaxValue };
 
-            foreach (Reaktion item in Reaktionen)
+            foreach (Reaktion reaktion in Reaktionen)
             {
-                if (item.LP < currentMin.LP && lp <= item.LP)
-                    currentMin = item;
+                if (reaktion.LP < currentMin.LP && lp <= reaktion.LP)
+                    currentMin = reaktion;
             }
 
-            Reaktion rkt = currentMin.Copy();
+            Reaktion rkt = currentMin.Clone();
             Reaktionen.Remove(currentMin);
 
             rkt.Ziel = this;
@@ -59,17 +76,22 @@ namespace SchuBS_Textadventure.Objects
             return "";
         }
 
-        public Reaktion ErhalteSchaden(int schaden, string item)
+        /// <summary>
+        /// Das Objekt erhält schaden, und gibt eine Reaktion zurück.
+        /// </summary>
+        /// <param name="schaden">Die höhe des schadens, den das Objekt erhalten soll.</param>
+        /// <returns></returns>
+        public Reaktion ErhalteSchaden(int schaden)
         {
             Lebenspunkte -= schaden;
             Reaktion reaktion;
 
-            switch(this)
+            switch (this)
             {
-                case Gegner gegner:
-                    reaktion = GetReaktion(Lebenspunkte, item, schaden);
+                case GegnerBase _:
+                    reaktion = GetReaktion(Lebenspunkte, schaden);
                     break;
-                case Spieler spieler:
+                case SpielerBase _:
                     reaktion = new Reaktion()
                     {
                         Ziel = this,
@@ -80,11 +102,7 @@ namespace SchuBS_Textadventure.Objects
                 default:
                     reaktion = new Reaktion()
                     {
-                        Ziel = new Spieler()
-                        {
-                            Name = "Spieler",
-                            Lebenspunkte = 100
-                        },
+                        Ziel = null,
                         LP = Lebenspunkte,
                         Schaden = schaden
                     };

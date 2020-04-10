@@ -12,7 +12,7 @@ namespace SchuBS_Textadventure.Objects
         Assassine,
     }
 
-    public class Klasse
+    public class Klasse : IKlasse
     {
         private static Dictionary<KlassenTyp, string> KlassenNamen { get; } = new Dictionary<KlassenTyp, string>
         {

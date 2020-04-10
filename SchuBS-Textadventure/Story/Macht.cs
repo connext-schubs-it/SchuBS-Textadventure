@@ -1,5 +1,8 @@
 ﻿using SchuBS_Textadventure.Objects;
+
 using System.Collections.Generic;
+
+using static SchuBS_Textadventure.TextadventureHelper;
 
 namespace SchuBS_Textadventure
 {
@@ -154,7 +157,7 @@ namespace SchuBS_Textadventure
         {
             //BEI 2,4,5 GIBT ES DAS ITEM EIER UND ES GEHT WEITER
 
-            AktuellerHeld.FuegeItemHinzu(new Item("Ei", GetBild("ei.png")));
+            AktuellerHeld.FuegeItemHinzu(new Item("Ei", "ei.png"));
 
             WriteText("Das Ungeheuer streckt seine Zunge raus und überreicht dir eine Packung Eier(ITEM).",
                       "Es tritt zur Seite und salutiert, während du stolz, aber auch ziemlich verwundert zum Ausgang der Grotte schreitest.");
@@ -402,8 +405,7 @@ namespace SchuBS_Textadventure
 
             SetButtonsText("Weiter");
 
-            previous = Previous.KuerberlinKampfVerloren;
-            //Spieler stirbt
+            SpielZuende();
         }
 
         public void KuerbistanAnkunft()
@@ -461,7 +463,7 @@ namespace SchuBS_Textadventure
             previous = Previous.KuerbistanWahlkampf;
         }
 
-            public void KuerbistanMehrKuerbis()
+        public void KuerbistanMehrKuerbis()
         {
             SetzeHintergrundBild("kuerbisfelder_koenig_deathscreen.png");
 
@@ -475,7 +477,7 @@ namespace SchuBS_Textadventure
             SpielZuende();
         }
 
-            public void KuerbistanEier()
+        public void KuerbistanEier()
         {
             SetzeHintergrundBild("koenig_deathscreen_new.png");
 

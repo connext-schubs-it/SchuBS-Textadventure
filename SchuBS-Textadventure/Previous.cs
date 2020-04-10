@@ -37,7 +37,6 @@
         Weggabelung,
         Aufzug,
         Fußweg,
-        KuerberlinKampfVerloren,
         KuerberlinKampfGewonnen,
         KuerberlinGnadeFlehen,
         KueberlinAnkunft,

@@ -5,8 +5,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SchuBS_Textadventure"
-        xmlns:MyControls="clr-namespace:SchuBS_Textadventure.MyControls"
+        xmlns:MyControls="clr-namespace:SchuBS_Textadventure.MyControls;assembly=SchuBS-Textadventure-Funktionen"
         xmlns:Objects="clr-namespace:SchuBS_Textadventure.Objects"
+        xmlns:Objects2="clr-namespace:SchuBS_Textadventure.Objects;assembly=SchuBS-Textadventure-Funktionen"
         mc:Ignorable="d"
         Title="Textadventure"
         Height="450"
@@ -50,7 +51,7 @@
                                   Grid.Row="1"
                                   Visibility="Hidden">
                     <ContentPresenter.ContentTemplate>
-                        <DataTemplate DataType="{x:Type Objects:BaseObject}">
+                        <DataTemplate DataType="{x:Type Objects:Gegner}">
                             <Grid>
                                 <ProgressBar Height="15"
                                              Maximum="{Binding MaxLebenspunkte}"
@@ -195,12 +196,12 @@
                     </ListBox.ItemsPanel>
 
                     <ListBox.ItemTemplate>
-                        <DataTemplate DataType="{x:Type Objects:Item}">
+                        <DataTemplate DataType="{x:Type Objects2:Item}">
                             <Image Source="{Binding Bild}"
-                                    HorizontalAlignment="Center"
-                                    ToolTip="{Binding Name}"
-                                    MaxWidth="64"
-                                    MaxHeight="64" />
+                                   HorizontalAlignment="Center"
+                                   ToolTip="{Binding Name}"
+                                   MaxWidth="64"
+                                   MaxHeight="64" />
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>

@@ -1,5 +1,7 @@
 ﻿using SchuBS_Textadventure.Objects;
 
+using static SchuBS_Textadventure.TextadventureHelper;
+
 namespace SchuBS_Textadventure
 {
     public partial class Textadventure
@@ -24,7 +26,7 @@ namespace SchuBS_Textadventure
             WriteText("Das Kürbiseis ist gar nicht mal so gut. Was für eine Abzocke! Aber der Messerblock könnte noch von Nutzen sein. Ist ganz schön schwer, das Ding.");
 
             AktuellerHeld.EntferneItem("Münze");
-            AktuellerHeld.FuegeItemHinzu(new Item("Messerblock", GetBild("messerblock.png")));
+            AktuellerHeld.FuegeItemHinzu(new Item("Messerblock", "messerblock.png"));
             SetButtonsText("weiter");
             previous = Previous.EisGekauft;
         }
@@ -56,7 +58,7 @@ namespace SchuBS_Textadventure
         {
             WriteText("Die Taube fliegt wie ein Fußball durch die Luft und landet mit traurigem Gurren im Wald. Das sollte sich erstmal erledigt haben! Die Nunchakus nimmst du an dich",
                 "Die Nunchakus nimmst du an dich.");
-            AktuellerHeld.FuegeItemHinzu(new Item("Nunchakus", GetBild("nunchakus.png")));
+            AktuellerHeld.FuegeItemHinzu(new Item("Nunchakus", "nunchakus.png"));
             SetButtonsText("weiter");
             previous = Previous.TaubeTreten;
         }
