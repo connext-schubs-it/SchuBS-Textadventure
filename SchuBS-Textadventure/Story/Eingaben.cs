@@ -494,8 +494,12 @@ namespace SchuBS_Textadventure
                             break;
 
                         default:
-                            WriteText("Das ist auf jeden Fall keine Antwortmöglichkeit!", "");
-                            break;
+                     WriteText("Das ist auf jeden Fall keine Antwortmöglichkeit!"," ","Du gehst munter weiter. Fast stößt du dir den Kopf, als die Straße abrupt vor einer hohen Wand endet. Links und rechts ist kein Ende der Mauer in Sicht.",
+                              "Als du prüfend an die Wand klopfst, erscheint folgender Text:",
+                              "“Wanderer hab Acht: Ginget Ihr in eine Hütte, derer Bewohner drei und verließen zwei Bewohner das Bauwerk, während durch die Hinterpforte fünf Menschen einträten, wie viele habt Ihr?", "",
+                              "Eins? Fünf? Vierunddreißig? Acht? Kürbis?”",
+                              "(Gib deine Antwort unten ein");
+                     break;
                     }
 
                     break;
@@ -515,7 +519,11 @@ namespace SchuBS_Textadventure
                             break;
 
                         default:
-                            WriteText("Das ist auf jeden Fall keine Antwortmöglichkeit!", "");
+                            WriteText("Das ist auf jeden Fall keine Antwortmöglichkeit!", " ", "Selbstsicher sprichst du das Passwort und läufst auf die Wand zu. Klatsch! Krach! Du liegst am Boden. Als du dir den Kopf reibst, erscheint ein neuer Text auf der Wand",
+                                     "“Idiot! Normalerweise wäre es aus mit dir, aber du bist unterhaltsam. Ich gebe dir noch eine Gelegenheit.",
+                                     "Wanderer hab Acht: Ginget Ihr in eine Hütte, derer Bewohner drei und verließen zwei Bewohner das Bauwerk, während durch die Hinterpforte fünf Menschen einträten, wie viel habt Ihr?",
+                                     "Blau? Donald J Trumpkin? Eierkarton? Acht? Thoron?”",
+                                     "(Gib deine Antwort unten ein)");
                             break;
                     }
 
