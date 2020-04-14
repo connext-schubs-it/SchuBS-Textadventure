@@ -33,7 +33,7 @@ namespace SchuBS_Textadventure
 
         private void EisNichtGekauft()
         {
-            WriteText("obwohl so ein Eis echt lecker wäre...");
+            WriteText("Obwohl so ein Eis echt lecker wäre...");
             SetButtonsText("weiter");
             previous = Previous.EisNichtGekauft;
         }
@@ -42,7 +42,7 @@ namespace SchuBS_Textadventure
         {
             SetzeHintergrundBild("taube_mit_nunchakus.png");
             WriteText("Du gehst weiter die Straße entlang.",
-                "Von weitem kannst du schon den Berg erspähen. Auf einmal springt dir eine dicke, türkise Taube in den Weg. Im Schnabel trägt sie ein paar Nunchakus, die sie drohend in deine Richtung schwenkt.Ihr tiefes Gurren geht durch Mark und Bein.");
+                "Von weitem kannst du schon den Berg erspähen. Auf einmal springt dir eine dicke, türkise Taube in den Weg. Im Schnabel trägt sie ein paar Nunchakus, die sie drohend in deine Richtung schwenkt. Ihr tiefes Gurren geht durch Mark und Bein.");
             SetButtonsText("Im Gebüsch Deckung suchen", "Die Taube mit einem beherzten Karatekick in die nächste Böschung befördern.");
             previous = Previous.Taube;
         }
@@ -68,7 +68,10 @@ namespace SchuBS_Textadventure
             SetzeHintergrundBild("bruecke_mit_zollamt.png");
             WriteText("Du gehst weiter auf dem Weg.",
                 "Vor dir liegt eine Brücke. In einem kleinen Häuschen sitzt ein Zollbeamter.",
-                "“Das Passieren dieser kürbistanischen Staatsbrücke ist kostenpflichtig. Das wären für sie ... mal sehen ... Brückenpauschale plus Bearbeitungsgebühr minus Feiertagsrabatt plus Mittagszuschlag ... 3 im Sinn ... eine Münze.”");
+                "“Das Passieren dieser kürbistanischen Staatsbrücke ist kostenpflichtig. Das wären für sie...",
+                "mal sehen ... Brückenpauschale plus Bearbeitungsgebühr...",
+                "minus Feiertagsrabatt plus Mittagszuschlag...",
+                "3 im Sinn ... eine Münze.”")  ;
 
             bool muenze = AktuellerHeld.HatItem("Münze");
             if (muenze)
@@ -124,8 +127,7 @@ namespace SchuBS_Textadventure
 
         private void Windstoß()
         {
-            WriteText("Ein orkanartiger Windstoß erfasst dich. Du wirbelst durch die Luft und siehst schon dein ganzes Leben an deinem inneren Augen vorbeifliegen. Mit einem harten Aufprall landest du auf dem Boden.",
-                "[-Gesundheit]");
+            WriteText("Ein orkanartiger Windstoß erfasst dich. Du wirbelst durch die Luft und siehst schon dein ganzes Leben an deinem inneren Augen vorbeifliegen. Mit einem harten Aufprall landest du auf dem Boden.");
             SetButtonsText("weiter");
             AktuellerHeld.Lebenspunkte = AktuellerHeld.Lebenspunkte - 5;
             previous = Previous.Windstoß;
@@ -138,7 +140,7 @@ namespace SchuBS_Textadventure
                 "Du gehst weiter und lässt die Wand hinter dir. Nun bemerkst du zum ersten Mal, wie viele Tiere hier leben. Kaninchen hoppeln umher, Vögel zwitschern, Wildschweine suhlen sich im Dreck, Sumpfpichler picheln vor sich hin. Idyllisch!",
                 "Der Weg wird steiler und mühsamer, Allgäuer Latschenkiefern säumen den Wegesrand. Im Hintergrund hörst du einen Bergmann jodeln. Du hast den Fuß des Berges erreicht.",
                 "An einer Weggabelung stehen zwei Schilder.",
-                "Das Schild “Sicherer Tod” zeigt nach links. Das andere “Zuckerwatte” zeigt nach rechts.",
+                "Das Schild “Sicherer Tod” zeigt nach links. Das andere Schild “Zuckerwatte” zeigt nach rechts.",
                 "Welchen Weg schlägst du ein?");
             SetButtonsText("Sicherer Tod.", "Zuckerwatte.");
             previous = Previous.Weggabelung;
@@ -163,7 +165,7 @@ namespace SchuBS_Textadventure
                 "Zu Beginn zählst du noch die Stufen, um hinterher mit der schieren Anzahl angeben zu können, aber bei 84.287 fallen dir die Augen zu und du fällst einige Meter zurück. Dabei vergisst du deine Zählung. So ein Mist ab auch!",
                 "Völlig abgekämpft erreichst du nach gefühlten Ewigkeiten den Gipfel. Links von dir steht ein Aufzug. Hättest du doch den anderen Weg genommen!",
                 "Aber dann bricht ein Funkeln durch die schweren Lider. Mit müden Augen erspähst du den Schatz. Eine Wunderpracht! Du träumst bereits davon, wie Dagobert Duck in Talern zu schwimmen!",
-                "Mit Freudentränen, die dein Gesicht herunterströmen, gehst du langsam auf den Geoldberg zu.");
+                "Mit Freudentränen, die dein Gesicht herunterströmen, gehst du langsam auf den Goldberg zu.");
             SetButtonsText("weiter");
             AktuellerHeld.Lebenspunkte = AktuellerHeld.Lebenspunkte - 5;
             AktuellerHeld.FuegeLevelHinzu(Previous.Fußweg);
@@ -175,7 +177,7 @@ namespace SchuBS_Textadventure
             WriteText("Du hörst ein lautes Schnaufen hinter dir. Noch bevor du dich umdrehen kannst, wirst du auch schon meterweit in Richtung des Goldberges geschleudert.",
                 "Deine Gier nach Gold hat dich genau ins Nest des Drachen Joshka geführt. Der Drache speit Feuer im Anblick deiner winzigen Statur und wird wild.",
                 "Das Feuer verfehlt dich knapp und du stellst dich dem Ungetüm entgegen. Dies ist der entscheidende Moment. Ein Entkommen ist unmöglich.",
-                "Wirst du dich dem Monster entgegenstellen und für wenige Goldstücke dein Leben riskieren? Oder lässt du dich auf ein Tauschgeschäft ein?");
+                "Wirst du dich dem Monster entgegenstellen und für ein paar Goldstücke dein Leben riskieren? Oder lässt du dich auf ein Tauschgeschäft ein?");
             if (AktuellerHeld.HatItem("Messerblock") || AktuellerHeld.HatItem("Nunchakus"))
             {
                 SetButtonsText("Kämpfen!", "Tauschgeschäft");
@@ -189,7 +191,8 @@ namespace SchuBS_Textadventure
 
         private void Tauschgeschaeft()
         {
-            WriteText("Was möchtest du zum Tausch anbieten?");
+            WriteText("Was möchtest du zum Tausch anbieten?",
+                      "(Gib deine Antwort unten ein)");
             EingabefeldNutzen();
             previous = Previous.Tauschgeschaeft;
         }
