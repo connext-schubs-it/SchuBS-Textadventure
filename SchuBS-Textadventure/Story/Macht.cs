@@ -159,7 +159,7 @@ namespace SchuBS_Textadventure
 
             AktuellerHeld.FuegeItemHinzu(new Item("Ei", "ei.png"));
 
-            WriteText("Das Ungeheuer streckt seine Zunge raus und überreicht dir eine Packung Eier(ITEM).",
+            WriteText("Das Ungeheuer streckt seine Zunge raus und überreicht dir eine Packung Eier.",
                       "Es tritt zur Seite und salutiert, während du stolz, aber auch ziemlich verwundert zum Ausgang der Grotte schreitest.");
 
             SetButtonsText("Weiter");
