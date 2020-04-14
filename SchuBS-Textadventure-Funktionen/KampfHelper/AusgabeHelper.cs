@@ -5,9 +5,9 @@ using System.Linq;
 
 namespace SchuBS_Textadventure.KampfHelper
 {
-    internal static class AusgabeHelper
+    public static class AusgabeHelper
     {
-        public static List<string> AusgabeReaktion(Reaktion reaktion, KampfAktionsTyp typ, GegnerBase gegner)
+        internal static List<string> AusgabeReaktion(Reaktion reaktion, KampfAktionsTyp typ, GegnerBase gegner)
         {
             List<string> ausgabe;
             switch (typ)
@@ -57,6 +57,12 @@ namespace SchuBS_Textadventure.KampfHelper
             }
         }
 
+        /// <summary>
+        /// Gibt erst den Sprechernamen und dann den Text eingerückt wieder.
+        /// </summary>
+        /// <param name="sprecher"></param>
+        /// <param name="texte"></param>
+        /// <returns></returns>
         public static List<string> GetTextFuerSprecher(string sprecher, params string[] texte)
         {
             List<string> ausgabe = new List<string>();

@@ -89,7 +89,7 @@ namespace SchuBS_Textadventure
                     WegZurTiefseegrotte();
                     break;
 
-                    // rechts
+                // rechts
                 case Previous.WegZurTiefseegrotte:
                     TiefseegrotteSchwimmen();
                     break;
@@ -187,11 +187,11 @@ namespace SchuBS_Textadventure
                     RaetselMauer();
                     break;
 
-                default:
                 case Previous.KueberlinAnkunft:
                     KaffeBohnenplantageGnadeFlehen();
                     break;
-            default:
+
+                default:
                     if (TextBoxEingabe.IsEnabled)
                     {
                         VerarbeiteTextEingabe();
@@ -297,7 +297,7 @@ namespace SchuBS_Textadventure
                     KaffeBohnenplantageVerantwortungStellen();
                     break;
 
-                    // links
+                // links
                 case Previous.WegZurTiefseegrotte:
                     ZurueckAufStraße();
                     break;
