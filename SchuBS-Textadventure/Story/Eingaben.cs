@@ -89,6 +89,7 @@ namespace SchuBS_Textadventure
                     WegZurTiefseegrotte();
                     break;
 
+                    // rechts
                 case Previous.WegZurTiefseegrotte:
                     TiefseegrotteSchwimmen();
                     break;
@@ -177,9 +178,15 @@ namespace SchuBS_Textadventure
                 case Previous.FeuerdracheSchwachBesiegt:
                     KampfFeuerdracheStark();
                     break;
+
                 case Previous.KuerbistanWahlkampf:
                     KuerbistanMehrKuerbis();
                     break;
+
+                case Previous.ZurueckAufStraße:
+                    RaetselMauer();
+                    break;
+
                 default:
                     if (TextBoxEingabe.IsEnabled)
                     {
@@ -262,22 +269,32 @@ namespace SchuBS_Textadventure
                 case Previous.MitEierWerfen:
                     KaffeBohnenplantageGeschenkeAnnehmen();
                     break;
+
                 case Previous.WeiteSuchen:
                     KaffeBohnenWollenEier();
                     break;
+
                 case Previous.GeschenkeAnnehmen:
                     KaffeBohnenplantageVerantwortungStellen();
                     break;
+
                 case Previous.KaffeBohnenplantageVerantwortungStellen:
                     KaffeBohnenplantageSteak();
                     break;
+
                 case Previous.KuerbistanWahlkampf:
-               KuerbistanEier();
+                    KuerbistanEier();
                     break;
 
-            case Previous.KuerbistanGeschenkeAnnehmen:
+                case Previous.KuerbistanGeschenkeAnnehmen:
                     KaffeBohnenplantageVerantwortungStellen();
                     break;
+
+                    // links
+                case Previous.WegZurTiefseegrotte:
+                    ZurueckAufStraße();
+                    break;
+
                 // case Previous.istMachtWichtig:
                 //    MitEiernWerfen();
                 //  break;
@@ -343,8 +360,7 @@ namespace SchuBS_Textadventure
                             Kampf.Button2Magie();
                             break;
                         case 2:
-                            Item selectedItem = (Item)ListBoxInventar.SelectedItem;
-                            if (selectedItem != null)
+                            if (ListBoxInventar.SelectedItem is Item selectedItem)
                                 Kampf.Button3Item(selectedItem);
                             break;
                     }

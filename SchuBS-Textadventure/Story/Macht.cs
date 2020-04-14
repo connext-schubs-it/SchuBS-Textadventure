@@ -245,6 +245,7 @@ namespace SchuBS_Textadventure
             if (muenze)
             {
                 SetButtonsText("...du verwendest mehr Salz", "...du gönnst dir mal ein richtiges Steak.  ");
+                AktuellerHeld.EntferneItem("Münze");
             }
             else
             {

@@ -23,7 +23,8 @@ namespace SchuBS_Textadventure
 
         private void EisGekauft()
         {
-            WriteText("Das Kürbiseis ist gar nicht mal so gut. Was für eine Abzocke! Aber der Messerblock könnte noch von Nutzen sein. Ist ganz schön schwer, das Ding.");
+            WriteText("Das Kürbiseis ist gar nicht mal so gut. Was für eine Abzocke!" +
+                "Aber der Messerblock könnte noch von Nutzen sein. Ist ganz schön schwer, das Ding.");
 
             AktuellerHeld.EntferneItem("Münze");
             AktuellerHeld.FuegeItemHinzu(new Item("Messerblock", "messerblock.png"));
@@ -91,21 +92,25 @@ namespace SchuBS_Textadventure
             SetzeHintergrundBild("dunkler_wald.jpg");
             WriteText("Der einzige weitere Weg führt durch den dunklen Wald.",
                 "Du bist nun tief im Wald. Deine Orientierung ist im Eimer. Na toll.",
-                "Blindlings stoplerst du durch das Unterholz, aber der Wald wird immer dichter.",
-                "Schließlich ist es so dunkel, dass du dich nur noch tastend fortbewegen kannst. Immer wieder hörst du es knacken, wenn du mal wieder über einen Ast gerobbt bist.",
-                "Doch plötzlich hörst du ein ganz lautes Knacken, gefolgt von einem Knirschen und urplötzlich verliertst du den Boden unter dem Körper. Du fällst und fällst und machst dich auf den Aufprall gefasst.",
-                "Dieser gestaltet sich anders als erwartet. Deine Füße tauchen zuerst ein. Kühles Nass.",
-                "Du scheinst in einer Unterwassergrotte gelandet zu sein!");
-            SetButtonsText("weiter");
+                "Blindlings stoplerst du durch das Unterholz, aber der Wald wird immer dichter.");
+            SetButtonsText("rechts abbiegen", "links abbiegen");
             previous = Previous.WegZurTiefseegrotte;
+        }
 
+        private void ZurueckAufStraße()
+        {
+            WriteText("Du entschließt dich, alle Vorsicht fallen zu lassen und läufst mit zugekniffenen Augen durch die Gegend. " +
+                "Merkwürdigerweise bleibt dein Kopf bei diesem Unterfangen heile. " +
+                "Als du wieder eine Straße unter deinen Füßen spürst, öffnest du deine Augen wieder.");
+            SetButtonsText("Weiter");
+            previous = Previous.ZurueckAufStraße;
         }
 
         private void RaetselMauer()
         {
             SetzeHintergrundBild("weg_wand.png");
             AktuellerHeld.EntferneItem("Münze");
-            WriteText("Du passierst die Brücke und gehst munter weiter. Fast stößt du dir den Kopf, als die Straße abrupt vor einer hohen Wand endet. Links und rechts ist kein Ende der Mauer in Sicht.",
+            WriteText("Du gehst munter weiter. Fast stößt du dir den Kopf, als die Straße abrupt vor einer hohen Wand endet. Links und rechts ist kein Ende der Mauer in Sicht.",
                 "Als du prüfend an die Wand klopfst, erscheint folgender Text:",
                 "“Wanderer hab Acht: Ginget Ihr in eine Hütte, derer Bewohner drei und verließen zwei Bewohner das Bauwerk, während durch die Hinterpforte fünf Menschen einträten, wie viele habt Ihr?", "",
                 "Eins? Fünf? Vierunddreißig? Acht? Kürbis?”",

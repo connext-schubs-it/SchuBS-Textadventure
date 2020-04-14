@@ -64,5 +64,6 @@
         KuerbistanVerantwortung,
         KuerbistanWahlkampf,
         KuerbistanMehrKuerbis,
+        ZurueckAufStraße,
     }
 }
