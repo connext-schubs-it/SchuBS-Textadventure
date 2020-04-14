@@ -1,4 +1,5 @@
-﻿using SchuBS_Textadventure.KampfHelper;
+﻿using SchuBS_Textadventure.Data;
+using SchuBS_Textadventure.KampfHelper;
 using SchuBS_Textadventure.Objects;
 
 using System.Collections.Generic;
@@ -26,6 +27,8 @@ namespace SchuBS_Textadventure
         #region Spiel Variablen
 
         public Spieler AktuellerHeld { get; } = new Spieler();
+
+        public Werte Werte { get; } = Werte.Load();
 
         #endregion
 
@@ -95,6 +98,18 @@ namespace SchuBS_Textadventure
 
             SetzeGegner(gegner);
             Kampf = new Kampf(AktuellerHeld, gegner, this);
+
+            if (!Werte.HatKampfTutorialGesehen)
+            {
+                MessageBox.Show(string.Join("\n", "Du hast das erste Mal einen Kampf betreten.",
+                    "Klicke auf „Angriff“ um den Gegner normal anzugreifen.",
+                    "Klicke auf „Magie“ um deine Zauberkünste zu beweisen, wenn du denn welche beherrscht.",
+                    "Wähle ein Item aus und Klicke auf „Item benutzen“ um es zu benutzen, oder Doppelklicke das Item.",
+                    "Manche Items haben einen speziellen Effekt im Kampf.Probiere es aus!"));
+                Werte.HatKampfTutorialGesehen = true;
+                Werte.Save();
+            }
+
             Kampf.Aktion();
         }
 

@@ -59,6 +59,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Data\Werte.cs" />
     <Compile Include="KampfHelper\Kampf.cs" />
     <Compile Include="Objects\Klasse.cs" />
     <Compile Include="Previous.cs" />
@@ -230,5 +231,6 @@
   <ItemGroup>
     <Resource Include="Resources\leer500.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
