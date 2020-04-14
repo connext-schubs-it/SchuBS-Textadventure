@@ -103,7 +103,7 @@ namespace SchuBS_Textadventure
 
             WriteText("Kreischend und mit wild schlackernden Armen rennst du auf das Ungeheuer zu. Das Ungetüm ist eingeschüchtert und wirkt ängstlich.",
                       "Wieso schreist du so laut?! Es zieht seinen Kopf ein und winselt um Gnade, was du aber aufgrund der Panik nicht wahrnimmst.",
-                      "Du läufst in Schlangenlinien um das Ungeheuer, doch rutscht anmutig auf der Sabberspur aus.",
+                      "Du läufst in Schlangenlinien um das Ungeheuer, doch rutschst anmutig auf der Sabberspur aus.",
                       "Du stößt dir den Kopf und alles wird schwarz.");
 
             SpielZuende();
