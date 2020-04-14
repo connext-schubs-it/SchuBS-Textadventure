@@ -188,6 +188,10 @@ namespace SchuBS_Textadventure
                     break;
 
                 default:
+                case Previous.KueberlinAnkunft:
+                    KaffeBohnenplantageGnadeFlehen();
+                    break;
+            default:
                     if (TextBoxEingabe.IsEnabled)
                     {
                         VerarbeiteTextEingabe();
@@ -284,6 +288,9 @@ namespace SchuBS_Textadventure
 
                 case Previous.KuerbistanWahlkampf:
                     KuerbistanEier();
+                    break;
+                case Previous.KueberlinAnkunft:
+                    KaempfenKaffeeGegenKobolde();
                     break;
 
                 case Previous.KuerbistanGeschenkeAnnehmen:

@@ -323,6 +323,7 @@ namespace SchuBS_Textadventure
             {
                 SetButtonsText("Um Gnade flehen ", "Kämpfen!");
             }
+            previous = Previous.KueberlinAnkunft;
         }
 
         public void KuerberlinGnadeFlehen()
