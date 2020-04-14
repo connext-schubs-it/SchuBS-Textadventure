@@ -511,6 +511,7 @@ namespace SchuBS_Textadventure
 
         public void KaffeBohnenplantageMitEiernWerfen()
         {
+            AktuellerHeld.EntferneItem("Ei");
             SetzeHintergrundBild("kuerberlin_mit_kuerbispalast.png");
             SetzePersonenBild();
             WriteText("Du zückst die Packung Eier und wirfst drauf los. ",
