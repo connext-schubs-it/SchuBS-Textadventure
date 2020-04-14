@@ -47,14 +47,21 @@ namespace SchuBS_Textadventure.KampfHelper
 
         private static List<string> GetReaktionTexte(Reaktion reaktion, BaseObject sprecher = null)
         {
-            List<string> ausgabe = new List<string>();
             if (reaktion.Texte != null)
             {
-                foreach (string text in reaktion.Texte)
-                {
-                    ausgabe.Add($"{(ausgabe.Any() ? "\t" : (sprecher?.Name ?? reaktion.Ziel.Name))}: {text}");
-                }
+                return GetTextFuerSprecher(sprecher?.Name, reaktion.Texte);
             }
+            else
+            {
+                return new List<string>();
+            }
+        }
+
+        public static List<string> GetTextFuerSprecher(string sprecher, params string[] texte)
+        {
+            List<string> ausgabe = new List<string>();
+            ausgabe.Add($"{sprecher}:");
+            ausgabe.AddRange(texte.Select(zeile => "\t" + zeile));
             return ausgabe;
         }
 
