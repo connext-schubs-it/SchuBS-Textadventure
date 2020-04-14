@@ -47,17 +47,17 @@ namespace SchuBS_Textadventure.KampfHelper
 
         public override int BerechneSchadenGegnerAngriff()
         {
-            return Math.Max(1, Gegner.Staerke - Spieler.Klasse.Verteidigung);
+            return Math.Max(1, Gegner.Staerke - (Spieler.Klasse.Verteidigung / 2));
         }
 
         public override int BerechneSchadenNormal()
         {
-            return Spieler.Klasse.Staerke - Gegner.Verteidigung;
+            return (Spieler.Klasse.Staerke + (Spieler.Klasse.Geschicklichkeit / 2)) - (Gegner.Verteidigung / 2);
         }
 
         public override int BerechneSchadenMagie()
         {
-            return Spieler.Klasse.Magie - Gegner.Verteidigung;
+            return (Spieler.Klasse.Magie + (Spieler.Klasse.Mana / 2)) - (Gegner.Verteidigung / 2);
         }
 
         public override Reaktion SpezialAktionAusführen()

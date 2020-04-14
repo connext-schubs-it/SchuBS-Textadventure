@@ -33,7 +33,7 @@ namespace SchuBS_Textadventure.Objects
                     gegner = new Gegner(100, "Feuerdrache")
                     {
                         Bild = "leer500.png",
-                        Staerke = 10,
+                        Staerke = 20,
                         Verteidigung = 10,
                         Reaktionen = new List<Reaktion>()
                         {
@@ -46,11 +46,11 @@ namespace SchuBS_Textadventure.Objects
                     break;
 
                 case GegnerTyp.Ungeheuer:
-                    gegner = new Gegner(100, "Ungeheuer")
+                    gegner = new Gegner(90, "Ungeheuer")
                     {
                         Bild = "tiefsee_ungeheuer.png",
-                        Staerke = 1,
-                        Verteidigung = 0,
+                        Staerke = 16,
+                        Verteidigung = 12,
                         Reaktionen = new List<Reaktion>()
                         {
                             new Reaktion(lp: 90, "Ha das war ja gar nichts!"),
@@ -69,8 +69,8 @@ namespace SchuBS_Textadventure.Objects
                     gegner = new Gegner(70, "Kobolde")
                     {
                         Bild = "kobold_handlanger_new.png",
-                        Staerke = 4,
-                        Verteidigung = 3,
+                        Staerke = 6,
+                        Verteidigung = 6,
                     };
                     break;
 
@@ -78,8 +78,8 @@ namespace SchuBS_Textadventure.Objects
                     gegner = new Gegner(80, "KoboldAnführer")
                     {
                         Bild = "kobold_anfuehrer.png",
-                        Staerke = 6,
-                        Verteidigung = 3,
+                        Staerke = 8,
+                        Verteidigung = 8,
                     };
                     break;
 
@@ -87,8 +87,8 @@ namespace SchuBS_Textadventure.Objects
                     gegner = new Gegner(50, "Feuerdrache")
                     {
                         Bild = "leer500.png",
-                        Staerke = 1,
-                        Verteidigung = 0
+                        Staerke = 15,
+                        Verteidigung = 15,
                     };
                     break;
 

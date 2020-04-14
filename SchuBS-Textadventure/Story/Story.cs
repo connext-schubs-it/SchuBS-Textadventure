@@ -7,7 +7,7 @@ using static SchuBS_Textadventure.TextadventureHelper;
 
 namespace SchuBS_Textadventure
 {
-    public partial class Textadventure
+    public partial class Textadventure : Window
     {
         #region Variablen
 

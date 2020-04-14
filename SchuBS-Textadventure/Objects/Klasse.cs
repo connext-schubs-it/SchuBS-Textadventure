@@ -48,16 +48,16 @@ namespace SchuBS_Textadventure.Objects
             switch (typ)
             {
                 case KlassenTyp.Krieger:
-                    neueKlasse = new Klasse(20, 20, 5, 2, 30);
+                    neueKlasse = new Klasse(30, 30, 8, 2, 30);
                     break;
                 case KlassenTyp.Waldlaeufer:
-                    neueKlasse = new Klasse(10, 8, 20, 6, 60);
+                    neueKlasse = new Klasse(10, 12, 22, 6, 50);
                     break;
                 case KlassenTyp.Magier:
-                    neueKlasse = new Klasse(3, 5, 7, 20, 150);
+                    neueKlasse = new Klasse(3, 5, 7, 25, 60);
                     break;
                 case KlassenTyp.Assassine:
-                    neueKlasse = new Klasse(17, 5, 25, 1, 20);
+                    neueKlasse = new Klasse(38, 10, 25, 2, 25);
                     break;
                 case KlassenTyp.Keine:
                     neueKlasse = new Klasse(5, 5, 5, 0, 0, 30);
