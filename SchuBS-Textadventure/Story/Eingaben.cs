@@ -177,7 +177,9 @@ namespace SchuBS_Textadventure
                 case Previous.FeuerdracheSchwachBesiegt:
                     KampfFeuerdracheStark();
                     break;
-
+                case Previous.KuerbistanWahlkampf:
+                    KuerbistanMehrKuerbis();
+                    break;
                 default:
                     if (TextBoxEingabe.IsEnabled)
                     {
@@ -269,11 +271,11 @@ namespace SchuBS_Textadventure
                 case Previous.KaffeBohnenplantageVerantwortungStellen:
                     KaffeBohnenplantageSteak();
                     break;
-                // case Previous.istMachtWichtig:
-                //    MitEiernWerfen();
-                //  break;
+                case Previous.KuerbistanWahlkampf:
+               KuerbistanEier();
+                    break;
 
-                case Previous.KuerbistanGeschenkeAnnehmen:
+            case Previous.KuerbistanGeschenkeAnnehmen:
                     KaffeBohnenplantageVerantwortungStellen();
                     break;
                 // case Previous.istMachtWichtig:
