@@ -32,6 +32,7 @@ namespace SchuBS_Textadventure.Objects
                 case GegnerTyp.FeuerdracheStark:
                     gegner = new Gegner(100, "Feuerdrache")
                     {
+                        Bild = "leer500.png",
                         Staerke = 10,
                         Verteidigung = 10,
                         Reaktionen = new List<Reaktion>()
@@ -85,6 +86,7 @@ namespace SchuBS_Textadventure.Objects
                 case GegnerTyp.FeuerdracheSchwach:
                     gegner = new Gegner(50, "Feuerdrache")
                     {
+                        Bild = "leer500.png",
                         Staerke = 1,
                         Verteidigung = 0
                     };

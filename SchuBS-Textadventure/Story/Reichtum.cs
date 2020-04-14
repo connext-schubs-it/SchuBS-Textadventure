@@ -179,7 +179,7 @@ namespace SchuBS_Textadventure
 
         private void JoshkaBegegnen()
         {
-            SetzeHintergrundBild("drachenhoehle.jpg");
+            SetzeHintergrundBild("drachenhoehle.png");
             WriteText("Du hörst ein lautes Schnaufen hinter dir. Noch bevor du dich umdrehen kannst, wirst du auch schon meterweit in Richtung des Goldberges geschleudert.",
                 "Deine Gier nach Gold hat dich genau ins Nest des Drachen Joshka geführt. Der Drache speit Feuer im Anblick deiner winzigen Statur und wird wild.",
                 "Das Feuer verfehlt dich knapp und du stellst dich dem Ungetüm entgegen. Dies ist der entscheidende Moment. Ein Entkommen ist unmöglich.",
@@ -205,7 +205,7 @@ namespace SchuBS_Textadventure
 
         private void TauschNunchakus()
         {
-            SetzeHintergrundBild("drachenhoehle_phase2.jpg");
+            SetzeHintergrundBild("drachenhoehle_phase2.png");
             WriteText("Der Drache findet deine asiatischen Kampfstöckchen ziemlich mager. Mit einem Klauenschnippen werden deine Nunchakus bis nach Kürbistan befördert. Der Drache wird noch zorniger und speit Feuer gen Himmel.",
                 "Der Himmel wird blutrot. Joshka ist gewillt dich nun völlig zu erledigen. Er zieht alle Register und breitet seine gewaltigen Flügel aus. Der letzte Kampf beginnt...");
             AktuellerHeld.EntferneItem("Nunchakus");
@@ -229,6 +229,8 @@ namespace SchuBS_Textadventure
         {
             SetzeHintergrundBild("drachenhoehle.png");
             StarteKampf(GegnerTyp.FeuerdracheSchwach);
+            SetzePersonenBild("Leer500.png");
+
             previous = Previous.FeuerdracheSchwachKaempfen;
         }
 
