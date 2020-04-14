@@ -1,6 +1,8 @@
 ﻿using SchuBS_Textadventure.KampfHelper;
 using SchuBS_Textadventure.Objects;
 
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -45,7 +47,20 @@ namespace SchuBS_Textadventure
             TextadventureHelper.TextBoxEingabe = TextBoxEingabe;
             TextadventureHelper.UniformGridButtons = UniformGridButtons;
             TextadventureHelper.GetText = GetText;
-            Start();
+
+            List<string> args = System.Environment.GetCommandLineArgs().ToList();
+            int index = args.IndexOf("\\class");
+            if (index >= 0 && index + 1 < args.Count)
+            {
+                AktuellerHeld.Name = "Held";
+                BerufErfragen();
+                TextBoxEingabe.Text = args[index + 1];
+                VerarbeiteTextEingabe();
+            }
+            else
+            {
+                Start();
+            }
         }
 
         #endregion
