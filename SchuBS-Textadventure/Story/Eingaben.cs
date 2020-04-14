@@ -296,7 +296,9 @@ namespace SchuBS_Textadventure
                 case Previous.KuerbistanGeschenkeAnnehmen:
                     KaffeBohnenplantageVerantwortungStellen();
                     break;
-
+                case Previous.TiefseegrotteErfragt:
+                    KaffeBohnenplantage();
+                    break;
                 // links
                 case Previous.WegZurTiefseegrotte:
                     ZurueckAufStraße();
