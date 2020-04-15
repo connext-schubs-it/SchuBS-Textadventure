@@ -215,7 +215,7 @@ namespace SchuBS_Textadventure
 
         private void TauschMesserblock()
         {
-            SetzeHintergrundBild("drachenhoehle.jpg");
+            SetzeHintergrundBild("drachenhoehle.png");
             WriteText("Die Augen des Drachen funkeln im Angesicht der scharfen Messer. Er erinnert sich an eine längst vergangene Zeit zurück, als er noch keine Klauen hatte und sein Opfer mit frisch geschliffenen Küchenmessern bearbeiten musste.",
                 "Alte Erinnerungen quellen empor. Der Drache denkt an seine alte Jugendlieben das Leben auf der Farm und schwelgt abwesend vor sich hin.",
                 "Du Fuchs, du nutzt natürlich die Gelegenheit uns stopfst dir die Taschen mit unzähligen Golddublonen voll. Zeit abzuhauen.",
