@@ -2,8 +2,6 @@
 using SchuBS_Textadventure.KampfHelper;
 using SchuBS_Textadventure.Objects;
 
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -51,13 +49,18 @@ namespace SchuBS_Textadventure
             TextadventureHelper.UniformGridButtons = UniformGridButtons;
             TextadventureHelper.GetText = GetText;
 
-            List<string> args = System.Environment.GetCommandLineArgs().ToList();
-            int index = args.IndexOf("\\class");
-            if (index >= 0 && index + 1 < args.Count)
+            if (GetStartArgsParameter("textspeed") is string geschwindigkeit)
+            {
+                double textGeschwindigkeit = TextAlsKommaZahl(geschwindigkeit);
+                if (!double.IsNaN(textGeschwindigkeit) && !double.IsInfinity(textGeschwindigkeit))
+                    TextBoxHauptText.TextSpeed = (float)textGeschwindigkeit;
+            }
+
+            if (GetStartArgsParameter("class") is string klassenName)
             {
                 AktuellerHeld.Name = "Held";
                 BerufErfragen();
-                TextBoxEingabe.Text = args[index + 1];
+                TextBoxEingabe.Text = klassenName;
                 VerarbeiteTextEingabe();
             }
             else

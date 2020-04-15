@@ -165,21 +165,37 @@ namespace SchuBS_Textadventure
         public static BitmapImage GetBild(string name = null) => string.IsNullOrWhiteSpace(name) ? null : new BitmapImage(new Uri("pack://application:,,,/Resources/" + name));
 
         /// <summary>
-        /// Versucht den <paramref name="text"/> in einen <see cref="int"/> umzuwandlen und gibt diesen zurück.
+        /// Versucht den <paramref name="text"/> in einen <see cref="int"/> umzuwandlen und gibt diesen zurück.<br/>
         /// Ist keine Umwandlung möglich wird <c>-1</c> zurückgegeben.
         /// </summary>
         /// <param name="text">Der text, der zu einem <see cref="int"/> umgewandelt werden soll.</param>
         /// <returns>Den <paramref name="text"/> als <see cref="int"/>.</returns>
-        public static int TextAlsZahl(string text)
+        public static int TextAlsZahl(string text) =>
+            int.TryParse(text, out int eingabeZahl) ? eingabeZahl : -1;
+
+        /// <summary>
+        /// Versucht den <paramref name="text"/> in einen <see cref="double"/> umzuwandlen und gibt diesen zurück.<br/>
+        /// Ist keine Umwandlung möglich wird <see cref="double.NaN"/> zurückgegeben.
+        /// </summary>
+        /// <param name="text">Der text, der zu einem <see cref="double"/> umgewandelt werden soll.</param>
+        /// <returns>Den <paramref name="text"/> als <see cref="double"/>.</returns>
+        public static double TextAlsKommaZahl(string text) =>
+            double.TryParse(text.Replace('.', ',') ,out double eingabeZahl) ? eingabeZahl : double.NaN;
+
+        /// <summary>
+        /// Gibt den Wert als <see cref="string"/>, der für das Startargument angegeben wurde.
+        /// <code>SchuBS-Textadventure.exe \class Krieger<br/>
+        /// if (<see cref="GetStartArgsParameter(string)">GetStartArgsParameter("class")</see> is <see cref="string"/> klassenName) { ... }<br/>
+        /// else { ... }<br/>
+        /// </code>
+        /// </summary>
+        /// <param name="name">Der Name des Startargumentes.</param>
+        /// <returns>Der Wert des Startargumentes als <see cref="string"/>.</returns>
+        public static string GetStartArgsParameter(string name)
         {
-            if (int.TryParse(text, out int eingabeZahl))
-            {
-                return eingabeZahl;
-            }
-            else
-            {
-                return -1;
-            }
+            string[] args = Environment.GetCommandLineArgs();
+            int index = Array.IndexOf(args, $"\\{name}");
+            return index >= 0 && index + 1 < args.Length ? args[index + 1] : null;
         }
     }
 }

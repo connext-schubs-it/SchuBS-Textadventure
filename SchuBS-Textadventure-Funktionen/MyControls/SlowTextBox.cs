@@ -10,7 +10,7 @@ namespace SchuBS_Textadventure.MyControls
     /// </summary>
     public class SlowTextBox : TextBox
     {
-        private const int CharInterval = 15;
+        private const int CharInterval = 10;
         private readonly DispatcherTimer Timer = new DispatcherTimer();
 
         private IEnumerator<char> text = null;
@@ -46,7 +46,7 @@ namespace SchuBS_Textadventure.MyControls
             {
                 if (text?.MoveNext() ?? false)
                 {
-                    Text += text.Current;
+                    base.AppendText(text.Current.ToString());
                     ScrollToEnd();
                 }
                 else
@@ -62,7 +62,7 @@ namespace SchuBS_Textadventure.MyControls
         /// <param name="text"></param>
         public void SetText(string text)
         {
-            Text = string.Empty;
+            Clear();
             this.text = null;
             AppendText(text);
         }
@@ -78,7 +78,7 @@ namespace SchuBS_Textadventure.MyControls
                 Timer.IsEnabled = false;
                 while (this.text.MoveNext())
                 {
-                    Text += this.text.Current;
+                    base.AppendText(this.text.Current.ToString());
                 }
             }
             this.text = text.GetEnumerator();

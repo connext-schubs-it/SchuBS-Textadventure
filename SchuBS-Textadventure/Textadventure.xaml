@@ -71,7 +71,7 @@
                                     TextWrapping="Wrap"
                                     Foreground="White"
                                     FontSize="14"
-                                    TextSpeed="3"
+                                    TextSpeed="2"
                                     IsTabStop="False">
                 <MyControls:SlowTextBox.Background>
                     <SolidColorBrush Color="Blue" Opacity="0.7" />
