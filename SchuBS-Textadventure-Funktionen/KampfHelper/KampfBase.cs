@@ -103,13 +103,16 @@ namespace SchuBS_Textadventure.KampfHelper
                     break;
             }
 
-            Ausgabe.AddRange(AusgabeHelper.AusgabeReaktion(reaktion, typ, Gegner));
+            Ausgabe.AddRange(reaktion.ReaktionAusgabe(typ, Gegner));
             if (reaktion != null && Spieler.Lebenspunkte > 0 && Gegner.Lebenspunkte > 0)
             {
                 Aktion();
             }
             else
             {
+                if (Gegner.Lebenspunkte <= 0)
+                    Ausgabe.Add(Gegner.TodesText);
+
                 SchreibeAusgabe();
                 IstZuende = true;
             }

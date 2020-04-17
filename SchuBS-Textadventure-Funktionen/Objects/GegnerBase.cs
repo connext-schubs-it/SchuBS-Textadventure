@@ -9,6 +9,11 @@ namespace SchuBS_Textadventure.Objects
         public GegnerBase(int maxLebenspunkte, string name) : base(maxLebenspunkte, name) { }
 
         /// <summary>
+        /// Der Text, der angezeigt werden soll, wenn der Gegner stirbt.
+        /// </summary>
+        public string TodesText { get; set; }
+
+        /// <summary>
         /// Die Reaktionen auf bestimmte Items.
         /// </summary>
         public List<Reaktion> ItemReaktionen { get; set; } = new List<Reaktion>();

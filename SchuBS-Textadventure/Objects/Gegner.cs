@@ -15,9 +15,13 @@ namespace SchuBS_Textadventure.Objects
 
     public class Gegner : GegnerBase
     {
-        public Gegner(int maxLebenspunkte, string name) : base(maxLebenspunkte, name) { }
+        public Gegner(int maxLebenspunkte, string name) : base(maxLebenspunkte, name)
+        {
+            TodesText = $"{Name} wurde besiegt!";
+        }
 
         public int Staerke { get; set; }
+
         public int Verteidigung { get; set; }
 
         public string Bild { get; set; }
@@ -41,7 +45,7 @@ namespace SchuBS_Textadventure.Objects
                             new Reaktion(lp: 60, "Gar nicht mal schlecht!"),
                             new Reaktion(lp: 30, "Ouch!"),
                             new Reaktion(lp: 10, "Aufhören!"),
-                    }
+                        }
                     };
                     break;
 
@@ -71,6 +75,7 @@ namespace SchuBS_Textadventure.Objects
                         Bild = "kobold_handlanger_new.png",
                         Staerke = 6,
                         Verteidigung = 6,
+                        TodesText = "Die Kobolde wurden besiegt, aber es ist noch nicht zu ende...",
                     };
                     break;
 
