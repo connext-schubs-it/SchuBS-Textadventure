@@ -26,8 +26,6 @@ namespace SchuBS_Textadventure
 
         public Spieler AktuellerHeld { get; } = new Spieler();
 
-        public Werte Werte { get; } = Werte.Load();
-
         #endregion
 
         #region Initialisierung
@@ -41,13 +39,7 @@ namespace SchuBS_Textadventure
                 Button2,
                 Button3,
             };
-            TextadventureHelper.ButtonsAktionen = ButtonsAktionen;
-            TextadventureHelper.ImageHintergrund = ImageHintergrund;
-            TextadventureHelper.ImagePerson = ImagePerson;
-            TextadventureHelper.TextBoxHauptText = TextBoxHauptText;
-            TextadventureHelper.TextBoxEingabe = TextBoxEingabe;
-            TextadventureHelper.UniformGridButtons = UniformGridButtons;
-            TextadventureHelper.GetText = GetText;
+            Init(ButtonsAktionen, ImageHintergrund, ImagePerson, TextBoxHauptText, TextBoxEingabe, UniformGridButtons, GetText);
 
             if (GetStartArgsParameter("textspeed") is string geschwindigkeit)
             {
@@ -78,6 +70,11 @@ namespace SchuBS_Textadventure
             ZeigeVerlaufFenster();
         }
 
+        /// <summary>
+        /// Wandelt einen <see cref="string"/>[] in einen Text um, der dem Spieler angezeigt werden kann.
+        /// </summary>
+        /// <param name="zeilen"></param>
+        /// <returns></returns>
         private string GetText(params string[] zeilen)
         {
             string text = string.Join("\n", zeilen);
@@ -102,14 +99,14 @@ namespace SchuBS_Textadventure
             SetzeGegner(gegner);
             Kampf = new Kampf(AktuellerHeld, gegner, this);
 
-            if (!Werte.HatKampfTutorialGesehen)
+            if (!Werte.Instance.HatKampfTutorialGesehen)
             {
                 MessageBox.Show(string.Join("\n", "Du hast das erste Mal einen Kampf betreten.",
                     "Klicke auf „Angriff“ um den Gegner normal anzugreifen.",
                     "Klicke auf „Magie“ um deine Zauberkünste zu beweisen, wenn du denn welche beherrscht.",
                     "Wähle ein Item aus und Klicke auf „Item benutzen“ um es zu benutzen, oder Doppelklicke das Item.",
                     "Manche Items haben einen speziellen Effekt im Kampf.Probiere es aus!"));
-                Werte.HatKampfTutorialGesehen = true;
+                Werte.Instance.HatKampfTutorialGesehen = true;
                 Werte.Save();
             }
 

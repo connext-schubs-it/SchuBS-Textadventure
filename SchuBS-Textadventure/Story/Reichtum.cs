@@ -13,7 +13,7 @@ namespace SchuBS_Textadventure
                 "Wenn ich du wäre, würde ich dem ganzen mal nachgehen. Aber wenn jemand fragt, den Tipp hast du nicht von mir. Der Weg führt durch den Steinbogen da vorne. Ich bin dann mal weg. Tschüssi!”",
                 "Thoron verschwindet im nächsten Gebüsch und wird nie wieder gesehen", "",
                 "Du gehst zielsicher durch den Steinbogen. Der erste Schritt Richtung Reichtum ist getan.",
-                " Einige Minuten später siehst du am Wegesrand einen bunten Verkaufsstand. Die exzentrische, pinkhaarige Verkäuferin preist lautstark Eis an.",
+                "Einige Minuten später siehst du am Wegesrand einen bunten Verkaufsstand. Die exzentrische, pinkhaarige Verkäuferin preist lautstark Eis an.",
                 "“Das beste Eis in Kürbistan! Kürbiseis! Nur heute für den kleinen, kleinen Preis von einer Münze! Wenn Sie jetzt anhalten und sofort bestellen, gibt es einen Messerblock kostenlos dazu!”",
                 "Du bist die einzige Person auf der Straße und fühlst dich angesprochen.",
                 "Möchtest du ein Eis kaufen, oder ignorierst du diese süße Versuchung?");

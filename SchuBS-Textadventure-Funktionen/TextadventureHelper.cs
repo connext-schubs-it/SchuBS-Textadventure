@@ -12,6 +12,9 @@ using System.Windows.Media.Imaging;
 
 namespace SchuBS_Textadventure
 {
+    /// <summary>
+    /// Stellt Hilfsfunktionen für das Textadventure bereit.
+    /// </summary>
     public static class TextadventureHelper
     {
         /// <summary>
@@ -28,22 +31,53 @@ namespace SchuBS_Textadventure
         /// </summary>
         public static Button[] ButtonsAktionen { get; set; }
 
+        /// <summary>
+        /// Werden im Text Variablen verwendet, müssen dises mit diesem Wert umschlossen sein.
+        /// </summary>
         public const string TextVariableDelimiter = "##";
 
-        public static Image ImageHintergrund;
-        public static Image ImagePerson;
-        public static SlowTextBox TextBoxHauptText;
-        public static TextBox TextBoxEingabe;
-        public static UniformGrid UniformGridButtons;
+        private static Image ImageHintergrund;
+        private static Image ImagePerson;
+        private static SlowTextBox TextBoxHauptText;
+        private static TextBox TextBoxEingabe;
+        private static UniformGrid UniformGridButtons;
 
-        public static Func<string[], string> GetText;
+        private static Func<string[], string> GetText;
 
-        public static StringBuilder VerlaufText = new StringBuilder();
+        internal static StringBuilder VerlaufText { get; } = new StringBuilder();
+
+        /// <summary>
+        /// Initialisiert den Helfer.
+        /// Diese Methode sollte vor allen anderen aufgerufen werden.
+        /// </summary>
+        /// <param name="buttonsAktionen">Die <see cref="Button"/>s, mit denen der Spieler interagieren kann.</param>
+        /// <param name="imageHintergrund">Das <see cref="Image"/>, dass das Hintergrundbild enthält.</param>
+        /// <param name="imagePerson">Das <see cref="Image"/>, in dem eine Person dargestellt werden kann.</param>
+        /// <param name="textBoxHauptText">Die <see cref="SlowTextBox"/>, in der Text für den Spieler angezeigt wird.</param>
+        /// <param name="textBoxEingabe">Die <see cref="TextBox"/>, in die der Spieler Texte eingeben kann.</param>
+        /// <param name="uniformGridButtons">Das <see cref="UniformGrid"/>, dass die <paramref name="buttonsAktionen"/> enthält.</param>
+        /// <param name="getText">Wandelt einen <see cref="string"/><c>[]</c> in einen Text um, der dem Spieler angezeigt werden kann.</param>
+        public static void Init(Button[] buttonsAktionen,
+                                Image imageHintergrund,
+                                Image imagePerson,
+                                SlowTextBox textBoxHauptText,
+                                TextBox textBoxEingabe,
+                                UniformGrid uniformGridButtons,
+                                Func<string[], string> getText)
+        {
+            ButtonsAktionen    = buttonsAktionen    ?? throw new ArgumentNullException(nameof(buttonsAktionen));
+            ImageHintergrund   = imageHintergrund   ?? throw new ArgumentNullException(nameof(imageHintergrund));
+            ImagePerson        = imagePerson        ?? throw new ArgumentNullException(nameof(imagePerson));
+            TextBoxHauptText   = textBoxHauptText   ?? throw new ArgumentNullException(nameof(textBoxHauptText));
+            TextBoxEingabe     = textBoxEingabe     ?? throw new ArgumentNullException(nameof(textBoxEingabe));
+            UniformGridButtons = uniformGridButtons ?? throw new ArgumentNullException(nameof(uniformGridButtons));
+            GetText            = getText            ?? throw new ArgumentNullException(nameof(getText));
+        }
 
         /// <summary>
         /// Zeigt ein Popup, in dem der ganze bisher Gezeigte Text gezeigt wird.
         /// </summary>
-        public static void ZeigeVerlaufFenster() => new VerlaufFenster(VerlaufText.ToString()).ShowDialog();
+        public static void ZeigeVerlaufFenster() => new VerlaufFenster(VerlaufText.ToString()).Show();
 
         /// <summary>
         /// Setzt den Text der Aktions-Knöpfe. Nicht genutze Knöpfe werden ausgeblendet.
@@ -96,7 +130,12 @@ namespace SchuBS_Textadventure
         public static void WriteText(params string[] zeilen)
         {
             string text = GetText(zeilen);
+
+            if (VerlaufText.Length != 0)
+                VerlaufText.AppendLine();
+
             VerlaufText.AppendLine(text);
+
             TextBoxHauptText.SetText(text);
         }
 
@@ -183,9 +222,10 @@ namespace SchuBS_Textadventure
             double.TryParse(text.Replace('.', ',') ,out double eingabeZahl) ? eingabeZahl : double.NaN;
 
         /// <summary>
-        /// Gibt den Wert als <see cref="string"/>, der für das Startargument angegeben wurde.
-        /// <code>SchuBS-Textadventure.exe \class Krieger<br/>
-        /// if (<see cref="GetStartArgsParameter(string)">GetStartArgsParameter("class")</see> is <see cref="string"/> klassenName) { ... }<br/>
+        /// Gibt den Wert als <see cref="string"/>, der für das Startargument angegeben wurde.<br/>
+        /// Wurde das Argument nicht angegeben, wird <see langword="null"/> zurückgegeben.
+        /// <code>SchuBS-Textadventure.exe \class Krieger</code>
+        /// <code>if (<see cref="GetStartArgsParameter(string)">GetStartArgsParameter("class")</see> is <see cref="string"/> klassenName) { ... }<br/>
         /// else { ... }<br/>
         /// </code>
         /// </summary>
