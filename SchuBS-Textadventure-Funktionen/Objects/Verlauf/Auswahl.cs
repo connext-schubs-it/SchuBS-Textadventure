@@ -25,9 +25,6 @@ namespace SchuBS_Textadventure.Objects.Verlauf
         private static readonly DependencyProperty GewaehlterAktionsIndexProperty =
             DependencyProperty.Register("GewaehlterAktionsIndex", typeof(int), typeof(Auswahl), new PropertyMetadata(-1));
 
-        /// <summary>
-        /// Using a DependencyProperty as the backing store for GewaehlterAktionsIndex.  This enables animation, styling, binding, etc...
-        /// </summary>
-        private static readonly DependencyPropertyDescriptor GewaehlterAktionsIndexPropertyDescriptor = DependencyPropertyDescriptor.FromProperty(GewaehlterAktionsIndexProperty, typeof(Auswahl));
+        internal static readonly DependencyPropertyDescriptor GewaehlterAktionsIndexPropertyDescriptor = DependencyPropertyDescriptor.FromProperty(GewaehlterAktionsIndexProperty, typeof(Auswahl));
     }
 }
