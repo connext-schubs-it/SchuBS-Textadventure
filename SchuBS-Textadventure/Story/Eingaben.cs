@@ -1,5 +1,6 @@
 ﻿using SchuBS_Textadventure.KampfHelper;
 using SchuBS_Textadventure.Objects;
+using SchuBS_Textadventure.Objects.Verlauf;
 
 using System.Windows;
 using System.Windows.Controls;
@@ -13,6 +14,9 @@ namespace SchuBS_Textadventure
     {
         private void Button1_Click(object sender, RoutedEventArgs e)
         {
+            if (AktuelleAuswahl != null)
+                AktuelleAuswahl.GewaehlterAktionsIndex = 0;
+
             switch (previous)
             {
                 case Previous.Start:
@@ -207,6 +211,8 @@ namespace SchuBS_Textadventure
 
         private void Button2_Click(object sender, RoutedEventArgs e)
         {
+            AktuelleAuswahl.GewaehlterAktionsIndex = 1;
+
             switch (previous)
             {
                 case Previous.Start:
@@ -316,6 +322,8 @@ namespace SchuBS_Textadventure
 
         private void Button3_Click(object sender, RoutedEventArgs e)
         {
+            AktuelleAuswahl.GewaehlterAktionsIndex = 2;
+
             switch (previous)
             {
                 case Previous.MachtWichtig:
@@ -434,6 +442,9 @@ namespace SchuBS_Textadventure
         {
             string eingabe = TextBoxEingabe.Text;
             int zahl = TextAlsZahl(eingabe);
+
+            VerlaufText.AppendBlock(new Eingabe(eingabe));
+
             switch (previous)
             {
                 case Previous.NameErfragt:

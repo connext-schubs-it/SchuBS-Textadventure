@@ -4,14 +4,20 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SchuBS_Textadventure.Dialogs"
+        xmlns:Verlauf="clr-namespace:SchuBS_Textadventure.Objects.Verlauf"
         mc:Ignorable="d"
         Title="Verlauf" Height="450" Width="400"
         Background="Black">
-    <ScrollViewer Loaded="ScrollViewer_Loaded">
-        <TextBlock x:Name="TextBlockVerlaufText"
-                   Margin="3,0"
-                   Foreground="White"
-                   TextWrapping="Wrap" />
+    <Window.Resources>
+        <Style TargetType="TextBlock" >
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="Margin" Value="3,0" />
+        </Style>
+    </Window.Resources>
+
+    <ScrollViewer x:Name="ScrollViewerVerlauf" Loaded="ScrollViewer_Loaded">
+        <StackPanel x:Name="StackPanelVerlaufText" />
     </ScrollViewer>
    
 </Window>

@@ -1,9 +1,9 @@
 ﻿using SchuBS_Textadventure.Dialogs;
 using SchuBS_Textadventure.MyControls;
+using SchuBS_Textadventure.Objects.Verlauf;
 
 using System;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -36,6 +36,10 @@ namespace SchuBS_Textadventure
         /// </summary>
         public const string TextVariableDelimiter = "##";
 
+        public static Auswahl AktuelleAuswahl { get; set; }
+
+        public static Verauf VerlaufText { get; } = new Verauf();
+
         private static Image ImageHintergrund;
         private static Image ImagePerson;
         private static SlowTextBox TextBoxHauptText;
@@ -43,8 +47,6 @@ namespace SchuBS_Textadventure
         private static UniformGrid UniformGridButtons;
 
         private static Func<string[], string> GetText;
-
-        internal static StringBuilder VerlaufText { get; } = new StringBuilder();
 
         /// <summary>
         /// Initialisiert den Helfer.
@@ -65,28 +67,45 @@ namespace SchuBS_Textadventure
                                 UniformGrid uniformGridButtons,
                                 Func<string[], string> getText)
         {
-            ButtonsAktionen    = buttonsAktionen    ?? throw new ArgumentNullException(nameof(buttonsAktionen));
-            ImageHintergrund   = imageHintergrund   ?? throw new ArgumentNullException(nameof(imageHintergrund));
-            ImagePerson        = imagePerson        ?? throw new ArgumentNullException(nameof(imagePerson));
-            TextBoxHauptText   = textBoxHauptText   ?? throw new ArgumentNullException(nameof(textBoxHauptText));
-            TextBoxEingabe     = textBoxEingabe     ?? throw new ArgumentNullException(nameof(textBoxEingabe));
+            ButtonsAktionen = buttonsAktionen ?? throw new ArgumentNullException(nameof(buttonsAktionen));
+            ImageHintergrund = imageHintergrund ?? throw new ArgumentNullException(nameof(imageHintergrund));
+            ImagePerson = imagePerson ?? throw new ArgumentNullException(nameof(imagePerson));
+            TextBoxHauptText = textBoxHauptText ?? throw new ArgumentNullException(nameof(textBoxHauptText));
+            TextBoxEingabe = textBoxEingabe ?? throw new ArgumentNullException(nameof(textBoxEingabe));
             UniformGridButtons = uniformGridButtons ?? throw new ArgumentNullException(nameof(uniformGridButtons));
-            GetText            = getText            ?? throw new ArgumentNullException(nameof(getText));
+            GetText = getText ?? throw new ArgumentNullException(nameof(getText));
         }
 
         /// <summary>
         /// Zeigt ein Popup, in dem der ganze bisher Gezeigte Text gezeigt wird.
         /// </summary>
-        public static void ZeigeVerlaufFenster() => new VerlaufFenster(VerlaufText.ToString()).Show();
+        public static void ZeigeVerlaufFenster() => new VerlaufFenster(VerlaufText).Show();
 
         /// <summary>
         /// Setzt den Text der Aktions-Knöpfe. Nicht genutze Knöpfe werden ausgeblendet.
+        /// Setzt automatisch <see cref="AktuelleAuswahl"/> neu.
         /// <code>SetButtonsText("Links", "Rechts");</code>
         /// </summary>
         /// <param name="text"></param>
         public static void SetButtonsText(params string[] text)
         {
-            for (int i = 0; i < 3; i++)
+            SetButtonsTextOhneVerlauf(text);
+
+            AktuelleAuswahl = new Auswahl()
+            {
+                Aktionen = text,
+            };
+
+            VerlaufText.AppendBlock(AktuelleAuswahl);
+        }
+
+        /// <summary>
+        /// Genau wie <see cref="SetButtonsText(string[])"/>, der Text der Buttons wird aber nicht zum Verlauf hinzugeüft.
+        /// </summary>
+        /// <param name="text"></param>
+        public static void SetButtonsTextOhneVerlauf(params string[] text)
+        {
+            for (int i = 0; i < ButtonsAktionen.Length; i++)
             {
                 if (i < text.Length)
                 {
@@ -131,10 +150,7 @@ namespace SchuBS_Textadventure
         {
             string text = GetText(zeilen);
 
-            if (VerlaufText.Length != 0)
-                VerlaufText.AppendLine();
-
-            VerlaufText.AppendLine(text);
+            VerlaufText.AppendBlock(text);
 
             TextBoxHauptText.SetText(text);
         }
@@ -155,7 +171,7 @@ namespace SchuBS_Textadventure
         public static void AppendText(params string[] zeilen)
         {
             string text = GetText(zeilen);
-            VerlaufText.AppendLine(text);
+            VerlaufText.AppendBlock(text);
             TextBoxHauptText.AppendText(text);
         }
 
@@ -176,7 +192,7 @@ namespace SchuBS_Textadventure
         /// </summary>
         public static void EingabefeldNutzen()
         {
-            SetButtonsText("Bestätigen");
+            SetButtonsTextOhneVerlauf("Bestätigen");
             ButtonsAktionen[0].IsEnabled = false;
             TextBoxEingabe.IsEnabled = true;
             TextBoxEingabe.Focus();
@@ -219,7 +235,7 @@ namespace SchuBS_Textadventure
         /// <param name="text">Der text, der zu einem <see cref="double"/> umgewandelt werden soll.</param>
         /// <returns>Den <paramref name="text"/> als <see cref="double"/>.</returns>
         public static double TextAlsKommaZahl(string text) =>
-            double.TryParse(text.Replace('.', ',') ,out double eingabeZahl) ? eingabeZahl : double.NaN;
+            double.TryParse(text.Replace('.', ','), out double eingabeZahl) ? eingabeZahl : double.NaN;
 
         /// <summary>
         /// Gibt den Wert als <see cref="string"/>, der für das Startargument angegeben wurde.<br/>

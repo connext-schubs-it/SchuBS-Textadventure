@@ -62,6 +62,9 @@
     <Compile Include="Dialogs\VerlaufFenster.xaml.cs">
       <DependentUpon>VerlaufFenster.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Objects\Verlauf\Eingabe.cs" />
+    <Compile Include="Objects\Verlauf\Verauf.cs" />
+    <Compile Include="Objects\Verlauf\Auswahl.cs" />
     <Compile Include="TextadventureHelper.cs" />
     <Page Include="Dialogs\VerlaufFenster.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -106,5 +109,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
