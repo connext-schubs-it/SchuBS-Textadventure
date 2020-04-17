@@ -10,20 +10,20 @@ namespace SchuBS_Textadventure
         {
             SetzeHintergrundBild("berg_mit_eiswagen.png");
             WriteText("“Reichtum! Ein ##SpielerKlasse## ganz nach meinem Geschmack! Es gibt Gerüchte, dass sich auf dem Berg da drüben ein riesiger Schatz befindet, behütet von einer wilden Bestie.",
-                "Wenn ich du wäre, würde ich dem ganzen mal nachgehen. Aber wenn jemand fragt, den Tipp hast du nicht von mir. Der Weg führt durch den Steinbogen da vorne. Ich bin dann mal weg. Tschüssi!”",
-                "Thoron verschwindet im nächsten Gebüsch und wird nie wieder gesehen", "",
-                "Du gehst zielsicher durch den Steinbogen. Der erste Schritt Richtung Reichtum ist getan.",
+                "Wenn ich du wäre, würde ich dem Ganzen mal nachgehen. Aber wenn jemand fragt, den Tipp hast du nicht von mir. Der Weg führt durch den Steinbogen da vorne. Ich bin dann mal weg. Tschüssi!”",
+                "Thoron verschwindet im nächsten Gebüsch und ward nie wieder gesehen.", "",
+                "Du gehst zielsicher durch den Steinbogen. Der erste Schritt Richtung Reichtum ist getan. ",
                 "Einige Minuten später siehst du am Wegesrand einen bunten Verkaufsstand. Die exzentrische, pinkhaarige Verkäuferin preist lautstark Eis an.",
                 "“Das beste Eis in Kürbistan! Kürbiseis! Nur heute für den kleinen, kleinen Preis von einer Münze! Wenn Sie jetzt anhalten und sofort bestellen, gibt es einen Messerblock kostenlos dazu!”",
                 "Du bist die einzige Person auf der Straße und fühlst dich angesprochen.",
-                "Möchtest du ein Eis kaufen, oder ignorierst du diese süße Versuchung?");
+                "Möchtest du ein Eis kaufen oder ignorierst du diese süße Versuchung?");
             SetButtonsText("“Ich nehme ein Kürbiseis!”", "Weitergehen, Keinen Augenkontakt aufnehmen!");
             previous = Previous.EisKaufen;
         }
 
         private void EisGekauft()
         {
-            WriteText("Das Kürbiseis ist gar nicht mal so gut. Was für eine Abzocke!",
+            WriteText("Das Kürbiseis ist gar nicht mal so gut. Was für eine Abzocke! ",
                 "Aber der Messerblock könnte noch von Nutzen sein. Ist ganz schön schwer, das Ding.");
 
             AktuellerHeld.EntferneItem("Münze");
@@ -92,7 +92,7 @@ namespace SchuBS_Textadventure
             SetzeHintergrundBild("dunkler_wald.jpg");
             WriteText("Der einzige weitere Weg führt durch den dunklen Wald.",
                 "Du bist nun tief im Wald. Deine Orientierung ist im Eimer. Na toll.",
-                "Blindlings stoplerst du durch das Unterholz, aber der Wald wird immer dichter.");
+                "Blindlings stolperst du durch das Unterholz, aber der Wald wird immer dichter.");
             SetButtonsText("rechts abbiegen", "links abbiegen");
             previous = Previous.WegZurTiefseegrotte;
         }
@@ -101,7 +101,7 @@ namespace SchuBS_Textadventure
         {
             WriteText("Du entschließt dich, alle Vorsicht fallen zu lassen und läufst mit zugekniffenen Augen durch die Gegend. " +
                 "Merkwürdigerweise bleibt dein Kopf bei diesem Unterfangen heile. " +
-                "Als du wieder eine Straße unter deinen Füßen spürst, öffnest du deine Augen wieder.");
+                "Als du eine Straße unter deinen Füßen spürst, öffnest du deine Augen wieder.");
             SetButtonsText("Weiter");
             previous = Previous.ZurueckAufStraße;
         }
@@ -141,7 +141,7 @@ namespace SchuBS_Textadventure
         private void Weggabelung()
         {
             SetzeHintergrundBild("fuss_des_berges.jpg");
-            WriteText("Mit lautem scharren pellt sich wie von Geisterhand ein Torbogen aus der Wand. Du trittst hindurch.",
+            WriteText("Mit lautem Scharren pellt sich wie von Geisterhand ein Torbogen aus der Wand. Du trittst hindurch.",
                 "Du gehst weiter und lässt die Wand hinter dir. Nun bemerkst du zum ersten Mal, wie viele Tiere hier leben. Kaninchen hoppeln umher, Vögel zwitschern, Wildschweine suhlen sich im Dreck, Sumpfpichler picheln vor sich hin. Idyllisch!",
                 "Der Weg wird steiler und mühsamer, Allgäuer Latschenkiefern säumen den Wegesrand. Im Hintergrund hörst du einen Bergmann jodeln. Du hast den Fuß des Berges erreicht.",
                 "An einer Weggabelung stehen zwei Schilder.",
@@ -167,7 +167,7 @@ namespace SchuBS_Textadventure
         private void Fußweg()
         {
             WriteText("Das Schild war eine glatte Lüge! Du schleppst dich die gänzlich zuckerwattefreie Treppe hoch und bist damit etliche Stunden zugange.",
-                "Zu Beginn zählst du noch die Stufen, um hinterher mit der schieren Anzahl angeben zu können, aber bei 84.287 fallen dir die Augen zu und du fällst einige Meter zurück. Dabei vergisst du deine Zählung. So ein Mist ab auch!",
+                "Zu Beginn zählst du noch die Stufen, um hinterher mit der schieren Anzahl angeben zu können, aber bei 84.287 fallen dir die Augen zu und du fällst einige Meter zurück. Dabei vergisst du deine Zählung. So ein Mist aber auch!",
                 "Völlig abgekämpft erreichst du nach gefühlten Ewigkeiten den Gipfel. Links von dir steht ein Aufzug. Hättest du doch den anderen Weg genommen!",
                 "Aber dann bricht ein Funkeln durch die schweren Lider. Mit müden Augen erspähst du den Schatz. Eine Wunderpracht! Du träumst bereits davon, wie Dagobert Duck in Talern zu schwimmen!",
                 "Mit Freudentränen, die dein Gesicht herunterströmen, gehst du langsam auf den Goldberg zu.");
@@ -260,7 +260,7 @@ namespace SchuBS_Textadventure
                 WriteText("Du machst dich mit deinen neu erlangten Reichtümern auf den Weg nach Hause.", "",
                     "Ein Jahr später. Die Eröffnung deines eigenen Themenparks. Besonders stolz bist du auf die Achterbahn, die durch einen ausgestopften Drachen führt.",
                     "Die Bürger von Kürberlin sind in Scharen angekommen und haben dir Unmengen an Geld und Kürbissen gegeben, nur um dieses neue Highlight im Königreich zu bewundern. Davon werden sie noch ihren Kindern erzählen!",
-                    "Außerdem hast du, nach deinem Treppenmartyrium beim Drachenkampf geschworen, nie wieder auch nur eine Stufe zu erklimmen. Deine Leibwächter tragen dich im Sonnenuntergangslicht zu deiner Villa.",
+                    "Außerdem hast du, nach deinem Treppenmartyrium beim Drachenkampf, geschworen nie wieder auch nur eine Stufe zu erklimmen. Deine Leibwächter tragen dich im Sonnenuntergangslicht zu deiner Villa.",
                     "Das Leben ist schön!");
             }
             else if (AktuellerHeld.HatLevel(Previous.Aufzug))
