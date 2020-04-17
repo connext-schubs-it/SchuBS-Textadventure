@@ -1,5 +1,6 @@
 ﻿using SchuBS_Textadventure.KampfHelper;
 
+using System;
 using System.Collections.Generic;
 using System.Windows;
 
@@ -33,7 +34,7 @@ namespace SchuBS_Textadventure.Objects
         public int Lebenspunkte
         {
             get => (int)GetValue(LebenspunkteProperty);
-            set => SetValue(LebenspunkteProperty, value);
+            set => SetValue(LebenspunkteProperty, Math.Max(value, 0));
         }
 
         /// Using a DependencyProperty as the backing store for LebensPunkte.  This enables animation, styling, binding, etc...
