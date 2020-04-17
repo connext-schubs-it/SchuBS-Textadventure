@@ -57,8 +57,8 @@ namespace SchuBS_Textadventure
 
         private void TaubeTreten()
         {
-            WriteText("Die Taube fliegt wie ein Fußball durch die Luft und landet mit traurigem Gurren im Wald. Das sollte sich erstmal erledigt haben! Die Nunchakus nimmst du an dich",
-                "Die Nunchakus nimmst du an dich.");
+            WriteText("Die Taube fliegt wie ein Fußball durch die Luft und landet mit traurigem Gurren im Wald. Das sollte sich erstmal erledigt haben!",
+                      "Die Nunchakus nimmst du an dich.");
             AktuellerHeld.FuegeItemHinzu(new Item("Nunchakus", "nunchakus.png"));
             SetButtonsText("weiter");
             previous = Previous.TaubeTreten;
