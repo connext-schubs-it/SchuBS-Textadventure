@@ -112,9 +112,9 @@ namespace SchuBS_Textadventure
             AktuellerHeld.EntferneItem("Münze");
             WriteText("Du gehst munter weiter. Fast stößt du dir den Kopf, als die Straße abrupt vor einer hohen Wand endet. Links und rechts ist kein Ende der Mauer in Sicht.",
                 "Als du prüfend an die Wand klopfst, erscheint folgender Text:",
-                "“Wanderer hab Acht: Ginget Ihr in eine Hütte, derer Bewohner drei und verließen zwei Bewohner das Bauwerk, während durch die Hinterpforte fünf Menschen einträten, wie viele habt Ihr?", "",
+                "“Wanderer habt Acht: Ginget Ihr in eine Hütte, derer Bewohner drei und verließen zwei Bewohner das Bauwerk, während durch die Hinterpforte fünf Menschen einträten, wie viele habt Ihr?", "",
                 "Eins? Fünf? Vierunddreißig? Acht? Kürbis?”",
-                "(Gib deine Antwort unten ein");
+                "(Gib deine Antwort unten ein).");
             EingabefeldNutzen();
             previous = Previous.RaetselMauer;
         }
@@ -198,7 +198,7 @@ namespace SchuBS_Textadventure
         private void Tauschgeschaeft()
         {
             WriteText("Was möchtest du zum Tausch anbieten?",
-                      "(Gib deine Antwort unten ein)");
+                      "(Gib deine Antwort unten ein).");
             EingabefeldNutzen();
             previous = Previous.Tauschgeschaeft;
         }
