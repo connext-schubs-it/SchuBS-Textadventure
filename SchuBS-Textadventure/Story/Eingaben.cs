@@ -256,6 +256,7 @@ namespace SchuBS_Textadventure
                 case Previous.TiefseegrotteVorbeimogeln:
                     TiefseegrotteKonversation();
                     break;
+
                 case Previous.BrueckenZollMuenzeVorhanden:
                     WegZurTiefseegrotte();
                     break;
@@ -505,12 +506,12 @@ namespace SchuBS_Textadventure
                             break;
 
                         default:
-                     WriteText("Das ist auf jeden Fall keine Antwortmöglichkeit!"," ","Du gehst munter weiter. Fast stößt du dir den Kopf, als die Straße abrupt vor einer hohen Wand endet. Links und rechts ist kein Ende der Mauer in Sicht.",
-                              "Als du prüfend an die Wand klopfst, erscheint folgender Text:",
-                              "“Wanderer hab Acht: Ginget Ihr in eine Hütte, derer Bewohner drei und verließen zwei Bewohner das Bauwerk, während durch die Hinterpforte fünf Menschen einträten, wie viele habt Ihr?", "",
-                              "Eins? Fünf? Vierunddreißig? Acht? Kürbis?”",
-                              "(Gib deine Antwort unten ein");
-                     break;
+                            WriteText("Das ist auf jeden Fall keine Antwortmöglichkeit!", " ", "Du gehst munter weiter. Fast stößt du dir den Kopf, als die Straße abrupt vor einer hohen Wand endet. Links und rechts ist kein Ende der Mauer in Sicht.",
+                                     "Als du prüfend an die Wand klopfst, erscheint folgender Text:",
+                                     "“Wanderer hab Acht: Ginget Ihr in eine Hütte, derer Bewohner drei und verließen zwei Bewohner das Bauwerk, während durch die Hinterpforte fünf Menschen einträten, wie viele habt Ihr?", "",
+                                     "Eins? Fünf? Vierunddreißig? Acht? Kürbis?”",
+                                     "(Gib deine Antwort unten ein");
+                            break;
                     }
 
                     break;
@@ -592,7 +593,11 @@ namespace SchuBS_Textadventure
                             break;
 
                         default:
-                            WriteText("Diese Antwortmöglichkeit gibt es nicht");
+                            const string AntwortGibtEsNicht = "Diese Antwortmöglichkeit gibt es nicht.";
+                            if (!TextBoxHauptText.Text.EndsWith(AntwortGibtEsNicht))
+                            {
+                                AppendText("", AntwortGibtEsNicht);
+                            }
                             break;
                     }
                     break;

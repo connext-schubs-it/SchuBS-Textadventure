@@ -3,6 +3,7 @@ using SchuBS_Textadventure.MyControls;
 using SchuBS_Textadventure.Objects.Verlauf;
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -132,6 +133,21 @@ namespace SchuBS_Textadventure
                 ButtonsAktionen[buttonIndex].IsEnabled = !string.IsNullOrEmpty(buttonText);
             }
         }
+
+        /// <summary>
+        /// Schreibt die Zeilen in die ausgabe Textbox. Nach jeder Zeile wird ein Zeilenumbruch eingefügt.<br/>
+        /// Im Text enthaltene Variablen (mit <see cref="TextVariableDelimiter"/> umschlossen) werden durch die entsprechenden
+        /// Werte ersetzt.<br/>
+        /// Mögliche Werte sind:
+        /// <list type="bullet">
+        /// <item><description>SpielerName</description></item>
+        /// <item><description>SpielerKlasse</description></item>
+        /// <item><description>Weltname</description></item>
+        /// </list>
+        /// <code>WriteText("Hallo", "Wie gehts es dir?");</code>
+        /// </summary>
+        /// <param name="zeilen">Die Zeilen, die in die Ausgabe geschreiben werden sollen.</param>
+        public static void WriteText(IEnumerable<string> zeilen) => WriteText(zeilen.ToArray());
 
         /// <summary>
         /// Schreibt die Zeilen in die ausgabe Textbox. Nach jeder Zeile wird ein Zeilenumbruch eingefügt.<br/>

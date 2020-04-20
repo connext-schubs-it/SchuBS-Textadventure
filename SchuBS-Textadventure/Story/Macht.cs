@@ -35,8 +35,8 @@ namespace SchuBS_Textadventure
         {
             SetzeHintergrundBild("tiefseegrotte.png");
             WriteText("Du schwimmst angespannt und höchst aufmerksam durch die Tiefseegrotte. Hinter einer Ecke taucht eine Abzweigung auf.",
-                      "Der Linke Weg ist tief dunkel und du kannst nicht erkennen, wie es dort weiter gehen könnte.Aber geradeaus wird es heller.",
-                      "Dein Kopf sagt dir: Schwimm geradeaus weiter.Aber wie entscheidet dein Bauch?");
+                      "Der Linke Weg ist tief dunkel und du kannst nicht erkennen, wie es dort weiter gehen könnte. Aber geradeaus wird es heller.",
+                      "Dein Kopf sagt dir: Schwimm geradeaus weiter. Aber wie entscheidet dein Bauch?");
 
             SetButtonsText("Den linken Weg nehmen!", "Geradeaus weiterschwimmen!");
             previous = Previous.TiefseegrotteGeschwommen;
@@ -88,7 +88,7 @@ namespace SchuBS_Textadventure
         public void TiefseegrotteVorbeimogeln()
         {
             WriteText("Du versteckst dich hinter einem Felsvorsprung und imitierst das Gackern eines Huhnes.",
-                      "“Versuch locker zu bleiben”,sagst du dir immer wieder.",
+                      "“Versuch locker zu bleiben”, sagst du dir immer wieder.",
                       "Das Ungeheuer kriecht hungrig auf dich zu und hinterlässt eine Spur aus Sabber auf seinem Weg.",
                       "Du gerätst in Panik, du hast seine Größe unterschätzt. Vielleicht war das nicht die klügste Entscheidung. Aber was wirst du tun?");
 
@@ -118,23 +118,20 @@ namespace SchuBS_Textadventure
                 "Du atmest tief durch und trittst vor das Ungeheuer. Deine Knie sind weich, doch du stehst erhobenen Hauptes und fragst das Monster nach dem Grund seines Zorns.",
                 "Bittere, riesige Tränen kullern an den scharfen Fangzähnen des Ungeheuers vorbei. Es gibt unverständliche Grunzlaute von sich und versucht, dir etwas mitzuteilen.",
                 "Aber was kann das nur sein? Du beschließt, konsequent darauf zu antworten und sagst:…",
-                "(Gib die die Zahl der Antwort in das Textfeld ein. Mögliche Antworten:",
+                "(Gib die die Zahl der Antwort in das Textfeld ein).",
+                "Mögliche Antworten:",
                 "(1) Hör auf zu flennen.",
                 "(2) Mir hat auch mal jemand das Herz gebrochen.",
-                "(3) Ein paar Kilogramm weniger könntest du schon vertragen",
+                "(3) Ein paar Kilogramm weniger könntest du schon vertragen.",
                 "(4) Hör mal, ich habe wirklich keine Zeit dafür."
             };
 
             if (AktuellerHeld.Klasse.KlassenTyp == KlassenTyp.Magier)
             {
-                text.Add("(5) I SHALL PASS!)");
-            }
-            else
-            {
-                text[text.Count - 1] += ")";
+                text.Add("(5) I SHALL PASS!");
             }
 
-            WriteText(text.ToArray());
+            WriteText(text);
 
             //BEI 1 UND 3 SOLL DER SPIELER STERBEN-> TiefseegrotteFalscheAntwort
             //BEI 2,4 UND 5 SOLL DER SPIELER ITEM ,,EIER" ERHALTEN-> TiefseegrotteRichtigeAntwort
@@ -147,7 +144,7 @@ namespace SchuBS_Textadventure
             //BEI 1 UND 3 SOLL DER SPIELER STERBEN
 
             SetzeHintergrundBild("you_died_lol.png");
-            WriteText("Das Ungeheuer wird wütend und schlägt wild um sich.Du hättest seine Gefühle nicht verletzen sollen.",
+            WriteText("Das Ungeheuer wird wütend und schlägt wild um sich. Du hättest seine Gefühle nicht verletzen sollen.",
                       "So ein Mist aber auch.");
 
             SpielZuende();
@@ -256,14 +253,14 @@ namespace SchuBS_Textadventure
         public void KaffeBohnenplantageSteak()
         {
             SetzeHintergrundBild("food_truck_deathscreen.png");
-            WriteText("Außerhalb der Stadt steht ein Food-Truck Food-to-Goat. ",
+            WriteText("Außerhalb der Stadt steht ein Food-Truck \"Food-to-Goat.\"",
                 "Dein alter Kumpel Jürgen bedient dich heute. ",
-                "Er empfiehlt dir direkt ein Stück seines besten Fantasy-Ziegenfleisches, welches er für dich sofort auf den Grill schmeißt.  ",
+                "Er empfiehlt dir direkt ein Stück seines besten Fantasy-Ziegenfleisches, welches er für dich sofort auf den Grill schmeißt.",
                 "Dieses Steak ist mehr als du dir jemals erträumen konntest.",
                 "Die saftige Konsistenz, der ausfüllende Duft, der dir in die Nase steigt, die goldig braune Farbe dieses anmutigen Stückes köstlichen Fleisches.",
                 "Jürgen gefällt dein Sinn für Geschmack. Er bietet dir einen Arbeitsplatz in seinem Food-truck an, den du selbstverständlich gerne annimmst.",
-                " Mit brutzelndem Fleischduft in der Nase macht das Schulden abarbeiten viel mehr Spaß. ",
-                "Schönes Leben noch. ");
+                "Mit brutzelndem Fleischduft in der Nase macht das Schulden abarbeiten viel mehr Spaß.",
+                "Schönes Leben noch.");
             SpielZuende();
         }
         public void KaffeBohnenplantageSalzverwenden()
@@ -271,7 +268,7 @@ namespace SchuBS_Textadventure
             SetzeHintergrundBild("kaffeebohnenplantage.jpg");
             WriteText("Mmmhhhhh, das schmeckt. Gar nicht übel.",
                 "Reicht dir eine Prise Salz für den Rest deines Lebens?",
-                "Nein?!  ",
+                "Nein?!",
                 "Das muss es aber.",
                 "Schönes Leben noch.");
             SpielZuende();

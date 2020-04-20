@@ -68,13 +68,16 @@ namespace SchuBS_Textadventure.Dialogs
                             textblock.Inlines.Add(new Run(Environment.NewLine));
                     }
 
-                    Auswahl.GewaehlterAktionsIndexPropertyDescriptor.AddValueChanged(auswahl, (sender, e) =>
+                    if (auswahl.GewaehlterAktionsIndex == -1)
+                    {
+                        Auswahl.GewaehlterAktionsIndexPropertyDescriptor.AddValueChanged(auswahl, (sender, e) =>
                         {
                             if (textblock.Inlines.FirstOrDefault(inl => auswahl.Aktionen[auswahl.GewaehlterAktionsIndex] == (inl as Run)?.Text) is Inline inline)
                             {
                                 inline.Foreground = new SolidColorBrush(Colors.White);
                             }
                         });
+                    }
                     break;
 
                 default:
