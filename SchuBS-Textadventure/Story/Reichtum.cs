@@ -229,7 +229,6 @@ namespace SchuBS_Textadventure
         {
             SetzeHintergrundBild("drachenhoehle.png");
             StarteKampf(GegnerTyp.FeuerdracheSchwach);
-            SetzePersonenBild("Leer500.png");
 
             previous = Previous.FeuerdracheSchwachKaempfen;
         }
@@ -255,6 +254,7 @@ namespace SchuBS_Textadventure
         private void EndeThemenpark()
         {
             SetzeHintergrundBild("deathscreen_villa.png");
+            EntferneGegner();
             if (AktuellerHeld.HatLevel(Previous.Fußweg))
             {
                 WriteText("Du machst dich mit deinen neu erlangten Reichtümern auf den Weg nach Hause.", "",

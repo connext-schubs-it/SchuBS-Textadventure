@@ -123,6 +123,7 @@ namespace SchuBS_Textadventure
             }
             else
             {
+                SetzePersonenBild();
                 PersonStats.Visibility = Visibility.Collapsed;
             }
         }
