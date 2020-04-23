@@ -39,7 +39,7 @@ namespace SchuBS_Textadventure
 
         public static Auswahl AktuelleAuswahl { get; set; }
 
-        public static Verauf VerlaufText { get; } = new Verauf();
+        public static Verauf VerlaufText { get; private set; }
 
         private static Image ImageHintergrund;
         private static Image ImagePerson;
@@ -48,6 +48,8 @@ namespace SchuBS_Textadventure
         private static UniformGrid UniformGridButtons;
 
         private static Func<string[], string> GetText;
+
+        private static VerlaufFenster AktuellesVerlaufFenster;
 
         /// <summary>
         /// Initialisiert den Helfer.
@@ -68,19 +70,38 @@ namespace SchuBS_Textadventure
                                 UniformGrid uniformGridButtons,
                                 Func<string[], string> getText)
         {
-            ButtonsAktionen = buttonsAktionen ?? throw new ArgumentNullException(nameof(buttonsAktionen));
-            ImageHintergrund = imageHintergrund ?? throw new ArgumentNullException(nameof(imageHintergrund));
-            ImagePerson = imagePerson ?? throw new ArgumentNullException(nameof(imagePerson));
-            TextBoxHauptText = textBoxHauptText ?? throw new ArgumentNullException(nameof(textBoxHauptText));
-            TextBoxEingabe = textBoxEingabe ?? throw new ArgumentNullException(nameof(textBoxEingabe));
+            ButtonsAktionen    = buttonsAktionen    ?? throw new ArgumentNullException(nameof(buttonsAktionen));
+            ImageHintergrund   = imageHintergrund   ?? throw new ArgumentNullException(nameof(imageHintergrund));
+            ImagePerson        = imagePerson        ?? throw new ArgumentNullException(nameof(imagePerson));
+            TextBoxHauptText   = textBoxHauptText   ?? throw new ArgumentNullException(nameof(textBoxHauptText));
+            TextBoxEingabe     = textBoxEingabe     ?? throw new ArgumentNullException(nameof(textBoxEingabe));
             UniformGridButtons = uniformGridButtons ?? throw new ArgumentNullException(nameof(uniformGridButtons));
-            GetText = getText ?? throw new ArgumentNullException(nameof(getText));
+            GetText            = getText            ?? throw new ArgumentNullException(nameof(getText));
+
+            AktuelleAuswahl         = null;
+            AktuellesVerlaufFenster = null;
+            VerlaufText             = new Verauf();
         }
 
         /// <summary>
-        /// Zeigt ein Popup, in dem der ganze bisher Gezeigte Text gezeigt wird.
+        /// Zeigt ein Popup, in dem der ganze bisher gezeigte Text gezeigt wird.
         /// </summary>
-        public static void ZeigeVerlaufFenster() => new VerlaufFenster(VerlaufText).Show();
+        public static void ZeigeVerlaufFenster()
+        {
+            if (AktuellesVerlaufFenster is null)
+            {
+                AktuellesVerlaufFenster = new VerlaufFenster(VerlaufText);
+                AktuellesVerlaufFenster.Closed += delegate
+                {
+                    AktuellesVerlaufFenster = null;
+                };
+                AktuellesVerlaufFenster.Show();
+            }
+            else
+            {
+                AktuellesVerlaufFenster.Activate();
+            }
+        }
 
         /// <summary>
         /// Setzt den Text der Aktions-Knöpfe. Nicht genutze Knöpfe werden ausgeblendet.
