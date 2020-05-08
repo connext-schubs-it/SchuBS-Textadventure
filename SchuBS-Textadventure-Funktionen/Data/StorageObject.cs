@@ -19,9 +19,11 @@ namespace SchuBS_Textadventure.Data
 
         private static T Load()
         {
+            string filename = $"{typeof(T).Name}.json";
+
             try
             {
-                return JsonConvert.DeserializeObject<T>(File.ReadAllText($"{typeof(T).Name}.json"));
+                return File.Exists(filename) ? JsonConvert.DeserializeObject<T>(File.ReadAllText(filename)) : new T();
             }
             catch
             {
