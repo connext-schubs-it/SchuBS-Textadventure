@@ -105,7 +105,7 @@ namespace SchuBS_Textadventure
                     "Klicke auf „Angriff“ um den Gegner normal anzugreifen.",
                     "Klicke auf „Magie“ um deine Zauberkünste zu beweisen, wenn du denn welche beherrscht.",
                     "Wähle ein Item aus und Klicke auf „Item benutzen“ um es zu benutzen, oder Doppelklicke das Item.",
-                    "Manche Items haben einen speziellen Effekt im Kampf.Probiere es aus!"));
+                    "Manche Items haben einen speziellen Effekt im Kampf. Probiere es aus!"), "Kampf - Tutotrial");
                 Werte.Instance.HatKampfTutorialGesehen = true;
                 Werte.Save();
             }
