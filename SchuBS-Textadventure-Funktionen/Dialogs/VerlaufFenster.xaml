@@ -6,19 +6,16 @@
         xmlns:local="clr-namespace:SchuBS_Textadventure.Dialogs"
         xmlns:Verlauf="clr-namespace:SchuBS_Textadventure.Objects.Verlauf"
         mc:Ignorable="d"
-        Title="Verlauf" Height="450" Width="400"
-        Background="Black">
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        ui:WindowHelper.UseModernWindowStyle="True"
+        Title="Verlauf" Height="450" Width="400">
     <Window.Resources>
-        <Style TargetType="TextBlock" >
-            <Setter Property="Foreground" Value="White" />
-            <Setter Property="TextWrapping" Value="Wrap" />
-            <Setter Property="Margin" Value="3,0" />
-            <Setter Property="FontSize" Value="14" />
+        <Style TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlockStyle}">
         </Style>
     </Window.Resources>
 
     <ScrollViewer x:Name="ScrollViewerVerlauf" Loaded="ScrollViewer_Loaded">
-        <StackPanel x:Name="StackPanelVerlaufText" />
+        <StackPanel x:Name="StackPanelVerlaufText"
+                    Margin="3,0,20,0"/>
     </ScrollViewer>
-   
 </Window>
