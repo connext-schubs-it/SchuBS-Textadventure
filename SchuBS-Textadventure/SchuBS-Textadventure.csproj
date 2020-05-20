@@ -49,6 +49,10 @@
     <Reference Include="ModernWpf.Controls, Version=0.8.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ModernWpfUI.0.8.3\lib\net462\ModernWpf.Controls.dll</HintPath>
     </Reference>
+    <Reference Include="SchuBS-Textadventure-Funktionen, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SchuBS-Textadventure-Funktionen\SchuBS-Textadventure-Funktionen.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -237,12 +241,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\weg_wand.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SchuBS-Textadventure-Funktionen\SchuBS-Textadventure-Funktionen.csproj">
-      <Project>{71539ece-b991-486f-9a0f-aa466114152d}</Project>
-      <Name>SchuBS-Textadventure-Funktionen</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\leer500.png" />
