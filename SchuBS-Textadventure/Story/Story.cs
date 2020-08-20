@@ -21,7 +21,7 @@ namespace SchuBS_Textadventure
 
         public void Start()
         {
-            SetzeHintergrundBild("landschaft_1.jpg");
+            /*SetzeHintergrundBild("landschaft_1.jpg");
             SetzePersonenBild();
             WriteText("Seid gegrüßt, Held!",
                 "Willkommen in der Welt von ##Weltname##!",
@@ -32,7 +32,7 @@ namespace SchuBS_Textadventure
                 "Du fühlst keinen Schmerz, alles scheint wie immer. Trotzdem kannst du dich an nichts mehr erinnern…");
 
             SetButtonsText("Augen öffnen", "Augen geschlossen lassen");
-            previous = Previous.Start;
+            previous = Previous.Start;*/
         }
         #endregion
     }

@@ -107,118 +107,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\assassine.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\krieger.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\landschaft_1.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\unbekannter_wanderer.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\kaffeebohnenplantage.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\kuerberlin_mit_kuerbispalast.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\magierin.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\tiefseegrotte.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\tiefsee_ungeheuer.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\you_died_lol.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\packung_eier.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\kuerbistan.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\ei.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\waldlaeuferin.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\kuerbispalast.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\muenze.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\berg_mit_eiswagen.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\messerblock.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\taube_mit_nunchakus.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\nunchakus.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\klassenvorschau.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\feldweg_deathscreen.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\blaues_auge_deathscreen.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\kuerbisfelder_koenig_deathscreen.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\food_truck_deathscreen.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\cucurbita_icon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\bruecke_mit_zollamt.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\kobold_anfuehrer.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\dunkler_wald.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\kobold_punks_new.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\kobold_handlanger_new.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\koenig_deathscreen_new.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\fuss_des_berges.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\natur_aufzug.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\drachenhoehle.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\drachenhoehle_phase2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\deathscreen_villa.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\weg_wand.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SchuBS-Textadventure-Funktionen\SchuBS-Textadventure-Funktionen.csproj">
@@ -226,9 +118,5 @@
       <Name>SchuBS-Textadventure-Funktionen</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\leer500.png" />
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
