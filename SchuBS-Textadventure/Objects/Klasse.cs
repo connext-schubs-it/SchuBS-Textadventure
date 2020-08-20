@@ -5,11 +5,10 @@ namespace SchuBS_Textadventure.Objects
 {
     public enum KlassenTyp
     {
-        Keine = 0,
-        Krieger = 1,
-        Waldlaeufer,
-        Magier,
-        Assassine,
+        Keine,
+        Magier
+
+        // weitere Klassen
     }
 
     public class Klasse : IKlasse
@@ -17,10 +16,9 @@ namespace SchuBS_Textadventure.Objects
         private static Dictionary<KlassenTyp, string> KlassenNamen { get; } = new Dictionary<KlassenTyp, string>
         {
             { KlassenTyp.Keine,                 "wagemutiger Abenteurer" },
-            { KlassenTyp.Krieger,               "Krieger" },
-            { KlassenTyp.Waldlaeufer,           "Waldläufer" },
-            { KlassenTyp.Magier,                "Magier" },
-            { KlassenTyp.Assassine,             "Assassine" },
+            { KlassenTyp.Magier,                "Magier" }
+
+            // weitere Klassen
         };
 
         public Klasse(int staerke, int verteidigung, int geschicklichkeit, int magie, int mana, int lebenspunkte = 100)
@@ -47,21 +45,15 @@ namespace SchuBS_Textadventure.Objects
             Klasse neueKlasse;
             switch (typ)
             {
-                case KlassenTyp.Krieger:
-                    neueKlasse = new Klasse(30, 30, 8, 2, 30);
-                    break;
-                case KlassenTyp.Waldlaeufer:
-                    neueKlasse = new Klasse(10, 12, 22, 6, 50);
-                    break;
                 case KlassenTyp.Magier:
                     neueKlasse = new Klasse(3, 5, 7, 25, 60);
-                    break;
-                case KlassenTyp.Assassine:
-                    neueKlasse = new Klasse(38, 10, 25, 2, 25);
                     break;
                 case KlassenTyp.Keine:
                     neueKlasse = new Klasse(5, 5, 5, 0, 0, 30);
                     break;
+
+                // hier können weitere Klassen folgen
+
                 default:
                     throw new ArgumentException();
             }
