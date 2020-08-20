@@ -64,8 +64,6 @@
     <Compile Include="Objects\Klasse.cs" />
     <Compile Include="Previous.cs" />
     <Compile Include="Story\Eingaben.cs" />
-    <Compile Include="Story\Macht.cs" />
-    <Compile Include="Story\Reichtum.cs" />
     <Compile Include="Story\Story.cs" />
     <Compile Include="Textadventure.xaml.cs">
       <DependentUpon>Textadventure.xaml</DependentUpon>

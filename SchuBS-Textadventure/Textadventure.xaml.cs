@@ -51,7 +51,7 @@ namespace SchuBS_Textadventure
             if (GetStartArgsParameter("class") is string klassenName)
             {
                 AktuellerHeld.Name = "Held";
-                BerufErfragen();
+                //BerufErfragen();
                 TextBoxEingabe.Text = klassenName;
                 VerarbeiteTextEingabe();
             }
