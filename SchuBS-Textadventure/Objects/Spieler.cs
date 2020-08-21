@@ -5,6 +5,11 @@ namespace SchuBS_Textadventure.Objects
 {
     public class Spieler : SpielerBase
     {
+        public Spieler(Klasse defaultKlasse)
+        {
+            Klasse = defaultKlasse;
+        }
+
         public Klasse Klasse
         {
             get => (Klasse)GetValue(KlasseProperty);

@@ -5,8 +5,7 @@ namespace SchuBS_Textadventure.Objects
 {
     public enum KlassenTyp
     {
-        Keine,
-        Magier
+        Keine
 
         // weitere Klassen
     }
@@ -15,8 +14,7 @@ namespace SchuBS_Textadventure.Objects
     {
         private static Dictionary<KlassenTyp, string> KlassenNamen { get; } = new Dictionary<KlassenTyp, string>
         {
-            { KlassenTyp.Keine,                 "wagemutiger Abenteurer" },
-            { KlassenTyp.Magier,                "Magier" }
+            { KlassenTyp.Keine,                 "wagemutiger Abenteurer" }
 
             // weitere Klassen
         };
@@ -45,9 +43,6 @@ namespace SchuBS_Textadventure.Objects
             Klasse neueKlasse;
             switch (typ)
             {
-                case KlassenTyp.Magier:
-                    neueKlasse = new Klasse(3, 5, 7, 25, 60);
-                    break;
                 case KlassenTyp.Keine:
                     neueKlasse = new Klasse(5, 5, 5, 0, 0, 30);
                     break;

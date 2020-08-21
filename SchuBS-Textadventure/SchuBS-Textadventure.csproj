@@ -118,5 +118,8 @@
       <Name>SchuBS-Textadventure-Funktionen</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\kobold_handlanger_new.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -121,6 +121,9 @@
   <data name="cucurbita_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cucurbita_icon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="kobold_handlanger_new" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\kobold_handlanger_new.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="landschaft_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\landschaft_1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

@@ -24,7 +24,7 @@ namespace SchuBS_Textadventure
 
         #region Spiel Variablen
 
-        public Spieler AktuellerHeld { get; } = new Spieler();
+        public Spieler AktuellerHeld { get; } = new Spieler(Klasse.GetByKlassenTyp(KlassenTyp.Keine));
 
         #endregion
 
