@@ -19,11 +19,10 @@ namespace SchuBS_Textadventure.Objects
             }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty. This enables animation, styling, binding, etc...
         public static readonly DependencyProperty KlasseProperty =
-            DependencyProperty.Register("Klasse", typeof(Klasse), typeof(Spieler), new PropertyMetadata(Klasse.GetByKlassenTyp(KlassenTyp.Keine)));
+            DependencyProperty.Register(nameof(Klasse), typeof(Klasse), typeof(Spieler), new PropertyMetadata(Klasse.GetByKlassenTyp(KlassenTyp.Keine)));
 
-        public List<Previous> Level { get; } = new List<Previous>();
+        public List<Previous> Level { get; } = new();
 
         public void FuegeLevelHinzu(Previous previous) => Level.Add(previous);
 

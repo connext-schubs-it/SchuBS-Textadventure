@@ -1,5 +1,4 @@
-﻿using ModernWpf;
-using SchuBS_Textadventure.Objects.Verlauf;
+﻿using SchuBS_Textadventure.Objects.Verlauf;
 
 using System;
 using System.Collections.Specialized;
@@ -97,8 +96,8 @@ namespace SchuBS_Textadventure.Dialogs
                 StackPanelVerlaufText.Children.Add(new Rectangle()
                 {
                     HorizontalAlignment = HorizontalAlignment.Stretch,
-                    Stroke = ColorHelper.GetThemeForegroundBrush(),
-                    Margin = new Thickness(0, 5, 0, 5)
+                    Stroke              = ColorHelper.GetThemeForegroundBrush(),
+                    Margin              = new Thickness(0, 5, 0, 5)
                 });
             }
 

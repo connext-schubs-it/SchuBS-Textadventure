@@ -14,9 +14,9 @@ namespace SchuBS_Textadventure.Objects
         /// <summary>
         /// Eine List mit Reaktionen des Objektes.
         /// </summary>
-        public List<Reaktion> Reaktionen { get; set; } = new List<Reaktion>();
+        public List<Reaktion> Reaktionen { get; set; } = new();
 
-        private List<string> Spezial { get; set; } = new List<string>();
+        private List<string> Spezial { get; set; } = new();
 
         /// <summary>
         /// Der Name des Objektes.
@@ -41,6 +41,11 @@ namespace SchuBS_Textadventure.Objects
         public static readonly DependencyProperty LebenspunkteProperty =
             DependencyProperty.Register("Lebenspunkte", typeof(int), typeof(BaseObject), new PropertyMetadata(0));
 
+        /// <summary>
+        /// Standard-Konstruktor
+        /// </summary>
+        /// <param name="maxLebenspunkte"></param>
+        /// <param name="name"></param>
         protected BaseObject(int maxLebenspunkte, string name)
         {
             MaxLebenspunkte = Lebenspunkte = maxLebenspunkte;
@@ -49,7 +54,7 @@ namespace SchuBS_Textadventure.Objects
 
         internal Reaktion GetReaktion(int lp, int schaden)
         {
-            Reaktion currentMin = new Reaktion() { LP = int.MaxValue };
+            Reaktion currentMin = new() { LP = int.MaxValue };
 
             foreach (Reaktion reaktion in Reaktionen)
             {
@@ -66,6 +71,11 @@ namespace SchuBS_Textadventure.Objects
             return rkt;
         }
 
+        /// <summary>
+        /// ???
+        /// </summary>
+        /// <param name="specialItem"></param>
+        /// <returns></returns>
         private string GetSpecialText(string specialItem)
         {
             foreach (string line in Spezial)
@@ -85,31 +95,22 @@ namespace SchuBS_Textadventure.Objects
         public Reaktion ErhalteSchaden(int schaden)
         {
             Lebenspunkte -= schaden;
-            Reaktion reaktion;
-
-            switch (this)
+            Reaktion reaktion = this switch
             {
-                case GegnerBase _:
-                    reaktion = GetReaktion(Lebenspunkte, schaden);
-                    break;
-                case SpielerBase _:
-                    reaktion = new Reaktion()
-                    {
-                        Ziel = this,
-                        LP = Lebenspunkte,
-                        Schaden = schaden
-                    };
-                    break;
-                default:
-                    reaktion = new Reaktion()
-                    {
-                        Ziel = null,
-                        LP = Lebenspunkte,
-                        Schaden = schaden
-                    };
-                    break;
-            }
-
+                GegnerBase _ => GetReaktion(Lebenspunkte, schaden),
+                SpielerBase _ => new Reaktion()
+                {
+                    Ziel = this,
+                    LP = Lebenspunkte,
+                    Schaden = schaden
+                },
+                _ => new Reaktion()
+                {
+                    Ziel = null,
+                    LP = Lebenspunkte,
+                    Schaden = schaden
+                },
+            };
             return reaktion;
         }
     }

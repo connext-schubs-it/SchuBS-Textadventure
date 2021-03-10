@@ -25,12 +25,12 @@ namespace SchuBS_Textadventure.Objects
 
         public Klasse(int staerke, int verteidigung, int geschicklichkeit, int magie, int mana, int lebenspunkte = 100)
         {
-            Lebenspunkte = (lebenspunkte + staerke + verteidigung) / 2;
-            Staerke = staerke;
-            Verteidigung = verteidigung;
+            Lebenspunkte     = (lebenspunkte + staerke + verteidigung) / 2;
+            Staerke          = staerke;
+            Verteidigung     = verteidigung;
             Geschicklichkeit = geschicklichkeit;
-            Magie = magie;
-            Mana = mana;
+            Magie            = magie;
+            Mana             = mana;
         }
 
         public int Lebenspunkte { get; set; }
@@ -44,28 +44,15 @@ namespace SchuBS_Textadventure.Objects
 
         public static Klasse GetByKlassenTyp(KlassenTyp typ)
         {
-            Klasse neueKlasse;
-            switch (typ)
+            Klasse neueKlasse = typ switch
             {
-                case KlassenTyp.Krieger:
-                    neueKlasse = new Klasse(30, 30, 8, 2, 30);
-                    break;
-                case KlassenTyp.Waldlaeufer:
-                    neueKlasse = new Klasse(10, 12, 22, 6, 50);
-                    break;
-                case KlassenTyp.Magier:
-                    neueKlasse = new Klasse(3, 5, 7, 25, 60);
-                    break;
-                case KlassenTyp.Assassine:
-                    neueKlasse = new Klasse(38, 10, 25, 2, 25);
-                    break;
-                case KlassenTyp.Keine:
-                    neueKlasse = new Klasse(5, 5, 5, 0, 0, 30);
-                    break;
-                default:
-                    throw new ArgumentException();
-            }
-
+                KlassenTyp.Krieger     => new Klasse(30, 30, 8, 2, 30),
+                KlassenTyp.Waldlaeufer => new Klasse(10, 12, 22, 6, 50),
+                KlassenTyp.Magier      => new Klasse(3, 5, 7, 25, 60),
+                KlassenTyp.Assassine   => new Klasse(38, 10, 25, 2, 25),
+                KlassenTyp.Keine       => new Klasse(5, 5, 5, 0, 0, 30),
+                _                      => throw new ArgumentException(),
+            };
             neueKlasse.KlassenTyp = typ;
             return neueKlasse;
         }

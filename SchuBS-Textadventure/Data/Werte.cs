@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SchuBS_Textadventure.Data
+﻿namespace SchuBS_Textadventure.Data
 {
     public class Werte : StorageObject<Werte>
     {

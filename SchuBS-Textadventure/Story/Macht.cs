@@ -113,7 +113,7 @@ namespace SchuBS_Textadventure
         {
             EingabefeldNutzen();
 
-            List<string> text = new List<string>()
+            List<string> text = new()
             {
                 "Du atmest tief durch und trittst vor das Ungeheuer. Deine Knie sind weich, doch du stehst erhobenen Hauptes und fragst das Monster nach dem Grund seines Zorns.",
                 "Bittere, riesige Tränen kullern an den scharfen Fangzähnen des Ungeheuers vorbei. Es gibt unverständliche Grunzlaute von sich und versucht, dir etwas mitzuteilen.",

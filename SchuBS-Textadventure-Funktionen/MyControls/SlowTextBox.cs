@@ -11,9 +11,9 @@ namespace SchuBS_Textadventure.MyControls
     public class SlowTextBox : TextBox
     {
         private const int CharInterval = 10;
-        private readonly DispatcherTimer Timer = new DispatcherTimer();
+        private readonly DispatcherTimer Timer = new();
 
-        private IEnumerator<char> text = null;
+        private IEnumerator<char> textEnumerator = null;
         private float textSpeed = 1f;
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace SchuBS_Textadventure.MyControls
 
         /// <summary>
         /// Die geschwindigkeit, mit der die <see cref="SlowTextBox"/> schreibt.<br/>
-        /// Der standart Wert ist 1.
+        /// Der standard Wert ist 1.
         /// </summary>
         public float TextSpeed
         {
@@ -36,17 +36,17 @@ namespace SchuBS_Textadventure.MyControls
         }
 
         /// <summary>
-        /// Der Standart-Konstuktor der <see cref="SlowTextBox"/>.
+        /// Der Standard-Konstuktor der <see cref="SlowTextBox"/>.
         /// </summary>
         public SlowTextBox()
         {
-            Timer.Interval = TimeSpan.FromMilliseconds(CharInterval);
+            Timer.Interval  = TimeSpan.FromMilliseconds(CharInterval);
             Timer.IsEnabled = false;
-            Timer.Tick += (s, e) =>
+            Timer.Tick     += (s, e) =>
             {
-                if (text?.MoveNext() ?? false)
+                if (textEnumerator?.MoveNext() ?? false)
                 {
-                    base.AppendText(text.Current.ToString());
+                    base.AppendText(textEnumerator.Current.ToString());
                     ScrollToEnd();
                 }
                 else
@@ -63,8 +63,16 @@ namespace SchuBS_Textadventure.MyControls
         public void SetText(string text)
         {
             Clear();
-            this.text = null;
             AppendText(text);
+        }
+
+        /// <summary>
+        /// Zusätzlich den <see cref="textEnumerator"/> zurücksetzen.
+        /// </summary>
+        public new void Clear()
+        {
+            textEnumerator = null;
+            base.Clear();
         }
 
         /// <summary>
@@ -73,15 +81,15 @@ namespace SchuBS_Textadventure.MyControls
         /// <param name="text"></param>
         public new void AppendText(string text)
         {
-            if (this.text != null)
+            if (textEnumerator != null)
             {
                 Timer.IsEnabled = false;
-                while (this.text.MoveNext())
+                while (textEnumerator.MoveNext())
                 {
-                    base.AppendText(this.text.Current.ToString());
+                    base.AppendText(textEnumerator.Current.ToString());
                 }
             }
-            this.text = text.GetEnumerator();
+            textEnumerator = text.GetEnumerator();
             Timer.IsEnabled = true;
         }
     }

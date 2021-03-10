@@ -25,7 +25,7 @@ namespace SchuBS_Textadventure
         /// <item><description>Zwischen 5 und 10: <c>Zufallsgenerator.Next(5, 10)</c></description></item>
         /// </list>
         /// </summary>
-        public static readonly Random Zufallsgenerator = new Random();
+        public static readonly Random Zufallsgenerator = new();
 
         /// <summary>
         /// Die Aktionsknöpfe der Oberfläche.
@@ -37,8 +37,14 @@ namespace SchuBS_Textadventure
         /// </summary>
         public const string TextVariableDelimiter = "##";
 
+        /// <summary>
+        /// Speichert die aktuelle Auswahl, die der Spieler mit den <see cref="ButtonsAktionen"/> gerade treffen muss und das Ergebnis.
+        /// </summary>
         public static Auswahl AktuelleAuswahl { get; set; }
 
+        /// <summary>
+        /// Speichert den gesamten Verlauf des Textadventures
+        /// </summary>
         public static Verauf VerlaufText { get; private set; }
 
         private static Image ImageHintergrund;
@@ -127,16 +133,13 @@ namespace SchuBS_Textadventure
         /// <param name="text"></param>
         public static void SetButtonsTextOhneVerlauf(params string[] text)
         {
-            for (int i = 0; i < ButtonsAktionen.Length; i++)
+            for (int buttonIndex = 0; buttonIndex < ButtonsAktionen.Length; buttonIndex++)
             {
-                if (i < text.Length)
-                {
-                    SetButtonText(i, text[i]);
-                }
-                else
-                {
-                    SetButtonText(i, null);
-                }
+                string buttonText = buttonIndex < text.Length ? text[buttonIndex] : null;
+
+                ButtonsAktionen[buttonIndex].Content    = buttonText;
+                ButtonsAktionen[buttonIndex].Visibility = string.IsNullOrEmpty(buttonText) ? Visibility.Collapsed : Visibility.Visible;
+                ButtonsAktionen[buttonIndex].IsEnabled  = !string.IsNullOrEmpty(buttonText);
             }
 
             if (TextBoxEingabe.IsEnabled)
@@ -146,13 +149,6 @@ namespace SchuBS_Textadventure
             }
 
             UniformGridButtons.Columns = ButtonsAktionen.Count(button => button.Visibility == Visibility.Visible);
-
-            void SetButtonText(int buttonIndex, string buttonText)
-            {
-                ButtonsAktionen[buttonIndex].Content = buttonText;
-                ButtonsAktionen[buttonIndex].Visibility = string.IsNullOrEmpty(buttonText) ? Visibility.Collapsed : Visibility.Visible;
-                ButtonsAktionen[buttonIndex].IsEnabled = !string.IsNullOrEmpty(buttonText);
-            }
         }
 
         /// <summary>
@@ -259,6 +255,10 @@ namespace SchuBS_Textadventure
         /// <summary>
         /// Versucht den <paramref name="text"/> in einen <see cref="int"/> umzuwandlen und gibt diesen zurück.<br/>
         /// Ist keine Umwandlung möglich wird <c>-1</c> zurückgegeben.
+        /// <code>
+        /// int wert = TextAlsKommaZahl(eingabe);<br/>
+        /// if (wert != -1) { ... }
+        /// </code>
         /// </summary>
         /// <param name="text">Der text, der zu einem <see cref="int"/> umgewandelt werden soll.</param>
         /// <returns>Den <paramref name="text"/> als <see cref="int"/>.</returns>
@@ -268,6 +268,10 @@ namespace SchuBS_Textadventure
         /// <summary>
         /// Versucht den <paramref name="text"/> in einen <see cref="double"/> umzuwandlen und gibt diesen zurück.<br/>
         /// Ist keine Umwandlung möglich wird <see cref="double.NaN"/> zurückgegeben.
+        /// <code>
+        /// double wert = TextAlsKommaZahl(eingabe);<br/>
+        /// if (!double.IsNaN(wert)) { ... }
+        /// </code>
         /// </summary>
         /// <param name="text">Der text, der zu einem <see cref="double"/> umgewandelt werden soll.</param>
         /// <returns>Den <paramref name="text"/> als <see cref="double"/>.</returns>

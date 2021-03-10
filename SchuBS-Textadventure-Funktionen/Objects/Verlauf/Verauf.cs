@@ -7,11 +7,14 @@ namespace SchuBS_Textadventure.Objects.Verlauf
     /// </summary>
     public class Verauf
     {
-        internal ObservableCollection<object> VerlaufItems { get; } = new ObservableCollection<object>();
+        /// <summary>
+        /// Speichert die Verlaufsobjekte.
+        /// </summary>
+        internal ObservableCollection<object> VerlaufItems { get; } = new();
 
         /// <summary>
         /// Fügt einen Block zum Verlauf hinzu. <br/>
-        /// Für mögliche Typen siehe <see cref="SchuBS_Textadventure.Objects.Verlauf"/>.
+        /// Für mögliche Typen siehe <see cref="Verlauf"/>.
         /// Für alle anderen Typen wird <see cref="object.ToString"/> verwendet.
         /// </summary>
         /// <param name="zeile"></param>
