@@ -9,17 +9,6 @@
             <ResourceDictionary.MergedDictionaries>
                 <ui:ThemeResources />
                 <ui:XamlControlsResources />
-
-                <ui:ThemeResources>
-                    <ui:ThemeResources.ThemeDictionaries>
-                        <ResourceDictionary x:Key="Dark">
-                            <ResourceDictionary.MergedDictionaries>
-                                <ui:DefaultThemeResources Key="Dark" />
-                            </ResourceDictionary.MergedDictionaries>
-                        </ResourceDictionary>
-                    </ui:ThemeResources.ThemeDictionaries>
-                </ui:ThemeResources>
-
                 <!-- Other merged dictionaries here -->
             </ResourceDictionary.MergedDictionaries>
 
