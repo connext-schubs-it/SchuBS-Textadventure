@@ -24,6 +24,7 @@ namespace SchuBS_Textadventure
             WriteText("Hallo!");
             SetzeHintergrundBild("landschaft_1.jpg");
             SetButtonsText("");
+            previous = Previous.Start;
         }
         #endregion
     }

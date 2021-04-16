@@ -5,6 +5,8 @@
     /// </summary>
     public enum Previous
     {
+        Start,
+
         // Hier neue Punkte hinzufügen
 
 
