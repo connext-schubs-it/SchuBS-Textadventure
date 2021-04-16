@@ -8,13 +8,15 @@
         xmlns:MyControls="clr-namespace:SchuBS_Textadventure.MyControls;assembly=SchuBS-Textadventure-Funktionen"
         xmlns:Objects="clr-namespace:SchuBS_Textadventure.Objects"
         xmlns:Objects2="clr-namespace:SchuBS_Textadventure.Objects;assembly=SchuBS-Textadventure-Funktionen"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
         mc:Ignorable="d"
         Title="Textadventure"
         Height="450"
         Width="600"
         MinWidth="500"
         MinHeight="400"
-        Icon="Resources/cucurbita_icon.ico">
+        Icon="Resources/cucurbita_icon.ico"
+        ui:WindowHelper.UseModernWindowStyle="True">
     <Grid Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition />
@@ -53,12 +55,15 @@
                     <ContentPresenter.ContentTemplate>
                         <DataTemplate DataType="{x:Type Objects:Gegner}">
                             <Grid>
-                                <ProgressBar Height="15"
+                                <ui:ProgressBar Height="15"
                                              Maximum="{Binding MaxLebenspunkte}"
                                              Value="{Binding Lebenspunkte}"
-                                             Background="Red" />
+                                             Background="Red"
+                                             Foreground="LightGreen" />
 
-                                <TextBlock Text="{Binding Lebenspunkte}" />
+                                <TextBlock Text="{Binding Lebenspunkte}"
+                                           Margin="5,0,0,0"
+                                           Foreground="Black" />
                             </Grid>
                         </DataTemplate>
                     </ContentPresenter.ContentTemplate>
@@ -97,9 +102,10 @@
                 <WrapPanel.Resources>
                     <Style TargetType="StackPanel">
                         <Setter Property="Orientation" Value="Horizontal" />
+                        <Setter Property="Margin" Value="4,0" />
                     </Style>
-                    <Style TargetType="Label">
-                        <Setter Property="Margin" Value="0,-4" />
+                    <Style TargetType="Label" BasedOn="{StaticResource DefaultLabelStyle}">
+                        <Setter Property="Margin" Value="0,0,4,0" />
                     </Style>
                     <Style TargetType="TextBlock">
                         <Setter Property="VerticalAlignment" Value="Center" />
@@ -107,7 +113,7 @@
                 </WrapPanel.Resources>
 
                 <StackPanel>
-                    <Label >Gesundheit:</Label>
+                    <Label>Gesundheit:</Label>
                     <TextBlock Text="{Binding ElementName=ThisWindow, Path=AktuellerHeld.Lebenspunkte}" />
                 </StackPanel>
 
@@ -142,7 +148,7 @@
                          Columns="3"
                          MyControls:MarginSetter.Margin="0,5,5,0">
                 <UniformGrid.Resources>
-                    <Style TargetType="Button">
+                    <Style TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}">
                         <Setter Property="ContentTemplate">
                             <Setter.Value>
                                 <DataTemplate DataType="x:String">
@@ -151,6 +157,7 @@
                                 </DataTemplate>
                             </Setter.Value>
                         </Setter>
+                        <Setter Property="HorizontalAlignment" Value="Stretch" />
                     </Style>
                 </UniformGrid.Resources>
 
@@ -174,6 +181,7 @@
                          KeyDown="TextBoxEingabe_KeyDown"
                          TextChanged="TextBoxEingabe_TextChanged" />
                 <Button Click="ButtonVerlauf_Click"
+                        VerticalAlignment="Stretch"
                         Grid.Column="3"
                         Padding="5,0">Verlauf</Button>
             </Grid>

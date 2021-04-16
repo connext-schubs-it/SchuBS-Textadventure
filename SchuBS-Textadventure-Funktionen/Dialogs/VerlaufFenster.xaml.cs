@@ -20,11 +20,11 @@ namespace SchuBS_Textadventure.Dialogs
         public VerlaufFenster(Verauf verauf)
         {
             InitializeComponent();
+
             foreach (object item in verauf.VerlaufItems)
             {
                 AddVerlaufItem(item);
             }
-
             verauf.VerlaufItems.CollectionChanged += VerlaufItems_CollectionChanged;
         }
 
@@ -50,17 +50,18 @@ namespace SchuBS_Textadventure.Dialogs
             {
                 case Eingabe _:
                     spielerEingabe = true;
-                    goto default;
+                    textblock.Text = item.ToString();
+                    textblock.Foreground = ColorHelper.GetAccentColorBrush();
+                    break;
 
                 case Auswahl auswahl:
                     spielerEingabe = true;
                     for (int index = 0; index < auswahl.Aktionen.Length; index++)
                     {
-                        Run inline = new Run(auswahl.Aktionen[index]);
-                        if (index != auswahl.GewaehlterAktionsIndex)
+                        var inline = new Run(auswahl.Aktionen[index])
                         {
-                            inline.Foreground = new SolidColorBrush(Colors.Gray);
-                        }
+                            Foreground = index != auswahl.GewaehlterAktionsIndex ? new SolidColorBrush(Colors.Gray) : ColorHelper.GetAccentColorBrush()
+                        };
 
                         textblock.Inlines.Add(inline);
 
@@ -74,7 +75,7 @@ namespace SchuBS_Textadventure.Dialogs
                         {
                             if (textblock.Inlines.FirstOrDefault(inl => auswahl.Aktionen[auswahl.GewaehlterAktionsIndex] == (inl as Run)?.Text) is Inline inline)
                             {
-                                inline.Foreground = new SolidColorBrush(Colors.White);
+                                inline.Foreground = ColorHelper.GetAccentColorBrush();
                             }
                         });
                     }
@@ -95,8 +96,8 @@ namespace SchuBS_Textadventure.Dialogs
                 StackPanelVerlaufText.Children.Add(new Rectangle()
                 {
                     HorizontalAlignment = HorizontalAlignment.Stretch,
-                    Stroke = new SolidColorBrush(Colors.White),
-                    Margin = new Thickness(0, 5, 0, 5)
+                    Stroke              = ColorHelper.GetThemeForegroundBrush(),
+                    Margin              = new Thickness(0, 5, 0, 5)
                 });
             }
 

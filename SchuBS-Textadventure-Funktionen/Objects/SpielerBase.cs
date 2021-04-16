@@ -9,6 +9,9 @@ namespace SchuBS_Textadventure.Objects
     /// </summary>
     public abstract class SpielerBase : BaseObject
     {
+        /// <summary>
+        /// Standard-Konstruktor
+        /// </summary>
         public SpielerBase() : base(0, "") { }
 
         /// <summary>

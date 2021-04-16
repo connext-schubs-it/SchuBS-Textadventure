@@ -14,7 +14,7 @@ namespace SchuBS_Textadventure.Objects.Verlauf
         public string[] Aktionen { get; set; } = new string[0];
 
         /// <summary>
-        /// Der Index der gewählten Aktion. Standart ist <c>-1</c>.
+        /// Der Index der gewählten Aktion. Standard ist <c>-1</c>.
         /// </summary>
         public int GewaehlterAktionsIndex
         {
@@ -23,7 +23,7 @@ namespace SchuBS_Textadventure.Objects.Verlauf
         }
 
         private static readonly DependencyProperty GewaehlterAktionsIndexProperty =
-            DependencyProperty.Register("GewaehlterAktionsIndex", typeof(int), typeof(Auswahl), new PropertyMetadata(-1));
+            DependencyProperty.Register(nameof(GewaehlterAktionsIndex), typeof(int), typeof(Auswahl), new PropertyMetadata(-1));
 
         internal static readonly DependencyPropertyDescriptor GewaehlterAktionsIndexPropertyDescriptor = DependencyPropertyDescriptor.FromProperty(GewaehlterAktionsIndexProperty, typeof(Auswahl));
     }

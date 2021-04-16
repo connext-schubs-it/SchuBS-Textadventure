@@ -4,8 +4,16 @@ using System.Collections.Generic;
 
 namespace SchuBS_Textadventure.Objects
 {
+    /// <summary>
+    /// Die Basisklasse für einen Gegner.
+    /// </summary>
     public abstract class GegnerBase : BaseObject
     {
+        /// <summary>
+        /// Standard-Konstruktor
+        /// </summary>
+        /// <param name="maxLebenspunkte"></param>
+        /// <param name="name"></param>
         public GegnerBase(int maxLebenspunkte, string name) : base(maxLebenspunkte, name) { }
 
         /// <summary>

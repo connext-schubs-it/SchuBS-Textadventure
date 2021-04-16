@@ -165,20 +165,13 @@ namespace SchuBS_Textadventure.KampfHelper
 
         private int SchadenBerechnen(KampfAktionsTyp typ)
         {
-            int schaden = 10;
-            switch (typ)
+            int schaden = typ switch
             {
-                case KampfAktionsTyp.SpielerAngriff:
-                    schaden = BerechneSchadenNormal();
-                    break;
-                case KampfAktionsTyp.SpielerMagie:
-                    schaden = BerechneSchadenMagie();
-                    break;
-                case KampfAktionsTyp.GegnerAngriff:
-                    schaden = BerechneSchadenGegnerAngriff();
-                    break;
-            }
-
+                KampfAktionsTyp.SpielerAngriff => BerechneSchadenNormal(),
+                KampfAktionsTyp.SpielerMagie   => BerechneSchadenMagie(),
+                KampfAktionsTyp.GegnerAngriff  => BerechneSchadenGegnerAngriff(),
+                _                              => 10,
+            };
             return Math.Max(0, schaden);
         }
 

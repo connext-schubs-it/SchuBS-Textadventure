@@ -21,12 +21,12 @@ namespace SchuBS_Textadventure.Objects
 
         public Klasse(int staerke, int verteidigung, int geschicklichkeit, int magie, int mana, int lebenspunkte = 100)
         {
-            Lebenspunkte = (lebenspunkte + staerke + verteidigung) / 2;
-            Staerke = staerke;
-            Verteidigung = verteidigung;
+            Lebenspunkte     = (lebenspunkte + staerke + verteidigung) / 2;
+            Staerke          = staerke;
+            Verteidigung     = verteidigung;
             Geschicklichkeit = geschicklichkeit;
-            Magie = magie;
-            Mana = mana;
+            Magie            = magie;
+            Mana             = mana;
         }
 
         public int Lebenspunkte { get; set; }
@@ -40,8 +40,7 @@ namespace SchuBS_Textadventure.Objects
 
         public static Klasse GetByKlassenTyp(KlassenTyp typ)
         {
-            Klasse neueKlasse;
-            switch (typ)
+            Klasse neueKlasse = typ switch
             {
                 case KlassenTyp.Keine:
                     neueKlasse = new Klasse(5, 5, 5, 0, 0, 30);
@@ -50,10 +49,13 @@ namespace SchuBS_Textadventure.Objects
                 // hier können weitere Klassen folgen
 
                 default:
-                    throw new ArgumentException();
+                    neueKlasse = null;
+                    break;
             }
 
-            neueKlasse.KlassenTyp = typ;
+            if (neueKlasse != null)
+                neueKlasse.KlassenTyp = typ;
+
             return neueKlasse;
         }
 

@@ -12,6 +12,8 @@ namespace SchuBS_Textadventure.Data
     [JsonObject]
     public abstract class StorageObject<T> where T : class, new()
     {
+        private const string DirectoryName = "Data";
+
         /// <summary>
         /// Das Objekt, dass die Daten enthält.
         /// </summary>
@@ -19,11 +21,11 @@ namespace SchuBS_Textadventure.Data
 
         private static T Load()
         {
-            string filename = $"{typeof(T).Name}.json";
+            string path = GetFilePath();
 
             try
             {
-                return File.Exists(filename) ? JsonConvert.DeserializeObject<T>(File.ReadAllText(filename)) : new T();
+                return File.Exists(path) ? JsonConvert.DeserializeObject<T>(File.ReadAllText(path)) : new T();
             }
             catch
             {
@@ -34,6 +36,14 @@ namespace SchuBS_Textadventure.Data
         /// <summary>
         /// Speichert die Änderungen an diesem Objekt.
         /// </summary>
-        public static void Save() => File.WriteAllText($"{typeof(T).Name}.json", JsonConvert.SerializeObject(Instance));
+        public static void Save()
+        {
+            if (!Directory.Exists(DirectoryName))
+                Directory.CreateDirectory(DirectoryName);
+
+            File.WriteAllText(GetFilePath(), JsonConvert.SerializeObject(Instance));
+        }
+
+        private static string GetFilePath() => Path.Combine(DirectoryName, $"{typeof(T).Name}.json");
     }
 }

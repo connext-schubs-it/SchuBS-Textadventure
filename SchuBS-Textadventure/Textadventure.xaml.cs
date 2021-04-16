@@ -1,4 +1,6 @@
-﻿using SchuBS_Textadventure.Data;
+﻿using ModernWpf.Controls;
+
+using SchuBS_Textadventure.Data;
 using SchuBS_Textadventure.KampfHelper;
 using SchuBS_Textadventure.Objects;
 
@@ -101,11 +103,18 @@ namespace SchuBS_Textadventure
 
             if (!Werte.Instance.HatKampfTutorialGesehen)
             {
-                MessageBox.Show(string.Join("\n", "Du hast das erste Mal einen Kampf betreten.",
-                    "Klicke auf „Angriff“ um den Gegner normal anzugreifen.",
-                    "Klicke auf „Magie“ um deine Zauberkünste zu beweisen, wenn du denn welche beherrscht.",
-                    "Wähle ein Item aus und Klicke auf „Item benutzen“ um es zu benutzen, oder Doppelklicke das Item.",
-                    "Manche Items haben einen speziellen Effekt im Kampf. Probiere es aus!"), "Kampf - Tutotrial");
+                new ContentDialog()
+                {
+                    Title = "Kampf - Tutotrial",
+                    Content = string.Join("\n", "Du hast das erste Mal einen Kampf betreten.",
+                                                "Klicke auf „Angriff“ um den Gegner normal anzugreifen.",
+                                                "Klicke auf „Magie“ um deine Zauberkünste zu beweisen, wenn du denn welche beherrscht.",
+                                                "Wähle ein Item aus und klicke auf „Item benutzen“ um es zu benutzen, oder doppelklicke das Item.",
+                                                "",
+                                                "Manche Items haben einen speziellen Effekt im Kampf. Probiere es aus!"),
+                    PrimaryButtonText = "Ok"
+                }.ShowAsync();
+
                 Werte.Instance.HatKampfTutorialGesehen = true;
                 Werte.Save();
             }

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace SchuBS_Textadventure.MyControls
@@ -9,16 +10,13 @@ namespace SchuBS_Textadventure.MyControls
     /// </summary>
     public class MarginSetter
     {
-        public static Thickness GetMargin(DependencyObject obj)
-        {
-            return (Thickness)obj.GetValue(MarginProperty);
-        }
-        public static void SetMargin(DependencyObject obj, Thickness value)
-        {
-            obj.SetValue(MarginProperty, value);
-        }
+        /// Die Margin, die für alle <see cref="Panel.Children"/> gesetzt werden soll.
+        public static Thickness GetMargin(DependencyObject obj) => (Thickness)obj.GetValue(MarginProperty);
 
-        // Using a DependencyProperty as the backing store for Margin.  This enables animation, styling, binding, etc...
+        /// Setzt die Margin, die für alle <see cref="Panel.Children"/> gesetzt werden soll.
+        public static void SetMargin(DependencyObject obj, Thickness value) => obj.SetValue(MarginProperty, value);
+
+        /// <summary>Using a DependencyProperty as the backing store for Margin.  This enables animation, styling, binding, etc...</summary>
         public static readonly DependencyProperty MarginProperty =
             DependencyProperty.RegisterAttached("Margin", typeof(Thickness),
                 typeof(MarginSetter), new UIPropertyMetadata(new Thickness(),
@@ -27,7 +25,14 @@ namespace SchuBS_Textadventure.MyControls
                         // Make sure this is put on a panel
                         if (d is Panel panel)
                         {
-                            panel.Loaded += new RoutedEventHandler(Panel_Loaded);
+                            if (panel.IsLoaded)
+                            {
+                                SetMarginForChildren(panel);
+                            }
+                            else
+                            {
+                                panel.Loaded += new RoutedEventHandler(Panel_Loaded);
+                            }
                         }
                     }));
 
@@ -35,16 +40,18 @@ namespace SchuBS_Textadventure.MyControls
         {
             Panel panel = (Panel)sender;
 
-            // Go over the children and set margin for them:
-            foreach (UIElement child in panel.Children)
-            {
-                if (child is FrameworkElement fe)
-                {
-                    fe.Margin = GetMargin(panel);
-                }
-            }
+            SetMarginForChildren(panel);
 
             panel.Loaded -= Panel_Loaded;
+        }
+
+        private static void SetMarginForChildren(Panel panel)
+        {
+            Thickness margin = (Thickness)panel.GetValue(MarginProperty);
+            foreach (FrameworkElement frameworkElement in panel.Children.OfType<FrameworkElement>())
+            {
+                frameworkElement.Margin = margin;
+            }
         }
     }
 }

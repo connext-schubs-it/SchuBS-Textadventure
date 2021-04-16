@@ -63,7 +63,7 @@ namespace SchuBS_Textadventure.KampfHelper
         /// <returns></returns>
         public static List<string> GetTextFuerSprecher(string sprecher, params string[] texte)
         {
-            List<string> ausgabe = new List<string>();
+            List<string> ausgabe = new();
             if (texte.Any())
             {
                 ausgabe.Add($"{sprecher}:");
@@ -74,14 +74,13 @@ namespace SchuBS_Textadventure.KampfHelper
 
         private static List<string> AusgabeSpielerAktion(Reaktion reaktion)
         {
-            List<string> ausgabe = new List<string>();
+            List<string> ausgabe = new()
+            {
+                $"{reaktion.Ziel.Name} hat {reaktion.Schaden} Schaden erhalten."
+            };
+
             if (reaktion.Texte == null)
             {
-                ausgabe.Add($"{reaktion.Ziel.Name} hat {reaktion.Schaden} Schaden erhalten.");
-            }
-            else
-            {
-                ausgabe.Add($"{reaktion.Ziel.Name} hat {reaktion.Schaden} Schaden erhalten.");
                 ausgabe.AddRange(GetReaktionTexte(reaktion, reaktion.Ziel));
             }
 
@@ -90,7 +89,7 @@ namespace SchuBS_Textadventure.KampfHelper
 
         private static List<string> AusgabeGegnerAktion(Reaktion reaktion, GegnerBase gegner)
         {
-            List<string> ausgabe = new List<string>
+            List<string> ausgabe = new()
             {
                 $"{gegner.Name} greift dich an...",
                 $"Du hast {reaktion.Schaden} Schaden erhalten.\r\n"
