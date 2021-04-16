@@ -40,7 +40,9 @@ namespace SchuBS_Textadventure.Objects
 
         public static Klasse GetByKlassenTyp(KlassenTyp typ)
         {
-            Klasse neueKlasse = typ switch
+            Klasse neueKlasse;
+
+            switch (typ)
             {
                 case KlassenTyp.Keine:
                     neueKlasse = new Klasse(5, 5, 5, 0, 0, 30);

@@ -27,7 +27,9 @@ namespace SchuBS_Textadventure.Objects
 
         public static Gegner GetByTyp(GegnerTyp typ)
         {
-            Gegner gegner = typ switch
+            Gegner gegner;
+
+            switch (typ)
             {
                 case GegnerTyp.Kobolde:
                     gegner = new Gegner(70, "Kobolde")
