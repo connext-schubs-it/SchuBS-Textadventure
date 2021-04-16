@@ -5,6 +5,9 @@
     /// </summary>
     public enum Previous
     {
-        SpielZuende
+        // Hier neue Punkte hinzufügen
+
+
+        SpielZuende,
     }
 }

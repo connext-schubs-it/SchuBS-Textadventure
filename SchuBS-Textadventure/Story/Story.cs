@@ -21,7 +21,9 @@ namespace SchuBS_Textadventure
 
         public void Start()
         {
-           
+            WriteText("Hallo!");
+            SetzeHintergrundBild("landschaft_1.jpg");
+            SetButtonsText("");
         }
         #endregion
     }
