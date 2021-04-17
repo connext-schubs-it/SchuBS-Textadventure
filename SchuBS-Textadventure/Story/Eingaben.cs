@@ -12,332 +12,63 @@ namespace SchuBS_Textadventure
 {
     public partial class Textadventure
     {
-        private void Button1_Click(object sender, RoutedEventArgs e)
+        private Kampf Kampf { get; set; } = null;
+        private string EingabeText => TextBoxEingabe.Text;
+        private int EingabeZahl => TextAlsZahl(EingabeText);
+
+        private void ButtonEingabe(int buttonIndex)
         {
             if (AktuelleAuswahl != null)
-                AktuelleAuswahl.GewaehlterAktionsIndex = 0;
+                AktuelleAuswahl.GewaehlterAktionsIndex = buttonIndex;
 
-            switch (previous)
+            if (Actions != null)
             {
-                case Previous.Start:
-                    NameErfragen();
-                    break;
-
-                case Previous.SpielZuende:
-                    new Textadventure().Show();
-                    Close();
-                    break;
-
-                case Previous.BerufungErfragt:
-                    BerufErfragen();
-                    break;
-
-                case Previous.ZielErfragt:
-                    MachtStart();
-                    break;
-
-                case Previous.TiefseegrotteErfragt:
-                    TiefseegrotteSchwimmen();
-                    break;
-
-                case Previous.TiefseegrotteGeschwommen:
-                    TiefseegrotteLinksSchwimmen();
-                    break;
-
-                case Previous.MachtGestartet:
-                    KaffeBohnenplantage();
-                    break;
-
-                case Previous.KaffeBohnenplantage:
-                    KaffeBohnenplantageIstMachtWichtig();
-                    break;
-
-                case Previous.EisKaufen:
-                    EisGekauft();
-                    break;
-
-                case Previous.EisGekauft:
-                case Previous.EisNichtGekauft:
-                    Taube();
-                    break;
-
-                case Previous.TiefseegrotteLinksSchwimmen:
-                    KaffeBohnenplantageIstMachtWichtig();
-                    break;
-
-                case Previous.TiefseegrotteBegegnungUngeheuer:
-                    TiefseegrotteUngeheuerKaempfen();
-                    break;
-
-                case Previous.Taube:
-                    DeckungSuchen();
-                    break;
-
-                case Previous.DeckungSuchen:
-                    WegZurTiefseegrotte();
-                    break;
-
-                case Previous.TaubeTreten:
-                    BrueckenZoll();
-                    break;
-
-                case Previous.MachtWichtig:
-                    KaffeBohnenplantageGnadeFlehen();
-                    break;
-
-                case Previous.BrueckenZollMuenzeVorhanden:
-                    RaetselMauer();
-                    break;
-
-                case Previous.BrueckenZollMuenzeNichtVorhanden:
-                    WegZurTiefseegrotte();
-                    break;
-
-                // rechts
-                case Previous.WegZurTiefseegrotte:
-                    TiefseegrotteSchwimmen();
-                    break;
-
-                case Previous.Windstoß:
-                    BrueckenZoll();
-                    break;
-
-                case Previous.Weggabelung:
-                    Aufzug();
-                    break;
-
-                case Previous.TiefseegrotteRichtigeAntwort:
-                    KaffeBohnenplantageIstMachtWichtig();
-                    break;
-
-                case Previous.IstMachtWichtig:
-                    KuerberlinGnadeFlehen();
-                    break;
-
-                case Previous.KuerberlinGnadeFlehen:
-                case Previous.KuerberlinEier:
-                    KuerberlinKoboldKampf();
-                    break;
-
-                case Previous.Fußweg:
-                case Previous.Aufzug:
-                    JoshkaBegegnen();
-                    break;
-
-                case Previous.JoshkaBegegnen:
-                    KampfFeuerdracheSchwach();
-                    break;
-
-                case Previous.TauschMesserblock:
-                    EndeThemenpark();
-                    break;
-
-                case Previous.TauschNunchakus:
-                    KampfFeuerdracheStark();
-                    break;
-
-                case Previous.MitEierWerfen:
-                    KaffeBohnenplantageGeschenkeAbweisen();
-                    break;
-
-                case Previous.Geschenkeabweisen:
-                    KaffeBohnenplantageMitEiernWerfen();
-                    break;
-
-                case Previous.TiefseegrotteUngeheuerBesiegt:
-                    KueberlinAnkunft();
-                    break;
-
-                case Previous.KuerbistanGeschenkeAblehnen:
-                    KuerbistanAnkunft();
-                    break;
-
-                case Previous.KuerbistanGeschenkeAnnehmen:
-                    KuerbistanWahlkampf();
-                    break;
-
-
-                case Previous.TiefseegrotteVorbeimogeln:
-                    TiefseegrotteVorbeimogeldTod();
-                    break;
-                case Previous.GeschenkeAnnehmen:
-                    KaffeBohnenplantageWeiteSuchen();
-                    break;
-                case Previous.WeiteSuchen:
-                    KaffeBohnenmehrKuerbisse();
-                    break;
-                case Previous.KaffeBohnenplantageVerantwortungStellen:
-                    KaffeBohnenplantageSalzverwenden();
-                    break;
-
-                case Previous.KuerbistanAnkunft:
-                    KuerbistanGeschenkeAnnehmen();
-                    break;
-
-                case Previous.KuerberlinKampfGewonnen:
-                    KuerbistanAnkunft();
-                    break;
-
-
-                case Previous.FeuerdracheSchwachBesiegt:
-                    KampfFeuerdracheStark();
-                    break;
-
-                case Previous.KuerbistanWahlkampf:
-                    KuerbistanMehrKuerbis();
-                    break;
-
-                case Previous.ZurueckAufStraße:
-                    RaetselMauer();
-                    break;
-
-                case Previous.KueberlinAnkunft:
-                    KaffeBohnenplantageGnadeFlehen();
-                    break;
-
-                default:
-                    if (TextBoxEingabe.IsEnabled)
-                    {
-                        VerarbeiteTextEingabe();
-                    }
-                    else
-                    {
-                        KaempfeWennMoeglich(buttonIndex: 0);
-                    }
-
-                    break;
+                AdventureAction[] actionsBackup = Actions;
+                Actions = null;
+                if (!actionsBackup[buttonIndex].ContinueWith())
+                {
+                    // Wenn der Text im Eingabefeld falsch war, Eingabe wiederholen
+                    Actions = actionsBackup;
+                }
             }
+            else
+            {
+                if (TextBoxEingabe.IsEnabled && buttonIndex == 0)
+                {
+                    VerarbeiteTextEingabe();
+                }
+                else
+                {
+                    KaempfeWennMoeglich(buttonIndex);
+                }
+            }
+        }
+
+        private void Button1_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonEingabe(0);
+
+            // case Previous.IstMachtWichtig:
+            //    KuerberlinGnadeFlehen();
+            //    break;
         }
 
         private void Button2_Click(object sender, RoutedEventArgs e)
         {
-            AktuelleAuswahl.GewaehlterAktionsIndex = 1;
+            ButtonEingabe(1);
 
-            switch (previous)
-            {
-                case Previous.Start:
-                    EndeAugenGeschlossen();
-                    break;
-
-                case Previous.BerufungErfragt:
-                    AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Keine);
-                    ZielErfragen();
-                    break;
-
-                case Previous.ZielErfragt:
-                    EisKaufen();
-                    break;
-
-                case Previous.EisKaufen:
-                    EisNichtGekauft();
-                    break;
-
-                case Previous.Taube:
-                    TaubeTreten();
-                    break;
-
-                case Previous.MachtGestartet:
-                    TiefseegrotteFragen();
-                    break;
-
-                case Previous.TiefseegrotteGeschwommen:
-                    TiefseegrotteBegegnungUngeheuer();
-                    break;
-
-                case Previous.KaffeBohnenplantage:
-                    AktuellerHeld.EntferneItem("Münze");
-                    EisKaufen();
-                    break;
-
-                case Previous.TiefseegrotteBegegnungUngeheuer:
-                    TiefseegrotteVorbeimogeln();
-                    break;
-
-                case Previous.TiefseegrotteVorbeimogeln:
-                    TiefseegrotteKonversation();
-                    break;
-
-                case Previous.BrueckenZollMuenzeVorhanden:
-                    WegZurTiefseegrotte();
-                    break;
-
-                case Previous.KuerbistanAnkunft:
-                    KuerbistanGeschenkeAblehnen();
-                    break;
-
-                case Previous.Weggabelung:
-                    Fußweg();
-                    break;
-
-                case Previous.JoshkaBegegnen:
-                    Tauschgeschaeft();
-                    break;
-
-                case Previous.MachtWichtig:
-                    KaempfenKaffeeGegenKobolde();
-                    break;
-
-                case Previous.MitEierWerfen:
-                    KaffeBohnenplantageGeschenkeAnnehmen();
-                    break;
-
-                case Previous.WeiteSuchen:
-                    KaffeBohnenWollenEier();
-                    break;
-
-                case Previous.GeschenkeAnnehmen:
-                    KaffeBohnenplantageVerantwortungStellen();
-                    break;
-
-                case Previous.KaffeBohnenplantageVerantwortungStellen:
-                    KaffeBohnenplantageSteak();
-                    break;
-
-                case Previous.KuerbistanWahlkampf:
-                    KuerbistanEier();
-                    break;
-                case Previous.KueberlinAnkunft:
-                    KaempfenKaffeeGegenKobolde();
-                    break;
-
-                case Previous.KuerbistanGeschenkeAnnehmen:
-                    KaffeBohnenplantageVerantwortungStellen();
-                    break;
-                case Previous.TiefseegrotteErfragt:
-                    KaffeBohnenplantage();
-                    break;
-                // links
-                case Previous.WegZurTiefseegrotte:
-                    ZurueckAufStraße();
-                    break;
-
-                // case Previous.istMachtWichtig:
-                //    MitEiernWerfen();
-                //  break;
-
-                default:
-                    KaempfeWennMoeglich(buttonIndex: 1);
-                    break;
-            }
+            // case Previous.istMachtWichtig:
+            //    MitEiernWerfen();
+            //    break;
         }
 
         private void Button3_Click(object sender, RoutedEventArgs e)
         {
-            AktuelleAuswahl.GewaehlterAktionsIndex = 2;
+            ButtonEingabe(2);
 
-            switch (previous)
-            {
-                case Previous.MachtWichtig:
-                    KaffeBohnenplantageMitEiernWerfen();
-                    break;
-                //case Previous.istMachtWichtig:
-                //KuerberlinEier();
-                // break;
-
-                default:
-                    KaempfeWennMoeglich(buttonIndex: 2);
-                    break;
-            }
+            // case Previous.istMachtWichtig:
+            //     KuerberlinEier();
+            //     break;
         }
 
         private void KaempfeWennMoeglich(int buttonIndex)
@@ -346,26 +77,8 @@ namespace SchuBS_Textadventure
             {
                 if (Kampf.IstZuende)
                 {
+                    Kampf?.ContinueWin();
                     Kampf = null;
-
-                    switch (previous)
-                    {
-                        case Previous.TiefseegrotteUngeheuerKaempfen:
-                            TiefseegrotteUngeheuerBesiegt();
-                            break;
-
-                        case Previous.KaempfenKaffeeKobolde:
-                            KaempfenKoboldanfuehrer();
-                            break;
-
-                        case Previous.KaempfenKoboldanfuehrer:
-                            KuerberlinKampfGewonnen();
-                            break;
-
-                        case Previous.FeuerdracheStarkKaempfen:
-                            EndeThemenpark();
-                            break;
-                    }
                 }
                 else
                 {
@@ -387,27 +100,20 @@ namespace SchuBS_Textadventure
                     {
                         if (AktuellerHeld.Lebenspunkte <= 0)
                         {
-                            if (previous == Previous.FeuerdracheSchwachKaempfen ||
-                                previous == Previous.FeuerdracheStarkKaempfen)
+                            if (Kampf.ContinueTot != null)
                             {
-                                TodKampf();
+                                Kampf.ContinueTot();
                             }
                             else
                             {
                                 WriteText("Du bist im Kampf gestorben!");
                             }
+
                             SpielZuende();
                         }
                         else
                         {
-                            if (previous == Previous.FeuerdracheSchwachKaempfen)
-                            {
-                                KampfSchwachBeendet();
-                            }
-                            else
-                            {
-                                SetButtonsText("Kampf beenden");
-                            }
+                            SetButtonsText("Kampf beenden");
                         }
                     }
                 }
@@ -428,6 +134,7 @@ namespace SchuBS_Textadventure
             if (e.Key == Key.Enter)
             {
                 VerarbeiteTextEingabe();
+                e.Handled = true;
             }
         }
 
@@ -441,167 +148,9 @@ namespace SchuBS_Textadventure
 
         private void VerarbeiteTextEingabe()
         {
-            string eingabe = TextBoxEingabe.Text;
-            int zahl = TextAlsZahl(eingabe);
+            string eingabe = EingabeText;
 
             VerlaufText.AppendBlock(new Eingabe(eingabe));
-
-            switch (previous)
-            {
-                case Previous.NameErfragt:
-                    AktuellerHeld.Name = eingabe;
-                    BerufungErfragen();
-                    break;
-
-                case Previous.BerufErfragt:
-                    switch (eingabe.ToLower())
-                    {
-                        case "krieger":
-                            AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Krieger);
-                            ZielErfragen();
-                            break;
-                        case "kriegerin":
-                            AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Krieger);
-                            ZielErfragen();
-                            break;
-                        case "waldläuferin":
-                            AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Waldlaeufer);
-                            ZielErfragen();
-                            break;
-                        case "waldläufer":
-                            AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Waldlaeufer);
-                            ZielErfragen();
-                            break;
-                        case "magierin":
-                            AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Magier);
-                            ZielErfragen();
-                            break;
-                        case "magier":
-                            AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Magier);
-                            ZielErfragen();
-                            break;
-                        case "assassine":
-                            AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Assassine);
-                            ZielErfragen();
-                            break;
-                        default:
-                            WriteText("Diesen Beruf kenne ich nicht. Kannst du ihn nochmal wiederholen?", "");
-                            break;
-                    }
-
-                    break;
-
-                case Previous.RaetselMauer:
-                    switch (eingabe.ToLower())
-                    {
-                        case "kürbis":
-                        case "vierunddreißig":
-                        case "fünf":
-                        case "eins":
-                            Raetsel2();
-                            break;
-
-                        case "acht":
-                            Weggabelung();
-                            break;
-
-                        default:
-                            WriteText("Das ist auf jeden Fall keine Antwortmöglichkeit!", " ", "Du gehst munter weiter. Fast stößt du dir den Kopf, als die Straße abrupt vor einer hohen Wand endet. Links und rechts ist kein Ende der Mauer in Sicht.",
-                                     "Als du prüfend an die Wand klopfst, erscheint folgender Text:",
-                                     "“Wanderer hab Acht: Ginget Ihr in eine Hütte, derer Bewohner drei und verließen zwei Bewohner das Bauwerk, während durch die Hinterpforte fünf Menschen einträten, wie viele habt Ihr?", "",
-                                     "Eins? Fünf? Vierunddreißig? Acht? Kürbis?”",
-                                     "(Gib deine Antwort unten ein");
-                            break;
-                    }
-
-                    break;
-
-                case Previous.Raetsel2:
-                    switch (eingabe.ToLower())
-                    {
-                        case "thoron":
-                        case "Eierkarton":
-                        case "donald j trumpkin":
-                        case "blau":
-                            Windstoß();
-                            break;
-
-                        case "acht":
-                            Weggabelung();
-                            break;
-
-                        default:
-                            WriteText("Das ist auf jeden Fall keine Antwortmöglichkeit!", " ", "Selbstsicher sprichst du das Passwort und läufst auf die Wand zu. Klatsch! Krach! Du liegst am Boden. Als du dir den Kopf reibst, erscheint ein neuer Text auf der Wand",
-                                     "“Idiot! Normalerweise wäre es aus mit dir, aber du bist unterhaltsam. Ich gebe dir noch eine Gelegenheit.",
-                                     "Wanderer hab Acht: Ginget Ihr in eine Hütte, derer Bewohner drei und verließen zwei Bewohner das Bauwerk, während durch die Hinterpforte fünf Menschen einträten, wie viel habt Ihr?",
-                                     "Blau? Donald J Trumpkin? Eierkarton? Acht? Thoron?”",
-                                     "(Gib deine Antwort unten ein)");
-                            break;
-                    }
-
-                    break;
-
-                case Previous.Tauschgeschaeft:
-                    switch (eingabe.ToLower())
-                    {
-                        case "nunchakus":
-                            if (AktuellerHeld.HatItem("Nunchakus"))
-                            {
-                                TauschNunchakus();
-                            }
-                            else
-                            {
-                                goto default;
-                            }
-                            break;
-
-                        case "messerblock":
-                            if (AktuellerHeld.HatItem("Messerblock"))
-                            {
-                                TauschMesserblock();
-                            }
-                            else
-                            {
-                                goto default;
-                            }
-                            break;
-
-                        default:
-                            WriteText("Dieses Item befindet sich nicht in deinem Inventar.");
-                            break;
-                    }
-
-                    break;
-
-                case Previous.TiefseegrotteKonversation:
-                    if (zahl == 5 && AktuellerHeld.Klasse.KlassenTyp != KlassenTyp.Magier)
-                    {
-                        zahl = -1;
-                    }
-
-                    switch (zahl)
-                    {
-                        case 1:
-                        case 3:
-                            TiefseegrotteFalscheAntwort();
-                            break;
-
-                        case 2:
-                        case 4:
-                        case 5:
-                            TiefseegrotteRichtigeAntwort();
-                            break;
-
-                        default:
-                            const string AntwortGibtEsNicht = "Diese Antwortmöglichkeit gibt es nicht.";
-                            if (!TextBoxHauptText.Text.EndsWith(AntwortGibtEsNicht))
-                            {
-                                AppendText("", AntwortGibtEsNicht);
-                            }
-                            break;
-                    }
-                    break;
-            }
 
             TextBoxEingabe.Text = "";
         }

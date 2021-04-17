@@ -3,7 +3,8 @@
 using SchuBS_Textadventure.Data;
 using SchuBS_Textadventure.KampfHelper;
 using SchuBS_Textadventure.Objects;
-
+using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -92,14 +93,14 @@ namespace SchuBS_Textadventure
         /// Startet einen kampf gegen den <paramref name="gegnerTyp"/>.
         /// </summary>
         /// <param name="gegnerTyp">Der Gegner.</param>
-        public void StarteKampf(GegnerTyp gegnerTyp) => StarteKampf(Gegner.GetByTyp(gegnerTyp));
+        public void StarteKampf(GegnerTyp gegnerTyp, Action continueWin, Action tot = null) => StarteKampf(Gegner.GetByTyp(gegnerTyp), continueWin, tot);
 
-        public void StarteKampf(Gegner gegner)
+        public void StarteKampf(Gegner gegner, Action continueWin, Action tot = null)
         {
             TextBoxEingabe.Text = "";
 
             SetzeGegner(gegner);
-            Kampf = new Kampf(AktuellerHeld, gegner, this);
+            Kampf = new Kampf(AktuellerHeld, gegner, continueWin, tot);
 
             if (!Werte.Instance.HatKampfTutorialGesehen)
             {
@@ -143,12 +144,32 @@ namespace SchuBS_Textadventure
         public void EntferneGegner() => SetzeGegner(null);
 
         /// <summary>
+        /// Bereitet die Oberfläche so vor, dass das Eingabefeld genutzt wird.<br/>
+        /// Die Überprüfung der Eingabe findet in VerarbeiteTextEingabe (Eingaben.cs) statt.
+        /// </summary>
+        public void EingabefeldNutzen(Func<bool> verarbeiteTextEingabe)
+        {
+            Actions = new AdventureAction[]
+            {
+                ("Bestätigen", verarbeiteTextEingabe)
+            };
+            SetButtonsTextOhneVerlauf(Actions.Select(item => item.Text).ToArray());
+
+            ButtonsAktionen[0].IsEnabled = false;
+            TextBoxEingabe.IsEnabled = true;
+            TextBoxEingabe.Focus();
+        }
+
+        /// <summary>
         /// Das Spiel wird beendet und nachdem der Spieler "Neustarten" klickt startet ein neues Spiel.
         /// </summary>
         private void SpielZuende()
         {
-            previous = Previous.SpielZuende;
-            SetButtonsText("Neustarten");
+            SetActions(("Neustarten", () =>
+            {
+                new Textadventure().Show();
+                Close();
+            }));
         }
         #endregion
     }

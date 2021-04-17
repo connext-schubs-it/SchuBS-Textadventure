@@ -6,6 +6,12 @@ namespace SchuBS_Textadventure
 {
     public partial class Textadventure
     {
+        private void EisKaufenMitMuenze()
+        {
+            AktuellerHeld.EntferneItem("Münze");
+            EisKaufen();
+        }
+
         private void EisKaufen()
         {
             SetzeHintergrundBild("berg_mit_eiswagen.png");
@@ -17,8 +23,7 @@ namespace SchuBS_Textadventure
                 "“Das beste Eis in Kürbistan! Kürbiseis! Nur heute für den kleinen, kleinen Preis von einer Münze! Wenn Sie jetzt anhalten und sofort bestellen, gibt es einen Messerblock kostenlos dazu!”",
                 "Du bist die einzige Person auf der Straße und fühlst dich angesprochen.",
                 "Möchtest du ein Eis kaufen oder ignorierst du diese süße Versuchung?");
-            SetButtonsText("“Ich nehme ein Kürbiseis!”", "Weitergehen, Keinen Augenkontakt aufnehmen!");
-            previous = Previous.EisKaufen;
+            SetActions(("“Ich nehme ein Kürbiseis!”", EisGekauft), ("Weitergehen, Keinen Augenkontakt aufnehmen!", EisNichtGekauft));
         }
 
         private void EisGekauft()
@@ -28,15 +33,13 @@ namespace SchuBS_Textadventure
 
             AktuellerHeld.EntferneItem("Münze");
             AktuellerHeld.FuegeItemHinzu(new Item("Messerblock", "messerblock.png"));
-            SetButtonsText("weiter");
-            previous = Previous.EisGekauft;
+            SetActions(("weiter", Taube));
         }
 
         private void EisNichtGekauft()
         {
             WriteText("Obwohl so ein Eis echt lecker wäre...");
-            SetButtonsText("weiter");
-            previous = Previous.EisNichtGekauft;
+            SetActions(("weiter", Taube));
         }
 
         private void Taube()
@@ -44,15 +47,14 @@ namespace SchuBS_Textadventure
             SetzeHintergrundBild("taube_mit_nunchakus.png");
             WriteText("Du gehst weiter die Straße entlang.",
                 "Von weitem kannst du schon den Berg erspähen. Auf einmal springt dir eine dicke, türkise Taube in den Weg. Im Schnabel trägt sie ein paar Nunchakus, die sie drohend in deine Richtung schwenkt. Ihr tiefes Gurren geht durch Mark und Bein.");
-            SetButtonsText("Im Gebüsch Deckung suchen", "Die Taube mit einem beherzten Karatekick in die nächste Böschung befördern.");
-            previous = Previous.Taube;
+            SetActions(("Im Gebüsch Deckung suchen", DeckungSuchen),
+                ("Die Taube mit einem beherzten Karatekick in die nächste Böschung befördern.", TaubeTreten));
         }
 
         private void DeckungSuchen()
         {
             WriteText("Mit einem Hechtsprung rettest du dich ins Gebüsch und kriechst weiter. Die Taube scheint nicht hinterherzukommen.");
-            SetButtonsText("weiter");
-            previous = Previous.DeckungSuchen;
+            SetActions(("weiter", WegZurTiefseegrotte));
         }
 
         private void TaubeTreten()
@@ -60,8 +62,7 @@ namespace SchuBS_Textadventure
             WriteText("Die Taube fliegt wie ein Fußball durch die Luft und landet mit traurigem Gurren im Wald. Das sollte sich erstmal erledigt haben!",
                       "Die Nunchakus nimmst du an dich.");
             AktuellerHeld.FuegeItemHinzu(new Item("Nunchakus", "nunchakus.png"));
-            SetButtonsText("weiter");
-            previous = Previous.TaubeTreten;
+            SetActions(("weiter", BrueckenZoll));
         }
 
         private void BrueckenZoll()
@@ -77,13 +78,12 @@ namespace SchuBS_Textadventure
             bool muenze = AktuellerHeld.HatItem("Münze");
             if (muenze)
             {
-                SetButtonsText("“Klar, kein Problem.”", "“Das ist ja Wucher! Ich suche mir einen anderen Weg!”");
-                previous = Previous.BrueckenZollMuenzeVorhanden;
+                SetActions(("“Klar, kein Problem.”", RaetselMauer),
+                    ("“Das ist ja Wucher! Ich suche mir einen anderen Weg!”", WegZurTiefseegrotte));
             }
             else
             {
-                SetButtonsText("“Dann muss ich mir wohl einen anderen Weg suchen.”");
-                previous = Previous.BrueckenZollMuenzeNichtVorhanden;
+                SetActions(("“Dann muss ich mir wohl einen anderen Weg suchen.”", WegZurTiefseegrotte));
             }
         }
 
@@ -93,8 +93,7 @@ namespace SchuBS_Textadventure
             WriteText("Der einzige weitere Weg führt durch den dunklen Wald.",
                 "Du bist nun tief im Wald. Deine Orientierung ist im Eimer. Na toll.",
                 "Blindlings stolperst du durch das Unterholz, aber der Wald wird immer dichter.");
-            SetButtonsText("rechts abbiegen", "links abbiegen");
-            previous = Previous.WegZurTiefseegrotte;
+            SetActions(("rechts abbiegen", TiefseegrotteSchwimmen), ("links abbiegen", ZurueckAufStraße));
         }
 
         private void ZurueckAufStraße()
@@ -102,8 +101,7 @@ namespace SchuBS_Textadventure
             WriteText("Du entschließt dich, alle Vorsicht fallen zu lassen und läufst mit zugekniffenen Augen durch die Gegend. " +
                 "Merkwürdigerweise bleibt dein Kopf bei diesem Unterfangen heile. " +
                 "Als du eine Straße unter deinen Füßen spürst, öffnest du deine Augen wieder.");
-            SetButtonsText("Weiter");
-            previous = Previous.ZurueckAufStraße;
+            SetActions(("Weiter", RaetselMauer));
         }
 
         private void RaetselMauer()
@@ -115,8 +113,7 @@ namespace SchuBS_Textadventure
                 "“Wanderer habt Acht: Ginget Ihr in eine Hütte, derer Bewohner drei und verließen zwei Bewohner das Bauwerk, während durch die Hinterpforte fünf Menschen einträten, wie viele habt Ihr?", "",
                 "Eins? Fünf? Vierunddreißig? Acht? Kürbis?”",
                 "(Gib deine Antwort unten ein).");
-            EingabefeldNutzen();
-            previous = Previous.RaetselMauer;
+            EingabefeldNutzen(RaetselMauerEingabe);
         }
 
         private void Raetsel2()
@@ -126,16 +123,68 @@ namespace SchuBS_Textadventure
                 "Wanderer hab Acht: Ginget Ihr in eine Hütte, derer Bewohner drei und verließen zwei Bewohner das Bauwerk, während durch die Hinterpforte fünf Menschen einträten, wie viel habt Ihr?",
                 "Blau? Donald J Trumpkin? Eierkarton? Acht? Thoron?”",
                 "(Gib deine Antwort unten ein)");
-            EingabefeldNutzen();
-            previous = Previous.Raetsel2;
+            EingabefeldNutzen(Raetsel2Eingabe);
+        }
+
+        private bool Raetsel2Eingabe()
+        {
+            switch (EingabeText.ToLower())
+            {
+                case "thoron":
+                case "Eierkarton":
+                case "donald j trumpkin":
+                case "blau":
+                    Windstoß();
+                    break;
+
+                case "acht":
+                    Weggabelung();
+                    break;
+
+                default:
+                    WriteText("Das ist auf jeden Fall keine Antwortmöglichkeit!", " ", "Selbstsicher sprichst du das Passwort und läufst auf die Wand zu. Klatsch! Krach! Du liegst am Boden. Als du dir den Kopf reibst, erscheint ein neuer Text auf der Wand",
+                             "“Idiot! Normalerweise wäre es aus mit dir, aber du bist unterhaltsam. Ich gebe dir noch eine Gelegenheit.",
+                             "Wanderer hab Acht: Ginget Ihr in eine Hütte, derer Bewohner drei und verließen zwei Bewohner das Bauwerk, während durch die Hinterpforte fünf Menschen einträten, wie viel habt Ihr?",
+                             "Blau? Donald J Trumpkin? Eierkarton? Acht? Thoron?”",
+                             "(Gib deine Antwort unten ein)");
+                    return false;
+            }
+
+            return true;
+        }
+
+        private bool RaetselMauerEingabe()
+        {
+            switch (EingabeText.ToLower())
+            {
+                case "kürbis":
+                case "vierunddreißig":
+                case "fünf":
+                case "eins":
+                    Raetsel2();
+                    break;
+
+                case "acht":
+                    Weggabelung();
+                    break;
+
+                default:
+                    WriteText("Das ist auf jeden Fall keine Antwortmöglichkeit!", " ", "Du gehst munter weiter. Fast stößt du dir den Kopf, als die Straße abrupt vor einer hohen Wand endet. Links und rechts ist kein Ende der Mauer in Sicht.",
+                             "Als du prüfend an die Wand klopfst, erscheint folgender Text:",
+                             "“Wanderer hab Acht: Ginget Ihr in eine Hütte, derer Bewohner drei und verließen zwei Bewohner das Bauwerk, während durch die Hinterpforte fünf Menschen einträten, wie viele habt Ihr?", "",
+                             "Eins? Fünf? Vierunddreißig? Acht? Kürbis?”",
+                             "(Gib deine Antwort unten ein");
+                    return false;
+            }
+
+            return true;
         }
 
         private void Windstoß()
         {
             WriteText("Ein orkanartiger Windstoß erfasst dich. Du wirbelst durch die Luft und siehst schon dein ganzes Leben an deinem inneren Augen vorbeifliegen. Mit einem harten Aufprall landest du auf dem Boden.");
-            SetButtonsText("weiter");
+            SetActions(("weiter", BrueckenZoll));
             AktuellerHeld.Lebenspunkte = AktuellerHeld.Lebenspunkte - 5;
-            previous = Previous.Windstoß;
         }
 
         private void Weggabelung()
@@ -147,8 +196,7 @@ namespace SchuBS_Textadventure
                 "An einer Weggabelung stehen zwei Schilder.",
                 "Das Schild “Sicherer Tod” zeigt nach links. Das andere Schild “Zuckerwatte” zeigt nach rechts.",
                 "Welchen Weg schlägst du ein?");
-            SetButtonsText("Sicherer Tod.", "Zuckerwatte.");
-            previous = Previous.Weggabelung;
+            SetActions(("Sicherer Tod.", Aufzug), ("Zuckerwatte.", Fußweg));
         }
 
         private void Aufzug()
@@ -159,9 +207,8 @@ namespace SchuBS_Textadventure
                 "Der Aufzug setzt sich in Bewegung und im Hintergrund spielt leise “Old Town Road”. Peinliches Schweigen.",
                 "Auf der Etage “Kinderfresser” verlässt der Troll mit einem grunzenden Abschied und einem kurzen Lupfen seines Hutes den Aufzug. Du atmest durch.",
                 "Mit einem “Pling” öffnet sich die Tür auf der Etage 'Schatz' und vor dir leuchtet der größte Schatz, den man sich nur vorstellen kann. Freudig stürzt du dich auf das Gold!");
-            SetButtonsText("weiter");
-            AktuellerHeld.FuegeLevelHinzu(Previous.Aufzug);
-            previous = Previous.Aufzug;
+            SetActions(("weiter", JoshkaBegegnen));
+            AktuellerHeld.FuegeLevelHinzu(Level.Aufzug);
         }
 
         private void Fußweg()
@@ -171,10 +218,9 @@ namespace SchuBS_Textadventure
                 "Völlig abgekämpft erreichst du nach gefühlten Ewigkeiten den Gipfel. Links von dir steht ein Aufzug. Hättest du doch den anderen Weg genommen!",
                 "Aber dann bricht ein Funkeln durch die schweren Lider. Mit müden Augen erspähst du den Schatz. Eine Wunderpracht! Du träumst bereits davon, wie Dagobert Duck in Talern zu schwimmen!",
                 "Mit Freudentränen, die dein Gesicht herunterströmen, gehst du langsam auf den Goldberg zu.");
-            SetButtonsText("weiter");
+            SetActions(("weiter", JoshkaBegegnen));
             AktuellerHeld.Lebenspunkte = AktuellerHeld.Lebenspunkte - 5;
-            AktuellerHeld.FuegeLevelHinzu(Previous.Fußweg);
-            previous = Previous.Fußweg;
+            AktuellerHeld.FuegeLevelHinzu(Level.Fußweg);
         }
 
         private void JoshkaBegegnen()
@@ -186,21 +232,44 @@ namespace SchuBS_Textadventure
                 "Wirst du dich dem Monster stellen und für ein paar Goldstücke dein Leben riskieren? Oder lässt du dich auf ein Tauschgeschäft ein?");
             if (AktuellerHeld.HatItem("Messerblock") || AktuellerHeld.HatItem("Nunchakus"))
             {
-                SetButtonsText("Kämpfen!", "Tauschgeschäft");
+                SetActions(("Kämpfen!", KampfFeuerdracheSchwach), ("Tauschgeschäft", Tauschgeschaeft));
             }
             else
             {
-                SetButtonsText("Kämpfen!");
+                SetActions(("Kämpfen!", KampfFeuerdracheSchwach));
             }
-            previous = Previous.JoshkaBegegnen;
         }
 
         private void Tauschgeschaeft()
         {
             WriteText("Was möchtest du zum Tausch anbieten?",
                       "(Gib deine Antwort unten ein).");
-            EingabefeldNutzen();
-            previous = Previous.Tauschgeschaeft;
+            EingabefeldNutzen(TauschgeschaeftEingabe);
+        }
+
+        private bool TauschgeschaeftEingabe()
+        {
+            switch (EingabeText.ToLower())
+            {
+                case "nunchakus":
+                    if (AktuellerHeld.HatItem("Nunchakus"))
+                    {
+                        TauschNunchakus();
+                        return true;
+                    }
+                    break;
+
+                case "messerblock":
+                    if (AktuellerHeld.HatItem("Messerblock"))
+                    {
+                        TauschMesserblock();
+                        return true;
+                    }
+                    break;
+            }
+
+            WriteText("Dieses Item befindet sich nicht in deinem Inventar.");
+            return false;
         }
 
         private void TauschNunchakus()
@@ -209,8 +278,7 @@ namespace SchuBS_Textadventure
             WriteText("Der Drache findet deine asiatischen Kampfstöckchen ziemlich mager. Mit einem Klauenschnippen werden deine Nunchakus bis nach Kürbistan befördert. Der Drache wird noch zorniger und speit Feuer gen Himmel.",
                 "Der Himmel wird blutrot. Joshka ist gewillt, dich nun völlig zu erledigen. Er zieht alle Register und breitet seine gewaltigen Flügel aus. Der letzte Kampf beginnt...");
             AktuellerHeld.EntferneItem("Nunchakus");
-            SetButtonsText("weiter");
-            previous = Previous.TauschNunchakus;
+            SetActions(("weiter", KampfFeuerdracheStark));
         }
 
         private void TauschMesserblock()
@@ -220,17 +288,14 @@ namespace SchuBS_Textadventure
                 "Alte Erinnerungen quellen empor. Der Drache denkt zurück an seine alte Jugendliebe, das Leben auf der Farm und schwelgt abwesend vor sich hin.",
                 "Du Fuchs, du nutzt natürlich die Gelegenheit und stopfst dir die Taschen mit unzähligen Golddublonen voll. Zeit, abzuhauen.",
                 "Du kehrst dem Drachen den Rücken zu und erfüllst dir endlich deinen lang gehegten Traum. Ein Pony.");
-            SetButtonsText("weiter");
-            previous = Previous.TauschMesserblock;
+            SetActions(("weiter", EndeThemenpark));
         }
 
         #region Kampf
         private void KampfFeuerdracheSchwach()
         {
             SetzeHintergrundBild("drachenhoehle.png");
-            StarteKampf(GegnerTyp.FeuerdracheSchwach);
-
-            previous = Previous.FeuerdracheSchwachKaempfen;
+            StarteKampf(GegnerTyp.FeuerdracheSchwach, KampfSchwachBeendet, TodKampf);
         }
 
         private void KampfSchwachBeendet()
@@ -239,14 +304,12 @@ namespace SchuBS_Textadventure
             WriteText("Der Drache ist beeindruckt von deinen Ninjafähigkeiten. Noch nie hat er jemanden getroffen, der so erbittert mit ihm gekämpft hat.",
                 "Er kann jedoch nicht einknicken. Dies ist nicht sein Gold, es ist nur geliehen. Joshka ist gewillt dich nun völlig zu erledigen.",
                 "Er zieht alle Register und breitet seine gewaltigen Flügel aus. Der letzte Kampf beginnt...");
-            SetButtonsText("Zum nächsten Kampf");
-            previous = Previous.FeuerdracheSchwachBesiegt;
+            SetActions(("Zum nächsten Kampf", KampfFeuerdracheStark));
         }
 
         private void KampfFeuerdracheStark()
         {
-            StarteKampf(GegnerTyp.FeuerdracheStark);
-            previous = Previous.FeuerdracheStarkKaempfen;
+            StarteKampf(GegnerTyp.FeuerdracheStark, EndeThemenpark, TodKampf);
         }
         #endregion
 
@@ -255,7 +318,7 @@ namespace SchuBS_Textadventure
         {
             SetzeHintergrundBild("deathscreen_villa.png");
             EntferneGegner();
-            if (AktuellerHeld.HatLevel(Previous.Fußweg))
+            if (AktuellerHeld.HatLevel(Level.Fußweg))
             {
                 WriteText("Du machst dich mit deinen neu erlangten Reichtümern auf den Weg nach Hause.", "",
                     "Ein Jahr später. Die Eröffnung deines eigenen Themenparks. Besonders stolz bist du auf die Achterbahn, die durch einen ausgestopften Drachen führt.",
@@ -263,7 +326,7 @@ namespace SchuBS_Textadventure
                     "Außerdem hast du, nach deinem Treppenmartyrium beim Drachenkampf, geschworen nie wieder auch nur eine Stufe zu erklimmen. Deine Leibwächter tragen dich im Sonnenuntergangslicht zu deiner Villa.",
                     "Das Leben ist schön!");
             }
-            else if (AktuellerHeld.HatLevel(Previous.Aufzug))
+            else if (AktuellerHeld.HatLevel(Level.Aufzug))
             {
                 WriteText("Du machst dich mit deinen neu erlangten Reichtümern auf den Weg nach Hause.", "",
                     "Ein Jahr später. Die Eröffnung deines eigenen Themenparks. Besonders stolz bist du auf die Achterbahn, die durch einen ausgestopften Drachen führt.",

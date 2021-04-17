@@ -104,7 +104,8 @@
     <Compile Include="Data\Werte.cs" />
     <Compile Include="KampfHelper\Kampf.cs" />
     <Compile Include="Objects\Klasse.cs" />
-    <Compile Include="Previous.cs" />
+    <Compile Include="Objects\AdventureAction.cs" />
+    <Compile Include="Level.cs" />
     <Compile Include="Story\Eingaben.cs" />
     <Compile Include="Story\Macht.cs" />
     <Compile Include="Story\Reichtum.cs" />

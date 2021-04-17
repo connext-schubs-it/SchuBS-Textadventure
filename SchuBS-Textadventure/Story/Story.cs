@@ -1,6 +1,5 @@
-﻿using SchuBS_Textadventure.KampfHelper;
-using SchuBS_Textadventure.Objects;
-
+﻿using SchuBS_Textadventure.Objects;
+using System.Linq;
 using System.Windows;
 
 using static SchuBS_Textadventure.TextadventureHelper;
@@ -9,15 +8,13 @@ namespace SchuBS_Textadventure
 {
     public partial class Textadventure : Window
     {
-        #region Variablen
+        private AdventureAction[] Actions { get; set; } = null;
 
-        private Previous previous;
-
-        private Kampf Kampf { get; set; } = null;
-
-        #endregion
-
-        #region Inhalt
+        void SetActions(params AdventureAction[] arr)
+        {
+            Actions = arr;
+            SetButtonsText(arr.Select(item => item.Text).ToArray());
+        }
 
         public void Start()
         {
@@ -32,7 +29,7 @@ namespace SchuBS_Textadventure
                 "Du fühlst keinen Schmerz, alles scheint wie immer. Trotzdem kannst du dich an nichts mehr erinnern…");
 
             SetButtonsText("Augen öffnen", "Augen geschlossen lassen");
-            previous = Previous.Start;
+            SetActions((Text: "Augen öffnen", ContinueWith: NameErfragen), (Text: "Augen geschlossen lassen", ContinueWith: EndeAugenGeschlossen));
         }
 
         private void NameErfragen()
@@ -43,8 +40,15 @@ namespace SchuBS_Textadventure
                 "Nun steht ein fremder Mann vor dir.",
                 "“Ein Mittagsschlaf, hier in der prallen Sonne? Recht ungewöhnlich für diese Gegend. Fast schon verdächtig... ",
                 "Verrätst du mir deinen Namen?”");
-            EingabefeldNutzen();
-            previous = Previous.NameErfragt;
+            EingabefeldNutzen(NameEingabe);
+        }
+
+        private bool NameEingabe()
+        {
+            AktuellerHeld.Name = EingabeText;
+            BerufungErfragen();
+
+            return true;
         }
 
         private void EndeAugenGeschlossen()
@@ -61,8 +65,7 @@ namespace SchuBS_Textadventure
                 "“Naja, jemand mit deinem Namen kann gar nicht feindlich gesinnt sein! Freut mich dich kennenzulernen, ##SpielerName##!",
                 "Ich bin Thoron, der Wanderer, erster seines Namens, Sprenger der Ketten und Vater der Kürbisse. Aber du darfst mich ruhig Thoron nennen.",
                 "Was führt dich in unsere Lande, ##SpielerName##?”");
-            SetButtonsText("Ich bin beruflich hier.", "Pure Abenteuerlust.");
-            previous = Previous.BerufungErfragt;
+            SetActions(("Ich bin beruflich hier.", BerufErfragen), ("Pure Abenteuerlust.", ZielErfragen));
         }
 
         private void BerufErfragen()
@@ -70,8 +73,42 @@ namespace SchuBS_Textadventure
             SetzeHintergrundBild("klassenvorschau.png");
             WriteText("“Beruflich also? Was ist denn dein Beruf?”",
                 "(Mögliche Eingaben: Krieger, Waldläufer, Magier, Assassine. Entscheide weise!) ");
-            EingabefeldNutzen();
-            previous = Previous.BerufErfragt;
+            EingabefeldNutzen(BerufEingabe);
+        }
+
+        private bool BerufEingabe()
+        {
+            switch (EingabeText.ToLower())
+            {
+                case "krieger":
+                    AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Krieger);
+                    break;
+                case "kriegerin":
+                    AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Krieger);
+                    break;
+                case "waldläuferin":
+                    AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Waldlaeufer);
+                    break;
+                case "waldläufer":
+                    AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Waldlaeufer);
+                    break;
+                case "magierin":
+                    AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Magier);
+                    break;
+                case "magier":
+                    AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Magier);
+                    break;
+                case "assassine":
+                    AktuellerHeld.Klasse = Klasse.GetByKlassenTyp(KlassenTyp.Assassine);
+                    break;
+                default:
+                    WriteText("Diesen Beruf kenne ich nicht. Kannst du ihn nochmal wiederholen?", "");
+                    return false;
+            }
+
+            ZielErfragen();
+
+            return true;
         }
 
         private void ZielErfragen()
@@ -82,10 +119,7 @@ namespace SchuBS_Textadventure
                 "Hier hast du eine Münze. Gebrauche sie klug. Sie wird sich bestimmt noch als hilfreich erweisen.",
                 "Eine Frage noch, ##SpielerName##. Welches Begehren wird dich auf deinem Weg leiten?”");
             AktuellerHeld.FuegeItemHinzu(new Item("Münze", "muenze.png"));
-            SetButtonsText("Macht.", "Reichtum.");
-            previous = Previous.ZielErfragt;
+            SetActions(("Macht.", MachtStart), ("Reichtum.", EisKaufen));
         }
-
-        #endregion
     }
 }
