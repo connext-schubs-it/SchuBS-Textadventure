@@ -17,18 +17,10 @@ namespace SchuBS_Textadventure
     /// </summary>
     public partial class Textadventure : Window
     {
-        #region Globale Variablen
-
+        #region Spiel Variablen
         public const string Weltname = "Cucurbita";
 
-        public Button[] ButtonsAktionen { get; set; }
-
-        #endregion
-
-        #region Spiel Variablen
-
-        public Spieler AktuellerHeld { get; } = new Spieler();
-
+        public Spieler AktuellerHeld { get; } = new();
         #endregion
 
         #region Initialisierung

@@ -10,11 +10,15 @@ using static SchuBS_Textadventure.TextadventureHelper;
 
 namespace SchuBS_Textadventure
 {
-    public partial class Textadventure
-    {
-        private Kampf Kampf { get; set; } = null;
+   public partial class Textadventure
+   {
         private string EingabeText => TextBoxEingabe.Text;
+
         private int EingabeZahl => TextAlsZahl(EingabeText);
+
+        private Kampf Kampf { get; set; } = null;
+
+        public Button[] ButtonsAktionen { get; }
 
         private void ButtonEingabe(int buttonIndex)
         {
@@ -46,29 +50,17 @@ namespace SchuBS_Textadventure
 
         private void Button1_Click(object sender, RoutedEventArgs e)
         {
-            ButtonEingabe(0);
-
-            // case Previous.IstMachtWichtig:
-            //    KuerberlinGnadeFlehen();
-            //    break;
+            ButtonEingabe(buttonIndex: 0);
         }
 
         private void Button2_Click(object sender, RoutedEventArgs e)
         {
-            ButtonEingabe(1);
-
-            // case Previous.istMachtWichtig:
-            //    MitEiernWerfen();
-            //    break;
+            ButtonEingabe(buttonIndex: 1);
         }
 
         private void Button3_Click(object sender, RoutedEventArgs e)
         {
-            ButtonEingabe(2);
-
-            // case Previous.istMachtWichtig:
-            //     KuerberlinEier();
-            //     break;
+            ButtonEingabe(buttonIndex: 2);
         }
 
         private void KaempfeWennMoeglich(int buttonIndex)
@@ -125,7 +117,7 @@ namespace SchuBS_Textadventure
         {
             if (Kampf != null && !Kampf.IstZuende)
             {
-                KaempfeWennMoeglich(2);
+                KaempfeWennMoeglich(buttonIndex: 2);
             }
         }
 
