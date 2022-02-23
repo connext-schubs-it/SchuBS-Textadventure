@@ -1,5 +1,4 @@
 ﻿using SchuBS_Textadventure.Objects;
-using System.Linq;
 using System.Windows;
 
 using static SchuBS_Textadventure.TextadventureHelper;
@@ -8,14 +7,6 @@ namespace SchuBS_Textadventure
 {
     public partial class Textadventure : Window
     {
-        private AdventureAction[] Actions { get; set; } = null;
-
-        void SetActions(params AdventureAction[] arr)
-        {
-            Actions = arr;
-            SetButtonsText(arr.Select(item => item.Text).ToArray());
-        }
-
         public void Start()
         {
             SetzeHintergrundBild("landschaft_1.jpg");

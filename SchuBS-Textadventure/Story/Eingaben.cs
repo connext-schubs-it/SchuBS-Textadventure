@@ -1,7 +1,7 @@
 ﻿using SchuBS_Textadventure.KampfHelper;
 using SchuBS_Textadventure.Objects;
 using SchuBS_Textadventure.Objects.Verlauf;
-
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -19,6 +19,14 @@ namespace SchuBS_Textadventure
         private Kampf Kampf { get; set; } = null;
 
         public Button[] ButtonsAktionen { get; }
+
+        private AdventureAction[] Actions { get; set; } = null;
+
+        void SetActions(params AdventureAction[] arr)
+        {
+            Actions = arr;
+            SetButtonsText(arr.Select(item => item.Text).ToArray());
+        }
 
         private void ButtonEingabe(int buttonIndex)
         {
