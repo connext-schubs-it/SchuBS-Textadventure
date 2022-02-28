@@ -218,19 +218,6 @@ namespace SchuBS_Textadventure
         public static string ErsetzeVariable(string text, string textVaraible, string wert) =>
             Regex.Replace(text, TextVariableDelimiter + textVaraible + TextVariableDelimiter, wert ?? string.Empty);
 
-
-        /// <summary>
-        /// Bereitet die Oberfläche so vor, dass das Eingabefeld genutzt wird.<br/>
-        /// Die Überprüfung der Eingabe findet in VerarbeiteTextEingabe (Eingaben.cs) statt.
-        /// </summary>
-        public static void EingabefeldNutzen()
-        {
-            SetButtonsTextOhneVerlauf("Bestätigen");
-            ButtonsAktionen[0].IsEnabled = false;
-            TextBoxEingabe.IsEnabled = true;
-            TextBoxEingabe.Focus();
-        }
-
         /// <summary>
         /// Setzt das <paramref name="bildName"/> als Hintergrundbild.
         /// </summary>

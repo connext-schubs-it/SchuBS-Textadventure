@@ -18,8 +18,7 @@ namespace SchuBS_Textadventure
                 "Um zum Königreich Kürbistan zu gelangen, könntest du über die Kaffeebohnenplantage oder über die Tiefseegrotte reisen.",
                 "Wie entscheidest du dich?”");
 
-            SetButtonsText("Kaffeebohnenplantage", "Tiefseegrotte");
-            previous = Previous.MachtGestartet;
+            SetActions(("Kaffeebohnenplantage", KaffeBohnenplantage), ("Tiefseegrotte", TiefseegrotteFragen));
         }
 
         public void TiefseegrotteFragen()
@@ -27,8 +26,8 @@ namespace SchuBS_Textadventure
             SetzeHintergrundBild("landschaft_1.jpg");
             WriteText("“Bist du dir da sicher? Ich habe gehört in der Tiefseegrotte soll es seltsame Wesen geben.”");
 
-            SetButtonsText("Ich habe doch keine Angst vor seltsamen Wesen einer Tiefseegrotte! Ab zum See!", "Dann gehe ich doch lieber über die Kaffeebohnenplantage!");
-            previous = Previous.TiefseegrotteErfragt;
+            SetActions(("Ich habe doch keine Angst vor seltsamen Wesen einer Tiefseegrotte! Ab zum See!", TiefseegrotteSchwimmen),
+                ("Dann gehe ich doch lieber über die Kaffeebohnenplantage!", KaffeBohnenplantage));
         }
 
         public void TiefseegrotteSchwimmen()
@@ -38,8 +37,7 @@ namespace SchuBS_Textadventure
                       "Der Linke Weg ist tief dunkel und du kannst nicht erkennen, wie es dort weiter gehen könnte. Aber geradeaus wird es heller.",
                       "Dein Kopf sagt dir: Schwimm geradeaus weiter. Aber wie entscheidet dein Bauch?");
 
-            SetButtonsText("Den linken Weg nehmen!", "Geradeaus weiterschwimmen!");
-            previous = Previous.TiefseegrotteGeschwommen;
+            SetActions(("Den linken Weg nehmen!", TiefseegrotteLinksSchwimmen), ("Geradeaus weiterschwimmen!", TiefseegrotteBegegnungUngeheuer));
         }
 
         public void TiefseegrotteLinksSchwimmen()
@@ -52,8 +50,7 @@ namespace SchuBS_Textadventure
                       "Du entdeckst einen Weg.",
                       "Der Weg führt dich vorbei an einem Kürbisacker zu einem kleinen Dorf…");
 
-            SetButtonsText("Weiter");
-            previous = Previous.TiefseegrotteLinksSchwimmen;
+            SetActions(("Weiter", KaffeBohnenplantageIstMachtWichtig));
         }
 
         public void TiefseegrotteBegegnungUngeheuer()
@@ -65,16 +62,13 @@ namespace SchuBS_Textadventure
                       "Es sieht sehr groß und mächtig aus.",
                       "Möchtest du gegen das Ungeheuer kämpfen oder versuchen, dich an dem Ungeheuer vorbei zu mogeln?");
 
-            SetButtonsText("Kämpfen!", "Vorbeimogeln.");
-            previous = Previous.TiefseegrotteBegegnungUngeheuer;
+            SetActions(("Kämpfen!", TiefseegrotteUngeheuerKaempfen), ("Vorbeimogeln.", TiefseegrotteVorbeimogeln));
         }
 
         public void TiefseegrotteUngeheuerKaempfen()
         {
             WriteText($"Ungeheuer fordert dich zum Kampf!", "Was wirst du tun?!");
-            StarteKampf(GegnerTyp.Ungeheuer);
-
-            previous = Previous.TiefseegrotteUngeheuerKaempfen;
+            StarteKampf(GegnerTyp.Ungeheuer, TiefseegrotteUngeheuerBesiegt);
         }
 
         public void TiefseegrotteUngeheuerBesiegt()
@@ -82,7 +76,7 @@ namespace SchuBS_Textadventure
             EntferneGegner();
             WriteText("Du hast das Ungeheuer besiegt und kannst ungehindert deinen Weg fortsetzen.",
                       "Der Weg bis zur Wasseroberfläche ist tatsächlich nicht mehr weit und dir gelingt es an Land zu klettern.");
-            previous = Previous.TiefseegrotteUngeheuerBesiegt;
+            SetActions(("weiter", KueberlinAnkunft));
         }
 
         public void TiefseegrotteVorbeimogeln()
@@ -92,9 +86,8 @@ namespace SchuBS_Textadventure
                       "Das Ungeheuer kriecht hungrig auf dich zu und hinterlässt eine Spur aus Sabber auf seinem Weg.",
                       "Du gerätst in Panik, du hast seine Größe unterschätzt. Vielleicht war das nicht die klügste Entscheidung. Aber was wirst du tun?");
 
-            SetButtonsText("Panisch versuchen, um das Monster herum zu rennen!", "Versuchen, eine erwachsene Konversation zu führen");
-
-            previous = Previous.TiefseegrotteVorbeimogeln;
+            SetActions(("Panisch versuchen, um das Monster herum zu rennen!", TiefseegrotteVorbeimogeldTod),
+                ("Versuchen, eine erwachsene Konversation zu führen", TiefseegrotteKonversation));
         }
 
         public void TiefseegrotteVorbeimogeldTod()
@@ -111,7 +104,7 @@ namespace SchuBS_Textadventure
 
         public void TiefseegrotteKonversation()
         {
-            EingabefeldNutzen();
+            EingabefeldNutzen(TiefseegrotteKonversationEingabe);
 
             List<string> text = new()
             {
@@ -135,8 +128,39 @@ namespace SchuBS_Textadventure
 
             //BEI 1 UND 3 SOLL DER SPIELER STERBEN-> TiefseegrotteFalscheAntwort
             //BEI 2,4 UND 5 SOLL DER SPIELER ITEM ,,EIER" ERHALTEN-> TiefseegrotteRichtigeAntwort
+        }
 
-            previous = Previous.TiefseegrotteKonversation;
+        public bool TiefseegrotteKonversationEingabe()
+        {
+            int zahl = EingabeZahl;
+            if (zahl == 5 && AktuellerHeld.Klasse.KlassenTyp != KlassenTyp.Magier)
+            {
+                zahl = -1;
+            }
+
+            switch (zahl)
+            {
+                case 1:
+                case 3:
+                    TiefseegrotteFalscheAntwort();
+                    break;
+
+                case 2:
+                case 4:
+                case 5:
+                    TiefseegrotteRichtigeAntwort();
+                    break;
+
+                default:
+                    const string AntwortGibtEsNicht = "Diese Antwortmöglichkeit gibt es nicht.";
+                    if (!TextBoxHauptText.Text.EndsWith(AntwortGibtEsNicht))
+                    {
+                        AppendText("", AntwortGibtEsNicht);
+                    }
+                    return false;
+            }
+
+            return true;
         }
 
         public void TiefseegrotteFalscheAntwort()
@@ -159,9 +183,7 @@ namespace SchuBS_Textadventure
             WriteText("Das Ungeheuer streckt seine Zunge raus und überreicht dir eine Packung Eier.",
                       "Es tritt zur Seite und salutiert, während du stolz, aber auch ziemlich verwundert zum Ausgang der Grotte schreitest.");
 
-            SetButtonsText("Weiter");
-
-            previous = Previous.TiefseegrotteRichtigeAntwort;
+            SetActions(("Weiter", KaffeBohnenplantageIstMachtWichtig));
         }
 
         public void KaffeBohnenplantage()
@@ -172,14 +194,12 @@ namespace SchuBS_Textadventure
                 "Abenteuer sind schließlich anstrengend.",
                 "Im Halbschlaf kommst du ins Grübeln: Ist dir Macht wirklich so wichtig? ");
 
-            SetButtonsText("Ja klar. Und ich liebe Kürbisse! ", "Was will ich denn mit Macht, wenn ich auch reich sein könnte?");
-
-            previous = Previous.KaffeBohnenplantage;
+            SetActions(("Ja klar. Und ich liebe Kürbisse!", KaffeBohnenplantageIstMachtWichtig),
+                ("Was will ich denn mit Macht, wenn ich auch reich sein könnte?", EisKaufenMitMuenze));
         }
 
         public void KaffeBohnenplantageIstMachtWichtig()
         {
-
             SetzeHintergrundBild("kuerberlin_mit_kuerbispalast.png");
             SetzePersonenBild("kobold_punks_new.png");
             WriteText("Der Weg führt dich vorbei an einem Kürbisacker zu einem kleinen Dorf … ",
@@ -193,14 +213,15 @@ namespace SchuBS_Textadventure
             bool eier = AktuellerHeld.HatItem("Ei");
             if (eier)
             {
-                SetButtonsText("Um Gnade flehen ", "Kämpfen!", "Mit Eiern werfen ");
+                SetActions(("Um Gnade flehen ", KaffeBohnenplantageGnadeFlehen),
+                    ("Kämpfen!", KaempfenKaffeeGegenKobolde),
+                    ("Mit Eiern werfen ", KaffeBohnenplantageMitEiernWerfen));
             }
             else
             {
-                SetButtonsText("Um Gnade flehen ", "Kämpfen!");
+                SetActions(("Um Gnade flehen ", KaffeBohnenplantageGnadeFlehen),
+                    ("Kämpfen!", KaempfenKaffeeGegenKobolde));
             }
-
-            previous = Previous.MachtWichtig;
         }
 
         public void KaffeBohnenplantageGeschenkeAbweisen()
@@ -212,9 +233,7 @@ namespace SchuBS_Textadventure
                 "Den Bürgern gefällt deine Einstellung ganz und gar nicht. ",
                 "Sie schmeißen dich umgehend aus der Stadt und sagen dir, dass du nie wieder ihr Land betreten sollst. ",
                 "Wie gut, dass anscheinend alle hier an Amnesie leiden.");
-            SetButtonsText("Weiter");
-
-            previous = Previous.Geschenkeabweisen;
+            SetActions(("Weiter", KaffeBohnenplantageMitEiernWerfen));
         }
 
         public void KaffeBohnenplantageGeschenkeAnnehmen()
@@ -225,10 +244,10 @@ namespace SchuBS_Textadventure
                 "Wie? ",
                 "Das wusstest du nicht? ",
                 "Wie willst du dann ihr König werden?! Du beschließt....  ");
-            SetButtonsText("...das Weite zu suchen!", "...dich deiner Verantwortung zu stellen.");
-
-            previous = Previous.GeschenkeAnnehmen;
+            SetActions(("...das Weite zu suchen!", KaffeBohnenplantageWeiteSuchen),
+                ("...dich deiner Verantwortung zu stellen.", KaffeBohnenplantageVerantwortungStellen));
         }
+
         public void KaffeBohnenplantageVerantwortungStellen()
         {
             SetzeHintergrundBild("kaffeebohnenplantage.jpg");
@@ -237,19 +256,20 @@ namespace SchuBS_Textadventure
                 "Du wirst nicht reich und auch nicht mächtig, jedoch gibt es von nun an jeden Morgen Kürbisbrot.",
                 "Vielleicht gewöhnst du dich eines Tages daran.",
                 "Außer...");
-            SetButtonsText("...das Weite zu suchen!", "...dich deiner Verantwortung zu stellen.");
+
             bool muenze = AktuellerHeld.HatItem("Münze");
             if (muenze)
             {
-                SetButtonsText("...du verwendest mehr Salz", "...du gönnst dir mal ein richtiges Steak.  ");
+                SetActions(("...du verwendest mehr Salz", KaffeBohnenplantageSalzverwenden),
+                    ("...du gönnst dir mal ein richtiges Steak.  ", KaffeBohnenplantageSteak));
                 AktuellerHeld.EntferneItem("Münze");
             }
             else
             {
-                SetButtonsText("...du verwendest mehr Salz ");
+                SetActions(("...du verwendest mehr Salz", KaffeBohnenplantageSalzverwenden));
             }
-            previous = Previous.KaffeBohnenplantageVerantwortungStellen;
         }
+
         public void KaffeBohnenplantageSteak()
         {
             SetzeHintergrundBild("food_truck_deathscreen.png");
@@ -263,6 +283,7 @@ namespace SchuBS_Textadventure
                 "Schönes Leben noch.");
             SpielZuende();
         }
+
         public void KaffeBohnenplantageSalzverwenden()
         {
             SetzeHintergrundBild("kaffeebohnenplantage.jpg");
@@ -289,17 +310,15 @@ namespace SchuBS_Textadventure
             bool eier = AktuellerHeld.HatItem("Ei");
             if (eier)
             {
-                SetButtonsText("...mehr Kürbisse ", "...Eier");
+                SetActions(("...mehr Kürbisse ", KaffeBohnenmehrKuerbisse), ("...Eier", KaffeBohnenWollenEier));
             }
             else
             {
-                SetButtonsText("...mehr Kürbisse ");
+                SetActions(("...mehr Kürbisse ", KaffeBohnenmehrKuerbisse));
             }
-
-            previous = Previous.WeiteSuchen;
         }
-        //----------------------------------------------------------------Kuerberlin
 
+        //----------------------------------------------------------------Kuerberlin
         public void KueberlinAnkunft()
         {
             SetzeHintergrundBild("kuerberlin_mit_kuerbispalast.png");
@@ -314,13 +333,15 @@ namespace SchuBS_Textadventure
             bool eier = AktuellerHeld.HatItem("Ei");
             if (eier)
             {
-                SetButtonsText("Um Gnade flehen ", "Kämpfen!", "Mit Eiern werfen ");
+                SetActions(("Um Gnade flehen ", KaffeBohnenplantageGnadeFlehen),
+                    ("Kämpfen!", KaempfenKaffeeGegenKobolde),
+                    ("Mit Eiern werfen ", () => { }));
             }
             else
             {
-                SetButtonsText("Um Gnade flehen ", "Kämpfen!");
+                SetActions(("Um Gnade flehen ", KaffeBohnenplantageGnadeFlehen),
+                    ("Kämpfen!", KaempfenKaffeeGegenKobolde));
             }
-            previous = Previous.KueberlinAnkunft;
         }
 
         public void KuerberlinGnadeFlehen()
@@ -330,9 +351,7 @@ namespace SchuBS_Textadventure
             WriteText("Du bittest um Verzeihung und versuchst, die finsteren Gestalten durch Selbstmitleid von ihren Machenschaften abzubringen.",
                       "“Kannste knicken”, schnauft der Anführer der Kobold-Punks. Der Kampf beginnt.");
 
-            SetButtonsText("Weiter");
-
-            previous = Previous.KuerberlinGnadeFlehen;
+            SetActions(("Weiter", KuerberlinKoboldKampf));
         }
 
         public void KaffeBohnenmehrKuerbisse()
@@ -345,8 +364,7 @@ namespace SchuBS_Textadventure
                 "Das ist nicht weiter schlimm. ",
                 "Dann regierst du einfach von den Kürbisfeldern weiter, auf denen du deine Schulden abarbeitest.",
                 " Kein König war seinem Volk je so nahe. ");
-            SetButtonsText();
-            previous = Previous.KaffeBohnenPlantagemehrKuerbisse;
+            SetActions();
         }
         public void KaffeBohnenWollenEier()
         {
@@ -358,8 +376,7 @@ namespace SchuBS_Textadventure
                 "Nie hätten sie es für möglich gehalten so etwas wunderschönes jemals zu Gesicht zu bekommen. ",
                 "Dem sekundenlangen Schweigen folgt ein Jubeln der Masse.",
                 "Die Stimmen sind eindeutig, du bist ihr neuer König. ");
-            SetButtonsText();
-            previous = Previous.KaffeBohnenPlantageWollenEier;
+            SetActions();
         }
 
 
@@ -370,11 +387,9 @@ namespace SchuBS_Textadventure
             WriteText("Du zückst die Packung Eier und wirfst drauf los. Noch bevor die Kobold-Punks reagieren können, fliegen ihnen auch schon Eier um die übergroßen Ohren.",
                       "Eier sind ihre größte Schwachstelle. Niemand wusste das, du aber schon. Gut gemacht.");
 
-            SetButtonsText("Weiter");
+            SetActions(("Weiter", KuerberlinKoboldKampf));
 
             AktuellerHeld.EntferneItem("Ei");
-
-            previous = Previous.KuerberlinEier;
         }
 
         public void KuerberlinKoboldKampf()
@@ -391,9 +406,7 @@ namespace SchuBS_Textadventure
             WriteText("Du bist der Sieger, ein Gewinner. Die Kobold-Punks ziehen mit geknickten Mienen von dannen.",
                       "Sie konnten dir nichts entgegensetzen und denken nun über eine Umschulung nach.");
 
-            SetButtonsText("Weiter");
-
-            previous = Previous.KuerberlinKampfGewonnen;
+            SetActions(("Weiter", KuerbistanAnkunft));
         }
 
         public void KuerberlinKampfVerloren()
@@ -401,8 +414,6 @@ namespace SchuBS_Textadventure
             SetzeHintergrundBild("blaues_auge_deathscreen.png");
 
             WriteText("Du wurdest aufgemischt. Lass den Kopf nicht hängen. Selbstverständlich kannst du es nochmal versuchen. Am Anfang des Spiels.");
-
-            SetButtonsText("Weiter");
 
             SpielZuende();
         }
@@ -417,9 +428,7 @@ namespace SchuBS_Textadventure
                       "Die Menschen strecken dir mehr Kürbisse entgegen als du jemals tragen könntest. Weiß ja schließlich niemand, dass du im Grunde gar keine Kürbisse magst.",
                       "Aber du nimmst die gütigen Geschenke entgegen. Oder etwa nicht?");
 
-            SetButtonsText("Geschenke annehmen", "Geschenke abweisen");
-
-            previous = Previous.KuerbistanAnkunft;
+            SetActions(("Geschenke annehmen", KuerbistanGeschenkeAnnehmen), ("Geschenke abweisen", KuerbistanGeschenkeAblehnen));
         }
 
         public void KuerbistanGeschenkeAnnehmen()
@@ -430,9 +439,8 @@ namespace SchuBS_Textadventure
                       "Das sind schließlich Händler, die vom Kürbishandel leben.",
                       "Wie? Das wusstest du nicht? Wie willst du dann ihr König werden?! Du beschließt.... ");
 
-            SetButtonsText("...das Weite zu suchen!", "… dich deiner Verantwortung zu stellen.");
-
-            previous = Previous.KuerbistanGeschenkeAnnehmen;
+            SetActions(("...das Weite zu suchen!", KuerbistanWahlkampf),
+                ("...dich deiner Verantwortung zu stellen.", KaffeBohnenplantageVerantwortungStellen));
         }
 
         public void KuerbistanWahlkampf()
@@ -452,14 +460,12 @@ namespace SchuBS_Textadventure
             bool eier = AktuellerHeld.HatItem("Ei");
             if (eier)
             {
-                SetButtonsText("...mehr Kürbisse", "...Eier");
+                SetActions(("...mehr Kürbisse", KuerbistanMehrKuerbis), ("...Eier", KuerbistanEier));
             }
             else
             {
-                SetButtonsText("...mehr Kürbisse");
+                SetActions(("...mehr Kürbisse", KuerbistanMehrKuerbis));
             }
-
-            previous = Previous.KuerbistanWahlkampf;
         }
 
         public void KuerbistanMehrKuerbis()
@@ -503,9 +509,7 @@ namespace SchuBS_Textadventure
                       "Den Bürgern gefällt deine Einstellung ganz und gar nicht. Sie schmeißen dich umgehend aus der Stadt und sagen dir, dass du nie wieder ihr Land betreten sollst.",
                       "Wie gut, dass anscheinend alle hier an Amnesie leiden.");
 
-            SetButtonsText("Weiter");
-
-            previous = Previous.KuerbistanGeschenkeAblehnen;
+            SetActions(("Weiter", KuerbistanAnkunft));
         }
 
         public void KaffeBohnenplantageMitEiernWerfen()
@@ -524,9 +528,8 @@ namespace SchuBS_Textadventure
                    "Weiß ja schließlich niemand, dass du im Grunde gar keine Kürbisse magst.",
                    "Aber du nimmst die gütigen Geschenke entgegen.",
                    "Oder etwa nicht?");
-            SetButtonsText("Geschenke abweisen.", "Geschenke annehmen.");
-
-            previous = Previous.MitEierWerfen;
+            SetActions(("Geschenke abweisen.", KaffeBohnenplantageGeschenkeAbweisen),
+                ("Geschenke annehmen.", KaffeBohnenplantageGeschenkeAnnehmen));
         }
 
         public void KaffeBohnenplantageGnadeFlehen()
@@ -540,14 +543,12 @@ namespace SchuBS_Textadventure
 
         public void KaempfenKaffeeGegenKobolde()
         {
-            StarteKampf(GegnerTyp.Kobolde);
-            previous = Previous.KaempfenKaffeeKobolde;
+            StarteKampf(GegnerTyp.Kobolde, KaempfenKoboldanfuehrer);
         }
 
         public void KaempfenKoboldanfuehrer()
         {
-            StarteKampf(GegnerTyp.KoboldAnfuehrer);
-            previous = Previous.KaempfenKoboldanfuehrer;
+            StarteKampf(GegnerTyp.KoboldAnfuehrer, KuerberlinKampfGewonnen);
         }
     }
 }

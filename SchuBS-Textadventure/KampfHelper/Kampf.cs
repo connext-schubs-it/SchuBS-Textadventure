@@ -6,17 +6,22 @@ namespace SchuBS_Textadventure.KampfHelper
 {
     public class Kampf : KampfBase
     {
-        public Textadventure Adventure { get; set; }
+        public Textadventure Adventure { get; }
 
-        private Gegner Gegner { get; set; }
+        private Gegner Gegner { get; }
 
-        private Spieler Spieler { get; set; }
+        private Spieler Spieler { get; }
 
-        public Kampf(Spieler spieler, Gegner gegner, Textadventure adventure) : base(spieler, gegner)
+        public Action ContinueWin { get; }
+
+        public Action ContinueTot { get; }
+
+        public Kampf(Spieler spieler, Gegner gegner, Action continueWin, Action tot) : base(spieler, gegner)
         {
-            Gegner = gegner;
-            Spieler = spieler;
-            Adventure = adventure;
+            Gegner      = gegner;
+            Spieler     = spieler;
+            ContinueWin = continueWin;
+            ContinueTot         = tot;
 
             TextadventureHelper.SetButtonsText("Angriff", "Magie", "Item benutzen");
 

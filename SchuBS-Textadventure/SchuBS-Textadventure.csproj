@@ -64,7 +64,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>E114AE0B5F07E8262F2951E26A12D844FCEBA8DF</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>56641F621D93C1E70D748CBFC84D7FE9F86F7855</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>SchuBS-Textadventure_TemporaryKey.pfx</ManifestKeyFile>
@@ -104,7 +104,8 @@
     <Compile Include="Data\Werte.cs" />
     <Compile Include="KampfHelper\Kampf.cs" />
     <Compile Include="Objects\Klasse.cs" />
-    <Compile Include="Previous.cs" />
+    <Compile Include="Objects\AdventureAction.cs" />
+    <Compile Include="Level.cs" />
     <Compile Include="Story\Eingaben.cs" />
     <Compile Include="Story\Macht.cs" />
     <Compile Include="Story\Reichtum.cs" />
