@@ -19,7 +19,6 @@ namespace SchuBS_Textadventure
                 "Du spürst, dass du auf hartem Boden liegst.",
                 "Du fühlst keinen Schmerz, alles scheint wie immer. Trotzdem kannst du dich an nichts mehr erinnern…");
 
-            SetButtonsText("Augen öffnen", "Augen geschlossen lassen");
             SetActions((Text: "Augen öffnen", ContinueWith: NameErfragen), (Text: "Augen geschlossen lassen", ContinueWith: EndeAugenGeschlossen));
         }
 
