@@ -36,24 +36,7 @@ namespace SchuBS_Textadventure
             };
             Init(ButtonsAktionen, ImageHintergrund, ImagePerson, TextBoxHauptText, TextBoxEingabe, UniformGridButtons, GetText);
 
-            if (GetStartArgsParameter("textspeed") is string geschwindigkeit)
-            {
-                double textGeschwindigkeit = TextAlsKommaZahl(geschwindigkeit);
-                if (!double.IsNaN(textGeschwindigkeit) && !double.IsInfinity(textGeschwindigkeit))
-                    TextBoxHauptText.TextSpeed = (float)textGeschwindigkeit;
-            }
-
-            if (GetStartArgsParameter("class") is string klassenName)
-            {
-                AktuellerHeld.Name = "Held";
-                BerufErfragen();
-                TextBoxEingabe.Text = klassenName;
-                VerarbeiteTextEingabe();
-            }
-            else
-            {
-                Start();
-            }
+            Start();
         }
 
         #endregion

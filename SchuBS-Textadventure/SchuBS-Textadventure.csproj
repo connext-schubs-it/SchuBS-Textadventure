@@ -73,7 +73,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>SchuBS_Textadventure.App</StartupObject>
@@ -101,14 +101,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Beispiele\Macht.cs" />
+    <Compile Include="Beispiele\Reichtum.cs" />
+    <Compile Include="Beispiele\StoryBeispiel.cs" />
     <Compile Include="Data\Werte.cs" />
     <Compile Include="KampfHelper\Kampf.cs" />
     <Compile Include="Objects\Klasse.cs" />
     <Compile Include="Objects\AdventureAction.cs" />
     <Compile Include="Level.cs" />
     <Compile Include="Story\Eingaben.cs" />
-    <Compile Include="Story\Macht.cs" />
-    <Compile Include="Story\Reichtum.cs" />
     <Compile Include="Story\Story.cs" />
     <Compile Include="Textadventure.xaml.cs">
       <DependentUpon>Textadventure.xaml</DependentUpon>
@@ -148,7 +149,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="SchuBS-Textadventure_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -299,5 +299,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
