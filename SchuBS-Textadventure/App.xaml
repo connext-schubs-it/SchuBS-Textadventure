@@ -45,9 +45,9 @@
                                             <SplineDoubleKeyFrame KeySpline="0.4,0,0.6,1" KeyTime="0:0:2" Value="{Binding TemplateSettings.ContainerAnimationEndPosition, RelativeSource={RelativeSource TemplatedParent}}"/>
                                         </DoubleAnimationUsingKeyFrames>
                                         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" Storyboard.TargetName="IndeterminateProgressBarIndicator2">
-                                            <SplineDoubleKeyFrame KeySpline="0.4,0,0.6,1" KeyTime="0" Value="{Binding TemplateSettings.ContainerAnimationStartPosition2, RelativeSource={RelativeSource TemplatedParent}}"/>
-                                            <SplineDoubleKeyFrame KeySpline="0.4,0,0.6,1" KeyTime="0:0:0.75" Value="{Binding TemplateSettings.ContainerAnimationStartPosition2, RelativeSource={RelativeSource TemplatedParent}}"/>
-                                            <SplineDoubleKeyFrame KeySpline="0.4,0,0.6,1" KeyTime="0:0:2" Value="{Binding TemplateSettings.ContainerAnimationEndPosition2, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                            <SplineDoubleKeyFrame KeySpline="0.4,0,0.6,1" KeyTime="0" Value="{Binding TemplateSettings.ContainerAnimationStartPosition, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                            <SplineDoubleKeyFrame KeySpline="0.4,0,0.6,1" KeyTime="0:0:0.75" Value="{Binding TemplateSettings.ContainerAnimationStartPosition, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                            <SplineDoubleKeyFrame KeySpline="0.4,0,0.6,1" KeyTime="0:0:2" Value="{Binding TemplateSettings.ContainerAnimationEndPosition, RelativeSource={RelativeSource TemplatedParent}}"/>
                                         </DoubleAnimationUsingKeyFrames>
                                         <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="IndeterminateProgressBarIndicator"/>
                                         <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="IndeterminateProgressBarIndicator2"/>
@@ -62,8 +62,8 @@
                                             <DiscreteDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
                                         </DoubleAnimationUsingKeyFrames>
                                         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" Storyboard.TargetName="IndeterminateProgressBarIndicator2">
-                                            <SplineDoubleKeyFrame KeySpline="0.4,0,0.6,1" KeyTime="0:0:1" Value="{Binding TemplateSettings.ContainerAnimationEndPosition2, RelativeSource={RelativeSource TemplatedParent}}"/>
-                                            <SplineDoubleKeyFrame KeySpline="0.4,0,0.6,1" KeyTime="0:0:1.5" Value="{Binding TemplateSettings.ContainerAnimationStartPosition2, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                            <SplineDoubleKeyFrame KeySpline="0.4,0,0.6,1" KeyTime="0:0:1" Value="{Binding TemplateSettings.ContainerAnimationEndPosition, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                            <SplineDoubleKeyFrame KeySpline="0.4,0,0.6,1" KeyTime="0:0:1.5" Value="{Binding TemplateSettings.ContainerAnimationStartPosition, RelativeSource={RelativeSource TemplatedParent}}"/>
                                             <SplineDoubleKeyFrame KeySpline="0.4,0,0.6,1" KeyTime="0:0:2.5" Value="{Binding TemplateSettings.ContainerAnimationMidPosition, RelativeSource={RelativeSource TemplatedParent}}"/>
                                         </DoubleAnimationUsingKeyFrames>
                                         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="IndeterminateProgressBarIndicator2">
@@ -96,8 +96,8 @@
                                             <DiscreteDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
                                         </DoubleAnimationUsingKeyFrames>
                                         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" Storyboard.TargetName="IndeterminateProgressBarIndicator2">
-                                            <SplineDoubleKeyFrame KeySpline="0.4,0,0.6,1" KeyTime="0:0:1" Value="{Binding TemplateSettings.ContainerAnimationEndPosition2, RelativeSource={RelativeSource TemplatedParent}}"/>
-                                            <SplineDoubleKeyFrame KeySpline="0.4,0,0.6,1" KeyTime="0:0:1.5" Value="{Binding TemplateSettings.ContainerAnimationStartPosition2, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                            <SplineDoubleKeyFrame KeySpline="0.4,0,0.6,1" KeyTime="0:0:1" Value="{Binding TemplateSettings.ContainerAnimationEndPosition, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                            <SplineDoubleKeyFrame KeySpline="0.4,0,0.6,1" KeyTime="0:0:1.5" Value="{Binding TemplateSettings.ContainerAnimationStartPosition, RelativeSource={RelativeSource TemplatedParent}}"/>
                                             <SplineDoubleKeyFrame KeySpline="0.4,0,0.6,1" KeyTime="0:0:2.5" Value="{Binding TemplateSettings.ContainerAnimationMidPosition, RelativeSource={RelativeSource TemplatedParent}}"/>
                                         </DoubleAnimationUsingKeyFrames>
                                         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="IndeterminateProgressBarIndicator2">
@@ -160,9 +160,9 @@
                                                     <SplineDoubleKeyFrame KeySpline="0.4,0,0.6,1" KeyTime="0:0:2" Value="{Binding TemplateSettings.ContainerAnimationEndPosition, RelativeSource={RelativeSource TemplatedParent}}"/>
                                                 </DoubleAnimationUsingKeyFrames>
                                                 <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" Storyboard.TargetName="IndeterminateProgressBarIndicator2">
-                                                    <SplineDoubleKeyFrame KeySpline="0.4,0,0.6,1" KeyTime="0" Value="{Binding TemplateSettings.ContainerAnimationStartPosition2, RelativeSource={RelativeSource TemplatedParent}}"/>
-                                                    <SplineDoubleKeyFrame KeySpline="0.4,0,0.6,1" KeyTime="0:0:0.75" Value="{Binding TemplateSettings.ContainerAnimationStartPosition2, RelativeSource={RelativeSource TemplatedParent}}"/>
-                                                    <SplineDoubleKeyFrame KeySpline="0.4,0,0.6,1" KeyTime="0:0:2" Value="{Binding TemplateSettings.ContainerAnimationEndPosition2, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                                    <SplineDoubleKeyFrame KeySpline="0.4,0,0.6,1" KeyTime="0" Value="{Binding TemplateSettings.ContainerAnimationStartPosition, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                                    <SplineDoubleKeyFrame KeySpline="0.4,0,0.6,1" KeyTime="0:0:0.75" Value="{Binding TemplateSettings.ContainerAnimationStartPosition, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                                    <SplineDoubleKeyFrame KeySpline="0.4,0,0.6,1" KeyTime="0:0:2" Value="{Binding TemplateSettings.ContainerAnimationEndPosition, RelativeSource={RelativeSource TemplatedParent}}"/>
                                                 </DoubleAnimationUsingKeyFrames>
                                                 <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="IndeterminateProgressBarIndicator"/>
                                                 <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="IndeterminateProgressBarIndicator2"/>
@@ -179,8 +179,8 @@
                                                     <DiscreteDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
                                                 </DoubleAnimationUsingKeyFrames>
                                                 <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" Storyboard.TargetName="IndeterminateProgressBarIndicator2">
-                                                    <SplineDoubleKeyFrame KeySpline="0.4,0,0.6,1" KeyTime="0:0:1" Value="{Binding TemplateSettings.ContainerAnimationEndPosition2, RelativeSource={RelativeSource TemplatedParent}}"/>
-                                                    <SplineDoubleKeyFrame KeySpline="0.4,0,0.6,1" KeyTime="0:0:1.5" Value="{Binding TemplateSettings.ContainerAnimationStartPosition2, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                                    <SplineDoubleKeyFrame KeySpline="0.4,0,0.6,1" KeyTime="0:0:1" Value="{Binding TemplateSettings.ContainerAnimationEndPosition, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                                    <SplineDoubleKeyFrame KeySpline="0.4,0,0.6,1" KeyTime="0:0:1.5" Value="{Binding TemplateSettings.ContainerAnimationStartPosition, RelativeSource={RelativeSource TemplatedParent}}"/>
                                                     <SplineDoubleKeyFrame KeySpline="0.4,0,0.6,1" KeyTime="0:0:2.5" Value="{Binding TemplateSettings.ContainerAnimationMidPosition, RelativeSource={RelativeSource TemplatedParent}}"/>
                                                 </DoubleAnimationUsingKeyFrames>
                                                 <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="IndeterminateProgressBarIndicator2">
@@ -217,8 +217,8 @@
                                                     <DiscreteDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
                                                 </DoubleAnimationUsingKeyFrames>
                                                 <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" Storyboard.TargetName="IndeterminateProgressBarIndicator2">
-                                                    <SplineDoubleKeyFrame KeySpline="0.4,0,0.6,1" KeyTime="0:0:1" Value="{Binding TemplateSettings.ContainerAnimationEndPosition2, RelativeSource={RelativeSource TemplatedParent}}"/>
-                                                    <SplineDoubleKeyFrame KeySpline="0.4,0,0.6,1" KeyTime="0:0:1.5" Value="{Binding TemplateSettings.ContainerAnimationStartPosition2, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                                    <SplineDoubleKeyFrame KeySpline="0.4,0,0.6,1" KeyTime="0:0:1" Value="{Binding TemplateSettings.ContainerAnimationEndPosition, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                                    <SplineDoubleKeyFrame KeySpline="0.4,0,0.6,1" KeyTime="0:0:1.5" Value="{Binding TemplateSettings.ContainerAnimationStartPosition, RelativeSource={RelativeSource TemplatedParent}}"/>
                                                     <SplineDoubleKeyFrame KeySpline="0.4,0,0.6,1" KeyTime="0:0:2.5" Value="{Binding TemplateSettings.ContainerAnimationMidPosition, RelativeSource={RelativeSource TemplatedParent}}"/>
                                                 </DoubleAnimationUsingKeyFrames>
                                                 <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="IndeterminateProgressBarIndicator2">
